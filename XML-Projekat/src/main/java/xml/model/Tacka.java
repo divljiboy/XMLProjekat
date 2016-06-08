@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Tacka {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Podtacka", namespace = "aktovi", type = Podtacka.class, required = false)
+        @XmlElementRef(name = "Podtacka", namespace = "aktovi", type = Podtacka.class, required = false),
+        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false)
     })
     @XmlMixed
     protected List<Object> content;
@@ -71,8 +71,8 @@ public class Tacka {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link Podtacka }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
      */

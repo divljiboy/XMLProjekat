@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Usvojen" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -80,6 +81,8 @@ public class PravniAkt {
     protected TOvlascenoLice ovlascenoLice;
     @XmlAttribute(name = "Usvojen")
     protected Boolean usvojen;
+    @XmlAttribute(name = "Id")
+    protected Long id;
 
     /**
      * Gets the value of the preambula property.
@@ -367,6 +370,30 @@ public class PravniAkt {
      */
     public void setUsvojen(Boolean value) {
         this.usvojen = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
 }

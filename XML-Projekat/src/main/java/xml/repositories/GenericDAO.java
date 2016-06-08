@@ -26,7 +26,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
     private static DatabaseClient client;
 
     @Override
-    public void create(T object, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException{
+    public void create(T object,String docId,String colId, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException{
 //  FileOutputStream fos = new FileOutputStream("/src/main/resources/testing.xml")
 
         if(props.database.equals("")){
@@ -40,7 +40,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
         if (xmlConverter.fromObjectToXML(object)){
             //write to Database
             XMLDocumentManager xmlManager = client.newXMLDocumentManager();
-            String docId = "/example/testing.xml";
+
             InputStreamHandle handle = new InputStreamHandle(new FileInputStream("./src/main/resources/temp.xml"));
             xmlManager.write(docId, handle);
 
@@ -54,7 +54,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
     }
 
     @Override
-    public void update(T object) {
+    public void update(T object,Long id) {
 
     }
 
@@ -69,7 +69,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
     }
 
     @Override
-    public T get(String id) {
+    public T get(Long id) {
         return null;
     }
 }

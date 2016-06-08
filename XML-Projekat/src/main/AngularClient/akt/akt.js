@@ -9,7 +9,8 @@
                     url: '/sviAkti',                                                                                                                   
                     views: {
                         'content': {
-                            templateUrl: 'akt/sviAkti.html'
+                            templateUrl: 'akt/sviAkti.html',
+                            controller : "sviAktiController"
                         },
                         'navbar': {
                             templateUrl: 'navbar/navbar.html'
@@ -17,6 +18,7 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
+
                     },
                     controller : "sviAktiController"
                 })
@@ -51,6 +53,10 @@
                         }
                     },
                     controller : "sviAktiController"
+
+                    
+                    
+
                 });
         }]);
 

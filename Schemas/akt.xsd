@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="aktovi" xmlns:akt="aktovi" xmlns:ul="uloge">
-
-    <xs:import namespace="uloge" schemaLocation="uloge.xsd"/>
+    targetNamespace="aktovi" xmlns:akt="aktovi">
     <xs:element name="Pravni_akt">
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" name="Preambula" type="xs:string"/>
                 <xs:element name="Naziv" type="xs:string"/>
-                <xs:element name="Glavni_deo">
-                    <xs:complexType mixed="false">
-                        <xs:choice maxOccurs="1" minOccurs="1">
-                            <xs:element maxOccurs="unbounded" ref="akt:Deo"/>
-                            <xs:element maxOccurs="unbounded" ref="akt:Glava"/>
-                            <xs:element maxOccurs="unbounded" ref="akt:Odeljak"/>
-                            <xs:element maxOccurs="unbounded" ref="akt:Clan"/>
-                        </xs:choice>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Datum_donosenja_propisa" type="xs:date"/>
-                <xs:element name="Broj_popisa_kod_organa" type="xs:int"/>
-                <xs:element name="Ovlasceno_lice" type="ul:TOdbornik"/>
+                <xs:element ref="akt:Glavni_deo"/>
+                <xs:element name="Drzava" type="xs:string"/>
+                <xs:element name="Pokrajina" type="xs:string"/>
+                <xs:element name="Grad" type="xs:string"/>
+                <xs:element name="Skupstina" type="xs:string"/>
+                <xs:element name="Broj_popisa_kod_organa" type="xs:string"/>
+                <xs:element name="Datum_donosenja_propisa" type="xs:string"/>
+                <xs:element name="Mesto_donosenja_propisa" type="xs:string"/>
+                <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
             </xs:sequence>
+            <xs:attribute name="Usvojen" type="xs:boolean"/>
+            <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Deo">
@@ -54,28 +50,49 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="Clan">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Stav" type="xs:string"/>
-            </xs:sequence>
-            <xs:attribute name="Broj_clana" type="akt:TBroj_clana" use="required"/>
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded" minOccurs="1">
+                <xs:element maxOccurs="unbounded" ref="akt:Stav"/>
+            </xs:choice>
+            <xs:attribute name="Broj_clana" type="xs:integer" use="required"/>
             <xs:attribute name="Naziv">
                 <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="[A-Z]."/>
-                    </xs:restriction>
+                    <xs:restriction base="xs:string"> </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
-    <xs:simpleType name="TBroj_clana">
-        <xs:restriction base="xs:int">
-            <xs:pattern value="[1-9][0-9]*\."/>
-        </xs:restriction>
-    </xs:simpleType>
+    <xs:element name="Stav">
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Tacka"/>
+                <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
+            </xs:choice>
+            <xs:attribute name="Id" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Tacka">
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Podtacka"/>
+                <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
+            </xs:choice>
+            <xs:attribute name="broj" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Podtacka">
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
+            </xs:choice>
+            <xs:attribute name="broj" type="xs:positiveInteger"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Alineja" type="xs:string"/>
     <xs:simpleType name="TOdeljak_naziv">
         <xs:restriction base="xs:string">
             <xs:pattern value="[1-9][0-9]*\. .*"/>
+            <xs:pattern value="[A-Z]+"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="TGlava_naziv">
@@ -84,4 +101,40 @@
             <xs:pattern value="\p{N}\. .*"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:element name="Glavni_deo">
+        <xs:complexType mixed="false">
+            <xs:choice maxOccurs="1" minOccurs="1">
+                <xs:element maxOccurs="unbounded" ref="akt:Deo"/>
+                <xs:element maxOccurs="unbounded" ref="akt:Glava"/>
+                <xs:element maxOccurs="unbounded" ref="akt:Odeljak"/>
+                <xs:element maxOccurs="unbounded" ref="akt:Clan"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TOvlasceno_lice">
+        <xs:sequence>
+            <xs:element name="Titula" type="xs:string"/>
+            <xs:element name="Ime" type="xs:string"/>
+            <xs:element name="Prezime" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Korisnik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Username" type="xs:string"/>
+                <xs:element name="Password" type="xs:string"/>
+                <xs:element name="Ime" type="xs:string"/>
+                <xs:element name="Prezime" type="xs:string"/>
+                <xs:element name="Uloga" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Korisnici">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="akt:Korisnik"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

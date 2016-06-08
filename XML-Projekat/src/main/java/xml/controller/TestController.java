@@ -1,13 +1,9 @@
 package xml.controller;
 
-import database.DatabaseConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xml.model.TKorisnik;
-import xml.repositories.ITKorisnikDAO;
-
-import java.io.IOException;
+import xml.repositories.IUserDAO;
 
 /**
  * Created by Daniel on 5/30/2016.
@@ -17,36 +13,23 @@ import java.io.IOException;
 public class TestController {
 
     @Autowired
-    private ITKorisnikDAO korisnikDAO;
+    private IUserDAO korisnikDAO;
 
     @RequestMapping("/addOdbornik")
     public String addOdbornik(){
-
-        System.out.print("Usao u metodu addOdbornik");
 /*
-        TOdbornik odbornik = new TOdbornik();
-        odbornik.setIme("Branislav");
-        odbornik.setPrezime("Cogic");
-        odbornik.setUloga("Neradnik");
+        System.out.print("Usao u metodu addOdbornik");
 
-        System.out.print("Napravio odbornika");
-
-        try {
-            odbornikDAO.create(odbornik, DatabaseConfig.loadProperties());
-        } catch (IOException e) {
-            System.out.print("Nece moci , iz resta exception");
-        }
-*/
-
-        TKorisnik korisnik = new TKorisnik();
+        Korisnik korisnik = new Korisnik();
         korisnik.setUsername("nekiusername");
         korisnik.setPassword("najtezipassnasvet");
         korisnik.setIme("Branislav");
         korisnik.setPrezime("Cogic");
         korisnik.setUloga("Neradnik");
+        korisnik.setId((long) 6);
 
         try {
-            korisnikDAO.create(korisnik,DatabaseConfig.loadProperties());
+            korisnikDAO.create(korisnik,"testing.xml","neka_kolekcija",DatabaseConfig.loadProperties());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +37,7 @@ public class TestController {
 
         System.out.print("Testing");
 
-
+*/
         return "OK";
     }
 
