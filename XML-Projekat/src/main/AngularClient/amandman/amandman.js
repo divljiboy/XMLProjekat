@@ -1,0 +1,26 @@
+(function(angular)
+	{
+
+		angular.module('xmlApp').config(['$stateProvider', function ($stateProvider) 
+		{
+            $stateProvider
+            .state('sviAmandmani',
+                {	
+                    url: '/sviAmandmani',                                                                                                                   
+                    views: {
+                        'content': {
+                            templateUrl: 'amandman/sviAmandmani.html'
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+                    },
+                    controller : "sviAktiController"
+                });
+        }]);
+
+
+	})(angular);
