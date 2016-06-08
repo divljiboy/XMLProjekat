@@ -54,7 +54,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
     }
 
     @Override
-    public void update(T object) {
+    public void update(T object,Long id) {
 
     }
 
@@ -69,7 +69,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
     }
 
     @Override
-    public T get(String id) {
+    public T get(Long id) {
         return null;
     }
 }

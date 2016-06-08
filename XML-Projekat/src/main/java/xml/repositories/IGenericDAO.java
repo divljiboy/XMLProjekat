@@ -11,9 +11,9 @@ import java.util.List;
 public interface IGenericDAO<T,K> {
 
     public void create(T object,String docId,String colId, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException;
-    public void update(T object);
+    public void update(T object,Long id);
     public void delete(T object);
     public List<T> getAll();
-    public T get(String id);
+    public T get(Long id);
 
 }
