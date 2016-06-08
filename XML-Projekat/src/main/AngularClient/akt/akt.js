@@ -19,6 +19,38 @@
                         }
                     },
                     controller : "sviAktiController"
+                })
+            .state('noviakt',
+                {	
+                    url: '/noviakt',                                                                                                                   
+                    views: {
+                        'content': {
+                            templateUrl: 'akt/NoviAkt.html'
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+                    },
+                    controller : "sviAktiController"
+                })
+            .state('noviamandman',
+                {	
+                    url: '/noviamandman',                                                                                                                   
+                    views: {
+                        'content': {
+                            templateUrl: 'akt/NovAmandman.html'
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+                    },
+                    controller : "sviAktiController"
                 });
         }]);
 
