@@ -3,6 +3,7 @@ package xml.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
+ *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -66,6 +68,8 @@ public class Amandman {
     protected TOperacija operacija;
     @XmlElement(name = "Sadrzaj", namespace = "amandmani", required = true)
     protected Amandman.Sadrzaj sadrzaj;
+    @XmlAttribute(name = "Id")
+    protected Long id;
 
     /**
      * Gets the value of the kontekst property.
@@ -137,6 +141,30 @@ public class Amandman {
      */
     public void setSadrzaj(Amandman.Sadrzaj value) {
         this.sadrzaj = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
 

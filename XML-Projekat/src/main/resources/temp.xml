@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:Korisnik xmlns="amandmani" xmlns:ns2="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi">
+<ns2:Korisnik xmlns="amandmani" xmlns:ns2="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="6" xsi:schemaLocation="aktovi">
     <ns2:Username>nekiusername</ns2:Username>
     <ns2:Password>najtezipassnasvet</ns2:Password>
     <ns2:Ime>Branislav</ns2:Ime>
