@@ -4,7 +4,7 @@
 
 (function(angular){
 	
-	angular.module("xmlApp",['ui.router', 'ui.bootstrap', 'ui.grid']).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+	angular.module("xmlApp",['ui.router', 'ui.bootstrap']).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -12,12 +12,13 @@
               url: '/home',
               views: {
                   'navbar': {
-                      templateUrl: 'AngularClient/navbar/navbar.html'
+                      templateUrl:'navbar/navbar.html'
                   },
                   'sidebar': {
-                      templateUrl: 'AngularClient/sidebar/sidebar.html'
+                      templateUrl: 'sidebar/sidebar.html'
                   }
               }
           })
     }]);
+
 })(angular);
