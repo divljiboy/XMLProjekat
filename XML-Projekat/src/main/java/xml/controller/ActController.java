@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xml.Constants;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
@@ -38,7 +35,7 @@ public class ActController{
     }
 
     @RequestMapping(value = "/akt/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getById(Long id) {
+    public ResponseEntity getById(@PathVariable("id") Long id) {
         try{
             PravniAkt akt = aktDao.get(id);
             if(akt == null)
@@ -61,7 +58,7 @@ public class ActController{
     }
 
     @RequestMapping(value = "/akt/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity put(@RequestBody PravniAkt object, Long id) {
+    public ResponseEntity put(@RequestBody PravniAkt object,@PathVariable("id") Long id) {
         try{
             aktDao.update(object,id);
             return new ResponseEntity(HttpStatus.OK);
