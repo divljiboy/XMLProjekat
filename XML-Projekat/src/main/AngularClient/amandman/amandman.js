@@ -18,8 +18,7 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
-                    },
-                    controller : "sviAmandmaniController"
+                    }
                 });
         }]);
 
