@@ -9,7 +9,8 @@
                     url: '/sviAmandmani',                                                                                                                   
                     views: {
                         'content': {
-                            templateUrl: 'amandman/sviAmandmani.html'
+                            templateUrl: 'amandman/sviAmandmani.html',
+                            controller : "sviAmandmaniController"
                         },
                         'navbar': {
                             templateUrl: 'navbar/navbar.html'
@@ -18,7 +19,7 @@
                             templateUrl: 'sidebar/sidebar.html'
                         }
                     },
-                    controller : "sviAktiController"
+                    controller : "sviAmandmaniController"
                 });
         }]);
 

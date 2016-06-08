@@ -1,10 +1,7 @@
 package xml.controller;
 
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
 import java.util.List;
 
 /**

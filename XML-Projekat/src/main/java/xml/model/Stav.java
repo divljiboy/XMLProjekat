@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlMixed;
@@ -26,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{aktovi}Tacka" maxOccurs="unbounded" minOccurs="2"/>
  *         &lt;element ref="{aktovi}Alineja" maxOccurs="unbounded" minOccurs="2"/>
  *       &lt;/choice>
+ *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -41,11 +43,13 @@ import javax.xml.bind.annotation.XmlType;
 public class Stav {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false)
+        @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false),
+        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false)
     })
     @XmlMixed
     protected List<Object> content;
+    @XmlAttribute(name = "Id")
+    protected Long id;
 
     /**
      * Gets the value of the content property.
@@ -65,8 +69,8 @@ public class Stav {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Tacka }
      * {@link String }
+     * {@link Tacka }
      * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
@@ -76,6 +80,30 @@ public class Stav {
             content = new ArrayList<Object>();
         }
         return this.content;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
 }

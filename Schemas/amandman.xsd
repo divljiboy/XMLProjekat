@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    xmlns:akt="aktovi">
+    xmlns:akt="aktovi" targetNamespace="amandmani" xmlns:am="amandmani">
 
     <xs:import namespace="aktovi" schemaLocation="akt.xsd"/>
     <xs:element name="Amandman">
@@ -9,19 +9,20 @@
                 <xs:element name="Kontekst">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="akt:Pravni_akt"/>
+                            <xs:element name="Naziv_pravnog_akta" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Operacija" type="TOperacija"/>
+                <xs:element name="Operacija" type="am:TOperacija"/>
                 <xs:element name="Sadrzaj">
                     <xs:complexType>
-                        <xs:sequence>
-                            <xs:element ref="akt:Pravni_akt"/>
-                        </xs:sequence>
+                        <xs:choice>
+                            <xs:element ref="akt:Glavni_deo"/>
+                        </xs:choice>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
     </xs:element>
     <xs:simpleType name="TOperacija">

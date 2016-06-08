@@ -1,9 +1,6 @@
 package database;
 
-import xml.model.TKorisnik;
-
 import javax.xml.bind.*;
-import javax.xml.namespace.QName;
 import java.io.*;
 
 /**
@@ -41,8 +38,8 @@ public class XMLConverter<T> {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,"aktovi");
             System.out.print("Setovao propertije");
-            //marshaller.marshal(object,fos);
-            marshaller.marshal(new JAXBElement<T>(new QName("aktovi", "Korisnik"), (Class<T>) TKorisnik.class,object),fos);
+            marshaller.marshal(object,fos);
+            //marshaller.marshal(new JAXBElement<T>(new QName("aktovi", "Korisnik"), (Class<T>) TKorisnik.class,object),fos);
             System.out.print("napravio objekat");
             fos.close();
             System.out.print("Zavrsio Marshallovanje");

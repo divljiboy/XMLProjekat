@@ -24,7 +24,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Korisnik_QNAME = new QName("aktovi", "Korisnik");
     private final static QName _Alineja_QNAME = new QName("aktovi", "Alineja");
 
     /**
@@ -123,11 +122,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TKorisnik }
+     * Create an instance of {@link Korisnici }
      * 
      */
-    public TKorisnik createTKorisnik() {
-        return new TKorisnik();
+    public Korisnici createKorisnici() {
+        return new Korisnici();
+    }
+
+    /**
+     * Create an instance of {@link Korisnik }
+     * 
+     */
+    public Korisnik createKorisnik() {
+        return new Korisnik();
     }
 
     /**
@@ -144,31 +151,6 @@ public class ObjectFactory {
      */
     public TOvlascenoLice createTOvlascenoLice() {
         return new TOvlascenoLice();
-    }
-
-    /**
-     * Create an instance of {@link TPredsednikSkupstine }
-     * 
-     */
-    public TPredsednikSkupstine createTPredsednikSkupstine() {
-        return new TPredsednikSkupstine();
-    }
-
-    /**
-     * Create an instance of {@link TOdbornik }
-     * 
-     */
-    public TOdbornik createTOdbornik() {
-        return new TOdbornik();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TKorisnik }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "aktovi", name = "Korisnik")
-    public JAXBElement<TKorisnik> createKorisnik(TKorisnik value) {
-        return new JAXBElement<TKorisnik>(_Korisnik_QNAME, TKorisnik.class, null, value);
     }
 
     /**

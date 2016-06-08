@@ -4,8 +4,8 @@ import database.DatabaseConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xml.model.TKorisnik;
-import xml.repositories.ITKorisnikDAO;
+import xml.model.Korisnik;
+import xml.repositories.IKorisnikDAO;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class TestController {
 
     @Autowired
-    private ITKorisnikDAO korisnikDAO;
+    private IKorisnikDAO korisnikDAO;
 
     @RequestMapping("/addOdbornik")
     public String addOdbornik(){
@@ -37,16 +37,16 @@ public class TestController {
             System.out.print("Nece moci , iz resta exception");
         }
 */
-
-        TKorisnik korisnik = new TKorisnik();
-        korisnik.setUsername("aaaa");
-        korisnik.setPassword("ssss");
+        Korisnik korisnik = new Korisnik();
+        korisnik.setUsername("nekiusername");
+        korisnik.setPassword("najtezipassnasvet");
         korisnik.setIme("Branislav");
         korisnik.setPrezime("Cogic");
         korisnik.setUloga("Neradnik");
+        korisnik.setId((long) 6);
 
         try {
-            korisnikDAO.create(korisnik,DatabaseConfig.loadProperties());
+            korisnikDAO.create(korisnik,"testing.xml","neka_kolekcija",DatabaseConfig.loadProperties());
         } catch (IOException e) {
             e.printStackTrace();
         }

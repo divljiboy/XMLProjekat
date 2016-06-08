@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface IGenericDAO<T,K> {
 
-    public void create(T object, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException;
+    public void create(T object,String docId,String colId, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException;
     public void update(T object);
     public void delete(T object);
     public List<T> getAll();
