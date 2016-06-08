@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="uloge" xmlns:ul="uloge">
+    <xs:complexType name="TGradjanin">
+        <xs:sequence>
+            <xs:element name="Ime" type="xs:string"/>
+            <xs:element name="Prezime" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TOdbornik">
+        <xs:complexContent>
+            <xs:extension base="ul:TGradjanin">
+                <xs:sequence>
+                    <xs:element name="Stranka" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TPredsednik_skupstine">
+        <xs:complexContent>
+            <xs:extension base="ul:TOdbornik">
+                <xs:sequence>
+                    <xs:element name="Plata" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
