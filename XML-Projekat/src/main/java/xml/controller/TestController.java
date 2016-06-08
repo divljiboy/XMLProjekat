@@ -39,8 +39,8 @@ public class TestController {
 */
 
         TKorisnik korisnik = new TKorisnik();
-        korisnik.setUsername("nekiusername");
-        korisnik.setPassword("najtezipassnasvet");
+        korisnik.setUsername("aaaa");
+        korisnik.setPassword("ssss");
         korisnik.setIme("Branislav");
         korisnik.setPrezime("Cogic");
         korisnik.setUloga("Neradnik");

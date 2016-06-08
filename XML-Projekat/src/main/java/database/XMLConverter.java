@@ -1,10 +1,6 @@
 package database;
 
-
-
-import test_model.TKorisnik;
-import test_model.TOdbornik;
-import test_model.TPredsednikSkupstine;
+import xml.model.TKorisnik;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
@@ -38,7 +34,7 @@ public class XMLConverter<T> {
 
         try {
             fos = new FileOutputStream(file);
-            jaxbContext = JAXBContext.newInstance("test_model");
+            jaxbContext = JAXBContext.newInstance("xml.model");
             System.out.print("napravio jaxb context");
             marshaller = jaxbContext.createMarshaller();
             System.out.print("Napravio marshaller");
