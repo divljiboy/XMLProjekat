@@ -3,46 +3,81 @@ package xml.repositories;
 import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.document.XMLDocumentManager;
+import com.marklogic.client.eval.EvalResult;
+import com.marklogic.client.eval.EvalResultIterator;
+import com.marklogic.client.eval.ServerEvaluationCall;
+import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseConfig;
+import database.DatabaseManager;
 import database.XMLConverter;
+import xml.model.Korisnik;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Dorian on 31.5.2016.
  */
-public class GenericDAO<T,K> implements IGenericDAO<T,K> {
+public class GenericDAO<T,K> {
 
-    XMLConverter<T> xmlConverter;
-    private static DatabaseClient client;
+    protected XMLConverter<T> xmlConverter;
+    protected static DatabaseClient client;
+    private static final String USER_SCHEMA_PATH = "./src/main/schema/korisnici.xsd";
 
-    @Override
-    public void create(T object,String docId,String colId, DatabaseConfig.ConnectionProperties props) throws FileNotFoundException{
-//  FileOutputStream fos = new FileOutputStream("/src/main/resources/testing.xml")
+    public GenericDAO(String path) throws IOException {
+        xmlConverter = new XMLConverter<T>(path);
+        client = DatabaseManager.Client.getClient();
+    }
 
-        if(props.database.equals("")){
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+    protected ArrayList<T> getByQuery(String query) throws FileNotFoundException, IOException {
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query);
+
+        iterator = invoker.eval();
+
+        ArrayList<T> list = new ArrayList<>();
+
+        if(iterator.hasNext()) {
+            for (EvalResult res : iterator) {
+                if (xmlConverter.stringToFile(res.getString())) {
+                    T item = (T)xmlConverter.fromXMLtoObject();
+                    list.add(item);
+                }
+            }
         }else{
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+            return null;
         }
 
-        xmlConverter = new XMLConverter<T>("nesto");
+        return list;
+    }
 
-        if (xmlConverter.fromObjectToXML(object)){
+    protected  void execQuery(String query) throws IOException{
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query);
+
+        iterator = invoker.eval();
+    }
+
+    protected  void add(T obj,String docId,String colId) throws IOException{
+        if (xmlConverter.fromObjectToXML(obj)){
             //write to Database
             XMLDocumentManager xmlManager = client.newXMLDocumentManager();
 
+            DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
+            metadataHandle.getCollections().add(colId);
+
             InputStreamHandle handle = new InputStreamHandle(new FileInputStream("./src/main/resources/temp.xml"));
-            xmlManager.write(docId, handle);
+            xmlManager.write(docId,metadataHandle, handle);
 
             System.out.print("Upisao uspesno u bazu");
 
@@ -50,26 +85,6 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
             //Error
             System.out.print("Cannot convert to xml file.");
         }
-
     }
 
-    @Override
-    public void update(T object,Long id) {
-
-    }
-
-    @Override
-    public void delete(T object) {
-
-    }
-
-    @Override
-    public List<T> getAll() {
-        return null;
-    }
-
-    @Override
-    public T get(Long id) {
-        return null;
-    }
 }

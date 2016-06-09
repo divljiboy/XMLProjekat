@@ -96,4 +96,20 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/login",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik){
+        if(korisnik == null)
+            return new ResponseEntity<Korisnik>(HttpStatus.OK);
+        try {
+            Korisnik user = userDao.getByLogin(korisnik.getUsername(),korisnik.getPassword());
+            if(user == null){
+                return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
+            }else{
+                return new ResponseEntity<Korisnik>(user,HttpStatus.OK);
+            }
+        } catch (IOException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Korisnik xmlns:ns2="aktovi" xmlns:ns3="amandmani" Id="1">
-    <Ime>Brano</Ime>
-    <Prezime>CHo</Prezime>
-    <Username>asdasd</Username>
-    <Password>jel znas da brises iz baze?</Password>
-    <Email>nekimail@mail.com</Email>
+<Korisnik Id="2" xmlns:ns2="amandmani" xmlns:ns3="aktovi">
+    <Ime>Djordghgvhcge</Ime>
+    <Prezime>Cvarkov</Prezime>
+    <Username>ara</Username>
+    <Password>1.2.3.4.5</Password>
+    <Email>lalala@la.com</Email>
     <Uloga>Odbornik</Uloga>
-    <Salt>nesto</Salt>
+    <Salt>So</Salt>
 </Korisnik>
