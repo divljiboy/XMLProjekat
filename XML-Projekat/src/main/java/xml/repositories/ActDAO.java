@@ -21,59 +21,30 @@ import java.util.List;
  * Created by Dorian on 8.6.2016.
  */
 @Repository("pravniAktDAO")
-public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
-
-    XMLConverter<Korisnik> xmlConverter;
-    private static DatabaseClient client;
-    private static final String ACT_SCHEMA_PATH = "./src/main/schema/akt.xsd";
-
-    public ActDAO(String path) throws IOException {
-        super(ACT_SCHEMA_PATH);
-    }
-
+public class ActDAO /* extends GenericDAO<PravniAkt,Long>*/ implements IActDAO {
 
     @Override
-    public void create(PravniAkt act, String docId, String colId) throws FileNotFoundException, IOException {
-        add(act,docId,colId);
-    }
-
-    @Override
-    public void update(PravniAkt act, Long id) throws FileNotFoundException, IOException {
+    public void create(PravniAkt act, String docId, String colId) throws FileNotFoundException, FileNotFoundException {
 
     }
 
     @Override
-    public void delete(PravniAkt act) throws FileNotFoundException, IOException {
+    public void update(PravniAkt act, Long id) throws FileNotFoundException, FileNotFoundException {
 
     }
 
     @Override
-    public List<PravniAkt> getAll() throws FileNotFoundException, IOException {
-        StringBuilder query = new StringBuilder();
+    public void delete(PravniAkt act) throws FileNotFoundException, FileNotFoundException {
 
-        query
-                .append("collection(\"")
-                .append(Constants.ActCollection)
-                .append("\")");
-
-        return getByQuery(query.toString());
     }
 
     @Override
-    public PravniAkt get(Long id) throws FileNotFoundException, IOException {
-        StringBuilder query = new StringBuilder();
+    public List<PravniAkt> getAll() throws FileNotFoundException, FileNotFoundException {
+        return null;
+    }
 
-        query
-                .append("collection(\"")
-                .append(Constants.ActCollection)
-                .append("\")/Pravni_akt[@Id = ")
-                .append(id.toString()+"]");
-
-        ArrayList<PravniAkt> acts = getByQuery(query.toString());
-        if(acts == null) {
-            return null;
-        }
-
-        return acts.get(0);
+    @Override
+    public PravniAkt get(Long id) throws FileNotFoundException, FileNotFoundException {
+        return null;
     }
 }

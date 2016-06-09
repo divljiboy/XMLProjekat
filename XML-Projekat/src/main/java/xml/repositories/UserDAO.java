@@ -30,49 +30,7 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
     private static final String USER_SCHEMA_PATH = "./src/main/schema/korisnici.xsd";
 
     public UserDAO() throws IOException {
-        super(USER_SCHEMA_PATH);
-    }
-
-    @Override
-    public List<Korisnik> getAllUsers() throws FileNotFoundException, IOException {
-
-        StringBuilder query = new StringBuilder();
-
-        query
-                .append("collection(\"")
-                .append(Constants.UsersCollection)
-                .append("\")");
-
-        return getByQuery(query.toString());
-
-    }
-
-    @Override
-    public Korisnik findById(Long id) throws FileNotFoundException, IOException {
-
-        StringBuilder query = new StringBuilder();
-
-        query
-                .append("collection(\"")
-                .append(Constants.UsersCollection)
-                .append("\")/")
-                .append(Constants.User)
-                .append("[@Id = ")
-                .append(id.toString()+"]");
-
-        ArrayList<Korisnik> korisnici = getByQuery(query.toString());
-        if(korisnici == null) {
-            return null;
-        }
-
-        return korisnici.get(0);
-
-    }
-
-    @Override
-    public void createUser(Korisnik korisnik, String docId, String colId) throws IOException {
-
-        add(korisnik,docId,colId);
+        super(USER_SCHEMA_PATH,Constants.UsersCollection,Constants.User);
     }
 
     @Override
@@ -92,4 +50,6 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
 
         return getByQuery(query.toString()).get(0);
     }
+
+
 }

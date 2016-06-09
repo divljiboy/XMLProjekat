@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping(value = "/svi" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Korisnik>> getAll() {
         try{
-            List<Korisnik> korisnici = userDao.getAllUsers();
+            List<Korisnik> korisnici = userDao.getAll();
             if(korisnici == null)
                 return new ResponseEntity<List<Korisnik>>(HttpStatus.NO_CONTENT);
 
@@ -72,7 +72,7 @@ public class UserController {
 
 
         try {
-            userDao.createUser(korisnik, Constants.User + korisnik.getId().toString(),Constants.UsersCollection);
+            userDao.create(korisnik, Constants.User + korisnik.getId().toString(),Constants.UsersCollection);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -85,7 +85,7 @@ public class UserController {
     public ResponseEntity<Korisnik> getById(@PathVariable("id")Long id){
 
         try {
-            Korisnik user = userDao.findById(id);
+            Korisnik user = userDao.get(id);
             if(user == null){
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
