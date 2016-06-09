@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="aktovi" xmlns:akt="aktovi">
+    <xs:import schemaLocation="korisnici.xsd"/>
     <xs:element name="Pravni_akt">
         <xs:complexType>
             <xs:sequence>
@@ -118,23 +119,4 @@
             <xs:element name="Prezime" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="Korisnik">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Username" type="xs:string"/>
-                <xs:element name="Password" type="xs:string"/>
-                <xs:element name="Ime" type="xs:string"/>
-                <xs:element name="Prezime" type="xs:string"/>
-                <xs:element name="Uloga" type="xs:string"/>
-            </xs:sequence>
-            <xs:attribute name="Id" type="xs:long"/>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="Korisnici">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="akt:Korisnik"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
 </xs:schema>

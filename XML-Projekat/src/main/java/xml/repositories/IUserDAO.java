@@ -2,7 +2,6 @@ package xml.repositories;
 
 import xml.model.Korisnik;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;

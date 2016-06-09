@@ -35,7 +35,7 @@ public class GenericDAO<T,K> implements IGenericDAO<T,K> {
             client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
         }
 
-        xmlConverter = new XMLConverter<T>();
+        xmlConverter = new XMLConverter<T>("nesto");
 
         if (xmlConverter.fromObjectToXML(object)){
             //write to Database

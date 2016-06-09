@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/dodaj",method = RequestMethod.POST,consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(Korisnik korisnik){
+    public ResponseEntity post(@RequestBody Korisnik korisnik){
 
         try {
             userDao.createUser(korisnik, Constants.User + korisnik.getId().toString(),Constants.UsersCollection);

@@ -1,2 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ns2:Korisnik xsi:schemaLocation="aktovi" xmlns="amandmani" xmlns:ns2="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Korisnik xmlns:ns2="aktovi" xmlns:ns3="amandmani" Id="1">
+    <Ime>Brano</Ime>
+    <Prezime>CHo</Prezime>
+    <Username>asdasd</Username>
+    <Password>jel znas da brises iz baze?</Password>
+    <Email>nekimail@mail.com</Email>
+    <Uloga>Odbornik</Uloga>
+    <Salt>nesto</Salt>
+</Korisnik>
