@@ -9,7 +9,7 @@
                     url: '/sviAkti',                                                                                                                   
                     views: {
                         'content': {
-                            templateUrl: 'akt/sviAkti.html',
+                            templateUrl: 'akt_/sviAkti.html',
                             controller : "sviAktiController"
                         },
                         'navbar': {
@@ -19,8 +19,7 @@
                             templateUrl: 'sidebar/sidebar.html'
                         }
 
-                    },
-                    controller : "sviAktiController"
+                    }
                 })
             .state('noviakt',
                 {	
@@ -35,8 +34,7 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
-                    },
-                    controller : "sviAktiController"
+                    }
                 })
             .state('noviamandman',
                 {	

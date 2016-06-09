@@ -9,7 +9,7 @@
                     url: '/sviAmandmani',                                                                                                                   
                     views: {
                         'content': {
-                            templateUrl: 'amandman/sviAmandmani.html',
+                            templateUrl: 'amandman_/sviAmandmani.html',
                             controller : "sviAmandmaniController"
                         },
                         'navbar': {
