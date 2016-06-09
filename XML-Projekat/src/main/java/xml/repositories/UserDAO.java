@@ -8,6 +8,7 @@ import com.marklogic.client.eval.EvalResultIterator;
 import com.marklogic.client.eval.ServerEvaluationCall;
 import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.InputStreamHandle;
+import com.sun.tools.jxc.ap.Const;
 import database.DatabaseConfig;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
@@ -24,14 +25,12 @@ import java.util.List;
  * Created by Dorian on 8.6.2016.
  */
 @Repository("korisnikDAO")
-public class UserDAO implements IUserDAO {
+public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
 
-    XMLConverter<Korisnik> xmlConverter;
-    private static DatabaseClient client;
     private static final String USER_SCHEMA_PATH = "./src/main/schema/korisnici.xsd";
 
-    public UserDAO(){
-        xmlConverter = new XMLConverter<Korisnik>(USER_SCHEMA_PATH);
+    public UserDAO() throws IOException {
+        super(USER_SCHEMA_PATH);
     }
 
     @Override
@@ -39,9 +38,10 @@ public class UserDAO implements IUserDAO {
 
         StringBuilder query = new StringBuilder();
 
-        query.append("collection(\"");
-        query.append(Constants.UsersCollection);
-        query.append("\")");
+        query
+                .append("collection(\"")
+                .append(Constants.UsersCollection)
+                .append("\")");
 
         return getByQuery(query.toString());
 
@@ -52,12 +52,13 @@ public class UserDAO implements IUserDAO {
 
         StringBuilder query = new StringBuilder();
 
-        query.append("collection(\"");
-        query.append(Constants.UsersCollection);
-        query.append("\")/Korisnik[@Id = ");
-        query.append(id.toString()+"]");
-
-        System.out.print(query.toString());
+        query
+                .append("collection(\"")
+                .append(Constants.UsersCollection)
+                .append("\")/")
+                .append(Constants.User)
+                .append("[@Id = ")
+                .append(id.toString()+"]");
 
         ArrayList<Korisnik> korisnici = getByQuery(query.toString());
         if(korisnici == null) {
@@ -71,69 +72,24 @@ public class UserDAO implements IUserDAO {
     @Override
     public void createUser(Korisnik korisnik, String docId, String colId) throws IOException {
 
-        DatabaseConfig.ConnectionProperties props = DatabaseConfig.loadProperties();
-
-        if(props.database.equals("")){
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }else{
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }
-
-        //xmlConverter = new XMLConverter<Korisnik>();
-
-        if (xmlConverter.fromObjectToXML(korisnik)){
-            //write to Database
-            XMLDocumentManager xmlManager = client.newXMLDocumentManager();
-
-            DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
-            metadataHandle.getCollections().add(colId);
-
-            InputStreamHandle handle = new InputStreamHandle(new FileInputStream("./src/main/resources/temp.xml"));
-            xmlManager.write(docId,metadataHandle, handle);
-
-            System.out.print("Upisao uspesno u bazu");
-
-        }else{
-            //Error
-            System.out.print("Cannot convert to xml file.");
-        }
-
-
+        add(korisnik,docId,colId);
     }
 
     @Override
-    public ArrayList<Korisnik> getByQuery(String query) throws FileNotFoundException, IOException {
-        DatabaseConfig.ConnectionProperties props = DatabaseConfig.loadProperties();
+    public Korisnik getByLogin(String username, String password) throws IOException {
+        StringBuilder query = new StringBuilder();
 
-        if(props.database.equals("")){
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }else{
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }
-
-        //xmlConverter = new XMLConverter<Korisnik>();
-
-        EvalResultIterator iterator = null;
-
-        ServerEvaluationCall invoker = client.newServerEval();
-        invoker.xquery(query);
-
-        iterator = invoker.eval();
-
-        ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
+        query
+                .append("collection(\"")
+                .append(Constants.UsersCollection)
+                .append("\")")
+                .append("/Korisnik[Username=\"")
+                .append(username)
+                .append("\" and Password=\"")
+                .append(password)
+                .append("\"]");
 
 
-        if(iterator.hasNext()) {
-            for (EvalResult res : iterator) {
-                if (xmlConverter.stringToFile(res.getString())) {
-                    Korisnik kor = xmlConverter.fromXMLtoObject();
-                    korisnici.add(kor);
-                }
-            }
-        }else{
-            return null;
-        }
-
-        return korisnici;
+        return getByQuery(query.toString()).get(0);
     }
 }

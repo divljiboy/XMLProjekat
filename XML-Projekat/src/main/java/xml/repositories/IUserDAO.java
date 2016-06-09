@@ -15,5 +15,5 @@ public interface IUserDAO {
     public List<Korisnik> getAllUsers()throws FileNotFoundException,IOException;
     public Korisnik findById(Long id)throws FileNotFoundException, IOException;
     public void createUser(Korisnik korisnik,String docId,String colId) throws  FileNotFoundException,IOException;
-    public ArrayList<Korisnik> getByQuery(String query) throws FileNotFoundException,IOException;
+    public Korisnik getByLogin(String username,String password) throws IOException;
 }
