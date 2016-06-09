@@ -1,4 +1,5 @@
 package xml.repositories;
+
 import xml.model.PravniAkt;
 
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface IActDAO {
 
-    public void create(PravniAkt act,String docId,String colId ) throws FileNotFoundException , IOException;
+    public void create(PravniAkt act, String docId, String colId ) throws FileNotFoundException , IOException;
     public void update(PravniAkt act,Long id) throws FileNotFoundException , IOException;
     public void delete(PravniAkt act) throws FileNotFoundException , IOException;
     public List<PravniAkt> getAll() throws FileNotFoundException , IOException;

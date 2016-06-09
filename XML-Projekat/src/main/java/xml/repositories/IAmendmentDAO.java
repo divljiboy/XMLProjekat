@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IAmendmentDAO {
 
-    public void create(Amandman amendment,String docId,String colId) throws FileNotFoundException , IOException;
+    public void create(Amandman amendment, String docId, String colId) throws FileNotFoundException , IOException;
     public void delete(Amandman amendment) throws FileNotFoundException , IOException;
     public List<Amandman> getAllFromAct(Long actId) throws FileNotFoundException , IOException;
 

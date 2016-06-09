@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ns2:Korisnik xsi:schemaLocation="aktovi" xmlns="amandmani" xmlns:ns2="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+<Korisnik Id="1" xsi:schemaLocation="aktovi" xmlns:ns2="amandmani" xmlns:ns3="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Ime>test</Ime>
+    <Prezime>test</Prezime>
+    <Username>test</Username>
+    <Password>test</Password>
+    <Uloga>test</Uloga>
+</Korisnik>

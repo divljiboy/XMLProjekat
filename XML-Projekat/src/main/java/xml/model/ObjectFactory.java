@@ -122,22 +122,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Korisnici }
-     * 
-     */
-    public Korisnici createKorisnici() {
-        return new Korisnici();
-    }
-
-    /**
-     * Create an instance of {@link Korisnik }
-     * 
-     */
-    public Korisnik createKorisnik() {
-        return new Korisnik();
-    }
-
-    /**
      * Create an instance of {@link PravniAkt }
      * 
      */
@@ -151,6 +135,14 @@ public class ObjectFactory {
      */
     public TOvlascenoLice createTOvlascenoLice() {
         return new TOvlascenoLice();
+    }
+
+    /**
+     * Create an instance of {@link Korisnik }
+     * 
+     */
+    public Korisnik createKorisnik() {
+        return new Korisnik();
     }
 
     /**

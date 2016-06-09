@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import xml.Constants;
 import xml.model.Korisnik;
 
-import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
