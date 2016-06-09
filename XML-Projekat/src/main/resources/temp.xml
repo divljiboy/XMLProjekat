@@ -1,9 +1,0 @@
-<Korisnik Id="2" xmlns:ns2="amandmani" xmlns:ns3="aktovi">
-    <Ime>Djordghgvhcge</Ime>
-    <Prezime>Cvarkov</Prezime>
-    <Username>ara</Username>
-    <Password>1.2.3.4.5</Password>
-    <Email>lalala@la.com</Email>
-    <Uloga>Odbornik</Uloga>
-    <Salt>So</Salt>
-</Korisnik>
