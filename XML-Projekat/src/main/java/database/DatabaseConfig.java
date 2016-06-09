@@ -27,7 +27,6 @@ public class DatabaseConfig {
             password = props.getProperty("conn.pass").trim();
             database = props.getProperty("conn.database").trim();
             //authType = Authentication.valueOf(props.getProperty("conn.authentication_type").toUpperCase().trim());
-            System.out.print(database);
         }
 
     }
@@ -41,8 +40,6 @@ public class DatabaseConfig {
 
         Properties props = new Properties();
         props.load(propsStream);
-
-        System.out.print("Vratio conn properties");
 
         return new ConnectionProperties(props);
     }

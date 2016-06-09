@@ -3,17 +3,22 @@ package xml.repositories;
 import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.document.XMLDocumentManager;
+import com.marklogic.client.eval.EvalResult;
+import com.marklogic.client.eval.EvalResultIterator;
+import com.marklogic.client.eval.ServerEvaluationCall;
 import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseConfig;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
+import xml.Constants;
 import xml.model.Korisnik;
 
 import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +32,52 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<Korisnik> getAllUsers() throws FileNotFoundException, IOException {
-        return null;
+
+        DatabaseConfig.ConnectionProperties props = DatabaseConfig.loadProperties();
+
+        if(props.database.equals("")){
+            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+        }else{
+            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+        }
+
+        xmlConverter = new XMLConverter<Korisnik>();
+
+        StringBuilder query = new StringBuilder();
+
+        query.append("collection(\"");
+        query.append(Constants.UsersCollection);
+        query.append("\")");
+
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query.toString());
+
+        System.out.print("Posle invoker.query\n");
+
+        iterator = invoker.eval();
+
+        System.out.print("Napravio iterator\n");
+
+        ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
+
+        for(EvalResult res : iterator){
+            if(xmlConverter.stringToFile(res.getString())){
+                System.out.print("Ulazi\n");
+                Korisnik kor = xmlConverter.fromXMLtoObject();
+                korisnici.add(kor);
+            }else{
+                System.out.print("Ne ulazi\n");
+            }
+        }
+
+        for(Korisnik k : korisnici){
+            System.out.print("Ime: "+k.getIme());
+        }
+
+        return korisnici;
     }
 
     @Override

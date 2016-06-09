@@ -13,6 +13,7 @@ import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Daniel on 6/8/2016.
@@ -23,6 +24,22 @@ public class UserController {
     @Autowired
     private IUserDAO userDao;
 
+    @RequestMapping(value = "/korisnik/svi" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Korisnik>> getAll() {
+        try{
+            List<Korisnik> korisnici = userDao.getAllUsers();
+            if(korisnici.size() == 0)
+                return new ResponseEntity<List<Korisnik>>(HttpStatus.NO_CONTENT);
+            else
+                System.out.print(korisnici.size());
+
+            return  new ResponseEntity<List<Korisnik>>(korisnici,HttpStatus.OK);
+
+        }catch (Exception e){
+            return new ResponseEntity<List<Korisnik>>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(value = "/korisnik/dodaj",method = RequestMethod.POST,consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity post(@RequestBody Korisnik korisnik){
         try {
@@ -32,5 +49,7 @@ public class UserController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
+
+
 
 }

@@ -1,7 +1,2 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Korisnik xmlns="aktovi" xmlns:ns2="amandmani" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="1" xsi:schemaLocation="aktovi">
-    <Username>zorz_papadubi</Username>
-    <Password>1.2.3.4.5</Password>
-    <Ime>Djordje</Ime>
-    <Prezime>Cvarkov</Prezime>
-</Korisnik>
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Korisnik xsi:schemaLocation="aktovi" xmlns="amandmani" xmlns:ns2="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
