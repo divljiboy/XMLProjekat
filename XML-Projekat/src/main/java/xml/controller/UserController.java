@@ -5,11 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import security.PasswordStorage;
 import xml.Constants;
 import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 /**
@@ -36,8 +39,37 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/dodaj",method = RequestMethod.POST,consumes = MediaType.APPLICATION_XML_VALUE)
+    @RequestMapping(value = "/dodaj",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity post(@RequestBody Korisnik korisnik){
+        //prvo bez validacije
+
+        byte[] salt = new byte[0];
+        try {
+            salt = PasswordStorage.generateSalt();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            System.out.println(e.toString());
+        }
+
+        korisnik.setSalt(PasswordStorage.base64Encode(salt));
+
+
+        byte[] hashedPassword = new byte[0];
+        try {
+            hashedPassword = PasswordStorage.hashPassword(korisnik.getPassword(), salt);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            System.out.println(e.toString());
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+            System.out.println(e.toString());
+        }
+
+        korisnik.setPassword(PasswordStorage.base64Encode(hashedPassword));
+
+
+
+
 
         try {
             userDao.createUser(korisnik, Constants.User + korisnik.getId().toString(),Constants.UsersCollection);

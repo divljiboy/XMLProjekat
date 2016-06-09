@@ -30,7 +30,8 @@
                 url: '/signup',
                 views: {
                     "content":{
-                        templateUrl:'auth_/signup_/signUp.html'
+                        templateUrl:'auth_/signup_/signUp.html',
+                        controller: 'signUpController'
                     }
                 }
 
