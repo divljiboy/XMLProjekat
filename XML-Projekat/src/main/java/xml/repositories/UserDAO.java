@@ -28,6 +28,11 @@ public class UserDAO implements IUserDAO {
 
     XMLConverter<Korisnik> xmlConverter;
     private static DatabaseClient client;
+    private static final String USER_SCHEMA_PATH = "./src/main/schema/korisnici.xsd";
+
+    public UserDAO(){
+        xmlConverter = new XMLConverter<Korisnik>(USER_SCHEMA_PATH);
+    }
 
     @Override
     public List<Korisnik> getAllUsers() throws FileNotFoundException, IOException {
@@ -74,7 +79,7 @@ public class UserDAO implements IUserDAO {
             client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
         }
 
-        xmlConverter = new XMLConverter<Korisnik>();
+        //xmlConverter = new XMLConverter<Korisnik>();
 
         if (xmlConverter.fromObjectToXML(korisnik)){
             //write to Database
@@ -106,7 +111,7 @@ public class UserDAO implements IUserDAO {
             client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
         }
 
-        xmlConverter = new XMLConverter<Korisnik>();
+        //xmlConverter = new XMLConverter<Korisnik>();
 
         EvalResultIterator iterator = null;
 
