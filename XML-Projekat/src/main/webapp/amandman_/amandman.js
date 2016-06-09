@@ -19,7 +19,21 @@
                             templateUrl: 'sidebar/sidebar.html'
                         }
                     }
-                });
+                }).state('noviAmandman',
+            {
+                url: '/noviamandman',
+                views: {
+                    'content': {
+                        templateUrl: 'amandman_/NovAmandman.html'
+                    },
+                    'navbar': {
+                        templateUrl: 'navbar/navbar.html'
+                    },
+                    'sidebar': {
+                        templateUrl: 'sidebar/sidebar.html'
+                    }
+                }
+            });
         }]);
 
 
