@@ -33,56 +33,35 @@ public class UserDAO implements IUserDAO {
     @Override
     public List<Korisnik> getAllUsers() throws FileNotFoundException, IOException {
 
-        DatabaseConfig.ConnectionProperties props = DatabaseConfig.loadProperties();
-
-        if(props.database.equals("")){
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }else{
-            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
-        }
-
-        xmlConverter = new XMLConverter<Korisnik>();
-
         StringBuilder query = new StringBuilder();
 
         query.append("collection(\"");
         query.append(Constants.UsersCollection);
         query.append("\")");
 
+        return getByQuery(query.toString());
 
-        EvalResultIterator iterator = null;
-
-        ServerEvaluationCall invoker = client.newServerEval();
-        invoker.xquery(query.toString());
-
-        System.out.print("Posle invoker.query\n");
-
-        iterator = invoker.eval();
-
-        System.out.print("Napravio iterator\n");
-
-        ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
-
-        for(EvalResult res : iterator){
-            if(xmlConverter.stringToFile(res.getString())){
-                System.out.print("Ulazi\n");
-                Korisnik kor = xmlConverter.fromXMLtoObject();
-                korisnici.add(kor);
-            }else{
-                System.out.print("Ne ulazi\n");
-            }
-        }
-
-        for(Korisnik k : korisnici){
-            System.out.print("Ime: "+k.getIme());
-        }
-
-        return korisnici;
     }
 
     @Override
     public Korisnik findById(Long id) throws FileNotFoundException, IOException {
-        return null;
+
+        StringBuilder query = new StringBuilder();
+
+        query.append("collection(\"");
+        query.append(Constants.UsersCollection);
+        query.append("\")/Korisnik[@Id = ");
+        query.append(id.toString()+"]");
+
+        System.out.print(query.toString());
+
+        ArrayList<Korisnik> korisnici = getByQuery(query.toString());
+        if(korisnici == null) {
+            return null;
+        }
+
+        return korisnici.get(0);
+
     }
 
     @Override
@@ -114,5 +93,43 @@ public class UserDAO implements IUserDAO {
             //Error
             System.out.print("Cannot convert to xml file.");
         }
+
+
+    }
+
+    @Override
+    public ArrayList<Korisnik> getByQuery(String query) throws FileNotFoundException, IOException {
+        DatabaseConfig.ConnectionProperties props = DatabaseConfig.loadProperties();
+
+        if(props.database.equals("")){
+            client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+        }else{
+            client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, DatabaseClientFactory.Authentication.DIGEST);
+        }
+
+        xmlConverter = new XMLConverter<Korisnik>();
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query);
+
+        iterator = invoker.eval();
+
+        ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
+
+
+        if(iterator.hasNext()) {
+            for (EvalResult res : iterator) {
+                if (xmlConverter.stringToFile(res.getString())) {
+                    Korisnik kor = xmlConverter.fromXMLtoObject();
+                    korisnici.add(kor);
+                }
+            }
+        }else{
+            return null;
+        }
+
+        return korisnici;
     }
 }
