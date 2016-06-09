@@ -25,7 +25,9 @@
         <script src="amandman_/amandman.js"></script>
         <script src="amandman_/sviAmandmaniController.js"></script>
         <script src="auth_/auth.js"></script>
-
+        <script src="auth_/authService.js"></script>
+        <script src="auth_/signin_/signInController.js"></script>
+        <script src="auth_/signup_/signUpController.js"></script>
         <link rel="stylesheet" href="auth_/signin_/login.css" />
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
@@ -33,23 +35,23 @@
 </head>
 <body ng-app="xmlApp">
 
-   
-        <div ui-view="navbar"></div>
-    
-    <div class="wrapper">
-        
-            <div ui-view="sidebar"></div>
-        
-        
-        <div class="content col-sm-10">
-            <ui-view name="content">
-            </ui-view>
-            
-        </div>
-                
-    </div>
-    
-    
+            <div class="topbar">
+                <div ui-view="navbar"></div>
+            </div>
+            <div class="wrapper">
+                <div class="sidebar col-sm-2">
+                    <div ui-view="sidebar"></div>
+                </div>
+
+                <div class="content col-sm-10">
+                    <ui-view name="content">
+                    </ui-view>
+
+                </div>
+            </div>
+
+
+
    
 </body>
 </html>

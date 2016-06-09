@@ -14,6 +14,7 @@
                 views: {
                     "content":{
                         templateUrl:'auth_/signin_/signIn.html'
+
                     }
                 }
             })
@@ -25,6 +26,15 @@
                     }
                 }
             })
+            .state('signUp', {
+                url: '/signup',
+                views: {
+                    "content":{
+                        templateUrl:'auth_/signup_/signUp.html'
+                    }
+                }
+
+            });
 
     }]);
 
