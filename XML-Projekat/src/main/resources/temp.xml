@@ -1,9 +1,692 @@
-<Korisnik Id="2" xmlns:ns2="amandmani" xmlns:ns3="aktovi">
-    <Ime>Djordghgvhcge</Ime>
-    <Prezime>Cvarkov</Prezime>
-    <Username>ara</Username>
-    <Password>1.2.3.4.5</Password>
-    <Email>lalala@la.com</Email>
-    <Uloga>Odbornik</Uloga>
-    <Salt>So</Salt>
-</Korisnik>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Pravni_akt xmlns:ns2="aktovi" Usvojen="false" Id="10">
+    <ns2:Preambula>string</ns2:Preambula>
+    <ns2:Naziv>string</ns2:Naziv>
+    <ns2:Glavni_deo>
+        <ns2:Deo Redni_broj="string" Naziv="string">
+            <ns2:Glava Naziv="string">
+                <ns2:Odeljak Naziv="string">
+                    <ns2:Odeljak/>
+                    <ns2:Clan Broj_clana="100" Naziv="string">
+            gero
+            
+            
+            <ns2:Stav Id="10">
+              cum
+              
+              
+              <ns2:Tacka broj="100">
+                sonoras
+                
+                
+                <ns2:Podtacka broj="201">
+                  aeoliam
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  quae
+                </ns2:Podtacka>
+                <ns2:Podtacka broj="201">
+                  ventos
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  verrantque
+                </ns2:Podtacka>
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                temperat
+              </ns2:Tacka>
+              <ns2:Tacka broj="100">
+                per
+                
+                
+                <ns2:Podtacka broj="201">
+                  turbine
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  circum
+                </ns2:Podtacka>
+                <ns2:Podtacka broj="201">
+                  regemque
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  nimborum
+                </ns2:Podtacka>
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                fremunt
+              </ns2:Tacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              foedere
+            </ns2:Stav>
+            ferant
+          </ns2:Clan>
+                </ns2:Odeljak>
+                <ns2:Clan Broj_clana="100" Naziv="string">
+          profundum
+          
+          
+          <ns2:Stav Id="10">
+            sceptra
+            
+            
+            <ns2:Tacka broj="100">
+              et
+              
+              
+              <ns2:Podtacka broj="201">
+                turbine
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                iovis
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                flammato
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                speluncis
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              profundum
+            </ns2:Tacka>
+            <ns2:Tacka broj="100">
+              bella
+              
+              
+              <ns2:Podtacka broj="201">
+                nubibus
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                flammas
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                ac
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                hoc
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              rapidum
+            </ns2:Tacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            ac
+          </ns2:Stav>
+          caelumque
+        </ns2:Clan>
+            </ns2:Glava>
+            <ns2:Glava Naziv="string">
+                <ns2:Odeljak Naziv="string">
+                    <ns2:Odeljak/>
+                    <ns2:Clan Broj_clana="100" Naziv="string">
+            speluncis
+            
+            
+            <ns2:Stav Id="10">
+              circum
+              
+              
+              <ns2:Tacka broj="100">
+                aris
+                
+                
+                <ns2:Podtacka broj="201">
+                  coniunx
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  praeterea
+                </ns2:Podtacka>
+                <ns2:Podtacka broj="201">
+                  arce
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  claustra
+                </ns2:Podtacka>
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                circum
+              </ns2:Tacka>
+              <ns2:Tacka broj="100">
+                imperio
+                
+                
+                <ns2:Podtacka broj="201">
+                  certo
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  quisquam
+                </ns2:Podtacka>
+                <ns2:Podtacka broj="201">
+                  et
+                  
+                  
+                  <ns2:Alineja>string</ns2:Alineja>
+                  <ns2:Alineja>string</ns2:Alineja>
+                  ac
+                </ns2:Podtacka>
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                feta
+              </ns2:Tacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              ac
+            </ns2:Stav>
+            sed
+          </ns2:Clan>
+                </ns2:Odeljak>
+                <ns2:Clan Broj_clana="100" Naziv="string">
+          pectore
+          
+          
+          <ns2:Stav Id="10">
+            talia
+            
+            
+            <ns2:Tacka broj="100">
+              pectore
+              
+              
+              <ns2:Podtacka broj="201">
+                austris
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                annos
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                sciret
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                certo
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              dare
+            </ns2:Tacka>
+            <ns2:Tacka broj="100">
+              rates
+              
+              
+              <ns2:Podtacka broj="201">
+                bella
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                volutans
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                dedit
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                faciat
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              magno
+            </ns2:Tacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            et
+          </ns2:Stav>
+          ac
+        </ns2:Clan>
+            </ns2:Glava>
+            <ns2:Odeljak Naziv="string">
+                <ns2:Odeljak/>
+                <ns2:Clan Broj_clana="100" Naziv="string">
+          et
+          
+          
+          <ns2:Stav Id="10">
+            regemque
+            
+            
+            <ns2:Tacka broj="100">
+              annos
+              
+              
+              <ns2:Podtacka broj="201">
+                infixit
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                ventos
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                tenens
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                regina
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              montis
+            </ns2:Tacka>
+            <ns2:Tacka broj="100">
+              rapidum
+              
+              
+              <ns2:Podtacka broj="201">
+                habenas
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                insuper
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                mollitque
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                cum
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              iovisque
+            </ns2:Tacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            in
+          </ns2:Stav>
+          soror
+        </ns2:Clan>
+            </ns2:Odeljak>
+            <ns2:Clan Broj_clana="100" Naziv="string">
+        abdidit
+        
+        
+        <ns2:Stav Id="10">
+          iunonis
+          
+          
+          <ns2:Tacka broj="100">
+            coniunx
+            
+            
+            <ns2:Podtacka broj="201">
+              adorat
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              ipsa
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              illum
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              frenat
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            aris
+          </ns2:Tacka>
+          <ns2:Tacka broj="100">
+            nimborum
+            
+            
+            <ns2:Podtacka broj="201">
+              aris
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              mollitque
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              premere
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              montis
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            insuper
+          </ns2:Tacka>
+          
+          <ns2:Alineja>string</ns2:Alineja>
+          <ns2:Alineja>string</ns2:Alineja>
+          molemque
+        </ns2:Stav>
+        ferant
+      </ns2:Clan>
+        </ns2:Deo>
+        <ns2:Glava Naziv="string">
+            <ns2:Odeljak Naziv="string">
+                <ns2:Odeljak/>
+                <ns2:Clan Broj_clana="100" Naziv="string">
+          gero
+          
+          
+          <ns2:Stav Id="10">
+            nimborum
+            
+            
+            <ns2:Tacka broj="100">
+              circum
+              
+              
+              <ns2:Podtacka broj="201">
+                vasto
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                montis
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                flammato
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                aris
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              tempestatesque
+            </ns2:Tacka>
+            <ns2:Tacka broj="100">
+              aris
+              
+              
+              <ns2:Podtacka broj="201">
+                tenens
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                incedo
+              </ns2:Podtacka>
+              <ns2:Podtacka broj="201">
+                premit
+                
+                
+                <ns2:Alineja>string</ns2:Alineja>
+                <ns2:Alineja>string</ns2:Alineja>
+                ac
+              </ns2:Podtacka>
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              iras
+            </ns2:Tacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            acuto
+          </ns2:Stav>
+          nubibus
+        </ns2:Clan>
+            </ns2:Odeljak>
+            <ns2:Clan Broj_clana="100" Naziv="string">
+        et
+        
+        
+        <ns2:Stav Id="10">
+          austris
+          
+          
+          <ns2:Tacka broj="100">
+            dedit
+            
+            
+            <ns2:Podtacka broj="201">
+              qui
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              profundum
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              atris
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              imposuit
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            atris
+          </ns2:Tacka>
+          <ns2:Tacka broj="100">
+            magno
+            
+            
+            <ns2:Podtacka broj="201">
+              animos
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              iras
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              sonoras
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              verrantque
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            patriam
+          </ns2:Tacka>
+          
+          <ns2:Alineja>string</ns2:Alineja>
+          <ns2:Alineja>string</ns2:Alineja>
+          metuens
+        </ns2:Stav>
+        montis
+      </ns2:Clan>
+        </ns2:Glava>
+        <ns2:Odeljak Naziv="string">
+            <ns2:Odeljak/>
+            <ns2:Clan Broj_clana="100" Naziv="string">
+        dare
+        
+        
+        <ns2:Stav Id="10">
+          laxas
+          
+          
+          <ns2:Tacka broj="100">
+            tempestatesque
+            
+            
+            <ns2:Podtacka broj="201">
+              e
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              sceptra
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              volutans
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              vasto
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            murmure
+          </ns2:Tacka>
+          <ns2:Tacka broj="100">
+            coniunx
+            
+            
+            <ns2:Podtacka broj="201">
+              vinclis
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              rapidum
+            </ns2:Podtacka>
+            <ns2:Podtacka broj="201">
+              rapidi
+              
+              
+              <ns2:Alineja>string</ns2:Alineja>
+              <ns2:Alineja>string</ns2:Alineja>
+              turbine
+            </ns2:Podtacka>
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            antro
+          </ns2:Tacka>
+          
+          <ns2:Alineja>string</ns2:Alineja>
+          <ns2:Alineja>string</ns2:Alineja>
+          auras
+        </ns2:Stav>
+        sciret
+      </ns2:Clan>
+        </ns2:Odeljak>
+        <ns2:Clan Broj_clana="100" Naziv="string">
+      aequora
+      
+      
+      <ns2:Stav Id="10">
+        luctantis
+        
+        
+        <ns2:Tacka broj="100">
+          aequora
+          
+          
+          <ns2:Podtacka broj="201">
+            ipsa
+            
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            et
+          </ns2:Podtacka>
+          <ns2:Podtacka broj="201">
+            aris
+            
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            incedo
+          </ns2:Podtacka>
+          
+          <ns2:Alineja>string</ns2:Alineja>
+          <ns2:Alineja>string</ns2:Alineja>
+          imperio
+        </ns2:Tacka>
+        <ns2:Tacka broj="100">
+          hic
+          
+          
+          <ns2:Podtacka broj="201">
+            arce
+            
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            ego
+          </ns2:Podtacka>
+          <ns2:Podtacka broj="201">
+            ni
+            
+            
+            <ns2:Alineja>string</ns2:Alineja>
+            <ns2:Alineja>string</ns2:Alineja>
+            tempestatesque
+          </ns2:Podtacka>
+          
+          <ns2:Alineja>string</ns2:Alineja>
+          <ns2:Alineja>string</ns2:Alineja>
+          circum
+        </ns2:Tacka>
+        
+        <ns2:Alineja>string</ns2:Alineja>
+        <ns2:Alineja>string</ns2:Alineja>
+        ego
+      </ns2:Stav>
+      corde
+    </ns2:Clan>
+    </ns2:Glavni_deo>
+    <ns2:Drzava>string</ns2:Drzava>
+    <ns2:Pokrajina>string</ns2:Pokrajina>
+    <ns2:Grad>string</ns2:Grad>
+    <ns2:Skupstina>string</ns2:Skupstina>
+    <ns2:Broj_popisa_kod_organa>string</ns2:Broj_popisa_kod_organa>
+    <ns2:Datum_donosenja_propisa>string</ns2:Datum_donosenja_propisa>
+    <ns2:Mesto_donosenja_propisa>string</ns2:Mesto_donosenja_propisa>
+    <ns2:Ovlasceno_lice>
+        <ns2:Titula>string</ns2:Titula>
+        <ns2:Ime>string</ns2:Ime>
+        <ns2:Prezime>string</ns2:Prezime>
+    </ns2:Ovlasceno_lice>
+</ns2:Pravni_akt>
