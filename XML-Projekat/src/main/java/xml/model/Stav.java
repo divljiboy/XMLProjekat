@@ -1,10 +1,17 @@
 
 package xml.model;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -19,6 +26,7 @@ import java.util.List;
  *       &lt;choice maxOccurs="unbounded" minOccurs="0">
  *         &lt;element ref="{aktovi}Tacka" maxOccurs="unbounded" minOccurs="2"/>
  *         &lt;element ref="{aktovi}Alineja" maxOccurs="unbounded" minOccurs="2"/>
+ *         &lt;element ref="{aktovi}Reference" maxOccurs="unbounded"/>
  *       &lt;/choice>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
@@ -36,8 +44,9 @@ import java.util.List;
 public class Stav {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false)
+        @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false),
+        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = JAXBElement.class, required = false)
     })
     @XmlMixed
     protected List<Object> content;
@@ -62,9 +71,10 @@ public class Stav {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link Tacka }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link String }
+     * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
      * 
      * 
      */

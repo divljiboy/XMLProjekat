@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Reference_QNAME = new QName("aktovi", "Reference");
     private final static QName _Alineja_QNAME = new QName("aktovi", "Alineja");
 
     /**
@@ -39,6 +40,14 @@ public class ObjectFactory {
      */
     public Amandman createAmandman() {
         return new Amandman();
+    }
+
+    /**
+     * Create an instance of {@link PravniAkt }
+     * 
+     */
+    public PravniAkt createPravniAkt() {
+        return new PravniAkt();
     }
 
     /**
@@ -82,6 +91,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TReferenca }
+     * 
+     */
+    public TReferenca createTReferenca() {
+        return new TReferenca();
+    }
+
+    /**
      * Create an instance of {@link GlavniDeo }
      * 
      */
@@ -122,11 +139,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PravniAkt }
+     * Create an instance of {@link PravniAkt.Preambula }
      * 
      */
-    public PravniAkt createPravniAkt() {
-        return new PravniAkt();
+    public PravniAkt.Preambula createPravniAktPreambula() {
+        return new PravniAkt.Preambula();
     }
 
     /**
@@ -143,6 +160,15 @@ public class ObjectFactory {
      */
     public Korisnik createKorisnik() {
         return new Korisnik();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TReferenca }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "aktovi", name = "Reference")
+    public JAXBElement<TReferenca> createReference(TReferenca value) {
+        return new JAXBElement<TReferenca>(_Reference_QNAME, TReferenca.class, null, value);
     }
 
     /**

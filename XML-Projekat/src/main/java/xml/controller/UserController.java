@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import security.PasswordStorage;
 import xml.Constants;
+import xml.stateStuff.State;
+import xml.stateStuff.StateManager;
 import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -76,6 +79,8 @@ public class UserController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
         }
     }
 
@@ -85,7 +90,12 @@ public class UserController {
     public ResponseEntity<Korisnik> getById(@PathVariable("id")Long id){
 
         try {
-            Korisnik user = userDao.get(id);
+            Korisnik user = null;
+            try {
+                user = userDao.get(id);
+            } catch (JAXBException e) {
+                return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
+            }
             if(user == null){
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
@@ -109,7 +119,31 @@ public class UserController {
             }
         } catch (IOException e) {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
         }
     }
+
+    //for presidend
+    @RequestMapping(value = "/state",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getState(){
+        State state = StateManager.getState();
+        if(state == null)
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity(state,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/state",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity setState(@RequestBody State state){
+
+        if(StateManager.setState(state.getState()))
+            return new ResponseEntity(state,HttpStatus.OK);
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
+
 
 }

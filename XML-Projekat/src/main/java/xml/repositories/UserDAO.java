@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import xml.Constants;
 import xml.model.Korisnik;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 /**
@@ -19,7 +20,7 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
     }
 
     @Override
-    public Korisnik getByLogin(String username, String password) throws IOException {
+    public Korisnik getByLogin(String username, String password) throws IOException, JAXBException {
         StringBuilder query = new StringBuilder();
 
         query

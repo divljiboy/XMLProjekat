@@ -53,6 +53,7 @@ public class ActController{
             aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ActCollection);
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }

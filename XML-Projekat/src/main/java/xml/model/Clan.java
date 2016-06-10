@@ -1,10 +1,17 @@
 
 package xml.model;
 
-import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -19,7 +26,7 @@ import java.util.List;
  *       &lt;choice maxOccurs="unbounded">
  *         &lt;element ref="{aktovi}Stav" maxOccurs="unbounded"/>
  *       &lt;/choice>
- *       &lt;attribute name="Broj_clana" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *       &lt;attribute name="Broj_clana" use="required" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
  *       &lt;attribute name="Naziv">
  *         &lt;simpleType>
  *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -44,6 +51,7 @@ public class Clan {
     @XmlMixed
     protected List<Object> content;
     @XmlAttribute(name = "Broj_clana", required = true)
+    @XmlSchemaType(name = "positiveInteger")
     protected BigInteger brojClana;
     @XmlAttribute(name = "Naziv")
     protected String naziv;
@@ -66,8 +74,8 @@ public class Clan {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
      * {@link Stav }
+     * {@link String }
      * 
      * 
      */
