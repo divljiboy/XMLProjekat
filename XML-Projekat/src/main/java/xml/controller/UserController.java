@@ -10,6 +10,7 @@ import xml.Constants;
 import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -76,6 +77,8 @@ public class UserController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
         }
     }
 
@@ -85,7 +88,12 @@ public class UserController {
     public ResponseEntity<Korisnik> getById(@PathVariable("id")Long id){
 
         try {
-            Korisnik user = userDao.get(id);
+            Korisnik user = null;
+            try {
+                user = userDao.get(id);
+            } catch (JAXBException e) {
+                return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
+            }
             if(user == null){
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
@@ -109,6 +117,8 @@ public class UserController {
             }
         } catch (IOException e) {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
         }
     }
 

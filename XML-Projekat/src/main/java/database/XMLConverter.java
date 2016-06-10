@@ -1,5 +1,6 @@
 package database;
 
+import com.sun.imageio.plugins.common.InputStreamAdapter;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -10,11 +11,14 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.*;
+import java.nio.charset.Charset;
 
 /**
  * Created by Dorian on 1.6.2016.
  */
 public class XMLConverter<T> {
+
+    public static final Charset UTF_8 = Charset.forName("UTF-8");
 
     private Marshaller marshaller;
     private Unmarshaller unmarshaller;
@@ -31,63 +35,28 @@ public class XMLConverter<T> {
 
     }
 
-    public boolean fromObjectToXML(T object){
+    public String toXML(T entity) throws JAXBException, IOException {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
 
-        File file = new File("./src/main/resources/temp.xml");
-        FileOutputStream fos = null;
-
-        try {
-            fos = new FileOutputStream(file);
-            jaxbContext = JAXBContext.newInstance("xml.model");
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            //marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,"aktovi");
-            marshaller.setSchema(schema);
-            marshaller.marshal(object,fos);
-            //marshaller.marshal(new JAXBElement<T>(new QName("aktovi", "Korisnik"), (Class<T>) TKorisnik.class,object),fos);
-            fos.close();
-            return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-
-
+        jaxbContext = JAXBContext.newInstance("xml.model");
+        marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.setProperty(Marshaller.JAXB_ENCODING,UTF_8.name());
+        marshaller.setSchema(schema);
+        marshaller.marshal(entity,os);
+        //close stream
+        os.close();
+        return os.toString(UTF_8.name());
     }
 
-    public T fromXMLtoObject(){
-        try {
-            jaxbContext = JAXBContext.newInstance("xml.model");
-            unmarshaller = jaxbContext.createUnmarshaller();
-            unmarshaller.setSchema(schema);
-            T object = (T) unmarshaller.unmarshal(new File("./src/main/resources/temp.xml"));
-            return object;
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public boolean stringToFile(String string){
-        try {
-            File file = new File("./src/main/resources/temp.xml");
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(string);
-            fileWriter.flush();
-            fileWriter.close();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
+    public T toObject(String xml) throws JAXBException, IOException {
+        ByteArrayInputStream is = new ByteArrayInputStream(xml.getBytes(UTF_8));
+        jaxbContext = JAXBContext.newInstance("xml.model");
+        unmarshaller = jaxbContext.createUnmarshaller();
+        unmarshaller.setSchema(schema);
+        T object = (T) unmarshaller.unmarshal(is);
+        is.close();
+        return object;
     }
 
 }

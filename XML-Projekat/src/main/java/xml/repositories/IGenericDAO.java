@@ -1,6 +1,6 @@
 package xml.repositories;
 
-import java.io.FileNotFoundException;
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,9 +8,9 @@ import java.util.List;
  * Created by Daniel on 6/10/2016.
  */
 public interface IGenericDAO<E,K> {
-    public void create(E entity, String docId, String colId ) throws FileNotFoundException , IOException;
-    public void update(E entity,Long id) throws FileNotFoundException , IOException;
-    public void delete(E entity) throws FileNotFoundException , IOException;
-    public List<E> getAll() throws FileNotFoundException , IOException;
-    public E get(Long id) throws FileNotFoundException, IOException;
+    void create(E entity, String docId, String colId ) throws JAXBException, IOException;
+    void update(E entity,Long id) throws JAXBException, IOException;
+    void delete(E entity) throws JAXBException, IOException;
+    List<E> getAll() throws JAXBException, IOException;
+    E get(Long id) throws JAXBException, IOException;
 }

@@ -12,10 +12,9 @@ import database.XMLConverter;
 import org.springframework.stereotype.Repository;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Serializable;
+import javax.swing.text.Document;
+import javax.xml.bind.JAXBException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,22 +41,22 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     }
 
     @Override
-    public void create(T entity, String docId, String colId) throws FileNotFoundException, IOException {
+    public void create(T entity, String docId, String colId) throws JAXBException, IOException {
         add(entity,docId,colId);
     }
 
     @Override
-    public void update(T entity, Long id) throws FileNotFoundException, IOException {
+    public void update(T entity, Long id) throws JAXBException {
         throw new NotImplementedException();
     }
 
     @Override
-    public void delete(T entity) throws FileNotFoundException, IOException {
+    public void delete(T entity) throws JAXBException  {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<T> getAll() throws FileNotFoundException, IOException {
+    public List<T> getAll() throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
         query
@@ -69,7 +68,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     }
 
     @Override
-    public T get(Long id) throws FileNotFoundException, IOException {
+    public T get(Long id) throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
         query
@@ -90,7 +89,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
 
     //helper methods
-    protected ArrayList<T> getByQuery(String query) throws FileNotFoundException, IOException {
+    protected ArrayList<T> getByQuery(String query) throws JAXBException, IOException {
 
         EvalResultIterator iterator = null;
 
@@ -101,46 +100,28 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         ArrayList<T> list = new ArrayList<>();
 
-        if(iterator.hasNext()) {
-            for (EvalResult res : iterator) {
-                if (xmlConverter.stringToFile(res.getString())) {
-                    T item = (T)xmlConverter.fromXMLtoObject();
-                    list.add(item);
-                }
+        if(iterator.hasNext()){
+            for(EvalResult res : iterator){
+                list.add((T)xmlConverter.toObject(res.getString()));
             }
-        }else{
+        }else {
             return null;
         }
-
         return list;
     }
 
     protected  void execQuery(String query) throws IOException{
-
-        EvalResultIterator iterator = null;
-
         ServerEvaluationCall invoker = client.newServerEval();
         invoker.xquery(query);
-
-        iterator = invoker.eval();
+        invoker.eval();
     }
 
-    protected  void add(T obj,String docId,String colId) throws IOException{
-        if (xmlConverter.fromObjectToXML(obj)){
-            //write to Database
-            XMLDocumentManager xmlManager = client.newXMLDocumentManager();
+    protected  void add(T obj,String docId,String colId) throws IOException, JAXBException {
+        XMLDocumentManager xmlManager = client.newXMLDocumentManager();
+        DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
+        metadataHandle.getCollections().add(colId);
 
-            DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
-            metadataHandle.getCollections().add(colId);
-
-            InputStreamHandle handle = new InputStreamHandle(new FileInputStream("./src/main/resources/temp.xml"));
-            xmlManager.write(docId,metadataHandle, handle);
-
-            System.out.print("Upisao uspesno u bazu");
-
-        }else{
-            //Error
-            System.out.print("Cannot convert to xml file.");
-        }
+        InputStreamHandle handle = new InputStreamHandle(new ByteArrayInputStream(xmlConverter.toXML(obj).getBytes(XMLConverter.UTF_8.name())));
+        xmlManager.write(docId,metadataHandle,handle);
     }
 }
