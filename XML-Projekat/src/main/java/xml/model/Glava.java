@@ -1,9 +1,14 @@
 
 package xml.model;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -19,7 +24,7 @@ import java.util.List;
  *         &lt;element ref="{aktovi}Odeljak" maxOccurs="unbounded"/>
  *         &lt;element ref="{aktovi}Clan" maxOccurs="unbounded"/>
  *       &lt;/choice>
- *       &lt;attribute name="Naziv" type="{aktovi}TGlava_naziv" />
+ *       &lt;attribute name="Naziv" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>

@@ -1,11 +1,19 @@
 
 package xml.model;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -21,7 +29,7 @@ import java.util.List;
  *         &lt;element ref="{aktovi}Podtacka" maxOccurs="unbounded" minOccurs="2"/>
  *         &lt;element ref="{aktovi}Alineja" maxOccurs="unbounded" minOccurs="2"/>
  *       &lt;/choice>
- *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -43,6 +51,7 @@ public class Tacka {
     @XmlMixed
     protected List<Object> content;
     @XmlAttribute(name = "broj")
+    @XmlSchemaType(name = "positiveInteger")
     protected BigInteger broj;
 
     /**
@@ -64,8 +73,8 @@ public class Tacka {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Podtacka }
-     * {@link String }
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link String }
      * 
      * 
      */

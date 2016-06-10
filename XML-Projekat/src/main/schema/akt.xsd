@@ -61,7 +61,7 @@
             <xs:choice maxOccurs="unbounded" minOccurs="1">
                 <xs:element maxOccurs="unbounded" ref="akt:Stav"/>
             </xs:choice>
-            <xs:attribute name="Broj_clana" type="xs:integer" use="required"/>
+            <xs:attribute name="Broj_clana" type="xs:positiveInteger" use="required"/>
             <xs:attribute name="Naziv">
                 <xs:simpleType>
                     <xs:restriction base="xs:string"> </xs:restriction>
@@ -74,7 +74,7 @@
             <xs:choice maxOccurs="unbounded" minOccurs="0">
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Tacka"/>
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
-                <xs:element ref="akt:Reference"/>
+                <xs:element maxOccurs="unbounded" minOccurs="1" ref="akt:Reference"/>
             </xs:choice>
             <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
@@ -85,7 +85,7 @@
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Podtacka"/>
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
             </xs:choice>
-            <xs:attribute name="broj" type="xs:integer"/>
+            <xs:attribute name="broj" type="xs:positiveInteger"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Podtacka">
@@ -113,7 +113,7 @@
             <xs:element name="Ime" type="xs:string"/>
             <xs:element name="Prezime" type="xs:string"/>
         </xs:sequence>
-        <xs:attribute name="Ko_dodaje" type="akt:TKo_dodaje"/>
+        <xs:attribute name="Ko_dodaje" type="xs:string"/>
     </xs:complexType>
     <xs:attributeGroup name="AReference">
         <xs:attribute name="ref_akt" type="xs:string"/>
@@ -129,7 +129,4 @@
         </xs:simpleContent>
     </xs:complexType>
     <xs:element name="Reference" type="akt:TReferenca"/>
-    <xs:simpleType name="TKo_dodaje">
-        <xs:restriction base="xs:string"/>
-    </xs:simpleType>
 </xs:schema>

@@ -1,7 +1,13 @@
 
 package xml.model;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -39,6 +45,7 @@ import javax.xml.bind.annotation.*;
  *         &lt;/element>
  *       &lt;/sequence>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
+ *       &lt;attribute name="Ko_dodaje" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -64,6 +71,8 @@ public class Amandman {
     protected Amandman.Sadrzaj sadrzaj;
     @XmlAttribute(name = "Id")
     protected Long id;
+    @XmlAttribute(name = "Ko_dodaje")
+    protected String koDodaje;
 
     /**
      * Gets the value of the kontekst property.
@@ -159,6 +168,30 @@ public class Amandman {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the koDodaje property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKoDodaje() {
+        return koDodaje;
+    }
+
+    /**
+     * Sets the value of the koDodaje property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKoDodaje(String value) {
+        this.koDodaje = value;
     }
 
 
