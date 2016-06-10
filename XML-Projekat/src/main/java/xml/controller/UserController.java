@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import security.PasswordStorage;
 import xml.Constants;
+import xml.stateStuff.State;
+import xml.stateStuff.StateManager;
 import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
@@ -121,5 +123,27 @@ public class UserController {
             return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
         }
     }
+
+    //for presidend
+    @RequestMapping(value = "/state",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getState(){
+        State state = StateManager.getState();
+        if(state == null)
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity(state,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/state",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity setState(@RequestBody State state){
+
+        if(StateManager.setState(state.getState()))
+            return new ResponseEntity(state,HttpStatus.OK);
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
+
 
 }
