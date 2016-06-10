@@ -11,28 +11,90 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseConfig;
 import database.DatabaseManager;
 import database.XMLConverter;
+import org.springframework.stereotype.Repository;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import xml.Constants;
 import xml.model.Korisnik;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by Dorian on 31.5.2016.
  */
-public class GenericDAO<T,K> {
+@Repository
+public abstract class GenericDAO<T,K extends Serializable> implements IGenericDAO<T,K> {
 
+    //fields
     protected XMLConverter<T> xmlConverter;
-    protected static DatabaseClient client;
-    private static final String USER_SCHEMA_PATH = "./src/main/schema/korisnici.xsd";
+    protected DatabaseClient client;
+    protected String collection;
+    protected String entityName;
+    //
 
-    public GenericDAO(String path) throws IOException {
-        xmlConverter = new XMLConverter<T>(path);
-        client = DatabaseManager.Client.getClient();
+    //constructor
+
+    public GenericDAO(String path,String collection,String entityName) throws IOException {
+        this.xmlConverter = new XMLConverter<T>(path);
+        this.client = DatabaseManager.Client.getClient();
+        this.collection = collection;
+        this.entityName = entityName;
     }
 
+    @Override
+    public void create(T entity, String docId, String colId) throws FileNotFoundException, IOException {
+        add(entity,docId,colId);
+    }
+
+    @Override
+    public void update(T entity, Long id) throws FileNotFoundException, IOException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void delete(T entity) throws FileNotFoundException, IOException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public List<T> getAll() throws FileNotFoundException, IOException {
+        StringBuilder query = new StringBuilder();
+
+        query
+                .append("collection(\"")
+                .append(collection)
+                .append("\")");
+
+        return getByQuery(query.toString());
+    }
+
+    @Override
+    public T get(Long id) throws FileNotFoundException, IOException {
+        StringBuilder query = new StringBuilder();
+
+        query
+                .append("collection(\"")
+                .append(collection)
+                .append("\")/")
+                .append(entityName)
+                .append("[@Id = ")
+                .append(id.toString()+"]");
+
+        ArrayList<T> entities = getByQuery(query.toString());
+        if(entities == null) {
+            return null;
+        }
+
+        return entities.get(0);
+    }
+
+
+    //helper methods
     protected ArrayList<T> getByQuery(String query) throws FileNotFoundException, IOException {
 
         EvalResultIterator iterator = null;
@@ -86,5 +148,4 @@ public class GenericDAO<T,K> {
             System.out.print("Cannot convert to xml file.");
         }
     }
-
 }

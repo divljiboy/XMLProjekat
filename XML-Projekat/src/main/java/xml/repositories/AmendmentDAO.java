@@ -12,18 +12,29 @@ import java.util.List;
  */
 @Repository("amandmanDAO")
 public class AmendmentDAO implements IAmendmentDAO {
+
     @Override
-    public void create(Amandman amendment, String docId, String colId) throws FileNotFoundException, IOException {
+    public void create(Amandman amandman, String docId, String colId) throws FileNotFoundException, FileNotFoundException {
 
     }
 
     @Override
-    public void delete(Amandman amendment) throws FileNotFoundException, IOException {
+    public void update(Amandman amandman, Long id) throws FileNotFoundException, FileNotFoundException {
 
     }
 
     @Override
-    public List<Amandman> getAllFromAct(Long actId) throws FileNotFoundException, IOException {
+    public void delete(Amandman amandman) throws FileNotFoundException, FileNotFoundException {
+
+    }
+
+    @Override
+    public List<Amandman> getAll() throws FileNotFoundException, FileNotFoundException {
+        return null;
+    }
+
+    @Override
+    public Amandman get(Long id) throws FileNotFoundException, FileNotFoundException {
         return null;
     }
 }

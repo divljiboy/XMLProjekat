@@ -26,7 +26,7 @@ public class AmendmentController{
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Amandman>> getAllAmendmentsFromAct(Long aktId) {
         try{
-            List<Amandman> amendments = amendmentDao.getAllFromAct(aktId);
+            List<Amandman> amendments = null;//amendmentDao.getAllFromAct(aktId);
             if(amendments.size() == 0)
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
 
