@@ -2,22 +2,28 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Novi Akt</legend>
+<legend>Novi akt</legend>
 
 <!-- Textarea -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="novakt"></label>
-  <div style="width: 98%; height: 100%;">
-    <textarea rows="25"class="form-control" id="novakt" name="novakt" ng-model="noviAkt"></textarea>
+  <label class="col-md-4 control-label" for="noviakt"></label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="noviakt" name="noviakt"></textarea>
   </div>
-  <div style="margin:20px;">
-    <button class="btn btn-success" ng-click="createAct()">Potvrdi</button>
-    <button class="btn btn-danger">Odustani</button>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="unesi"></label>
+  <div class="col-md-8">
+    <button id="unesi" name="unesi" class="btn btn-success">Unesi</button>
+    <button id="otkazi" name="otkazi" class="btn btn-danger">Otkazi</button>
   </div>
 </div>
 
 </fieldset>
 </form>
+
 
 <style>
   #novakt{
