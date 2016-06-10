@@ -4,7 +4,6 @@
 		$scope.message = "Akt welcome!"
 
 		$scope.predlozi = function(){
-			console.log("xxxx");
 			$state.go("noviAkt");
 		}
 	}]);

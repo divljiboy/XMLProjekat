@@ -1,7 +1,6 @@
 package xml.repositories;
 
 import xml.model.Amandman;
-import xml.model.PravniAkt;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

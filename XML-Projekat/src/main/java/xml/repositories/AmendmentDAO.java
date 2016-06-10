@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import xml.model.Amandman;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 /**
