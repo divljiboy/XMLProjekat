@@ -26,7 +26,8 @@
                     url: '/noviakt',                                                                                                                   
                     views: {
                         'content': {
-                            templateUrl: 'akt_/NoviAkt.html'
+                            templateUrl: 'akt_/NoviAkt.html',
+                            controller: 'dodajAktController'
                         },
                         'navbar': {
                             templateUrl: 'navbar/navbar.html'
