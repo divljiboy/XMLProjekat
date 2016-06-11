@@ -15,7 +15,8 @@
                       templateUrl:'navbar/navbar.html'
                   },
                   'sidebar': {
-                      templateUrl: 'sidebar/sidebar.html'
+                      templateUrl: 'sidebar/sidebar.html',
+                      controller: 'sidebarController'
                   }
               }
           })

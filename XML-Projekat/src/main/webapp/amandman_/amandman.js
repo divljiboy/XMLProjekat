@@ -22,17 +22,24 @@
                 }).state('noviAmandman',
             {
                 url: '/noviamandman',
+                params:{
+                    akt : null
+                },
                 views: {
                     'content': {
-                        templateUrl: 'amandman_/NovAmandman.html'
+                        templateUrl: 'amandman_/NovAmandman.html',
+                        controller : 'noviAmandmanController'
+
                     },
                     'navbar': {
                         templateUrl: 'navbar/navbar.html'
                     },
                     'sidebar': {
-                        templateUrl: 'sidebar/sidebar.html'
+                        templateUrl: 'sidebar/sidebar.html',
+                        
                     }
                 }
+                
             });
         }]);
 

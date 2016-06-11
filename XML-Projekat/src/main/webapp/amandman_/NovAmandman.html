@@ -2,13 +2,17 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Novi amandman</legend>
+<legend>Novi amandman na akt : </legend>
+  <br/>
+  {{akt.naziv}}
+  
+  <br/>
 
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="noviamandman"></label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="noviamandman" name="noviamandman"></textarea>
+    <textarea ng-model = "amandman" class="form-control" id="noviamandman" name="noviamandman"></textarea>
   </div>
 </div>
 

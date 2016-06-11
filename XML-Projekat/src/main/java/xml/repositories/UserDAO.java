@@ -20,6 +20,11 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
     }
 
     @Override
+    public void delete(Korisnik korisnik) throws JAXBException, IOException {
+
+    }
+
+    @Override
     public Korisnik getByLogin(String username, String password) throws IOException, JAXBException {
         StringBuilder query = new StringBuilder();
 
