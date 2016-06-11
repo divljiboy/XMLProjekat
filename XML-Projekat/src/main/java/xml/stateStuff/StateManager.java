@@ -59,14 +59,7 @@ public class StateManager {
             return false;
         } catch (IOException e) {
             e.printStackTrace();
-        } finally{
-            try {
-                dos.close();
-                return false;
-            } catch (IOException e) {
-                System.out.println("Can't close file");
-                return false;
-            }
+            return false;
         }
     }
 

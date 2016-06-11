@@ -37,6 +37,24 @@
                         }
                     }
                 });
+            /*.state('aktDetails',
+                        {
+                
+                            url: '/aktDetails',                                                                                                                   
+                    views: {
+                        'content': {
+                            templateUrl: 'akt_/aktDetails.html',
+                            controller: 'aktDetailsController'
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+                    }
+            
+            });*/
         }]);
 
 
