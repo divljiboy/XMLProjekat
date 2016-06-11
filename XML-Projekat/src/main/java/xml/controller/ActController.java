@@ -9,6 +9,9 @@ import xml.Constants;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
 
+import javax.ws.rs.Path;
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -65,6 +68,19 @@ public class ActController{
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
+    public void delete(@PathVariable("id") Long id){
+        System.out.print(id);
+        try {
+            aktDao.delete(id,Constants.Act);
+            System.out.print("Successfully deleted from db");
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

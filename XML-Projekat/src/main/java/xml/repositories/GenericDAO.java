@@ -10,7 +10,12 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
+import sun.reflect.ConstantPool;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import xml.Constants;
+import xml.model.Amandman;
+import xml.model.Korisnik;
+import xml.model.PravniAkt;
 
 import javax.swing.text.Document;
 import javax.xml.bind.JAXBException;
@@ -47,12 +52,47 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
     @Override
     public void update(T entity, Long id) throws JAXBException {
-        throw new NotImplementedException();
+
+        //throw new NotImplementedException();
     }
 
     @Override
-    public void delete(T entity) throws JAXBException  {
-        throw new NotImplementedException();
+    public void delete(Long id, String constant) throws JAXBException  {
+        //document-delete("PravniAkt10")
+        StringBuilder query = new StringBuilder();
+
+        query
+                .append("xdmp:document-delete(\"")
+                .append(constant)
+                .append(id.toString())
+                .append("\")");
+
+        System.out.print(query.toString());
+
+        /*
+        if(entity instanceof PravniAkt){
+            query
+                    .append(Constants.Act)
+                    .append(((PravniAkt)entity).getId().toString())
+                    .append("\")");
+        }else if(entity instanceof Amandman){
+            query
+                    .append(Constants.Amendment)
+                    .append(((Amandman)entity).getId().toString())
+                    .append("\")");
+        }else if(entity instanceof Korisnik){
+            query
+                    .append(Constants.User)
+                    .append(((Korisnik)entity).getId().toString())
+                    .append("\")");
+        }
+        */
+        try {
+            execQuery(query.toString());
+        } catch (IOException e) {
+            System.out.print("Cannot delete entity");
+        }
+
     }
 
     @Override
@@ -86,7 +126,6 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         return entities.get(0);
     }
-
 
     //helper methods
     protected ArrayList<T> getByQuery(String query) throws JAXBException, IOException {
@@ -123,5 +162,9 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         InputStreamHandle handle = new InputStreamHandle(new ByteArrayInputStream(xmlConverter.toXML(obj).getBytes(XMLConverter.UTF_8.name())));
         xmlManager.write(docId,metadataHandle,handle);
+    }
+
+    protected void change(String docId, String colId, Long id){
+
     }
 }

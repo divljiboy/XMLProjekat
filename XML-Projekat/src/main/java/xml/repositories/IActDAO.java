@@ -12,10 +12,4 @@ import java.util.List;
  */
 public interface IActDAO extends IGenericDAO<PravniAkt,Long>{
 
-    void create(PravniAkt act, String docId, String colId ) throws JAXBException, IOException;
-    void update(PravniAkt act,Long id) throws JAXBException, IOException;
-    void delete(PravniAkt act) throws JAXBException, IOException;
-    List<PravniAkt> getAll() throws JAXBException, IOException;
-    PravniAkt get(Long id) throws JAXBException, IOException;
-
 }

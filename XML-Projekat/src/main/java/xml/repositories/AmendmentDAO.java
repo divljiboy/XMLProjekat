@@ -3,7 +3,9 @@ package xml.repositories;
 import org.springframework.stereotype.Repository;
 import xml.model.Amandman;
 
+import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class AmendmentDAO implements IAmendmentDAO {
     }
 
     @Override
-    public void delete(Amandman amandman) throws FileNotFoundException, FileNotFoundException {
+    public void delete(Long id, String constant) throws JAXBException, IOException {
 
     }
 
