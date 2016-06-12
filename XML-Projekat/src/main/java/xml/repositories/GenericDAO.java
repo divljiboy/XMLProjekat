@@ -10,14 +10,7 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
-import sun.reflect.ConstantPool;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import xml.Constants;
-import xml.model.Amandman;
-import xml.model.Korisnik;
-import xml.model.PravniAkt;
 
-import javax.swing.text.Document;
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.util.ArrayList;
@@ -34,15 +27,17 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     protected DatabaseClient client;
     protected String collection;
     protected String entityName;
+    protected String namespace;
     //
 
     //constructor
 
-    public GenericDAO(String path,String collection,String entityName) throws IOException {
+    public GenericDAO(String path,String collection,String entityName,String namespace) throws IOException {
         this.xmlConverter = new XMLConverter<T>(path);
         this.client = DatabaseManager.Client.getClient();
         this.collection = collection;
         this.entityName = entityName;
+        this.namespace = namespace;
     }
 
     @Override
@@ -69,24 +64,6 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         System.out.print(query.toString());
 
-        /*
-        if(entity instanceof PravniAkt){
-            query
-                    .append(Constants.Act)
-                    .append(((PravniAkt)entity).getId().toString())
-                    .append("\")");
-        }else if(entity instanceof Amandman){
-            query
-                    .append(Constants.Amendment)
-                    .append(((Amandman)entity).getId().toString())
-                    .append("\")");
-        }else if(entity instanceof Korisnik){
-            query
-                    .append(Constants.User)
-                    .append(((Korisnik)entity).getId().toString())
-                    .append("\")");
-        }
-        */
         try {
             execQuery(query.toString());
         } catch (IOException e) {
@@ -111,6 +88,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     public T get(Long id) throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
+        /*
         query
                 .append("collection(\"")
                 .append(collection)
@@ -118,6 +96,20 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
                 .append(entityName)
                 .append("[@Id = ")
                 .append(id.toString()+"]");
+        */
+        query
+                .append("declare namespace ns = \"")
+                .append(namespace)
+                .append("\";\n")
+                .append("for $x in collection(\"")
+                .append(collection)
+                .append("\")\n")
+                .append("return $x/ns:")
+                .append(entityName)
+                .append("[@Id = ")
+                .append(id.toString()+"]");
+
+        System.out.print(query.toString());
 
         ArrayList<T> entities = getByQuery(query.toString());
         if(entities == null) {
@@ -142,6 +134,26 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
         if(iterator.hasNext()){
             for(EvalResult res : iterator){
                 list.add((T)xmlConverter.toObject(res.getString()));
+            }
+        }else {
+            return null;
+        }
+        return list;
+    }
+
+    protected ArrayList<String> getStringByQuery(String query){
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query);
+
+        iterator = invoker.eval();
+
+        ArrayList<String> list = new ArrayList<>();
+
+        if(iterator.hasNext()){
+            for(EvalResult res : iterator){
+                list.add(res.getString());
             }
         }else {
             return null;

@@ -7,9 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import security.PasswordStorage;
 import xml.Constants;
+import xml.model.Korisnik;
 import xml.stateStuff.State;
 import xml.stateStuff.StateManager;
-import xml.model.Korisnik;
 import xml.repositories.IUserDAO;
 
 import javax.xml.bind.JAXBException;

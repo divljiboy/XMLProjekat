@@ -9,7 +9,6 @@ import xml.Constants;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
 
-import javax.ws.rs.Path;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
@@ -53,7 +52,7 @@ public class ActController{
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity post(@RequestBody PravniAkt object) {
         try{
-            aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ActCollection);
+            aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();

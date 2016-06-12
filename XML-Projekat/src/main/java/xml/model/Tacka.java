@@ -73,8 +73,8 @@ public class Tacka {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Podtacka }
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link String }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
      */

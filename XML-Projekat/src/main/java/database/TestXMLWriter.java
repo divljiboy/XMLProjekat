@@ -53,7 +53,7 @@ public class TestXMLWriter {
     }
 
     public static void main(String[] args) throws IOException {
-        run(DatabaseConfig.loadProperties());
+        //run(DatabaseConfig.loadProperties());
     }
 
 }

@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import xml.Constants;
+import xml.controller.dto.ActsAndAmendemntsIdsDTO;
 import xml.model.Amandman;
 import xml.repositories.IAmendmentDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +46,13 @@ public class AmendmentController{
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
+
+        amendmentDao.voting(idsDTO.getActsIds(),idsDTO.getAmendmentsIds());
+
     }
 
 }
