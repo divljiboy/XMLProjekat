@@ -13,24 +13,26 @@
             
             
         }
-        */
-        
-        
-        $scope.potvrdiPromenuStanja = function(){
-            
-            stateService.setState($scope.state, function(res){
-                $state.go('glasanje');
 
+        */
+
+        $scope.potvrdiPromenuStanja = function(){
+            console.log("promena stanja");
+            stateService.setState($scope.state, function(res){
+
+                $state.go('glasanje');
             }, function(res){
                 alert("Stanje nije promenjeno");
             });
         }
-        
+
         $scope.odustani = function()
         {
+            console.log("nikola");
             $uibModalInstance.dismiss('cancel');
         }
+
         
-        
+
     }]);
 })(angular);
