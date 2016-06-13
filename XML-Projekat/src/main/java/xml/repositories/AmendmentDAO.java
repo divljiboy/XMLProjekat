@@ -173,4 +173,8 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         return content;
     }
 
+    protected void setAdoptedToTrue(Long id){
+
+    }
+
 }

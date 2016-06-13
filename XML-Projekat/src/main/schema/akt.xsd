@@ -23,7 +23,7 @@
                 <xs:element name="Mesto_donosenja_propisa" type="xs:string"/>
                 <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
             </xs:sequence>
-            <xs:attribute name="Usvojen" type="xs:boolean"/>
+            <xs:attribute name="Stanje" type="xs:string"/>
             <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
     </xs:element>

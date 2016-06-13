@@ -22,4 +22,8 @@ public class Constants {
     public static final String AmendmentNamespace = "amandmani";
     public static final String UserNamespace = "";
 
+    public static final String ProposedState = "Predlozen";
+    public static final String NotAdoptedState = "Nije usvojen";
+    public static final String AdoptedState = "Usvojen";
+
 }

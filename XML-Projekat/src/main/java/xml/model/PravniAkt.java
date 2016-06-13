@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Mesto_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
  *       &lt;/sequence>
- *       &lt;attribute name="Usvojen" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="Stanje" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -95,8 +95,8 @@ public class PravniAkt {
     protected String mestoDonosenjaPropisa;
     @XmlElement(name = "Ovlasceno_lice", namespace = "aktovi", required = true)
     protected TOvlascenoLice ovlascenoLice;
-    @XmlAttribute(name = "Usvojen")
-    protected Boolean usvojen;
+    @XmlAttribute(name = "Stanje")
+    protected String stanje;
     @XmlAttribute(name = "Id")
     protected Long id;
 
@@ -365,27 +365,27 @@ public class PravniAkt {
     }
 
     /**
-     * Gets the value of the usvojen property.
+     * Gets the value of the stanje property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public Boolean isUsvojen() {
-        return usvojen;
+    public String getStanje() {
+        return stanje;
     }
 
     /**
-     * Sets the value of the usvojen property.
+     * Sets the value of the stanje property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public void setUsvojen(Boolean value) {
-        this.usvojen = value;
+    public void setStanje(String value) {
+        this.stanje = value;
     }
 
     /**

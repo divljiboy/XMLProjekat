@@ -11,6 +11,7 @@ import xml.repositories.IActDAO;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,6 +52,7 @@ public class ActController{
 
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity post(@RequestBody PravniAkt object) {
+        object.setStanje(Constants.ProposedState);
         try{
             aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
             return new ResponseEntity(HttpStatus.OK);
@@ -82,4 +84,21 @@ public class ActController{
             e.printStackTrace();
         }
     }
+
+    @RequestMapping(value = "/predlozeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<PravniAkt>> getProposedActs(){
+        try {
+            ArrayList<PravniAkt> proposedActs = aktDao.getProposedActs();
+            if(proposedActs == null)
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(proposedActs,HttpStatus.OK);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

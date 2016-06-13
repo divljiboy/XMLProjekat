@@ -27,6 +27,7 @@
             </xs:sequence>
             <xs:attribute name="Id" type="xs:long"/>
             <xs:attribute name="Ko_dodaje" type="xs:string"/>
+            <xs:attribute name="Stanje" type="xs:string"/>
         </xs:complexType>
     </xs:element>
     <xs:simpleType name="TOperacija">

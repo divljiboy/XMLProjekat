@@ -13,7 +13,6 @@ import xml.controller.dto.ActsAndAmendemntsIdsDTO;
 import xml.model.Amandman;
 import xml.repositories.IAmendmentDAO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
