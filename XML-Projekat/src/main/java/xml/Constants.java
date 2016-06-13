@@ -26,4 +26,9 @@ public class Constants {
     public static final String NotAdoptedState = "Nije usvojen";
     public static final String AdoptedState = "Usvojen";
 
+    //roles
+    public static final String Gradjanin = "Gradjanin";
+    public static final String Predsednik = "Predsednik";
+    public static final String Odbornik = "Odbornik";
+
 }

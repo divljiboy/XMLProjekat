@@ -1,5 +1,6 @@
 package xml.controller;
 
+import com.sun.tools.jxc.ap.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,6 +10,7 @@ import xml.Constants;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
 
+import javax.annotation.security.RolesAllowed;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class ActController{
     @Autowired
     private IActDAO aktDao;
 
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PravniAkt>> getAll() {
         try{
@@ -37,6 +40,7 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getById(@PathVariable("id") Long id) {
         try{
@@ -50,11 +54,12 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(@RequestBody PravniAkt object) {
-        object.setStanje(Constants.ProposedState);
+    public ResponseEntity post(@RequestBody String object) {
+        //object.setStanje(Constants.ProposedState);
         try{
-            aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
+            //aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
@@ -62,6 +67,7 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity put(@RequestBody PravniAkt object,@PathVariable("id") Long id) {
         try{
@@ -72,6 +78,7 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public void delete(@PathVariable("id") Long id){
         System.out.print(id);
@@ -85,6 +92,7 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/predlozeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<PravniAkt>> getProposedActs(){
         try {
@@ -99,6 +107,7 @@ public class ActController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/usvojeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<PravniAkt>> getAdoptedActs(){
         try {

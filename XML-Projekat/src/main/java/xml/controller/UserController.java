@@ -1,5 +1,6 @@
 package xml.controller;
 
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -7,11 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import security.PasswordStorage;
 import xml.Constants;
+import xml.interceptors.TokenHandler;
 import xml.model.Korisnik;
 import xml.stateStuff.State;
 import xml.stateStuff.StateManager;
 import xml.repositories.IUserDAO;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -23,6 +28,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/korisnik")
+@PermitAll
 public class UserController {
 
     @Autowired
@@ -107,7 +113,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik){
+    public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik,HttpServletResponse response){
         if(korisnik == null)
             return new ResponseEntity<Korisnik>(HttpStatus.OK);
         try {
@@ -115,6 +121,8 @@ public class UserController {
             if(user == null){
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
+                TokenHandler handler = new TokenHandler();
+                response.setHeader("x-auth-token",handler.createTokenForUser(user));
                 return new ResponseEntity<Korisnik>(user,HttpStatus.OK);
             }
         } catch (IOException e) {
@@ -125,6 +133,7 @@ public class UserController {
     }
 
     //for presidend
+    @RolesAllowed(value = Constants.Predsednik)
     @RequestMapping(value = "/state",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getState(){
         State state = StateManager.getState();
@@ -134,6 +143,7 @@ public class UserController {
         return new ResponseEntity(state,HttpStatus.OK);
     }
 
+    @RolesAllowed(value = Constants.Predsednik)
     @RequestMapping(value = "/state",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity setState(@RequestBody State state){
 

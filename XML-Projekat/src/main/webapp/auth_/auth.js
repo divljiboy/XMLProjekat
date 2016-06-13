@@ -13,8 +13,8 @@
                 url: '/signin',
                 views: {
                     "content":{
-                        templateUrl:'auth_/signin_/signIn.html'
-
+                        templateUrl:'auth_/signin_/signIn.html',
+                        controller: 'signInController'
                     }
                 }
             })
