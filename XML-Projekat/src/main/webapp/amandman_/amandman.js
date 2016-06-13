@@ -6,7 +6,7 @@
             $stateProvider
             .state('sviAmandmani',
                 {	
-                    url: '/sviAmandmani',                                                                                                                   
+                    url: '/sviamandmani',
                     views: {
                         'content': {
                             templateUrl: 'amandman_/sviAmandmani.html',
@@ -18,6 +18,10 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
+                    },
+                    params:
+                    {
+                        aktId : null
                     }
                 }).state('noviAmandman',
             {

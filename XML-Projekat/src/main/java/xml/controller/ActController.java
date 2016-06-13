@@ -122,4 +122,13 @@ public class ActController{
         }
     }
 
+    @RequestMapping(value = "/update")
+    public void updateState(){
+        try {
+            aktDao.updateActState((long)5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

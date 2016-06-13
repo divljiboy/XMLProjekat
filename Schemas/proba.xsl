@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-  
+<xsl:stylesheet version="1.0" xsl:namespace
+    xmlns="aktovi" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    >
     <xsl:template match="/Pravni_akt">
         <html>
             <head>
@@ -11,7 +12,7 @@
                     <img src="http://novosadska.tv/uploads/image/news/news3675/Grb-NoviSad.jpg" height="96" width="96"/>
                 </div>
                 
-                <xsl:value-of select="Preambula"/>
+                <xsl:value-of select="Pravni_akt/Preambula"></xsl:value-of>
                    
                        
                    
@@ -22,6 +23,11 @@
     </xsl:template>
     
     <xsl:template match="Preambula">
+        <p>
+            <xsl:value-of select="."/>
+        </p>
+    </xsl:template>
+    <xsl:template match="Alineja">
         <p>
             <xsl:value-of select="."/>
         </p>

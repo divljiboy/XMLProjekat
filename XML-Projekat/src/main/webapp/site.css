@@ -131,6 +131,7 @@ html, body {
     height: 40px;
     text-decoration: none;
 }
+
 .sidebar ul :hover{
     background-color: white;
     text-decoration: none;

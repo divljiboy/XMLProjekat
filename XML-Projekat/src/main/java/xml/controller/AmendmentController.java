@@ -11,7 +11,6 @@ import xml.model.Amandman;
 import xml.repositories.IAmendmentDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Daniel on 6/8/2016.
@@ -37,6 +36,7 @@ public class AmendmentController{
 
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
+        amendment.setStanje(Constants.ProposedState);
         try{
             amendmentDao.create(amendment, Constants.Amendment+amendment.getId().toString(), Constants.ProposedAmendmentCollection);
             return new ResponseEntity(HttpStatus.OK);

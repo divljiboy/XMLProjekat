@@ -15,6 +15,28 @@
                     };
                     $http(req).then(onSuccess, onError);
                 },
+                //all
+                getUsvojeni: function (onSuccess,onError) {
+                    var req = {
+                        method: 'GET',
+                        url: '/usvojeniAkati',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    };
+                    $http(req).then(onSuccess, onError);
+                },
+                //all
+                getUProceduri : function (onSuccess,onError) {
+                    var req = {
+                        method: 'GET',
+                        url: '/predlozeniAkati',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    };
+                    $http(req).then(onSuccess, onError);
+                },
 
                 //byId
                 get: function(id,onSuccess,onError){
