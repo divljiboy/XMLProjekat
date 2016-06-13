@@ -42,6 +42,26 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         }
     }
 
+    @Override
+    public ArrayList<Amandman> getAmendmentsForAct(Long actId) throws JAXBException, IOException {
+        StringBuilder query = new StringBuilder();
+        query
+                .append("declare namespace ns = ")
+                .append("\"")
+                .append(Constants.AmendmentNamespace)
+                .append("\";\n")
+                .append("collection(\"")
+                .append(Constants.ProposedAmendmentCollection)
+                .append("\")/")
+                .append("ns:Amandman/ns:Kontekst[@actId = \"")
+                .append(actId.toString())
+                .append("\"]/parent::ns:Amandman");
+
+        ArrayList<Amandman> amendments = getByQuery(query.toString());
+
+        return amendments;
+    }
+
     /**
      * Metoda kopira sve izglasane predlozene aktove u usvojene aktove
      * from collection(/predlozeniAkati) to collection(/usvojeniAkati)

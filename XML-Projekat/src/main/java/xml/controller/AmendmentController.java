@@ -4,15 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xml.Constants;
 import xml.controller.dto.ActsAndAmendemntsIdsDTO;
 import xml.model.Amandman;
 import xml.repositories.IAmendmentDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,13 +23,13 @@ public class AmendmentController{
     private IAmendmentDAO amendmentDao;
 
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Amandman>> getAllAmendmentsFromAct(Long aktId) {
+    public ResponseEntity<ArrayList<Amandman>> getAllAmendmentsForAct(@PathVariable("aktId") Long aktId) {
         try{
-            List<Amandman> amendments = null;//amendmentDao.getAllFromAct(aktId);
-            if(amendments.size() == 0)
+            ArrayList<Amandman> amendments = amendmentDao.getAmendmentsForAct(aktId);
+            if(amendments == null)
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
 
-            return new ResponseEntity<List<Amandman>>(amendments,HttpStatus.OK);
+            return new ResponseEntity<ArrayList<Amandman>>(amendments,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
