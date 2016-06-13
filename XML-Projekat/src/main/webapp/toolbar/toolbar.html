@@ -2,11 +2,20 @@
     <div class="md-toolbar-tools">
         
         <span flex=""></span>
+
         <div>
-            <md-button  class="md-raised" aria-label="Dodaj">
-                <md-icon md-font-set="material-icons">done</md-icon>
+            <md-button  ng-click = "pretrazi()" class="md-raised" aria-label="Dodaj">
+                <md-icon md-font-set="material-icons">search</md-icon>
             </md-button>
         </div>
+
+
+        <div>
+            <md-button  ng-click = "otvoriAmandmaneUProceduri()" class="md-raised" aria-label="Dodaj">
+                <md-icon md-font-set="material-icons">settings</md-icon>
+            </md-button>
+        </div>
+
         <md-button  ng-click = "predlozi()"  class="md-raised" aria-label="Dodaj">
             <md-icon md-font-set="material-icons">add</md-icon>
         </md-button>

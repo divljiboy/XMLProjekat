@@ -8,8 +8,8 @@
          $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: false };
 
             $scope.gridOptions.columnDefs = [
-             
-              { name: 'naziv' }
+                {name: 'id', visible : false },
+                { name: 'naziv' }
 
             ];
 
@@ -20,6 +20,7 @@
                 gridApi.selection.on.rowSelectionChanged($scope, function (row) {
                             
                          $scope.akt.naziv = row.entity.naziv;
+                         $scope.akt.id = row.entity.id;
                          
                     
 
@@ -33,7 +34,7 @@
             aktService.getAll(function(res){
                                 
                                 $scope.gridOptions.data = res.data;
-                
+                                console.log(res.data);
             },
                               function(res)
                               {

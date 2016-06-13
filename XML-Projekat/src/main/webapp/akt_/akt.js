@@ -21,7 +21,7 @@
 
                     }
                 })
-            .state('noviAkt',
+                .state('noviAkt',
                 {	
                     url: '/noviakt',                                                                                                                   
                     views: {
@@ -35,6 +35,40 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
+                    }
+                })
+                .state('usvojeniAkti',
+                {
+                    url: '/usvojeniAkti',
+                    views: {
+                        'content': {
+                            templateUrl: 'akt_/sviAkti.html',
+                            controller : "usvojeniAktiController"
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+
+                    }
+                })
+                .state('aktiUProceduri',
+                {
+                    url: '/aktiuproceduri',
+                    views: {
+                        'content': {
+                            templateUrl: 'akt_/sviAkti.html',
+                            controller : "aktiUProceduriController"
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html'
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html'
+                        }
+
                     }
                 });
             /*.state('aktDetails',
