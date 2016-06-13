@@ -57,15 +57,49 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
     }
 
     @Override
-    public void updateActState(Long id) throws IOException {
+    public void updateActState(Long id,String state) throws IOException {
         StringBuilder query = new StringBuilder();
         query
                 .append("declare namespace ns = ")
                 .append("\"")
                 .append(Constants.ActNamespace)
                 .append("\";\n")
-                .append("return update value collection(\"/predlozeniAkati\")/ns:Pravni_akt[@Id = 50]/@Stanje with 'Usvojen'");
+                .append("xdmp:node-replace(collection(\"")
+                .append(Constants.ProposedActCollection)
+                .append("\")/ns:Pravni_akt[@Id = ")
+                .append(id.toString())
+                .append("]/ns:Stanje,")
+                .append("<ns:Stanje>")
+                .append(state)
+                .append("</ns:Stanje>")
+                .append(");");
 
         execQuery(query.toString());
+    }
+
+    /**
+     * Vraca akate kojima je stanje "Predlozen" radi promene stanja u "Nije usvojen"
+     * @return Lista akata kojima treba da se promeni stanje iz "Predlozen" u "Nije usvojen"
+     * @throws JAXBException
+     * @throws IOException
+     */
+    @Override
+    public ArrayList<PravniAkt> getProposedActsToChangeState() throws JAXBException, IOException {
+        StringBuilder query = new StringBuilder();
+        query
+                .append("declare namespace ns = ")
+                .append("\"")
+                .append(Constants.ActNamespace)
+                .append("\";\n")
+                .append("collection(\"")
+                .append(Constants.ProposedActCollection)
+                .append("\")/")
+                .append("ns:Pravni_akt[ns:Stanje = '")
+                .append(Constants.ProposedState)
+                .append("']");
+
+        ArrayList<PravniAkt> acts = getByQuery(query.toString());
+        return acts;
+
     }
 }

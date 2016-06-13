@@ -10,6 +10,8 @@ import xml.controller.dto.ActsAndAmendemntsIdsDTO;
 import xml.model.Amandman;
 import xml.repositories.IAmendmentDAO;
 
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -48,7 +50,13 @@ public class AmendmentController{
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
 
-        amendmentDao.voting(idsDTO.getActsIds(),idsDTO.getAmendmentsIds());
+        try {
+            amendmentDao.voting(idsDTO.getActsIds(),idsDTO.getAmendmentsIds());
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
