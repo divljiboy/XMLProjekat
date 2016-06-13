@@ -41,4 +41,18 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
         return aktovi;
     }
+
+    @Override
+    public ArrayList<PravniAkt> getAdoptedActs() throws JAXBException, IOException {
+        StringBuilder query = new StringBuilder();
+            query
+                    .append("collection(\"")
+                    .append(Constants.ActCollection)
+                    .append("\")");
+
+        System.out.print(query.toString());
+        ArrayList<PravniAkt> aktovi = getByQuery(query.toString());
+
+        return aktovi;
+    }
 }

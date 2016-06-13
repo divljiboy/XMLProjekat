@@ -12,5 +12,6 @@ import java.util.ArrayList;
 public interface IActDAO extends IGenericDAO<PravniAkt,Long>{
 
     public ArrayList<PravniAkt> getProposedActs() throws JAXBException, IOException;
+    public ArrayList<PravniAkt> getAdoptedActs() throws JAXBException, IOException;
 
 }

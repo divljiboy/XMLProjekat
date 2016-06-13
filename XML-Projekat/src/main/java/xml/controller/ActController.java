@@ -93,10 +93,22 @@ public class ActController{
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             return new ResponseEntity(proposedActs,HttpStatus.OK);
         } catch (JAXBException e) {
-            e.printStackTrace();
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (IOException e) {
-            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/usvojeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<PravniAkt>> getAdoptedActs(){
+        try {
+            ArrayList<PravniAkt> adoptedActs = aktDao.getAdoptedActs();
+            if(adoptedActs == null)
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(adoptedActs,HttpStatus.OK);
+        } catch (JAXBException e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (IOException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
