@@ -32,7 +32,7 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
                 .append("for $x in collection(\"")
                 .append(Constants.ProposedActCollection)
                 .append("\")\n")
-                .append("return $x/ns:Pravni_akt[@Stanje = \"")
+                .append("return $x/ns:Pravni_akt[ns:Stanje = \"")
                 .append(Constants.ProposedState)
                 .append("\"]");
 
