@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="Stanje" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Kontekst">
  *           &lt;complexType>
  *             &lt;simpleContent>
@@ -47,7 +48,6 @@ import javax.xml.bind.annotation.XmlValue;
  *       &lt;/sequence>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *       &lt;attribute name="Ko_dodaje" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="Stanje" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "stanje",
     "kontekst",
     "operacija",
     "sadrzaj"
@@ -64,6 +65,8 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlRootElement(name = "Amandman", namespace = "amandmani")
 public class Amandman {
 
+    @XmlElement(name = "Stanje", namespace = "amandmani", required = true)
+    protected String stanje;
     @XmlElement(name = "Kontekst", namespace = "amandmani", required = true)
     protected Amandman.Kontekst kontekst;
     @XmlElement(name = "Operacija", namespace = "amandmani", required = true)
@@ -75,8 +78,30 @@ public class Amandman {
     protected Long id;
     @XmlAttribute(name = "Ko_dodaje")
     protected String koDodaje;
-    @XmlAttribute(name = "Stanje")
-    protected String stanje;
+
+    /**
+     * Gets the value of the stanje property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStanje() {
+        return stanje;
+    }
+
+    /**
+     * Sets the value of the stanje property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStanje(String value) {
+        this.stanje = value;
+    }
 
     /**
      * Gets the value of the kontekst property.
@@ -196,30 +221,6 @@ public class Amandman {
      */
     public void setKoDodaje(String value) {
         this.koDodaje = value;
-    }
-
-    /**
-     * Gets the value of the stanje property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStanje() {
-        return stanje;
-    }
-
-    /**
-     * Sets the value of the stanje property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStanje(String value) {
-        this.stanje = value;
     }
 
 

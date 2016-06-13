@@ -5,6 +5,7 @@
     <xs:element name="Pravni_akt">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Stanje" type="xs:string" minOccurs="1"/>
                 <xs:element minOccurs="0" name="Preambula">
                     <xs:complexType mixed="true">
                         <xs:sequence maxOccurs="unbounded" minOccurs="0">
@@ -23,7 +24,6 @@
                 <xs:element name="Mesto_donosenja_propisa" type="xs:string"/>
                 <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
             </xs:sequence>
-            <xs:attribute name="Stanje" type="xs:string"/>
             <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
     </xs:element>

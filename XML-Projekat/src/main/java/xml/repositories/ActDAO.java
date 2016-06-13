@@ -55,4 +55,17 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
         return aktovi;
     }
+
+    @Override
+    public void updateActState(Long id) throws IOException {
+        StringBuilder query = new StringBuilder();
+        query
+                .append("declare namespace ns = ")
+                .append("\"")
+                .append(Constants.ActNamespace)
+                .append("\";\n")
+                .append("return update value collection(\"/predlozeniAkati\")/ns:Pravni_akt[@Id = 50]/@Stanje with 'Usvojen'");
+
+        execQuery(query.toString());
+    }
 }
