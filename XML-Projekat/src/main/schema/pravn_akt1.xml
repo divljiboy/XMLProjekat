@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akt:Pravni_akt xmlns:akt="aktovi"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="aktovi file:/C:/Users/Home/Desktop/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd" Stanje="jBHZXuap6y" Id="1209917268">
+    <akt:Preambula>
+        <akt:Reference ref_akt="AOzTJQAkVgfj" ref_clan="-1331725800" ref_stav="-330735633" ref_tacka="1276222651">XhY0U4-.MVIK2XgQ3X1</akt:Reference>
+        <akt:Reference ref_akt="iVyI-1iKQHyG" ref_clan="811790162" ref_stav="2045680250" ref_tacka="-1767270566">BfPtx1_</akt:Reference>
+    </akt:Preambula>
+    <akt:Naziv>GDYpYMoK2W7iAIjj</akt:Naziv>
+    <akt:Glavni_deo>
+        <akt:Deo Redni_broj="Kvc9f5DZ" Naziv="mZoZWBozTDs-uRQ9X3-wqrWw1G" Id="1276366245">
+            <akt:Odeljak Naziv="eb2K_hb0Emd" Id="-452295783">
+                <akt:Clan Broj_clana="469121316" Naziv="Bs4LwP.A-k3qhflLUBVqFPxNa3YI">
+                    <akt:Stav Id="-1616871586">
+                        <akt:Alineja>hmpxf0sxVT_N_AWt1H_Cn2c-3SSvrp</akt:Alineja>
+                        <akt:Alineja>u.2PqZkaxUa</akt:Alineja>
+                        <akt:Tacka broj="1222772957">
+                            <akt:Alineja>vYOd4EyBNvzeRSWOG</akt:Alineja>
+                            <akt:Alineja>EFtiG2xMqu</akt:Alineja>
+                            <akt:Podtacka broj="718518930">
+                                <akt:Alineja>E8drfKD0SdaCShAhsI9aXj_wjAC6</akt:Alineja>
+                                <akt:Alineja>ZA5TCDjNoXyR94lHvD6m_</akt:Alineja>
+                                <akt:Alineja>GOgn</akt:Alineja>
+                                <akt:Alineja>VGwrzfX9pP8h-eSBGbnNAnqf7spT</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1787981918">
+                                <akt:Alineja>Q0e4dMl5VGpbQTu5Ghtg</akt:Alineja>
+                                <akt:Alineja>QfQMlhV1bkckT1</akt:Alineja>
+                                <akt:Alineja>yNa5Bo</akt:Alineja>
+                                <akt:Alineja>Z.4DAGP3G</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1149847195">
+                            <akt:Alineja>AvejXtKj0JS.vhRAjmNV_.bcKDMt</akt:Alineja>
+                            <akt:Alineja>VGxFngZjqh</akt:Alineja>
+                            <akt:Podtacka broj="1811108562">
+                                <akt:Alineja>op3segd_</akt:Alineja>
+                                <akt:Alineja>x2gjtWZp</akt:Alineja>
+                                <akt:Alineja>Mwv</akt:Alineja>
+                                <akt:Alineja>ez6I</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="2089444123">
+                                <akt:Alineja>DhuujMWDPROLTNmJ</akt:Alineja>
+                                <akt:Alineja>woTTO5qPpl2txWwoMoSUmsbA</akt:Alineja>
+                                <akt:Alineja>ZX</akt:Alineja>
+                                <akt:Alineja>uSs.y_wWeU_1</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="1047202223">
+                        <akt:Alineja>dQN.7wJz4WEjbe</akt:Alineja>
+                        <akt:Alineja>Aps.8_</akt:Alineja>
+                        <akt:Reference ref_akt="GsICl_26KXtRnLAMXW1" ref_clan="-1051053832" ref_stav="1427015517" ref_tacka="-780001788">K0YW.Zbe</akt:Reference>
+                        <akt:Reference ref_akt="FwHTN-LwN9ukonfFgZveF3t" ref_clan="1106794808" ref_stav="1662359547" ref_tacka="1037910146">hd3p5eSnELCmb0bRAVrH5KeZoGI</akt:Reference>
+                    </akt:Stav>
+                    <akt:Stav Id="-641146024">
+                        <akt:Alineja>I8t</akt:Alineja>
+                        <akt:Alineja>F</akt:Alineja>
+                        <akt:Reference ref_akt="V_eQk" ref_clan="2059757173" ref_stav="-1116002446" ref_tacka="-1426710138">QqHuecJC_5</akt:Reference>
+                        <akt:Reference ref_akt="Lk0u_zXaumfO0fkE.d6bRd3CM_HeoO" ref_clan="1012459010" ref_stav="1571211199" ref_tacka="116793770">TK-P7-MkT2_8kz2CM8PayCI9</akt:Reference>
+                    </akt:Stav>
+                    <akt:Stav Id="953689258">
+                        <akt:Reference ref_akt="pJ" ref_clan="1884181409" ref_stav="-1367552055" ref_tacka="438053636">MsploLTRS2fNG0e8ntZ2Q.o0xa</akt:Reference>
+                        <akt:Reference ref_akt="XL9_VQvZLtNyf" ref_clan="-1769185831" ref_stav="-334602256" ref_tacka="-1848490285">kCrvpa3BQOxVy.eUrJHvbYvJWMv</akt:Reference>
+                        <akt:Alineja>K7fP8MthCLU__JCW</akt:Alineja>
+                        <akt:Alineja>xUGNDGDTAOomR</akt:Alineja>
+                    </akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="599280019" Naziv="cv7ibbFX3xna">
+                    <akt:Stav Id="-1811219684">
+                        <akt:Alineja>L</akt:Alineja>
+                        <akt:Alineja>w3X9.ih</akt:Alineja>
+                        <akt:Reference ref_akt="NG.EJ4ziFOKNdjNfxVgDY" ref_clan="-1183246276" ref_stav="1205434953" ref_tacka="-135809593">yVM0p</akt:Reference>
+                        <akt:Reference ref_akt="RhdZNv9p_3k" ref_clan="1450531252" ref_stav="-755286490" ref_tacka="1274857520">O</akt:Reference>
+                    </akt:Stav>
+                    <akt:Stav Id="-4977188">
+                        <akt:Reference ref_akt="YeQHOw65GBHAwFwvL-5127lpDNP" ref_clan="-1381147686" ref_stav="1193663894" ref_tacka="1081203369">fGDmOTgs9U3IEvt7PwrVoJZG_junlf</akt:Reference>
+                        <akt:Reference ref_akt="stX.y6BsZx" ref_clan="1871496289" ref_stav="-658376571" ref_tacka="-1509623860">cwcKYuZcnA</akt:Reference>
+                        <akt:Alineja>U1</akt:Alineja>
+                        <akt:Alineja>ytu_Oysnnw2I6IY0iNrp0efpUI30n</akt:Alineja>
+                    </akt:Stav>
+                    <akt:Stav Id="-662448910">
+                        <akt:Alineja>LsIT6PVE_Bx</akt:Alineja>
+                        <akt:Alineja>v8eYcgwao5mENZvjTpb7</akt:Alineja>
+                        <akt:Tacka broj="575304782">
+                            <akt:Alineja>LIQVPGK74z</akt:Alineja>
+                            <akt:Alineja>NS3oVlEiLKpACqyBxRGRz</akt:Alineja>
+                            <akt:Alineja>Ve9vHPJ9RsKX_Lm2WtUbVSce9SjZyv</akt:Alineja>
+                            <akt:Alineja>BU1hnNE</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1881670665">
+                            <akt:Alineja>KDkAeX8lGyw82mJZMEOcrQ5.v4</akt:Alineja>
+                            <akt:Alineja>aJj-Mdfre4XYumRtN</akt:Alineja>
+                            <akt:Podtacka broj="1509665827">
+                                <akt:Alineja>K5jyZm8oOQEj2bRwFq</akt:Alineja>
+                                <akt:Alineja>sK80hCZdkvMVOLr</akt:Alineja>
+                                <akt:Alineja>RfoKmh6</akt:Alineja>
+                                <akt:Alineja>hJZ1B</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="930892261">
+                                <akt:Alineja>QIY</akt:Alineja>
+                                <akt:Alineja>DnlX.B8MgnoMMWcZ9PL.JbJeEsCqqk</akt:Alineja>
+                                <akt:Alineja>N</akt:Alineja>
+                                <akt:Alineja>Jku4irj9F-7oj9j3w</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="325718169">
+                        <akt:Tacka broj="852430526">
+                            <akt:Podtacka broj="390918336">
+                                <akt:Alineja>WvStioVb2BFyC2ml0kmI2IfMIi</akt:Alineja>
+                                <akt:Alineja>_my.5QN3AyVZjdRsCV.n7RLYmFD7</akt:Alineja>
+                                <akt:Alineja>BKpwNXfZb_huO0gmsd</akt:Alineja>
+                                <akt:Alineja>KL40</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="284642482">
+                                <akt:Alineja>yLa</akt:Alineja>
+                                <akt:Alineja>jA8N6vGWifIKc32GBg</akt:Alineja>
+                                <akt:Alineja>w.MSE-7XY</akt:Alineja>
+                                <akt:Alineja>cJ7Fcfsm6Lu5VLJOEWczJIuL</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>V5I</akt:Alineja>
+                            <akt:Alineja>zsD78bnZIS7syVfF6mY6fEV8</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="197224866">
+                            <akt:Alineja>JGE.UOmfeCqR3Gv0ahQMW06K</akt:Alineja>
+                            <akt:Alineja>EhA885DUEcicY8PW</akt:Alineja>
+                            <akt:Podtacka broj="1107257979">
+                                <akt:Alineja>AjUDxk4vuNvWNPbmb.-1</akt:Alineja>
+                                <akt:Alineja>DiDj5eLeQZuIM9q7LC</akt:Alineja>
+                                <akt:Alineja>x8-lL_ZhST.mmbmigpzK-gIRRRP</akt:Alineja>
+                                <akt:Alineja>ZV2FkxWUn_KXfEf9KRJ52UnU0e1K5</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1911940762">
+                                <akt:Alineja>Q</akt:Alineja>
+                                <akt:Alineja>A6v6pe</akt:Alineja>
+                                <akt:Alineja>lFEUCv.WBIqJtFn</akt:Alineja>
+                                <akt:Alineja>g1tig1ck2LaDL</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Reference ref_akt="Kb6ahQmzoAmwH.k03" ref_clan="-1873227536" ref_stav="-407729688" ref_tacka="171456080">notARiXRJNeSBGQzNihmKrLQR</akt:Reference>
+                        <akt:Reference ref_akt="DjGaGm8mgnKZtR9mt1g" ref_clan="1418593815" ref_stav="-1876735146" ref_tacka="-540760653">ZLT</akt:Reference>
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+            <akt:Odeljak Naziv="HnBhiO8oNRVH.AJE" Id="-1817299904">
+                <akt:Clan Broj_clana="138566724" Naziv="uBYXKORZE0g7dqi">
+                    <akt:Stav Id="740328062">
+                        <akt:Tacka broj="1892842828">
+                            <akt:Podtacka broj="272325583">
+                                <akt:Alineja>FYSvV6N</akt:Alineja>
+                                <akt:Alineja>qRJlf-OUac</akt:Alineja>
+                                <akt:Alineja>A</akt:Alineja>
+                                <akt:Alineja>n-krN7FE425</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="913435501">
+                                <akt:Alineja>Z6jr_ipUmyzi8tbyxZ</akt:Alineja>
+                                <akt:Alineja>eo5</akt:Alineja>
+                                <akt:Alineja>pe-A90my02p2FBrt4H4l6WkLkbq</akt:Alineja>
+                                <akt:Alineja>ErseDWB3vOBxnt8qjnRFii3O9lbRnQ</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>QIwQETlNd1IbNli</akt:Alineja>
+                            <akt:Alineja>e.bO2kymQFXVV0WjtLdeA0HOyErAb</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="2028320467">
+                            <akt:Alineja>Gxo9OOLkFEqPrTjEGZxr4iwnQ</akt:Alineja>
+                            <akt:Alineja>Vn0DLwbomHyiA8k</akt:Alineja>
+                            <akt:Alineja>nmBH5vs9Pl.O</akt:Alineja>
+                            <akt:Alineja>_fbp1FpEgj25KKSOqbwk</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Alineja>xUCU9p87WJv9lU</akt:Alineja>
+                        <akt:Alineja>x3S4AC6sT-jJo7tqF9-ncCEriWR.</akt:Alineja>
+                    </akt:Stav>
+                    <akt:Stav Id="-150169268">
+                        <akt:Reference ref_akt="m0M" ref_clan="546591996" ref_stav="617297676" ref_tacka="799713986">_rzD</akt:Reference>
+                        <akt:Reference ref_akt="CeMHPop8VSLWD.huj2kHDNc-Oeto" ref_clan="725134091" ref_stav="-1515706894" ref_tacka="1048707365">PKOurW4XXjCHtO2LDfGoKygQCdhmQp</akt:Reference>
+                        <akt:Tacka broj="929283888">
+                            <akt:Podtacka broj="134228166">
+                                <akt:Alineja>VBE</akt:Alineja>
+                                <akt:Alineja>LlEX_vh.HIu1ro5dQ_Zc65OuL2JxO</akt:Alineja>
+                                <akt:Alineja>RqF0Zc9</akt:Alineja>
+                                <akt:Alineja>D</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1332111976">
+                                <akt:Alineja>ypvmeAV</akt:Alineja>
+                                <akt:Alineja>P2</akt:Alineja>
+                                <akt:Alineja>HgL</akt:Alineja>
+                                <akt:Alineja>VEJYEN2xbzy5</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="690775899">
+                                <akt:Alineja>PUh-_</akt:Alineja>
+                                <akt:Alineja>jqw</akt:Alineja>
+                                <akt:Alineja>EU6AothTnJDI</akt:Alineja>
+                                <akt:Alineja>cmqsZUFKT2DAQWkB6l14Lgsn</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="983217099">
+                                <akt:Alineja>s_snsk5_bHLN</akt:Alineja>
+                                <akt:Alineja>cAl3PIBx71yHlw4aVQChWvHM3mV</akt:Alineja>
+                                <akt:Alineja>pVVMl2xbV.mmeqNsQ</akt:Alineja>
+                                <akt:Alineja>wFE4</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="277559367">
+                            <akt:Alineja>ZycTDAj</akt:Alineja>
+                            <akt:Alineja>e-wvRtPPI-d7BwSj4nFtitqR</akt:Alineja>
+                            <akt:Podtacka broj="1389545199">
+                                <akt:Alineja>B6jAibFM9lQYcROL7eqQY</akt:Alineja>
+                                <akt:Alineja>KKcu-</akt:Alineja>
+                                <akt:Alineja>ZyQ5I9cv_TBY1</akt:Alineja>
+                                <akt:Alineja>laOLow6d3uJUou3xqULt4OMykFDxX1</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1920118197">
+                                <akt:Alineja>whd_</akt:Alineja>
+                                <akt:Alineja>HtR.vG</akt:Alineja>
+                                <akt:Alineja>cvysAP56JPfabV</akt:Alineja>
+                                <akt:Alineja>B_QpK.vuW7OYelgi8</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="2058774898">
+                        <akt:Tacka broj="455915076">
+                            <akt:Podtacka broj="207600977">
+                                <akt:Alineja>LfU3SNhFBy1upvTxzGp</akt:Alineja>
+                                <akt:Alineja>qqNOgYHoY_EVMGxYT30-GPCQVX4Qo</akt:Alineja>
+                                <akt:Alineja>m</akt:Alineja>
+                                <akt:Alineja>x</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="324508044">
+                                <akt:Alineja>LcnEjytUD3cDpWJPkIqJPX</akt:Alineja>
+                                <akt:Alineja>I5dV2E_G1giuv_TJ1DTZ07</akt:Alineja>
+                                <akt:Alineja>e8J3MNYBSNRdz3IoZwqb</akt:Alineja>
+                                <akt:Alineja>uGGlvf4MLlz-m2TNd5Q</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>zk</akt:Alineja>
+                            <akt:Alineja>nUVwbj7p8</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="557800121">
+                            <akt:Podtacka broj="1070380774">
+                                <akt:Alineja>GzyJuxg2M9k</akt:Alineja>
+                                <akt:Alineja>p-aoNbcL1iF0yULkxH0fMQw01</akt:Alineja>
+                                <akt:Alineja>Y.kl3b4</akt:Alineja>
+                                <akt:Alineja>Hc90ZWs2yvbbFxLW7v66wbg</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="572647084">
+                                <akt:Alineja>JVLcCfz</akt:Alineja>
+                                <akt:Alineja>_qIUTz8dHG4wrWe0KGTWZNTtmiAl</akt:Alineja>
+                                <akt:Alineja>FDSvLPJP</akt:Alineja>
+                                <akt:Alineja>NdCCUQaZLvL</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="822288559">
+                                <akt:Alineja>vzYgMv_5O1d-fKL5xBVmkuf</akt:Alineja>
+                                <akt:Alineja>WK2Q</akt:Alineja>
+                                <akt:Alineja>suJhWeqSEz8c2ixo2ies.GrJ3Os</akt:Alineja>
+                                <akt:Alineja>nmO-Ukeh.0GtM.PiICEybQJT</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="2093116369">
+                                <akt:Alineja>dxDqvYGdi6G1zMsaaGAlJ_MULr_Uv</akt:Alineja>
+                                <akt:Alineja>BOseAilU</akt:Alineja>
+                                <akt:Alineja>iigJ9ZkaE8sh2NzU0fU</akt:Alineja>
+                                <akt:Alineja>iGKic4F7p0uQyKSjBinLcLP3</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Alineja>g</akt:Alineja>
+                        <akt:Alineja>JAe5Z3abXb</akt:Alineja>
+                    </akt:Stav>
+                    <akt:Stav Id="1994420560">
+                        <akt:Tacka broj="2035859716">
+                            <akt:Alineja>FB</akt:Alineja>
+                            <akt:Alineja>LoPhy9QGmy2k</akt:Alineja>
+                            <akt:Alineja>fn0AqKYpms.MESB6am8G.DCJC</akt:Alineja>
+                            <akt:Alineja>wQwE45XXBexxYcVzro17kGQ5Zy</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1255876436">
+                            <akt:Podtacka broj="478941068">
+                                <akt:Alineja>g-pHRphEk</akt:Alineja>
+                                <akt:Alineja>MOBqqaie8Cw6N</akt:Alineja>
+                                <akt:Alineja>Fb0cUCrE_yf1G.YBa8pu2o5aEFw</akt:Alineja>
+                                <akt:Alineja>yvp</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="32020579">
+                                <akt:Alineja>ytSn3EW6T</akt:Alineja>
+                                <akt:Alineja>xsyivT2IUV</akt:Alineja>
+                                <akt:Alineja>LX.ugSrDWTPHHz_o07N</akt:Alineja>
+                                <akt:Alineja>LnBuY-Xn83</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>eaolSpzFOwyV9u88tFd6HgQC_1eWC</akt:Alineja>
+                            <akt:Alineja>bJj0IT7Q3y6</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Reference ref_akt="p92USHjnBXlWG3BNqsauMZFr" ref_clan="1078989061" ref_stav="-2074787247" ref_tacka="-378241688">ep2P5Wm3iI_5tlNG4g1HG8WP4WemJd</akt:Reference>
+                        <akt:Reference ref_akt="IM" ref_clan="-321994461" ref_stav="1993535899" ref_tacka="264757275">R7u4FC.ayymYaMZ</akt:Reference>
+                    </akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="639577706" Naziv="wzKLZZq">
+                    <akt:Stav Id="-693784000">
+                        <akt:Tacka broj="13629487">
+                            <akt:Podtacka broj="1232826852">
+                                <akt:Alineja>tuBTEeGjqLwg3</akt:Alineja>
+                                <akt:Alineja>rgr8</akt:Alineja>
+                                <akt:Alineja>Hzrqy9oY2-9ohygeF</akt:Alineja>
+                                <akt:Alineja>RKT2POpn6eWI9PdGM</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1957497780">
+                                <akt:Alineja>UpLYWz885gPeIBODZa-qrZErk36Cc</akt:Alineja>
+                                <akt:Alineja>cWhZUEsUGmsaL4BFNpx54a8</akt:Alineja>
+                                <akt:Alineja>crCJ8LlWSPIS3wuQkPKe</akt:Alineja>
+                                <akt:Alineja>Ai.WwHOBZxST4r6ig4</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>W_cO1ANvUsIwIEU2ox</akt:Alineja>
+                            <akt:Alineja>Du5GEZYATLp.QIgy6</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="704142018">
+                            <akt:Alineja>Lbr_-weKbIkjpTFI</akt:Alineja>
+                            <akt:Alineja>MkGFZnm7Y2.PX1tLk1f-ZN</akt:Alineja>
+                            <akt:Podtacka broj="415498688">
+                                <akt:Alineja>IQ1YaTd1oTaLKPj5F5y</akt:Alineja>
+                                <akt:Alineja>YkB6FVEWHW-3N5Vb_NrmNqE3jPk-Bz</akt:Alineja>
+                                <akt:Alineja>fA2SOnj1CvPZMgV-Okn</akt:Alineja>
+                                <akt:Alineja>w6tjIcHQHCM</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1646749173">
+                                <akt:Alineja>rZxkYe1h9PAIlW</akt:Alineja>
+                                <akt:Alineja>L9a5IziLZ8qx4ua04X0wB.f8V9sc</akt:Alineja>
+                                <akt:Alineja>ANOb7BbVsKWqPcB</akt:Alineja>
+                                <akt:Alineja>jIQSdkJFy1FggK85n6s5vVU</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1826169050">
+                            <akt:Alineja>X2mXxHwS_C</akt:Alineja>
+                            <akt:Alineja>g9Lk</akt:Alineja>
+                            <akt:Alineja>GNCE2wjP</akt:Alineja>
+                            <akt:Alineja>DOh7q0.oDFl5aC4x5tzQDd</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1946164384">
+                            <akt:Alineja>pko-CYQR6ris7SI1U2</akt:Alineja>
+                            <akt:Alineja>OtCA6L</akt:Alineja>
+                            <akt:Podtacka broj="1184551068">
+                                <akt:Alineja>Zsgyz</akt:Alineja>
+                                <akt:Alineja>f6aQQy6phc192epokxx8d</akt:Alineja>
+                                <akt:Alineja>eZm2VLk</akt:Alineja>
+                                <akt:Alineja>V73OGya</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="795500882">
+                                <akt:Alineja>chG</akt:Alineja>
+                                <akt:Alineja>RZ6JYnKaKxu4U1mQB</akt:Alineja>
+                                <akt:Alineja>bRhKLK6XXV37Q</akt:Alineja>
+                                <akt:Alineja>YNvDj8Qp.LTN4_dXl</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="-1303653497">
+                        <akt:Tacka broj="1231825412">
+                            <akt:Podtacka broj="448681657">
+                                <akt:Alineja>G</akt:Alineja>
+                                <akt:Alineja>QO0i2X7f8R.OZCo4IPAflcx9ogU</akt:Alineja>
+                                <akt:Alineja>HZqXY8M_7T.F</akt:Alineja>
+                                <akt:Alineja>ryrRL</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="2034364588">
+                                <akt:Alineja>hazuplZ_hOt.V</akt:Alineja>
+                                <akt:Alineja>g0ChQ7LB05.5j3zkSWI-ib80b4</akt:Alineja>
+                                <akt:Alineja>G2KMcVRfckkyxlo4</akt:Alineja>
+                                <akt:Alineja>TcuDqujElr-6PN4.fEe0RZ0aL</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="950538973">
+                                <akt:Alineja>J.ZwhVPnEd</akt:Alineja>
+                                <akt:Alineja>tUUi-6YaH1i</akt:Alineja>
+                                <akt:Alineja>fQvOI-cGZL2HFcYNlLEhWNr</akt:Alineja>
+                                <akt:Alineja>Ohi7t3X94UG0</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1317776578">
+                                <akt:Alineja>nN</akt:Alineja>
+                                <akt:Alineja>rOxS6mAKcmWZK</akt:Alineja>
+                                <akt:Alineja>QqTE_0_qDNhJ5CT6.WT</akt:Alineja>
+                                <akt:Alineja>HB</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="999645282">
+                            <akt:Alineja>L3y5Egf6Mb</akt:Alineja>
+                            <akt:Alineja>PznitOsdMstJKE</akt:Alineja>
+                            <akt:Podtacka broj="2023441642">
+                                <akt:Alineja>mEHBde</akt:Alineja>
+                                <akt:Alineja>h.6k.kAZ</akt:Alineja>
+                                <akt:Alineja>T7cVIejoHm</akt:Alineja>
+                                <akt:Alineja>KwETJGqr-0usM9v</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1368509523">
+                                <akt:Alineja>nOELUqjd0Ss4opWJTw</akt:Alineja>
+                                <akt:Alineja>R.yt_RRzyFb5hld185vC</akt:Alineja>
+                                <akt:Alineja>cFDuj7UKCc</akt:Alineja>
+                                <akt:Alineja>OiDSMdDnDOirtKCZf6UF</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="655374909">
+                            <akt:Alineja>sZC.BoaLgk</akt:Alineja>
+                            <akt:Alineja>deT1Cun7TLxD</akt:Alineja>
+                            <akt:Alineja>SVGTu</akt:Alineja>
+                            <akt:Alineja>hyac-</akt:Alineja>
+                        </akt:Tacka>
+                        <akt:Tacka broj="333557421">
+                            <akt:Alineja>b9B_gP54ASwdrcAW_0bi2IQshE</akt:Alineja>
+                            <akt:Alineja>ND0.wG</akt:Alineja>
+                            <akt:Podtacka broj="835101044">
+                                <akt:Alineja>DdWc78BM9</akt:Alineja>
+                                <akt:Alineja>Fpb-Bl.FE8GUxxvYUc</akt:Alineja>
+                                <akt:Alineja>HuWkSdCJhekPvA</akt:Alineja>
+                                <akt:Alineja>xPuo2d9dT</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1559839076">
+                                <akt:Alineja>cRSug</akt:Alineja>
+                                <akt:Alineja>giKgcAaCtmWjabN8Gf6pcP_</akt:Alineja>
+                                <akt:Alineja>Vjr-nAMON8W6</akt:Alineja>
+                                <akt:Alineja>KY3yI_q6NMDyMfAJdV5</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="617969401">
+                        <akt:Reference ref_akt="Ibr7OfRddk9sAHw" ref_clan="1529809419" ref_stav="754170552" ref_tacka="-393144224">bh.jbngOeYP</akt:Reference>
+                        <akt:Reference ref_akt="hxrblxsqrxGtwk7Kw82ea" ref_clan="1738295288" ref_stav="2049084505" ref_tacka="84460855">dGq7fgByPi0ZRr22JFtfHiZ</akt:Reference>
+                        <akt:Reference ref_akt="T2k..AFkmmFOuhyGYsAD8Tbsyr2MD" ref_clan="721122218" ref_stav="484418764" ref_tacka="1984525147">dmA1LXNuoD1MUMU9H</akt:Reference>
+                        <akt:Reference ref_akt="wpv" ref_clan="410638640" ref_stav="-1335484056" ref_tacka="-1847432604">PFC</akt:Reference>
+                    </akt:Stav>
+                    <akt:Stav Id="-1596060422">
+                        <akt:Reference ref_akt="sKJOpvTX9hHrbv" ref_clan="1001836452" ref_stav="1176479616" ref_tacka="1879050214">ZZw5Ew8KD</akt:Reference>
+                        <akt:Reference ref_akt="MLAnG8EnGph5" ref_clan="309904580" ref_stav="1596003707" ref_tacka="399500194">hdAVnONfBmpYw8</akt:Reference>
+                        <akt:Tacka broj="1686401781">
+                            <akt:Podtacka broj="1853954720">
+                                <akt:Alineja>Z2d2S3Y3G0KFGivA-hCUKO7lnV</akt:Alineja>
+                                <akt:Alineja>Z-y35JbdYGK</akt:Alineja>
+                                <akt:Alineja>I4Z5cYw0ecErbNRLW</akt:Alineja>
+                                <akt:Alineja>W</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="267038707">
+                                <akt:Alineja>NEmBD_bTQ6S9p-u2yWVETX7N29</akt:Alineja>
+                                <akt:Alineja>at6x1F2sArH2k5Hi</akt:Alineja>
+                                <akt:Alineja>XZ41GWH</akt:Alineja>
+                                <akt:Alineja>Wbk.nZAl8RzbkDkeM9Sq</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="33311053">
+                                <akt:Alineja>aSEno7f4BCeUfldApa1vho8</akt:Alineja>
+                                <akt:Alineja>lyjJBmeLAQZqw.IvQ_0X3cFk.</akt:Alineja>
+                                <akt:Alineja>lIxQ0SqBfEcLBqm-JzjE2UhDUo6</akt:Alineja>
+                                <akt:Alineja>eAIA7YR5pEPu2b8uzEQwUny</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="447725422">
+                                <akt:Alineja>JARvA9</akt:Alineja>
+                                <akt:Alineja>O7OhGnNXA7JiFSf_h0q</akt:Alineja>
+                                <akt:Alineja>APq1nlWOJbey_mgdWGU_CcBm</akt:Alineja>
+                                <akt:Alineja>X5iRGKCwFOaXD.</akt:Alineja>
+                            </akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="1451024365">
+                            <akt:Podtacka broj="2084829227">
+                                <akt:Alineja>fztO2Lp</akt:Alineja>
+                                <akt:Alineja>Cn3BGMSBxmAm</akt:Alineja>
+                                <akt:Alineja>dk__GtRulCaPN2RyrsG_ns</akt:Alineja>
+                                <akt:Alineja>pwiuzBSfI</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Podtacka broj="1960767771">
+                                <akt:Alineja>o8EyZkxAPXTEvoAWcI4</akt:Alineja>
+                                <akt:Alineja>Z7ya5OfD</akt:Alineja>
+                                <akt:Alineja>l8o7rAYyWo-s97c2cQCHnw9.o</akt:Alineja>
+                                <akt:Alineja>aBo-rGhp</akt:Alineja>
+                            </akt:Podtacka>
+                            <akt:Alineja>RrtgIdyAE-UJ_oL</akt:Alineja>
+                            <akt:Alineja>BXmNV1Xqw253eKmUZev</akt:Alineja>
+                        </akt:Tacka>
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+        </akt:Deo>
+        <akt:Deo Redni_broj="A-sXxLUWjOZ7dnwkBRYCRufhPKf" Naziv="o8ddR" Id="152325300">
+            <akt:Clan Broj_clana="1164313483" Naziv="S_g8">
+                <akt:Stav Id="-1750138120">
+                    <akt:Tacka broj="904075197">
+                        <akt:Alineja>dtMdF8JEPXN9t5W2dFDG</akt:Alineja>
+                        <akt:Alineja>mQKSHf</akt:Alineja>
+                        <akt:Alineja>yNU53u</akt:Alineja>
+                        <akt:Alineja>I166fU6_c6FyvJevN</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="480480575">
+                        <akt:Podtacka broj="888898592">
+                            <akt:Alineja>oGmIO..8qAMxBEumdhHpW</akt:Alineja>
+                            <akt:Alineja>lXkLBctRPLud9M2lXMJeiCvIYuvSO</akt:Alineja>
+                            <akt:Alineja>UnmBQP</akt:Alineja>
+                            <akt:Alineja>tz.BhxGQ073UZLI6okpQqmMJO7Qc.</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="629676626">
+                            <akt:Alineja>zOmd.</akt:Alineja>
+                            <akt:Alineja>kaD9-IT8H649WLJHV4uevlUTY</akt:Alineja>
+                            <akt:Alineja>wxJ4PCUQ.NPL6HnhNeT-CKDZZZOJ</akt:Alineja>
+                            <akt:Alineja>dRq92CcnZKDKX4p</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="816048549">
+                            <akt:Alineja>WJSvh7nkL.RSMrv3</akt:Alineja>
+                            <akt:Alineja>WetpDXu0NXC_</akt:Alineja>
+                            <akt:Alineja>_AM5qNlljCBIuHEPa</akt:Alineja>
+                            <akt:Alineja>uGMTpLiVYqM</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="616674305">
+                            <akt:Alineja>wItmIjuU</akt:Alineja>
+                            <akt:Alineja>xWTsE_gzyj1wqKyVNaDgt</akt:Alineja>
+                            <akt:Alineja>EF-TP4OsNCNSmmp0e</akt:Alineja>
+                            <akt:Alineja>A6krqm.UfSyTOMQ4NoqCY8</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                    <akt:Alineja>Do94SU7Dgo8ZDLkY9bzE9t2Ph3</akt:Alineja>
+                    <akt:Alineja>PB-JeW23e2eFvl</akt:Alineja>
+                </akt:Stav>
+                <akt:Stav Id="-1935707618">
+                    <akt:Tacka broj="755941184">
+                        <akt:Podtacka broj="510176598">
+                            <akt:Alineja>q</akt:Alineja>
+                            <akt:Alineja>n_i060Ou.GxEdu3m5UzZ</akt:Alineja>
+                            <akt:Alineja>m3NDZ0mnN.9GijZS</akt:Alineja>
+                            <akt:Alineja>pRFGS1kFK-UU_g7iBI4hkcf</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="788109695">
+                            <akt:Alineja>vIynMXgagdeJlf6SKtUIR</akt:Alineja>
+                            <akt:Alineja>SD</akt:Alineja>
+                            <akt:Alineja>eh</akt:Alineja>
+                            <akt:Alineja>UKAkQ</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Alineja>R4S</akt:Alineja>
+                        <akt:Alineja>esFctmPt0WaK9v3bW-S</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="1250741542">
+                        <akt:Alineja>eh_hWBvrItrt1gep9g1MMt</akt:Alineja>
+                        <akt:Alineja>kwbcUPgxlm1kmjy3H3xpo</akt:Alineja>
+                        <akt:Podtacka broj="1893317870">
+                            <akt:Alineja>j_9NNjLOb0jFv_LxG_.zqTp9UG7DfW</akt:Alineja>
+                            <akt:Alineja>U30kTiyQax3viltqRa-3</akt:Alineja>
+                            <akt:Alineja>XN5jM6Ka2CHKQIDKhwlGQ1rwj.7fO</akt:Alineja>
+                            <akt:Alineja>_RiP9dpbs37WnwmODkho</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1557445152">
+                            <akt:Alineja>k_vzzVyBDubPp5zVZk6</akt:Alineja>
+                            <akt:Alineja>MVeBj5nB9i</akt:Alineja>
+                            <akt:Alineja>ru0QkZC-Cz9gPF_u</akt:Alineja>
+                            <akt:Alineja>n1pIbcPr</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                    <akt:Tacka broj="1385824305">
+                        <akt:Podtacka broj="751716055">
+                            <akt:Alineja>I36s5hpvlGPu</akt:Alineja>
+                            <akt:Alineja>YK-V-NWu</akt:Alineja>
+                            <akt:Alineja>e24</akt:Alineja>
+                            <akt:Alineja>pc1x8W18YUjsJvatJB2X9J6OuVsick</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="270573619">
+                            <akt:Alineja>tHPVDyqkTLeYP0w_axPQQ-bCMCl_m</akt:Alineja>
+                            <akt:Alineja>CQvNuwGt7Qv3mREFbWjiQ-rz2GQg</akt:Alineja>
+                            <akt:Alineja>G2StFFVP8IFGn5Tvu18aiqb.</akt:Alineja>
+                            <akt:Alineja>GupSukd4MT7uAO3eXCQm5XxJ2gO2</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Alineja>OXWENyTgn2</akt:Alineja>
+                        <akt:Alineja>AZU25p</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="376556654">
+                        <akt:Podtacka broj="1328063779">
+                            <akt:Alineja>HgHQPEtP8.VANab6dp9biXdCyi</akt:Alineja>
+                            <akt:Alineja>PgMIAFYfCVGU5akFF-QjnX</akt:Alineja>
+                            <akt:Alineja>gqFNRiYCc3sHAOg</akt:Alineja>
+                            <akt:Alineja>DUl</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1441072614">
+                            <akt:Alineja>FAEdl1xCVoW8N58eBeUS3uyN3DWm</akt:Alineja>
+                            <akt:Alineja>te</akt:Alineja>
+                            <akt:Alineja>BmHUrNBhQL2iun1uasF.</akt:Alineja>
+                            <akt:Alineja>oIV</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1457608514">
+                            <akt:Alineja>FtvAt</akt:Alineja>
+                            <akt:Alineja>ZQUWWaDPihmFYES</akt:Alineja>
+                            <akt:Alineja>_P6fYOosU_1q</akt:Alineja>
+                            <akt:Alineja>UFW</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="605312848">
+                            <akt:Alineja>Kwn1IWMxNZXi334PJB</akt:Alineja>
+                            <akt:Alineja>Z0HIMqPGGHbyIYuJ_P</akt:Alineja>
+                            <akt:Alineja>A.</akt:Alineja>
+                            <akt:Alineja>a</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                </akt:Stav>
+                <akt:Stav Id="2037503376">
+                    <akt:Reference ref_akt="vIAeSap20Egja7pYMQiVYUnem.2uSB" ref_clan="763116612" ref_stav="598219123" ref_tacka="-958872533">xyQ9CVkd0</akt:Reference>
+                    <akt:Reference ref_akt="W4HgIS-Bwsav9lzGq0stIA" ref_clan="-32372687" ref_stav="-1368289586" ref_tacka="-1344420179">RXbMs9</akt:Reference>
+                    <akt:Tacka broj="1269021501">
+                        <akt:Alineja>ZUTU</akt:Alineja>
+                        <akt:Alineja>xDl3U</akt:Alineja>
+                        <akt:Podtacka broj="1533281182">
+                            <akt:Alineja>f8Fq2g4A.z1dj7K1Oqtfmvb0adh</akt:Alineja>
+                            <akt:Alineja>c0b5dC-EqdOwB</akt:Alineja>
+                            <akt:Alineja>qK5cIrb2JiqxWTCP</akt:Alineja>
+                            <akt:Alineja>ol9q3FIw3M-Vf</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="531645021">
+                            <akt:Alineja>JerumK1JNgVhrxroywS.H_MFIUKUF</akt:Alineja>
+                            <akt:Alineja>dYaVplE</akt:Alineja>
+                            <akt:Alineja>RsnFg_UnLX2</akt:Alineja>
+                            <akt:Alineja>DzVVH</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                    <akt:Tacka broj="1233523493">
+                        <akt:Alineja>DTQOxDm7r_h1.V</akt:Alineja>
+                        <akt:Alineja>m7FlGw</akt:Alineja>
+                        <akt:Alineja>V-J1</akt:Alineja>
+                        <akt:Alineja>QoZbxWxO46NQLAE7</akt:Alineja>
+                    </akt:Tacka>
+                </akt:Stav>
+                <akt:Stav Id="1589567356">
+                    <akt:Reference ref_akt="AaYJqRPcU" ref_clan="1785132334" ref_stav="-1073457017" ref_tacka="1310604670">EBNirEJtrPNfWDBH5yr8EGpelSEO</akt:Reference>
+                    <akt:Reference ref_akt="eoMH2O0e_Hg_DkSJS8gqsm.tuA" ref_clan="1572909623" ref_stav="-1386921759" ref_tacka="-183301542">tsgXdY67HK1zWExfn8FQtr2AwMnbm4</akt:Reference>
+                    <akt:Tacka broj="2093574037">
+                        <akt:Alineja>ePo89INlJ29em00cziovLJWQVkY</akt:Alineja>
+                        <akt:Alineja>YTDHmB8KPMzms5rc</akt:Alineja>
+                        <akt:Podtacka broj="492554832">
+                            <akt:Alineja>q8Tjw47gYyMUGcJZ1EW</akt:Alineja>
+                            <akt:Alineja>i5WY</akt:Alineja>
+                            <akt:Alineja>EVi</akt:Alineja>
+                            <akt:Alineja>gRPMO7-I0-gDz</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="842250984">
+                            <akt:Alineja>slRf2dmuUGDdQeMeIopLz</akt:Alineja>
+                            <akt:Alineja>nFuz-oE9d9C0d7hG1xQSUcT</akt:Alineja>
+                            <akt:Alineja>alLLTDyr</akt:Alineja>
+                            <akt:Alineja>YJwjWcx_c2a86d35lF</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                    <akt:Tacka broj="449157921">
+                        <akt:Podtacka broj="1495686234">
+                            <akt:Alineja>oCaD</akt:Alineja>
+                            <akt:Alineja>LPDEIwET7vDnS2y6</akt:Alineja>
+                            <akt:Alineja>ACi-KgORRK</akt:Alineja>
+                            <akt:Alineja>y.tN0y.8pOq9</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="992848749">
+                            <akt:Alineja>_Ut66ju6lj386z4B4eZVLW2uxBZ-Hc</akt:Alineja>
+                            <akt:Alineja>fUG3sAj1nJMz1Pxj_</akt:Alineja>
+                            <akt:Alineja>Bz52bd.DkhWl17NNE5wCRYUOugZC4F</akt:Alineja>
+                            <akt:Alineja>xL-o5Y.tR0GQMgY2kIDtg</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1199143216">
+                            <akt:Alineja>Ii.uwswUzo1WR</akt:Alineja>
+                            <akt:Alineja>UlEpb7ON</akt:Alineja>
+                            <akt:Alineja>mskelodS1iw14AT-17cnXxnMc3.W</akt:Alineja>
+                            <akt:Alineja>qchBXFVQz8r7M</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1848596805">
+                            <akt:Alineja>Y_8p3kkJgu.Yzzhg_YAFhZCA</akt:Alineja>
+                            <akt:Alineja>KE21S</akt:Alineja>
+                            <akt:Alineja>eqol5GT9</akt:Alineja>
+                            <akt:Alineja>DRLGSaUVtP.</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                </akt:Stav>
+            </akt:Clan>
+            <akt:Clan Broj_clana="1600213093" Naziv="tOnF_3W_bQ5AU">
+                <akt:Stav Id="2117851442">
+                    <akt:Reference ref_akt="l4IEMqBgxxQo5DAWr" ref_clan="1382153641" ref_stav="-2038512641" ref_tacka="1718605272">nmF.B31KOS</akt:Reference>
+                    <akt:Reference ref_akt="xWYaI0JxdlwgurS7.3IrFa" ref_clan="678506562" ref_stav="173023190" ref_tacka="237532774">itCW75mz1AP</akt:Reference>
+                    <akt:Reference ref_akt="p" ref_clan="362004472" ref_stav="1264595882" ref_tacka="-1558872519">gZ6pScnLRug.Ak4aHx5Jwi</akt:Reference>
+                    <akt:Reference ref_akt="OLBOe38ei5_M" ref_clan="-36702676" ref_stav="1248844126" ref_tacka="985824938">Gujv3JnzWUMq20eV-9y_0Bw</akt:Reference>
+                </akt:Stav>
+                <akt:Stav Id="1567012496">
+                    <akt:Reference ref_akt="gYMCVcZELERHyWOKeudGaM8Y-H1uS" ref_clan="1439710290" ref_stav="-1763616674" ref_tacka="-1391022600">dXodczmYS.0RH7J3cYEQl</akt:Reference>
+                    <akt:Reference ref_akt="djUlX5-sLZJrZni2DD04wC" ref_clan="274576002" ref_stav="-2050223590" ref_tacka="-401128196">x_SSm6C_6Vg1E5KeJiY-.ZLsZXOU</akt:Reference>
+                    <akt:Tacka broj="522571371">
+                        <akt:Alineja>DutTjmldaSJT.Ha</akt:Alineja>
+                        <akt:Alineja>rlfG6xzgZutei7KfCoVUv</akt:Alineja>
+                        <akt:Alineja>itLqW9tCAF-cy0LoO3hCmXCmo8Lx</akt:Alineja>
+                        <akt:Alineja>OzD7Cz6DvfG68TMIoBagP</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="271439576">
+                        <akt:Alineja>C1mKb1QvGYpMQXr</akt:Alineja>
+                        <akt:Alineja>Wd</akt:Alineja>
+                        <akt:Podtacka broj="901560217">
+                            <akt:Alineja>WmJ6F3vtyhO52zn</akt:Alineja>
+                            <akt:Alineja>HtbdhneDYRLSp</akt:Alineja>
+                            <akt:Alineja>XIREvlZidi61iEEqal</akt:Alineja>
+                            <akt:Alineja>ya0pyJ</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="320420492">
+                            <akt:Alineja>zJqCG1</akt:Alineja>
+                            <akt:Alineja>D5mls-QbFDuzNwe5Mjmlahy</akt:Alineja>
+                            <akt:Alineja>LjJnXoTfojrhWc38cRPuqE.COKMY</akt:Alineja>
+                            <akt:Alineja>c_I5HC.O5sJ9</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                </akt:Stav>
+                <akt:Stav Id="-1197140077">
+                    <akt:Tacka broj="2122467038">
+                        <akt:Podtacka broj="1116021288">
+                            <akt:Alineja>N46t.u2r</akt:Alineja>
+                            <akt:Alineja>cpgEHl</akt:Alineja>
+                            <akt:Alineja>ouhn9tehA7qI</akt:Alineja>
+                            <akt:Alineja>vrno8B5</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="441068659">
+                            <akt:Alineja>kOmhtSoIClv-xPIB</akt:Alineja>
+                            <akt:Alineja>c72sJL5</akt:Alineja>
+                            <akt:Alineja>pukV6xXAERm92J6aSm8Ga57d.b2IP</akt:Alineja>
+                            <akt:Alineja>G2F9l7PIe</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="197856818">
+                            <akt:Alineja>y2NjFv76YNwydGCqCX7PZ</akt:Alineja>
+                            <akt:Alineja>dZqQbOJXrNJVFGx7Iv-IwS</akt:Alineja>
+                            <akt:Alineja>wqj</akt:Alineja>
+                            <akt:Alineja>QDJIEidmul2KuxjM0Yz55cjx</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="1966835228">
+                            <akt:Alineja>nIfJ5ZedVW</akt:Alineja>
+                            <akt:Alineja>nnXxZGEkCq_</akt:Alineja>
+                            <akt:Alineja>gX6IovzjFJivqQS8718S</akt:Alineja>
+                            <akt:Alineja>_ICBP9pJDu</akt:Alineja>
+                        </akt:Podtacka>
+                    </akt:Tacka>
+                    <akt:Tacka broj="824017209">
+                        <akt:Podtacka broj="1592769043">
+                            <akt:Alineja>DmPsb4YmYDGpJXvJ</akt:Alineja>
+                            <akt:Alineja>Nkf6lL</akt:Alineja>
+                            <akt:Alineja>kgqfvVWG_Cb_nSTeJS</akt:Alineja>
+                            <akt:Alineja>t4WRsur.pyMWg</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="872982294">
+                            <akt:Alineja>E</akt:Alineja>
+                            <akt:Alineja>xhMg</akt:Alineja>
+                            <akt:Alineja>feJC14vCHBwy24</akt:Alineja>
+                            <akt:Alineja>kyC6b</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Alineja>ytYkBvxZwIm</akt:Alineja>
+                        <akt:Alineja>JECsrjQg-flgCcX2YO</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="1198267015">
+                        <akt:Podtacka broj="1674337852">
+                            <akt:Alineja>EB</akt:Alineja>
+                            <akt:Alineja>crAN1ZHIX2mgi</akt:Alineja>
+                            <akt:Alineja>SVJjc</akt:Alineja>
+                            <akt:Alineja>QeTycj0n0sSkkkv9ll7gJ</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Podtacka broj="952510504">
+                            <akt:Alineja>Y5eeg3FGuS_n</akt:Alineja>
+                            <akt:Alineja>E</akt:Alineja>
+                            <akt:Alineja>CMdvnZG9vYFV.2-Re4a</akt:Alineja>
+                            <akt:Alineja>uWg</akt:Alineja>
+                        </akt:Podtacka>
+                        <akt:Alineja>sUNxSuk-kn266lFcfuFezd</akt:Alineja>
+                        <akt:Alineja>t0avqSLNQY0wou4aNL6gi3fYP9eZ3l</akt:Alineja>
+                    </akt:Tacka>
+                    <akt:Tacka broj="486204436">
+                        <akt:Alineja>kCLXO</akt:Alineja>
+                        <akt:Alineja>b</akt:Alineja>
+                        <akt:Alineja>X7Vzyp</akt:Alineja>
+                        <akt:Alineja>o-QTJ4xSZGDZTMD</akt:Alineja>
+                    </akt:Tacka>
+                </akt:Stav>
+                <akt:Stav Id="-745140243">
+                    <akt:Alineja>cvuySdm4BQyc</akt:Alineja>
+                    <akt:Alineja>IE2Vs</akt:Alineja>
+                    <akt:Alineja>raRMM0gLqZRy_V4XTZB8a8</akt:Alineja>
+                    <akt:Alineja>ldvpUMCxMPI2odWuP1-3g84qmzy_C</akt:Alineja>
+                </akt:Stav>
+            </akt:Clan>
+        </akt:Deo>
+    </akt:Glavni_deo>
+    <akt:Drzava>XMvf</akt:Drzava>
+    <akt:Pokrajina>NukDYr.7W9ABamxNj</akt:Pokrajina>
+    <akt:Grad>UlC3</akt:Grad>
+    <akt:Skupstina>ei.F90fz408ua8OYvqGjb</akt:Skupstina>
+    <akt:Broj_popisa_kod_organa>BnRfBgJiUBv__TxAaME4f.l</akt:Broj_popisa_kod_organa>
+    <akt:Datum_donosenja_propisa>LxM-64-_</akt:Datum_donosenja_propisa>
+    <akt:Mesto_donosenja_propisa>Nzt9i97aKvuc2ozo</akt:Mesto_donosenja_propisa>
+    <akt:Ovlasceno_lice Ko_dodaje="hgKROL05BpPvaadDzEKeNSM2">
+        <akt:Titula>tDBfNTER</akt:Titula>
+        <akt:Ime>Yqa</akt:Ime>
+        <akt:Prezime>k59txmN-Q0XCDZsCpYm</akt:Prezime>
+    </akt:Ovlasceno_lice>
+</akt:Pravni_akt>
