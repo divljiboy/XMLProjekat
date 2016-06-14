@@ -1,5 +1,6 @@
 package xml.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.tools.jxc.ap.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,11 +46,15 @@ public class ActController{
     @RequestMapping(value = "/akt/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getById(@PathVariable("id") Long id) {
         try{
-            PravniAkt akt = aktDao.get(id);
-            if(akt == null)
-                return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
+            String html = aktDao.getXsltDocument(id);
+            //PravniAkt akt = aktDao.get(id);
+            //if(akt == null)
+                //return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
+            if(html == null)
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(html,HttpStatus.OK);
 
-            return new ResponseEntity(akt,HttpStatus.OK);
+           // return new ResponseEntity(akt,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

@@ -1,10 +1,17 @@
 package xml.repositories;
 
+import database.XMLConverter;
 import org.springframework.stereotype.Repository;
 import xml.Constants;
 import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.*;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -100,6 +107,35 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
         ArrayList<PravniAkt> acts = getByQuery(query.toString());
         return acts;
+    }
 
+
+    @Override
+    public String getXsltDocument(Long id) throws IOException {
+        try {
+            PravniAkt akt = this.get(id);
+
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+
+            Source xslDoc = new StreamSource("./src/main/schema/akt.xsl");
+            Source xmlDoc = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(akt).getBytes(XMLConverter.UTF_8)));
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            StreamResult result = new StreamResult(outputStream);
+
+            Transformer trasform = tFactory.newTransformer(xslDoc);
+            trasform.transform(xmlDoc, result);
+            return outputStream.toString(XMLConverter.UTF_8.name());
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return null;
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+            return null;
+        } catch (TransformerException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

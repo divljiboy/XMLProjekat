@@ -44,8 +44,11 @@
                         method: 'GET',
                         url: 'akt/'+id,
                         headers: {
-                            'Content-Type': 'application/json'
-                        }
+                            'Content-Type': 'text/html'
+                        },
+                        transformResponse: [function (data) {
+                            return data;
+                        }]
                     };
                     $http(req).then(onSuccess, onError);
                 },
