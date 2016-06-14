@@ -122,6 +122,7 @@ public class UserController {
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
                 TokenHandler handler = new TokenHandler();
+                user.setPassword("");
                 response.setHeader("x-auth-token",handler.createTokenForUser(user));
                 return new ResponseEntity<Korisnik>(user,HttpStatus.OK);
             }

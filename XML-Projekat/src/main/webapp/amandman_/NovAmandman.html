@@ -2,29 +2,29 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Novi amandman na akt : </legend>
-  <br/>
-
-  {{akt.naziv}}
-  
-  <br/>
+<legend>Novi amandman na akt : {{akt.naziv}} </legend>
 
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="noviamandman"></label>
-  <div class="col-md-4">                     
+  <div style="width: 98%; height: 100%;">
     <textarea  rows="25" ng-model = "amandman" class="form-control" id="noviamandman" name="noviamandman"></textarea>
   </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="form-group">
   <label class="col-md-4 control-label" for="unesi"></label>
-  <div class="col-md-8">
+  <div style="margin:20px;">
     <button id="unesi" name="unesi" class="btn btn-success">Unesi</button>
     <button id="otkazi" name="otkazi" class="btn btn-danger">Otkazi</button>
   </div>
 </div>
-
 </fieldset>
 </form>
+
+<style>
+  #noviamandman{
+    font-size: 12px;
+    resize: none;
+    overflow: auto;
+    border: 1px solid blue;
+    margin: 10px;
+  }
+</style>

@@ -51,9 +51,7 @@
         
         
         $scope.predlozi = function(){
-            
 			     $state.go("noviAkt");
-            
 		}
         
         $scope.predloziAmandman = function(){

@@ -1,8 +1,10 @@
 (function(angular){
     
-    angular.module("xmlApp").controller("sidebarController",['$uibModal','$state','$scope','stateService',function($uibModal, $state,$scope,stateService){
+    angular.module("xmlApp").controller("sidebarController",['$uibModal','$state','$scope','stateService','$rootScope',
+                                                        function($uibModal, $state,$scope,stateService,$rootScope){
         
         $scope.promenaStanja = function(){
+
             $scope.animationsEnabled = true;
                     var modalInstance = $uibModal.open({
                         backdrop: false,
@@ -12,6 +14,18 @@
                     });
             
             
-        }
+        };
+
+        (function(){
+            var ulogovanKorisnik = JSON.parse(localStorage.getItem('user'));
+            if(ulogovanKorisnik){
+                $rootScope.ulogovanKorisnik = ulogovanKorisnik;
+                $rootScope.authenticated = true;
+            }else{
+                $rootScope.ulogovanKorisnik = {};
+                $rootScope.authenticated = false;
+            }
+        })();
+
     }]);
 })(angular);

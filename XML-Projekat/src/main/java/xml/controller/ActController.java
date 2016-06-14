@@ -116,7 +116,7 @@ public class ActController{
         }
     }
 
-    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/predlozeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<PravniAkt>> getProposedActs(){
         try {
@@ -131,14 +131,14 @@ public class ActController{
         }
     }
 
-    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/usvojeniAkati", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ArrayList<PravniAkt>> getAdoptedActs(){
+    public ResponseEntity<ArrayList<PravniAkt>> getAdoptedActs() {
         try {
             ArrayList<PravniAkt> adoptedActs = aktDao.getAdoptedActs();
-            if(adoptedActs == null)
+            if (adoptedActs == null)
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
-            return new ResponseEntity(adoptedActs,HttpStatus.OK);
+            return new ResponseEntity(adoptedActs, HttpStatus.OK);
         } catch (JAXBException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (IOException e) {
@@ -178,5 +178,4 @@ public class ActController{
 
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
-
 }
