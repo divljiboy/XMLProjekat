@@ -153,7 +153,7 @@
     
     <xsl:template match="akt:Odeljak">
         <div align="center">
-            <h3>Odeljak
+            <h3>
                 <xsl:value-of select="@Id"/>.
                 
                 <xsl:value-of select="@Naziv"/>
@@ -181,7 +181,7 @@
     <xsl:template match="akt:Glava">
         <div align="center">
             <h2>
-                Glava
+               
                 
                 <xsl:value-of select="@Naziv"/>
             </h2>
