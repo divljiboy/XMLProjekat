@@ -18,14 +18,13 @@ import java.util.List;
 @Repository("amandmanDAO")
 public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmentDAO {
 
+    @Autowired
+    private IActDAO actDAO;
     private static final String AMENDMENT_SCHEMA_PATH = "./src/main/schema/amandman.xsd";
 
     public AmendmentDAO() throws IOException {
         super(AMENDMENT_SCHEMA_PATH,Constants.ProposedAmendmentCollection,Constants.Amendment,Constants.AmendmentNamespace);
     }
-
-    @Autowired
-    private IActDAO actDAO;
 
     /**
      * Metoda reprezentuje glasanje na sednici
@@ -33,9 +32,10 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * @param amendmentsIds Id-jevi amandmana koji su izglasani za usvajanje
      */
     @Override
-    public void voting(ArrayList<Long> actsIds,ArrayList<Long> amendmentsIds) {
+    public void voting(ArrayList<Long> actsIds,ArrayList<Long> amendmentsIds) throws JAXBException, IOException {
 
         copyActToAdopted(actsIds);
+        changeStateToNotAdopted();
 
         for(Long id : amendmentsIds){
             applyAmendment(id);
@@ -70,7 +70,10 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     protected void copyActToAdopted(ArrayList<Long> actsIds){
         for(Long id : actsIds){
             try {
+
                 PravniAkt act = actDAO.get(id);
+                act.setStanje(Constants.AdoptedState);
+                actDAO.updateActState(id,Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);
             } catch (JAXBException e) {
                 e.printStackTrace();
@@ -193,7 +196,17 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         return content;
     }
 
-    protected void setAdoptedToTrue(Long id){
+    /**
+     * Preuzima aktove koji nisu usvojeni i postavlja stanje na NotAdopted
+     * @throws JAXBException
+     * @throws IOException
+     */
+    protected void changeStateToNotAdopted() throws JAXBException, IOException {
+
+        ArrayList<PravniAkt> acts = actDAO.getProposedActsToChangeState();
+        for(PravniAkt act : acts){
+            actDAO.updateActState(act.getId(),Constants.NotAdoptedState);
+        }
 
     }
 

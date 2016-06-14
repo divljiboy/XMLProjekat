@@ -13,6 +13,7 @@ public interface IActDAO extends IGenericDAO<PravniAkt,Long>{
 
     public ArrayList<PravniAkt> getProposedActs() throws JAXBException, IOException;
     public ArrayList<PravniAkt> getAdoptedActs() throws JAXBException, IOException;
-    public void updateActState(Long id) throws IOException;
+    public void updateActState(Long id,String state) throws IOException;
+    public ArrayList<PravniAkt> getProposedActsToChangeState() throws JAXBException, IOException;
 
 }

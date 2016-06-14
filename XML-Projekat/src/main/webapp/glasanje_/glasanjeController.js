@@ -4,7 +4,7 @@
 
 (function(angular){
 
-    angular.module("xmlApp").controller("glasanjeController",['$scope','$state','amandmanService','aktService',function($scope, $state,amandmanService, aktService){
+    angular.module("xmlApp").controller("glasanjeController",['$q','$scope','$state','amandmanService','aktService',function($q, $scope, $state,amandmanService, aktService){
 
 
         $scope.akatiIStanja = {};
@@ -12,63 +12,78 @@
 
         $scope.akati = {};
 
+        var ucitajAmandmane = function(i){
+
+
+            amandmanService.getPredlozeneAmandmaneZaAkt($scope.akati[i].id , function (res) {
+                $scope.amandmani = [];
+                $scope.amandmaniIStanja = [];
+                $scope.amandmani = res.data;
+                console.log($scope.akati[i].id);
+                for(var j = 0; j < $scope.amandmani.length; j++){
+                    console.log("-"+$scope.amandmani[j].id);
+
+                    $scope.amandmaniIStanja[j] = {
+                        "amandman" : $scope.amandmani[j],
+                        "flag" : false
+                    }
+                }
+
+                $scope.akatiIStanja[$scope.akati[i].id] = {
+                    "akt" : $scope.akati[i],
+                    "amandmani" : $scope.amandmaniIStanja,
+                    "flag":false
+
+                }
+
+            },
+                function(res){
+
+                });
+
+        }
 
         aktService.getUProceduri(function(res){
 
                 $scope.akati = res.data;
 
-
-                for(var i = 0 ; i< $scope.akati.length; i++){
-                    $scope.amandmani = {};
-                    $scope.amandmaniIStanja = {};
-                    amandmanService.getPredlozeneAmandmaneZaAkt($scope.akati[i].id, function(res){
+            //    $scope.ubaciAmandmane();
 
 
+            for(var i = 0; i < $scope.akati.length; i++){
+                 ucitajAmandmane(i);
+            }
 
-                            $scope.amandmani = res.data;
-
-
-
-
-                        },
-                        function(res){
-
-
-                        });
-                    for(var j = 0 ; j < $scope.amandmani.length; j++){
-                        $scope.amandmaniIStanja[j] = {
-                            'amandman':$scope.amandmani[j],
-                            'flag' : false
-                        }
-                    }
-
-
-                    $scope.akatiIStanja[$scope.akati[i].id] = {
-
-                        'akt' : $scope.akati[i],
-                        'amandmani' : $scope.amandmaniIStanja,
-                        'flag' : false
-
-                    }
-
-                    console.log($scope.akatiIStanja);
-
-
-
-                }
-            },
-            function(res){
+        },function(res){
 
             });
 
 
+        $scope.rezultatGlasanja = function(){
+            console.log("------->");
+            var amandmani = [];
+            var akati = [];
 
-        aktService.getAll(function(res){
+            angular.forEach($scope.akatiIStanja, function(akt){
+                if(akt.flag == true){
+                    akati.push(akt.akt);
+                    angular.forEach(akt.amandmani,function(amandman){
+                        if(amandman.flag == true){
+                            amandmani.push(amandman.amandman);
+                        }
+                    });
 
-        }, function(res){
 
-        });
+                }
+            });
+
+            console.log(akati);
+            console.log(amandmani);
 
 
-    }]);
+        }
+
+ }]);
+
+
 })(angular);

@@ -70,8 +70,7 @@
                         }
 
                     }
-                });
-            /*.state('aktDetails',
+                }).state('aktDetails',
                         {
                 
                             url: '/aktDetails',                                                                                                                   
@@ -86,9 +85,12 @@
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html'
                         }
-                    }
+                    },
+                            params:{
+                                akt : null
+                            }
             
-            });*/
+            });
         }]);
 
 

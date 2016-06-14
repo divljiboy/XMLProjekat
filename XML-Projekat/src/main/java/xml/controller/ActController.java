@@ -56,10 +56,10 @@ public class ActController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(@RequestBody String object) {
-        //object.setStanje(Constants.ProposedState);
+    public ResponseEntity post(@RequestBody PravniAkt object) {
+        object.setStanje(Constants.ProposedState);
         try{
-            //aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
+            aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
             return new ResponseEntity(HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
@@ -125,7 +125,7 @@ public class ActController{
     @RequestMapping(value = "/update")
     public void updateState(){
         try {
-            aktDao.updateActState((long)5);
+            aktDao.updateActState((long)5,Constants.AdoptedState);
         } catch (IOException e) {
             e.printStackTrace();
         }
