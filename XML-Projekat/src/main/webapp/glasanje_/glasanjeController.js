@@ -12,6 +12,36 @@
 
         $scope.akati = {};
 
+        var ucitajAmandmane = function(i){
+
+
+            amandmanService.getPredlozeneAmandmaneZaAkt($scope.akati[i].id , function (res) {
+                $scope.amandmani = [];
+                $scope.amandmaniIStanja = [];
+                $scope.amandmani = res.data;
+                console.log($scope.akati[i].id);
+                for(var j = 0; j < $scope.amandmani.length; j++){
+                    console.log("-"+$scope.amandmani[j].id);
+
+                    $scope.amandmaniIStanja[j] = {
+                        "amandman" : $scope.amandmani[j],
+                        "flag" : false
+                    }
+                }
+
+                $scope.akatiIStanja[$scope.akati[i].id] = {
+                    "akt" : $scope.akati[i],
+                    "amandmani" : $scope.amandmaniIStanja,
+                    "flag":false
+
+                }
+
+            },
+                function(res){
+
+                });
+
+        }
 
         aktService.getUProceduri(function(res){
 
@@ -20,53 +50,40 @@
             //    $scope.ubaciAmandmane();
 
 
-
-            angular.forEach($scope.akati, function(akt){
-                $scope.amandmaniIStanja = {};
-           //     console.log(akt.id);
-                amandmanService.getPredlozeneAmandmaneZaAkt(akt.id, function (res) {
-                        $scope.amandmani = [];
-
-                        $scope.amandmani = res.data;
-                    //    console.log($scope.amandmani.length);
-                        var temp = 0;
-                        angular.forEach($scope.amandmani, function(amandman){
-                           // console.log(amandman);
-                            console.log(temp);
-                           // console.log(amandman.id);
-                            $scope.amandmaniIStanja[temp] = {
-                                'amandman': amandman,
-                                'flag': false
-                            } ;
-                            console.log(amandman);
-                            console.log($scope.amandmaniIStanja[temp]);
-                            temp = temp + 1;
-
-
-                        });
-
-                            $scope.akatiIStanja[akt.id] = {
-
-                            'akt': akt,
-                            'amandmani': $scope.amandmaniIStanja,
-                            'flag': false
-
-                        }
-
-
-                  },
-                    function (res) {
-
-
-                    });
-
-
-
+            for(var i = 0; i < $scope.akati.length; i++){
+                 ucitajAmandmane(i);
             }
-            );
+
         },function(res){
 
             });
 
+
+        $scope.rezultatGlasanja = function(){
+            console.log("------->");
+            var amandmani = [];
+            var akati = [];
+
+            angular.forEach($scope.akatiIStanja, function(akt){
+                if(akt.flag == true){
+                    akati.push(akt.akt);
+                    angular.forEach(akt.amandmani,function(amandman){
+                        if(amandman.flag == true){
+                            amandmani.push(amandman.amandman);
+                        }
+                    });
+
+
+                }
+            });
+
+            console.log(akati);
+            console.log(amandmani);
+
+
+        }
+
  }]);
+
+
 })(angular);
