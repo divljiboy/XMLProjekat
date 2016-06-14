@@ -1,9 +1,9 @@
-<md-list ng-repeat = "akt in akati">
+<md-list ng-repeat = "ais in akatiIStanja">
 
-    <md-subheader class="md-no-sticky">Naziv akta : {{akt.naziv}}
+    <md-subheader class="md-no-sticky">Naziv akta : {{ais.akt.naziv}}
      </md-subheader>
-    <md-list-item ng-repeat="amandman in amandmani">
-        <p>Amandman postavio : {{amandman.koDodaje}}  </p>
+    <md-list-item ng-repeat="amandman in ais.amandmani">
+        <p>Amandman postavio : {{amandman.amandman.koDodaje}}  </p>
         <md-checkbox  class="md-secondary" ></md-checkbox>
     </md-list-item>
 
