@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.Constants;
+import xml.controller.dto.SearchCriteriaDTO;
 import xml.interceptors.TokenHandler;
 import xml.model.Korisnik;
 import xml.model.PravniAkt;
@@ -145,4 +146,36 @@ public class ActController{
         }
     }
 
+    @RequestMapping(value = "/akt/usvojeni/pretraga", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<PravniAkt>> searchAdoptedActByText(@RequestBody SearchCriteriaDTO searchCriteriaDTO) {
+
+        ArrayList<PravniAkt> acts;
+
+        switch (searchCriteriaDTO.getIdSearch()) {
+            case 1:
+                try {
+                    acts = aktDao.searchByText(searchCriteriaDTO.getCriteria(), Constants.ProposedActCollection);
+                    if (acts != null)
+                        return new ResponseEntity(acts, HttpStatus.OK);
+                    return new ResponseEntity(HttpStatus.NO_CONTENT);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 2:
+                try {
+                    acts = aktDao.searchByText(searchCriteriaDTO.getCriteria(), Constants.ActCollection);
+                    if (acts != null)
+                        return new ResponseEntity(acts, HttpStatus.OK);
+                    return new ResponseEntity(HttpStatus.NO_CONTENT);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
 }
