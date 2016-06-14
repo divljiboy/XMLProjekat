@@ -21,7 +21,8 @@
                    </div>
                </xsl:for-each>
                 <xsl:apply-templates select="akt:Glavni_deo"></xsl:apply-templates>
-               <p> <xsl:value-of select="akt:Drzava"/></p>
+               <p></p>
+                <p> <xsl:value-of select="akt:Drzava"/></p>
                <p> <xsl:value-of select="akt:Pokrajina"/></p>
                <p> <xsl:value-of select="akt:Grad"/></p>
                 <p> <xsl:value-of select="akt:Skupstina"/></p>
@@ -101,10 +102,7 @@
     
     <xsl:template match="akt:Stav">
         <div align="center">
-            <h3>
-                Stav
-                <xsl:value-of select="@Id"/>)
-            </h3>
+            
             <xsl:choose>
                 <xsl:when test="count(akt:Tacka) &gt; 0">
                     <p>
@@ -179,7 +177,7 @@
         <div align="center">
             <h2>
                 Glava
-                <xsl:value-of select="@Id"/>.
+                
                 <xsl:value-of select="@Naziv"/>
             </h2>
             <xsl:choose>
@@ -266,7 +264,5 @@
     </xsl:template>
     
     
-    
-   
     
 </xsl:stylesheet>

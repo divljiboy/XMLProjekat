@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="proba.xsl"?>
-<Pravni_akt xmlns="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi file:/C:/Users/Home/Desktop/XMLProjekat/Schemas/akt.xsd" Id="2"
-    Usvojen="false">
-    
+<Pravni_akt xmlns="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi file:/C:\Users\Home\Desktop\XMLProjekat\XML-Projekat\src/main/schema/akt.xsd" Id="2"
+    >
+    <Stanje>False</Stanje>
     <Preambula>
         На основу <Reference ref_clan="12">члана 12.</Reference> Одлуке о обезбеђивању средстава
         за програме спортских удружења на територији Града Новог
