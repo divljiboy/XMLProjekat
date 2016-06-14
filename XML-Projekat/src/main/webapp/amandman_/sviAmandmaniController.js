@@ -23,6 +23,7 @@
 
 				$scope.amandman.koDodaje = row.entity.koDodaje;
 				$scope.amandman.id = row.entity.id;
+				
 
 
 
@@ -42,6 +43,17 @@
 		});
 
 
+
+		$scope.pogledajDetalje = function(){
+			if($scope.gridApi.selection.getSelectedRows().length > 0){
+				console.log($scope.amandman);
+				$state.go("amandmanDetails",{"amandman":$scope.amandman});
+			}
+			else
+			{
+				alert("Niste selektovali amandman ! ");
+			}
+		}
 	/*
 		$scope.predlozi = function(){
 

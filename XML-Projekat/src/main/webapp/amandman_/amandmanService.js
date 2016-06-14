@@ -42,6 +42,20 @@
                     }
                     $http(req).then(onSuccess,onError);
                 },
+                //byId
+                get: function(id,onSuccess,onError){
+                    var req = {
+                        method: 'GET',
+                        url: 'amandman/'+id,
+                        headers: {
+                            'Content-Type': 'text/html'
+                        },
+                        transformResponse: [function (data) {
+                            return data;
+                        }]
+                    };
+                    $http(req).then(onSuccess, onError);
+                },
                 create: function(aktId, entity,onSuccess,onError){
                     var req = {
                         method: 'POST',

@@ -13,6 +13,7 @@ import xml.model.Korisnik;
 import xml.repositories.IAmendmentDAO;
 import xml.stateStuff.StateManager;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -66,6 +67,24 @@ public class AmendmentController{
             System.out.print("State is not Glasanje");
         }
 
+    }
+
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
+    @RequestMapping(value = "/amandman/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getById(@PathVariable("id") Long id) {
+        try{
+            String html = amendmentDao.getXsltDocument(id);
+            //PravniAkt akt = aktDao.get(id);
+            //if(akt == null)
+            //return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
+            if(html == null)
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(html,HttpStatus.OK);
+
+            // return new ResponseEntity(akt,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -7,6 +7,11 @@ import xml.Constants;
 import xml.model.*;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.*;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,6 +65,35 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         ArrayList<Amandman> amendments = getByQuery(query.toString());
 
         return amendments;
+    }
+
+    @Override
+    public String getXsltDocument(Long id) throws IOException {
+        try {
+            Amandman akt = this.get(id);
+
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+
+            Source xslDoc = new StreamSource("./src/main/schema/amandman.xsl");
+            Source xmlDoc = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(akt).getBytes(XMLConverter.UTF_8)));
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            StreamResult result = new StreamResult(outputStream);
+
+            Transformer trasform = tFactory.newTransformer(xslDoc);
+            trasform.transform(xmlDoc, result);
+            return outputStream.toString(XMLConverter.UTF_8.name());
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return null;
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+            return null;
+        } catch (TransformerException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
