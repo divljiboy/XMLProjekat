@@ -56,8 +56,9 @@
             <h4>(
                 <xsl:value-of select="@broj"/>
                 ) </h4>
+            <xsl:value-of select="text()"/>
             <xsl:choose>
-                <xsl:when test="count(akt:Alineja) &gt; 0">
+                <xsl:when test="akt:Alineja">
                     <p>
                         <xsl:apply-templates select="akt:Alineja"/>
                     </p>
@@ -79,13 +80,14 @@
                 Tacka
                 <xsl:value-of select="@broj"/>)
             </h3>
+            <xsl:value-of select="text()"/>
             <xsl:choose>
-                <xsl:when test="count(akt:Podtacka) &gt; 0">
+                <xsl:when test="akt:Podtacka">
                     <p>
                         <xsl:apply-templates select="akt:Podtacka"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Alineja) &gt; 0">
+                <xsl:when test="akt:Alineja">
                     <p>
                         <xsl:apply-templates select="akt:Alineja"/>
                     </p>
@@ -102,18 +104,20 @@
     
     <xsl:template match="akt:Stav">
         <div align="center">
-            
+            <xsl:value-of select="text()"/>
             <xsl:choose>
-                <xsl:when test="count(akt:Tacka) &gt; 0">
+                
+                 <xsl:when test="akt:Alineja">
+                     <p>
+                         <xsl:apply-templates select="akt:Alineja"/>
+                     </p>
+                 </xsl:when>
+                 <xsl:when test="akt:Tacka">
                     <p>
                         <xsl:apply-templates select="akt:Tacka"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Alineja) &gt; 0">
-                    <p>
-                        <xsl:apply-templates select="akt:Alineja"/>
-                    </p>
-                </xsl:when>
+                
                 <xsl:otherwise>
                     <p>
                         <xsl:value-of select="."/>
@@ -129,8 +133,9 @@
                 Clan <xsl:value-of select="@Broj_clana"/>.)
                 <xsl:value-of select="@Naziv"/>
             </h3>
+            <xsl:value-of select="text()"/>
             <xsl:choose>
-                <xsl:when test="count(akt:Stav) &gt; 0">
+                <xsl:when test="akt:Stav">
                     <p>
                         <xsl:apply-templates select="akt:Stav"/>
                     </p>
@@ -154,12 +159,12 @@
                 <xsl:value-of select="@Naziv"/>
             </h3>
             <xsl:choose>
-                <xsl:when test="count(akt:Clan) &gt; 0">
+                <xsl:when test="akt:Clan">
                     <p>
                         <xsl:apply-templates select="akt:Clan"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Odeljak) &gt; 0">
+                <xsl:when test="akt:Odeljak">
                     <p>
                         <xsl:apply-templates select="akt:Odeljak"/>
                     </p>
@@ -181,12 +186,12 @@
                 <xsl:value-of select="@Naziv"/>
             </h2>
             <xsl:choose>
-                <xsl:when test="count(akt:Odeljak) &gt; 0">
+                <xsl:when test="akt:Odeljak">
                     <p>
                         <xsl:apply-templates select="akt:Odeljak"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Clan) &gt; 0">
+                <xsl:when test="akt:Clan">
                     <p>
                         <xsl:apply-templates select="akt:Clan"/>
                     </p>
@@ -208,17 +213,17 @@
             <xsl:value-of select="@Id"/>
         </h2>
             <xsl:choose>
-                <xsl:when test="count(akt:Odeljak) &gt; 0">
+                <xsl:when test="akt:Odeljak">
                     <p>
                         <xsl:apply-templates select="akt:Odeljak"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Clan) &gt; 0">
+                <xsl:when test="akt:Clan">
                     <p>
                         <xsl:apply-templates select="akt:Clan"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Glava) &gt; 0">
+                <xsl:when test="akt:Glava">
                     <p>
                         <xsl:apply-templates select="akt:Glava"/>
                     </p>
@@ -234,22 +239,22 @@
     <xsl:template match="akt:Glavni_deo">
         <div align="center">
             <xsl:choose>
-                <xsl:when test="count(akt:Deo) &gt; 0">
+                <xsl:when test="akt:Deo">
                     <p>
                         <xsl:apply-templates select="akt:Deo"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Glava) &gt; 0">
+                <xsl:when test="akt:Glava">
                     <p>
                         <xsl:apply-templates select="akt:Glava"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Odeljak) &gt; 0">
+                <xsl:when test="akt:Odeljak">
                     <p>
                         <xsl:apply-templates select="akt:Odeljak"/>
                     </p>
                 </xsl:when>
-                <xsl:when test="count(akt:Clan) &gt; 0">
+                <xsl:when test="akt:Clan">
                     <p>
                         <xsl:apply-templates select="akt:Clan"/>
                     </p>
