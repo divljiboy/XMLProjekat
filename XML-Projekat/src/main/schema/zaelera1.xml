@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akt:Pravni_akt xmlns:akt="aktovi"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd"
+    Id="9"
+    >
+    <akt:Stanje>Stanje0</akt:Stanje>
+    <akt:Naziv>Naziv 9</akt:Naziv>
+    <akt:Glavni_deo>
+        <akt:Glava Id="1" Naziv="Glava 1">
+            <akt:Odeljak Id="1" Naziv="Odeljak 1">
+                <akt:Clan Broj_clana="1">
+                    <akt:Stav>Znaci kidamo</akt:Stav>
+                    <akt:Stav>xml</akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="2">
+                    <akt:Stav>Najjaci smo</akt:Stav>
+                    <akt:Stav>breee</akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+            <akt:Odeljak>
+                <akt:Clan Broj_clana="3">
+                    <akt:Stav>Ala cemo da trsnemo gzemel</akt:Stav>
+                    <akt:Stav>Nista nismo uradili</akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="4">
+                    <akt:Stav>Belgija 0:1 Italija</akt:Stav>
+                    <akt:Stav>Belgija osvaja</akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+        </akt:Glava>
+        <akt:Glava Id="2" Naziv="Glava 2">
+            <akt:Clan Broj_clana="5">
+                <akt:Stav>Opa ima i druga glava</akt:Stav>
+                <akt:Stav>Ali ova nema odeljak</akt:Stav>
+            </akt:Clan>
+            <akt:Clan Broj_clana="6">
+                <akt:Stav>Znaci zaos</akt:Stav>
+                <akt:Stav>Cogara najjaci na raftingu</akt:Stav>
+            </akt:Clan>
+        </akt:Glava>
+    </akt:Glavni_deo>
+    <akt:Drzava>Ruthenia</akt:Drzava>
+    <akt:Pokrajina>Vojvodina</akt:Pokrajina>
+    <akt:Grad>Ruski Krstur</akt:Grad>
+    <akt:Skupstina>Nemamo</akt:Skupstina>
+    <akt:Broj_popisa_kod_organa>12345</akt:Broj_popisa_kod_organa>
+    <akt:Datum_donosenja_propisa>21.01.2015</akt:Datum_donosenja_propisa>
+    <akt:Mesto_donosenja_propisa>Ruski Krstur</akt:Mesto_donosenja_propisa>
+    <akt:Ovlasceno_lice>
+        <akt:Titula>Predsednik</akt:Titula>
+        <akt:Ime>Dorian</akt:Ime>
+        <akt:Prezime>Cizmar</akt:Prezime>
+    </akt:Ovlasceno_lice>
+</akt:Pravni_akt>

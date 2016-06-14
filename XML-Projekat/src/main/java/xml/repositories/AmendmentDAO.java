@@ -115,16 +115,15 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
 
         StringBuilder xQuery = new StringBuilder();
 
-        xQuery
-                .append("declare namespace ns = \"aktovi\";\n")
-                .append("xdmp:node-insert-after(collection(\"/usvojeniAkati\")/ns:")
-                .append(Constants.Act)
-                .append("[@Id = ")
-                .append(actId.toString())
-                .append("]/")
-                .append("ns:Glavni_deo/");
-
         if(operation.equals(Constants.Add)){
+            xQuery
+                    .append("declare namespace ns = \"aktovi\";\n")
+                    .append("xdmp:node-insert-after(collection(\"/usvojeniAkati\")/ns:")
+                    .append(Constants.Act)
+                    .append("[@Id = ")
+                    .append(actId.toString())
+                    .append("]/")
+                    .append("ns:Glavni_deo/");
 
             if(content.getRDeo() != null){
                 xQuery
@@ -163,9 +162,93 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
 
 
         }else if(operation.equals(Constants.Update)){
+            xQuery
+                    .append("declare namespace ns = \"aktovi\";\n")
+                    .append("xdmp:node-replace(collection(\"/usvojeniAkati\")/ns:")
+                    .append(Constants.Act)
+                    .append("[@Id = ")
+                    .append(actId.toString())
+                    .append("]/")
+                    .append("ns:Glavni_deo/");
+
+            if(content.getRDeo() != null){
+                xQuery
+                        .append("ns:Deo[@Id=")
+                        .append(content.getRDeo())
+                        .append("]/");
+            }
+
+            if(content.getRGlava() != null){
+                xQuery
+                        .append("ns:Glava[@Id=")
+                        .append(content.getRGlava())
+                        .append("]/");
+
+            }
+
+            if(content.getROdeljak() != null){
+                xQuery
+                        .append("ns:Odeljak[@Id=")
+                        .append(content.getROdeljak())
+                        .append("]/");
+            }
+
+            if(content.getRClan() != null){
+                xQuery
+                        .append("ns:Clan[@Broj_clana=")
+                        .append(content.getRClan())
+                        .append("],\n");
+            }
+
+            xQuery.append(getAmendmentContent(amemndmentId));
+            xQuery.append(");");
+
+            System.out.print(xQuery.toString());
+            execQuery(xQuery.toString());
 
         }else if (operation.equals(Constants.Delete)){
+            xQuery
+                    .append("declare namespace ns = \"aktovi\";\n")
+                    .append("xdmp:node-delete(collection(\"/usvojeniAkati\")/ns:")
+                    .append(Constants.Act)
+                    .append("[@Id = ")
+                    .append(actId.toString())
+                    .append("]/")
+                    .append("ns:Glavni_deo/");
 
+            if(content.getRDeo() != null){
+                xQuery
+                        .append("ns:Deo[@Id=")
+                        .append(content.getRDeo())
+                        .append("]/");
+            }
+
+            if(content.getRGlava() != null){
+                xQuery
+                        .append("ns:Glava[@Id=")
+                        .append(content.getRGlava())
+                        .append("]/");
+
+            }
+
+            if(content.getROdeljak() != null){
+                xQuery
+                        .append("ns:Odeljak[@Id=")
+                        .append(content.getROdeljak())
+                        .append("]/");
+            }
+
+            if(content.getRClan() != null){
+                xQuery
+                        .append("ns:Clan[@Broj_clana=")
+                        .append(content.getRClan())
+                        .append("]");
+            }
+
+            xQuery.append(")");
+
+            System.out.print(xQuery.toString());
+            execQuery(xQuery.toString());
         }
 
 
