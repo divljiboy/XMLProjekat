@@ -1,5 +1,8 @@
 package xml.repositories;
 
+import com.marklogic.client.io.SearchHandle;
+import com.marklogic.client.query.*;
+import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
 import xml.Constants;
@@ -109,6 +112,70 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
         return acts;
     }
 
+    @Override
+    public ArrayList<PravniAkt> searchByText(String criteria,String collection) throws IOException {
+
+        QueryManager queryManager = DatabaseManager.Client.getClient().newQueryManager();
+        StringQueryDefinition queryDefinition = queryManager.newStringDefinition();
+        queryDefinition.setCriteria(criteria);
+        queryDefinition.setCollections(collection);
+
+        SearchHandle results = queryManager.search(queryDefinition,new SearchHandle());
+
+        MatchDocumentSummary matches[] = results.getMatchResults();
+
+        MatchDocumentSummary result;
+        MatchLocation locations[];
+        String text;
+
+        ArrayList<PravniAkt> searchedActs = new ArrayList<>();
+
+        for (int i = 0; i < matches.length; i++) {
+            result = matches[i];
+
+            System.out.println((i+1) + ". RESULT DETAILS: ");
+            System.out.println("Result URI: " + result.getUri());
+
+            StringBuilder query = new StringBuilder();
+            query
+                    .append("fn:doc(\"")
+                    .append(result.getUri())
+                    .append("\")");
+
+            try {
+                PravniAkt act = getByQuery(query.toString()).get(0);
+                if(act.getStanje().equals("Usvojen"))
+                    searchedActs.add(act);
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
+
+
+            String uriToSearchedElement;
+
+            locations = result.getMatchLocations();
+            System.out.println("Document locations matched: " + locations.length + "\n");
+
+            for (MatchLocation location : locations) {
+
+                System.out.print(" - ");
+                for (MatchSnippet snippet : location.getSnippets()) {
+                    text = snippet.getText().trim();
+                    if (!text.equals("")) {
+                        System.out.print(snippet.isHighlighted()? text.toUpperCase() : text);
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println("\n - Match location XPath: " + location.getPath());
+                System.out.println();
+            }
+
+            System.out.println();
+        }
+
+        return searchedActs;
+    }
+
 
     @Override
     public String getXsltDocument(Long id) throws IOException {
@@ -138,4 +205,7 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
             return null;
         }
     }
+
+
+
 }
