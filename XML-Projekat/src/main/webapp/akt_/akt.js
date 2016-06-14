@@ -13,10 +13,12 @@
                             controller : "sviAktiController"
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
 
                     }
@@ -30,10 +32,12 @@
                             controller: 'dodajAktController'
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
                     }
                 })
@@ -46,10 +50,12 @@
                             controller : "usvojeniAktiController"
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
 
                     }
@@ -63,10 +69,12 @@
                             controller : "aktiUProceduriController"
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
 
                     }
@@ -80,10 +88,12 @@
                             controller: 'aktDetailsController'
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
                     },
                             params:{

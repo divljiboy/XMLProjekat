@@ -73,7 +73,7 @@ public class AmendmentController{
     }
 
     @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
-    @RequestMapping(value = "/amandman/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/amandman/html/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getById(@PathVariable("id") Long id) {
         try{
             String html = amendmentDao.getXsltDocument(id);

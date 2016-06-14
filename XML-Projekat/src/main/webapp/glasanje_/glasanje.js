@@ -15,10 +15,12 @@
                         controller : "glasanjeController"
                     },
                     'navbar': {
-                        templateUrl: 'navbar/navbar.html'
+                        templateUrl: 'navbar/navbar.html',
+                        controller: "navbarController"
                     },
                     'sidebar': {
-                        templateUrl: 'sidebar/sidebar.html'
+                        templateUrl: 'sidebar/sidebar.html',
+                        controller: 'sidebarController'
                     }
                 }
 

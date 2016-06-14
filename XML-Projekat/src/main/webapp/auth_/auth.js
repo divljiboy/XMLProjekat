@@ -18,14 +18,6 @@
                     }
                 }
             })
-            .state('signOut', {
-                url: '/signout',
-                views: {
-                    "content":{
-                        templateUrl:'signout_/signOut.html'
-                    }
-                }
-            })
             .state('signUp', {
                 url: '/signup',
                 views: {

@@ -1,5 +1,5 @@
 (function(angular){
-    angular.module("xmlApp").controller("amandmanDetailsController",['$stateParams','$scope','$state','aktService','$sce',
+    angular.module("xmlApp").controller("amandmanDetailsController",['$stateParams','$scope','$state','amandmanService','$sce',
         function($stateParams,$scope,$state,amandmanService,$sce)
         {
 
@@ -17,6 +17,4 @@
             })();
         }]);
 
-})(angular);/**
- * Created by Home on 6/14/2016.
- */
+})(angular);

@@ -14,7 +14,8 @@
                     url: '/home',
                     views: {
                         'navbar': {
-                            templateUrl:'navbar/navbar.html'
+                            templateUrl:'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
                             templateUrl: 'sidebar/sidebar.html',

@@ -26,6 +26,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     @Autowired
     private IActDAO actDAO;
     private static final String AMENDMENT_SCHEMA_PATH = "./src/main/schema/amandman.xsd";
+    private static final String AMENDMENT_XSL_PATH = "./src/main/schema/amandman.xsl";
 
     public AmendmentDAO() throws IOException {
         super(AMENDMENT_SCHEMA_PATH,Constants.ProposedAmendmentCollection,Constants.Amendment,Constants.AmendmentNamespace);
@@ -70,12 +71,12 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     @Override
     public String getXsltDocument(Long id) throws IOException {
         try {
-            Amandman akt = this.get(id);
+            Amandman amandman = this.get(id);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
-            Source xslDoc = new StreamSource("./src/main/schema/amandman.xsl");
-            Source xmlDoc = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(akt).getBytes(XMLConverter.UTF_8)));
+            Source xslDoc = new StreamSource(AMENDMENT_XSL_PATH);
+            Source xmlDoc = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(amandman).getBytes(XMLConverter.UTF_8)));
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             StreamResult result = new StreamResult(outputStream);

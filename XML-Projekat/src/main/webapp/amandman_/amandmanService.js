@@ -46,7 +46,7 @@
                 get: function(id,onSuccess,onError){
                     var req = {
                         method: 'GET',
-                        url: 'amandman/'+id,
+                        url: 'amandman/html/'+id,
                         headers: {
                             'Content-Type': 'text/html'
                         },

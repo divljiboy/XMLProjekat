@@ -13,10 +13,12 @@
                             controller : "sviAmandmaniController"
                         },
                         'navbar': {
-                            templateUrl: 'navbar/navbar.html'
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
                         },
                         'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html'
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
                         }
                     },
                     params:
@@ -36,14 +38,36 @@
 
                     },
                     'navbar': {
-                        templateUrl: 'navbar/navbar.html'
+                        templateUrl: 'navbar/navbar.html',
+                        controller: "navbarController"
                     },
                     'sidebar': {
                         templateUrl: 'sidebar/sidebar.html',
-                        
+                        controller: 'sidebarController'
                     }
                 }
                 
+            }).state('amandmanDetails',
+                {
+
+                    url: '/amandmanDetails',
+                    views: {
+                        'content': {
+                            templateUrl: 'amandman_/amandmanDetails.html',
+                            controller: 'amandmanDetailsController'
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
+                        }
+                    },
+                    params: {
+                        amandman: null
+                    }
             });
         }]);
 

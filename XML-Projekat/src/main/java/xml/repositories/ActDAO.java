@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
     private static final String USER_SCHEMA_PATH = "./src/main/schema/akt.xsd";
+    private static final String AKT_XSL_PATH = "./src/main/schema/akt.xsl";
 
     public ActDAO() throws IOException {
         super(USER_SCHEMA_PATH, Constants.ProposedActCollection , Constants.Act,Constants.ActNamespace);
@@ -117,7 +118,7 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
-            Source xslDoc = new StreamSource("./src/main/schema/akt.xsl");
+            Source xslDoc = new StreamSource(AKT_XSL_PATH);
             Source xmlDoc = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(akt).getBytes(XMLConverter.UTF_8)));
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

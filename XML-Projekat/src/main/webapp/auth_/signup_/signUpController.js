@@ -21,7 +21,7 @@
                         console.log($scope.korisnik);
                         authService.post($scope.korisnik,
                             function (resp) {
-                                console.log("Kreiran korisnik");
+                                $state.go('signIn');
                             },
                             function (resp) {
                                 console.log("Greska");
