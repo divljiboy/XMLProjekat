@@ -135,9 +135,8 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
             for(EvalResult res : iterator){
                 list.add((T)xmlConverter.toObject(res.getString()));
             }
-        }else {
-            return null;
         }
+
         return list;
     }
 

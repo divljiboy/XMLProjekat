@@ -28,6 +28,7 @@ public class AmendmentController{
     @Autowired
     private IAmendmentDAO amendmentDao;
 
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<Amandman>> getAllAmendmentsForAct(@PathVariable("aktId") Long aktId) {
         try{
@@ -41,6 +42,7 @@ public class AmendmentController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
         amendment.setStanje(Constants.ProposedState);
@@ -52,6 +54,7 @@ public class AmendmentController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik})
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
 
@@ -87,6 +90,7 @@ public class AmendmentController{
         }
     }
 
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable("id")Long id, HttpServletRequest request){
         if(StateManager.getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {

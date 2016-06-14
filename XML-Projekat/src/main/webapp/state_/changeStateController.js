@@ -1,6 +1,7 @@
 (function(angular){
     
-    angular.module("xmlApp").controller("changeStateController",['$uibModalInstance','$state','$scope','stateService',function($uibModalInstance, $state,$scope,stateService){
+    angular.module("xmlApp").controller("changeStateController",['$uibModalInstance','$state','$scope','stateService','$rootScope',
+                                                        function($uibModalInstance, $state,$scope,stateService,$rootScope){
 
         $scope.promenaStanja = function(){
             $scope.animationsEnabled = true;
@@ -26,8 +27,9 @@
 
         $scope.odustani = function()
         {
-            console.log("nikola");
+            console.log($rootScope.ulogovanKorisnik);
             $uibModalInstance.dismiss('cancel');
+
         }
 
         

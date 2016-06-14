@@ -6,6 +6,8 @@ import xml.model.Korisnik;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by Dorian on 8.6.2016.
@@ -33,8 +35,11 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
                 .append(password)
                 .append("\"]");
 
+        ArrayList<Korisnik> users = getByQuery(query.toString());
+        if(users.size() > 0)
+            return users.get(0);
 
-        return getByQuery(query.toString()).get(0);
+        return null;
     }
 
 
