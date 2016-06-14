@@ -70,5 +70,17 @@
                 alert("Niste selektovali akt ! ");
             }
         }
+
+
+        $scope.pogledajDetalje = function(){
+            if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log($scope.akt);
+                $state.go("aktDetails",{"akt":$scope.akt});
+            }
+            else
+            {
+                alert("Niste selektovali akt ! ");
+            }
+        }
     }]);
 })(angular);

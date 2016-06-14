@@ -16,6 +16,8 @@
         aktService.getUProceduri(function(res){
 
                 $scope.akati = res.data;
+                $scope.ubaciAmandmane();
+                console.log($scope.akatiIStanja);
 
 
 
@@ -25,49 +27,57 @@
             });
 
 
+
         $scope.ubaciAmandmane = function(){
 
             for(var i = 0 ; i< $scope.akati.length; i++){
                 $scope.amandmani = {};
-                $scope.amandmaniIStanja = {};
-                amandmanService.getPredlozeneAmandmaneZaAkt($scope.akati[i].id, function(res){
+                $scope.amandmaniIStanja = [];
 
+                amandmanService.getPredlozeneAmandmaneZaAkt($scope.akati[i].id, function (res) {
 
 
                         $scope.amandmani = res.data;
-                        console.log("napunio amandmane");
 
-
+                        console.log($scope.amandmani);
+                        $scope.popara($scope.amandmani);
 
 
                     },
-                    function(res){
+                    function (res) {
 
 
                     });
-                for(var j = 0 ; j < $scope.amandmani.length; j++){
-                    $scope.amandmaniIStanja[j] = {
-                        'amandman':$scope.amandmani[j],
-                        'flag' : false
+
+
+                $scope.popara = function(amandmani) {
+                    $scope.amandmani = amandmani;
+                    for (var j = 0; j < $scope.amandmani.length; j++) {
+
+                        $scope.amandmaniIStanja[j] = {
+                            'amandman': $scope.amandmani[j],
+                            'flag': false
+                        }
                     }
-                }
-
-
-                $scope.akatiIStanja[$scope.akati[i].id] = {
-
-                    'akt' : $scope.akati[i],
-                    'amandmani' : $scope.amandmaniIStanja,
-                    'flag' : false
 
                 }
+                    $scope.akatiIStanja[$scope.akati[i].id] = {
 
-                console.log($scope.akatiIStanja);
+                        'akt': $scope.akati[i],
+                        'amandmani': $scope.amandmaniIStanja,
+                        'flag': false
+
+                    }
+
+
 
 
 
             }
 
         }
+
+        console.log($scope.akatiIStanja);
 
 
 
