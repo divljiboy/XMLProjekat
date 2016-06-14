@@ -1,7 +1,7 @@
 (function(angular){
     
     angular.module("xmlApp").controller("changeStateController",['$uibModalInstance','$state','$scope','stateService',function($uibModalInstance, $state,$scope,stateService){
-        /*
+
         $scope.promenaStanja = function(){
             $scope.animationsEnabled = true;
                     var modalInstance = $uibModal.open({
@@ -13,8 +13,6 @@
             
             
         }
-
-        */
 
         $scope.potvrdiPromenuStanja = function(){
             console.log("promena stanja");

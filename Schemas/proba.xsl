@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xsl:namespace
+<xsl:stylesheet version="1.0" 
     xmlns="aktovi" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     >
     <xsl:template match="/Pravni_akt">
