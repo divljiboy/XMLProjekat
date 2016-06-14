@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.Constants;
 import xml.controller.dto.ActsAndAmendemntsIdsDTO;
+import xml.interceptors.TokenHandler;
 import xml.model.Amandman;
+import xml.model.Korisnik;
 import xml.repositories.IAmendmentDAO;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,6 +61,26 @@ public class AmendmentController{
             e.printStackTrace();
         }
 
+    }
+
+    @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@PathVariable("id")Long id, HttpServletRequest request){
+        String token = request.getHeader("x-auth-token");
+        TokenHandler handler = new TokenHandler();
+        Korisnik user = handler.parseUserFromToken(token);
+        try {
+            Amandman amandman = amendmentDao.get(id);
+            if(amandman.getKoDodaje().equals(user.getEmail())){
+                amendmentDao.delete(id,Constants.Amendment);
+                System.out.print("Successfully deleted from db");
+            }else{
+                System.out.print("Delete forbidden to this user");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

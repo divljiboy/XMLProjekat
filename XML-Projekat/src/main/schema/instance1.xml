@@ -2,23 +2,21 @@
 <am:Amandman xmlns:akt="aktovi"
  xmlns:am="amandmani"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="amandmani file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/amandman.xsd">
+ xsi:schemaLocation="amandmani file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/amandman.xsd"
+    Id="1"
+    Ko_dodaje="juzernejm"
+    >
     <am:Stanje>Stanje0</am:Stanje>
-    <am:Kontekst>Kontekst0</am:Kontekst>
+    <am:Kontekst actId="1">Naziv0</am:Kontekst>
     <am:Operacija>dodavanje</am:Operacija>
-    <am:Sadrzaj>
+    <am:Sadrzaj r_glava="1" r_clan="2" r_odeljak="1">
         <akt:Glavni_deo>
             <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-            </akt:Clan>
-            <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
+                <akt:Stav>
+                    
+                    Neki stav se dodaje iz amandmana na akt 1
+                    
+                </akt:Stav>
             </akt:Clan>
         </akt:Glavni_deo>
     </am:Sadrzaj>

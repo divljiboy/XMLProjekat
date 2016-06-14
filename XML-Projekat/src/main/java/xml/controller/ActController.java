@@ -8,10 +8,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.Constants;
+import xml.interceptors.TokenHandler;
+import xml.model.Korisnik;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -86,11 +89,19 @@ public class ActController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public void delete(@PathVariable("id") Long id){
-        System.out.print(id);
+    public void delete(@PathVariable("id") Long id, HttpServletRequest request){
+        String token = request.getHeader("x-auth-token");
+        TokenHandler handler = new TokenHandler();
+        Korisnik user = handler.parseUserFromToken(token);
         try {
-            aktDao.delete(id,Constants.Act);
-            System.out.print("Successfully deleted from db");
+            PravniAkt act = aktDao.get(id);
+            if(act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())){
+                aktDao.delete(id,Constants.Act);
+                System.out.print("Successfully deleted from db");
+            }else{
+                System.out.print("Delete forbidden to this user");
+            }
+
         } catch (JAXBException e) {
             e.printStackTrace();
         } catch (IOException e) {
