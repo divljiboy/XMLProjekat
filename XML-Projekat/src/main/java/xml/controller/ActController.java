@@ -12,6 +12,7 @@ import xml.interceptors.TokenHandler;
 import xml.model.Korisnik;
 import xml.model.PravniAkt;
 import xml.repositories.IActDAO;
+import xml.stateStuff.StateManager;
 
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
@@ -90,22 +91,27 @@ public class ActController{
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public void delete(@PathVariable("id") Long id, HttpServletRequest request){
-        String token = request.getHeader("x-auth-token");
-        TokenHandler handler = new TokenHandler();
-        Korisnik user = handler.parseUserFromToken(token);
-        try {
-            PravniAkt act = aktDao.get(id);
-            if(act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())){
-                aktDao.delete(id,Constants.Act);
-                System.out.print("Successfully deleted from db");
-            }else{
-                System.out.print("Delete forbidden to this user");
-            }
 
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AKATA)) {
+            String token = request.getHeader("x-auth-token");
+            TokenHandler handler = new TokenHandler();
+            Korisnik user = handler.parseUserFromToken(token);
+            try {
+                PravniAkt act = aktDao.get(id);
+                if (act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())) {
+                    aktDao.delete(id, Constants.Act);
+                    System.out.print("Successfully deleted from db");
+                } else {
+                    System.out.print("Delete forbidden to this user");
+                }
+
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            System.out.print("State is not Predlaganje akata");
         }
     }
 

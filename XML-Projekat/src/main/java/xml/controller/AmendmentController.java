@@ -11,6 +11,7 @@ import xml.interceptors.TokenHandler;
 import xml.model.Amandman;
 import xml.model.Korisnik;
 import xml.repositories.IAmendmentDAO;
+import xml.stateStuff.StateManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
@@ -53,33 +54,41 @@ public class AmendmentController{
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
 
-        try {
-            amendmentDao.voting(idsDTO.getActsIds(),idsDTO.getAmendmentsIds());
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(StateManager.getState().equals(StateManager.GLASANJE)) {
+            try {
+                amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds());
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            System.out.print("State is not Glasanje");
         }
 
     }
 
     @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable("id")Long id, HttpServletRequest request){
-        String token = request.getHeader("x-auth-token");
-        TokenHandler handler = new TokenHandler();
-        Korisnik user = handler.parseUserFromToken(token);
-        try {
-            Amandman amandman = amendmentDao.get(id);
-            if(amandman.getKoDodaje().equals(user.getEmail())){
-                amendmentDao.delete(id,Constants.Amendment);
-                System.out.print("Successfully deleted from db");
-            }else{
-                System.out.print("Delete forbidden to this user");
+        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
+            String token = request.getHeader("x-auth-token");
+            TokenHandler handler = new TokenHandler();
+            Korisnik user = handler.parseUserFromToken(token);
+            try {
+                Amandman amandman = amendmentDao.get(id);
+                if (amandman.getKoDodaje().equals(user.getEmail())) {
+                    amendmentDao.delete(id, Constants.Amendment);
+                    System.out.print("Successfully deleted from db");
+                } else {
+                    System.out.print("Delete forbidden to this user");
+                }
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else{
+            System.out.print("State is not Predlaganje amandmana");
         }
     }
 
