@@ -82,5 +82,27 @@
                 alert("Niste selektovali akt ! ");
             }
         }
+
+        $scope.filtriraj = function(){
+
+            var object = {
+                "criteria":$scope.filter,
+                "idSearch": 2
+            };
+            console.log(object);
+            aktService.filterUsvojen(object,
+            function(res){
+                $scope.gridOptions.data = res.data;
+                console.log(res.data);
+            }),
+            function(res){
+
+            };
+        }
+
+        $scope.predlozi = function(){
+
+            $state.go("filter");
+        }
     }]);
 })(angular);

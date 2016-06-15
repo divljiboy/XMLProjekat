@@ -75,5 +75,7 @@
                 alert("Niste selektovali akt ! ");
             }
         }
+
+
 	}]);
 })(angular);

@@ -1,6 +1,6 @@
 (function(angular)
 {
-	angular.module("xmlApp").controller("sviAmandmaniController", ['$scope','$state','$stateParams','amandmanService',function($scope,$state,$stateParams,amandmanService)
+	angular.module("xmlApp").controller("sviAmandmaniController", ['$scope','$state','$stateParams','$uibModal','amandmanService',function($scope,$state,$stateParams,$uibModal,amandmanService)
 	{
 
 
@@ -53,6 +53,32 @@
 			{
 				alert("Niste selektovali amandman ! ");
 			}
+		}
+
+
+		$scope.entity = {};
+		$scope.povuci = function () {
+			console.log("usao");
+
+
+			if ($scope.gridApi.selection.getSelectedRows().length > 0) {
+				$scope.entity = "amandman";
+				$scope.animationsEnabled = true;
+				var modalInstance = $uibModal.open({
+					backdrop: false,
+					templateUrl: 'brisanje_/brisanje.html',
+					controller: 'brisanjeController',
+					scope : $scope
+				});
+			}
+			else
+			{
+				alert("Niste selektovali drzavu !");
+			}
+
+
+
+
 		}
 	/*
 		$scope.predlozi = function(){

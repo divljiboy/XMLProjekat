@@ -157,7 +157,7 @@ public class ActController{
         }
     }
 
-    @RequestMapping(value = "/akt/usvojeni/pretraga", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/akt/usvojeni/pretraga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<PravniAkt>> searchAdoptedActByText(@RequestBody SearchCriteriaDTO searchCriteriaDTO) {
 
         ArrayList<PravniAkt> acts;

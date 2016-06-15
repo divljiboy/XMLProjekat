@@ -27,13 +27,14 @@
                     $http(req).then(onSuccess, onError);
                 },
                 //all
-                getUProceduri : function (onSuccess,onError) {
+                getUProceduri : function (object, onSuccess,onError) {
                     var req = {
                         method: 'GET',
                         url: '/predlozeniAkati',
                         headers: {
                             'Content-Type': 'application/json'
-                        }
+                        },
+                        data : object
                     };
                     $http(req).then(onSuccess, onError);
                 },
@@ -69,6 +70,28 @@
                     var req = {
                         method: 'DELETE',
                         url: 'akt/brisi/'+ id,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                    $http(req).then(onSuccess, onError);
+
+                },
+                filterProcedura: function (id, onSuccess,onError) {
+                    var req = {
+                        method: 'POST',
+                        url: 'akt/brisi/'+ id,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                    $http(req).then(onSuccess, onError);
+
+                },
+                filterUsvojen: function (id, onSuccess,onError) {
+                    var req = {
+                        method: 'POST',
+                        url: 'akt/usvojeni/pretraga',
                         headers: {
                             'Content-Type': 'application/json'
                         }
