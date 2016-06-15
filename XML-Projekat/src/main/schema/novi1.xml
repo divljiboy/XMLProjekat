@@ -3,47 +3,80 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd">
     <akt:Stanje>Stanje0</akt:Stanje>
-    <akt:Naziv>Naziv0</akt:Naziv>
+    <akt:Naziv>З А К О Н
+        О ИЗВРШЕЊУ И ОБЕЗБЕЂЕЊУ</akt:Naziv>
     <akt:Glavni_deo>
-        <akt:Odeljak>
-            <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-            </akt:Clan>
-            <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-            </akt:Clan>
-        </akt:Odeljak>
-        <akt:Odeljak>
-            <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-            </akt:Clan>
-            <akt:Clan Broj_clana="50">
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-                <akt:Stav/>
-            </akt:Clan>
-        </akt:Odeljak>
+        <akt:Deo Id="1" Naziv="ДЕО ПРВИ ОСНОВНЕ ОДРЕДБЕ" Redni_broj="1">
+            
+                <akt:Clan Broj_clana="1" Naziv="Предмет закона">
+                    <akt:Stav Id="1">
+                        Овим законом уређује се поступак у коме судови и јавни извршитељи принудно намирују потраживања извршних поверилаца заснoвана на извршним и веродостојним исправама (извршни поступак), поступак обезбеђења потраживања и положај јавних извршитеља.
+                    </akt:Stav>
+                </akt:Clan>
+                
+                <akt:Clan Broj_clana="2" Naziv="Значење појединих израза">
+                    <akt:Stav Id="2">
+                        Поједини изрази који се користе у овом закону имају следеће значење:
+                        <akt:Tacka broj="1">„потраживање” означава право извршног повериоца да захтева од извршног дужника одређено давање, чињење, нечињење или трпљење;</akt:Tacka>
+                        <akt:Tacka broj="2">„извршни поверилац” означава лице чије се потраживање намирује у извршном поступку или обезбеђује у поступку обезбеђења;</akt:Tacka>
+                        <akt:Tacka broj="3">„извршни дужник” означава лице према коме се потраживање намирује у извршном поступку или обезбеђује у поступку обезбеђења;</akt:Tacka>
+                        <akt:Tacka broj="4">„странка” означава извршног повериоца и извршног дужника;</akt:Tacka>
+                        <akt:Tacka broj="5">„учесник у поступку” означава лице које у извршном поступку или поступку обезбеђења остварује неко своје право или правни интерес, а није странка у поступку;</akt:Tacka>
+                    </akt:Stav>
+                </akt:Clan>
+                
+                <akt:Clan Broj_clana="3" Naziv="Покретање и вођење извршног поступка и поступка обезбеђења">
+                    <akt:Stav Id="1">Извршни поступак и поступак обезбеђења покрећу се тако што извршни поверилац подноси предлог за извршење на основу извршне или веродостојне исправе или предлог за обезбеђење, а по службеној дужности покрећу се само ако је законом одређено.</akt:Stav>
+                    <akt:Stav Id="2">О предлогу за извршење на основу извршне или веродостојне исправе и предлогу за обезбеђење одлучује суд.</akt:Stav>
+                    <akt:Stav Id="3">О предлогу за извршење на основу веродостојне исправе ради намирења новчаног потраживања насталог из комуналних услуга и сродних делатности одлучује јавни извршитељ.</akt:Stav>
+                    <akt:Stav Id="4">Кадa се донесе решење о извршењу или обезбеђењу, спроводи се извршење.</akt:Stav>
+                </akt:Clan>
+                            
+        </akt:Deo>
+        
+        <akt:Deo Id="2" Naziv="ДЕО ДРУГИ ОПШТА ПРАВИЛА ИЗВРШНОГ ПОСТУПКА" Redni_broj="2">
+            
+            <akt:Glava Naziv="ИЗВРШНА И ВЕРОДОСТОЈНА ИСПРАВА" Id="1">
+                
+                <akt:Clan Broj_clana="4" Naziv="1. Основи за доношење решења о извршењу">
+                    <akt:Stav>Решење о извршењу доноси се на основу извршне или веродостојне исправе.</akt:Stav>
+                </akt:Clan>
+                
+                <akt:Clan Broj_clana="5" Naziv="Извршна исправа
+                    Врсте извршних исправа">
+                    <akt:Stav>
+                        Извршне исправе јесу:
+                        <akt:Tacka broj="1">извршна судска одлука и судско поравнање који гласе на давање, чињење, нечињење или трпљење;</akt:Tacka>
+                        <akt:Tacka broj="2">извршна одлука донета у прекршајном или управном поступку и управно поравнање који гласе на новчану обавезу ако посебним законом није друкчије одређено;</akt:Tacka>
+                        <akt:Tacka broj="3">извод из Регистра залоге и извод из Регистра финансијског лизинга;</akt:Tacka>
+                    </akt:Stav>
+                </akt:Clan>
+                
+            </akt:Glava>
+            
+            <akt:Glava Naziv="СРЕДСТВА И ПРЕДМЕТ ИЗВРШЕЊА" Id="2">
+                
+                <akt:Clan Broj_clana="6" Naziv="Средства извршења">
+                    <akt:Stav>Средства извршења су радње којима се намирује потраживање извршног повериоца.</akt:Stav>
+                    <akt:Stav>Средства извршења ради намирења новчаног потраживања јесу: продаја непокретности извршног дужника, продаја покретних ствари извршног дужника, пренос новчаног потраживања извршног дужника, пренос зараде извршног дужника, пренос новчаних средстава с рачуна извршног дужника код банке, пренос средстава са штедног улога или текућег рачуна извршног дужника, продаја финансијских инструмената извршног дужника, продаја удела извршног дужника у привредним субјектима и пренос потраживања извршног дужника да му се предају или испоруче покретне ствари или преда непокретност.</akt:Stav>
+                    <akt:Stav>Средства извршења ради остваривања неновчаног потраживања јесу: предаја покретних ствари извршног дужника, испражњење и предаја непокретности извршног дужника, чињење, нечињење или трпљење извршног дужника, предаја детета и извршење других одлука у вези с породичним односима, враћање запосленог на рад, деоба сувласничке ствари и издејствовање изјаве воље.</akt:Stav>
+                </akt:Clan>
+                
+            </akt:Glava>
+            
+        </akt:Deo>
+        
     </akt:Glavni_deo>
-    <akt:Drzava>Drzava0</akt:Drzava>
-    <akt:Pokrajina>Pokrajina0</akt:Pokrajina>
-    <akt:Grad>Grad0</akt:Grad>
-    <akt:Skupstina>Skupstina0</akt:Skupstina>
-    <akt:Broj_popisa_kod_organa>Broj_popisa_kod_organa0</akt:Broj_popisa_kod_organa>
-    <akt:Datum_donosenja_propisa>Datum_donosenja_propisa0</akt:Datum_donosenja_propisa>
-    <akt:Mesto_donosenja_propisa>Mesto_donosenja_propisa0</akt:Mesto_donosenja_propisa>
-    <akt:Ovlasceno_lice>
-        <akt:Titula>Titula0</akt:Titula>
-        <akt:Ime>Ime0</akt:Ime>
-        <akt:Prezime>Prezime0</akt:Prezime>
+    <akt:Drzava>РЕПУБЛИКА СРБИЈА</akt:Drzava>
+    <akt:Pokrajina>АУТОНОМНА ПОКРАЈИНА ВОЈВОДИНА</akt:Pokrajina>
+    <akt:Grad>ГРАД НОВИ САД</akt:Grad>
+    <akt:Skupstina>ГРАДСКО ВЕЋЕ ГРАДА НОВОГ САДА</akt:Skupstina>
+    <akt:Broj_popisa_kod_organa>6-19/2015-723-II</akt:Broj_popisa_kod_organa>
+    <akt:Datum_donosenja_propisa>31. децембар 2015. године</akt:Datum_donosenja_propisa>
+    <akt:Mesto_donosenja_propisa>НОВИ САД</akt:Mesto_donosenja_propisa>
+    <akt:Ovlasceno_lice Ko_dodaje="kerkezcar">
+        <akt:Titula>Градоначелник</akt:Titula>
+        <akt:Ime>Милош</akt:Ime>
+        <akt:Prezime>Вучевић</akt:Prezime>
     </akt:Ovlasceno_lice>
 </akt:Pravni_akt>

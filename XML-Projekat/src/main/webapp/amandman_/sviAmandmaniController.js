@@ -23,7 +23,7 @@
 
 				$scope.amandman.koDodaje = row.entity.koDodaje;
 				$scope.amandman.id = row.entity.id;
-				
+
 
 
 
