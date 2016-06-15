@@ -91,5 +91,21 @@
                 alert("Niste selektovali akt ! ");
             }
         }
+
+        $scope.povuciAkt = function () {
+            if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log($scope.akt);
+                aktService.delete($scope.akt.id,function(res){
+                    console.log('Obrisan akt sa id - em'+$scope.akt.id);
+                },function(res)
+                {
+
+                });
+            }
+            else
+            {
+                alert("Niste selektovali akt ! ");
+            }
+        }
     }]);
 })(angular);

@@ -69,7 +69,7 @@ public class ActController{
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity post(@RequestBody PravniAkt object) {
 
-        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AKATA)) {
+        if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AKATA)) {
             try {
                 PravniAkt maxAct = aktDao.getEntityWithMaxId(Constants.ProposedActCollection, Constants.ActNamespace, Constants.Act);
                 if (maxAct == null) {
@@ -101,10 +101,10 @@ public class ActController{
     }
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
-    @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public void delete(@PathVariable("id") Long id, HttpServletRequest request){
+    @RequestMapping(value = "/akt/brisi/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity delete(@PathVariable("id") Long id, HttpServletRequest request){
 
-        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AKATA)) {
+        if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AKATA)) {
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
@@ -112,18 +112,18 @@ public class ActController{
                 PravniAkt act = aktDao.get(id);
                 if (act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())) {
                     aktDao.delete(id, Constants.Act);
-                    System.out.print("Successfully deleted from db");
+                    return new ResponseEntity(HttpStatus.OK);
                 } else {
-                    System.out.print("Delete forbidden to this user");
+                    return new ResponseEntity(HttpStatus.BAD_REQUEST);
                 }
 
             } catch (JAXBException e) {
-                e.printStackTrace();
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
             } catch (IOException e) {
-                e.printStackTrace();
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
             }
         }else{
-            System.out.print("State is not Predlaganje akata");
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
