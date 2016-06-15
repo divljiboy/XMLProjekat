@@ -207,6 +207,4 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
         }
     }
 
-
-
 }

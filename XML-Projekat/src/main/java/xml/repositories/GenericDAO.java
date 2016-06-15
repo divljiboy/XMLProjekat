@@ -119,6 +119,45 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
         return entities.get(0);
     }
 
+    @Override
+    public T getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException {
+        StringBuilder query = new StringBuilder();
+
+        query
+                .append("declare namespace ns = \"")
+                .append(ns)
+                .append("\";\n")
+                .append("let $id := ")
+                .append("max(collection(\"")
+                .append(colId)
+                .append("\")/ns:")
+                .append(entity)
+                .append("/@Id)\n")
+                .append("return collection(\"")
+                .append(colId)
+                .append("\")/ns:")
+                .append(entity)
+                .append("[@Id = $id]");
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query.toString());
+
+        iterator = invoker.eval();
+
+        ArrayList<T> list = new ArrayList<>();
+
+        if(iterator.hasNext()){
+            for(EvalResult res : iterator){
+                list.add((T) xmlConverter.toObject(res.getString()));
+            }
+        }else
+            return null;
+
+        return list.get(0);
+    }
+
     //helper methods
     protected ArrayList<T> getByQuery(String query) throws JAXBException, IOException {
 
@@ -175,7 +214,6 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
         xmlManager.write(docId,metadataHandle,handle);
     }
 
-    protected void change(String docId, String colId, Long id){
 
-    }
+
 }

@@ -45,13 +45,24 @@ public class AmendmentController{
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
-        amendment.setStanje(Constants.ProposedState);
-        try{
-            amendmentDao.create(amendment, Constants.Amendment+amendment.getId().toString(), Constants.ProposedAmendmentCollection);
-            return new ResponseEntity(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
+            try {
+                Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
+                if (maxAmendment == null) {
+                    amendment.setId((long) 1);
+                } else {
+                    amendment.setId(maxAmendment.getId() + 1);
+                }
+                amendment.setStanje(Constants.ProposedState);
+                amendmentDao.create(amendment, Constants.Amendment + amendment.getId().toString(), Constants.ProposedAmendmentCollection);
+                return new ResponseEntity(HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
         }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RolesAllowed( value = {Constants.Predsednik})

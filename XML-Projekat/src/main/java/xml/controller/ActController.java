@@ -68,14 +68,25 @@ public class ActController{
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity post(@RequestBody PravniAkt object) {
-        object.setStanje(Constants.ProposedState);
-        try{
-            aktDao.create(object,Constants.Act+object.getId().toString(), Constants.ProposedActCollection);
-            return new ResponseEntity(HttpStatus.OK);
-        }catch (Exception e){
-            e.printStackTrace();
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AKATA)) {
+            try {
+                PravniAkt maxAct = aktDao.getEntityWithMaxId(Constants.ProposedActCollection, Constants.ActNamespace, Constants.Act);
+                if (maxAct == null) {
+                    object.setId((long) 1);
+                } else {
+                    object.setId(maxAct.getId() + 1);
+                }
+                object.setStanje(Constants.ProposedState);
+                aktDao.create(object, Constants.Act + object.getId().toString(), Constants.ProposedActCollection);
+                return new ResponseEntity(HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
         }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
@@ -178,4 +189,5 @@ public class ActController{
 
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
+
 }
