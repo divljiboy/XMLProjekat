@@ -4,7 +4,7 @@
         {
 
             (function(){
-                aktService.get($stateParams.akt.id,
+                aktService.get($stateParams.id,
                     function(res){
                         $scope.prikazAkt = $sce.trustAsHtml(res.data);;
                         console.log(res);

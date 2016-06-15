@@ -12,7 +12,7 @@
 
                                                                          $scope.predlogAmandmanaPotvrda = function(){
 
-                                                                             amandmanService.create($scope.akt.id, $scope.amandman,
+                                                                             amandmanService.create($scope.id, $scope.amandman,
                                                                                                    function(res){
                                                                                                             alert("AMANDMAN PREDLOZEN");
                                                                              },

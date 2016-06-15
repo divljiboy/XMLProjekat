@@ -46,7 +46,7 @@ public class AmendmentController{
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
 
-        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
+        if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
             try {
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
@@ -69,7 +69,7 @@ public class AmendmentController{
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
 
-        if(StateManager.getState().equals(StateManager.GLASANJE)) {
+        if(StateManager.getState().getState().equals(StateManager.GLASANJE)) {
             try {
                 amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds());
             } catch (JAXBException e) {
@@ -104,7 +104,7 @@ public class AmendmentController{
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable("id")Long id, HttpServletRequest request){
-        if(StateManager.getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
+        if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);

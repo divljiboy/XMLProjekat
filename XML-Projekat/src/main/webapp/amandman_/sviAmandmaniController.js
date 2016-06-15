@@ -33,7 +33,7 @@
 		};
 
 
-		amandmanService.getPredlozeneAmandmaneZaAkt($stateParams.aktId,
+		amandmanService.getPredlozeneAmandmaneZaAkt($stateParams.id,
 		function(res){
 			$scope.gridOptions.data = res.data;
 		},
@@ -47,7 +47,7 @@
 		$scope.pogledajDetalje = function(){
 			if($scope.gridApi.selection.getSelectedRows().length > 0){
 				console.log($scope.amandman);
-				$state.go("amandmanDetails",{"amandman":$scope.amandman});
+				$state.go("amandmanDetails",{id:$scope.amandman.id});
 			}
 			else
 			{

@@ -63,6 +63,18 @@
                         data: entity
                     }
                     $http(req).then(onSuccess, onError);
+                },
+
+                delete: function (id, onSuccess,onError) {
+                    var req = {
+                        method: 'DELETE',
+                        url: 'akt/brisi/'+ id,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                    $http(req).then(onSuccess, onError);
+
                 }
 
             }
