@@ -27,14 +27,13 @@
                     $http(req).then(onSuccess, onError);
                 },
                 //all
-                getUProceduri : function (object, onSuccess,onError) {
+                getUProceduri : function (onSuccess,onError) {
                     var req = {
                         method: 'GET',
                         url: '/predlozeniAkati',
                         headers: {
                             'Content-Type': 'application/json'
-                        },
-                        data : object
+                        }
                     };
                     $http(req).then(onSuccess, onError);
                 },
@@ -88,14 +87,16 @@
                     $http(req).then(onSuccess, onError);
 
                 },
-                filterUsvojen: function (id, onSuccess,onError) {
+                filterUsvojen: function (object, onSuccess,onError) {
                     var req = {
                         method: 'POST',
                         url: 'akt/usvojeni/pretraga',
                         headers: {
                             'Content-Type': 'application/json'
-                        }
-                    }
+                        },
+                        data: object
+                    } ;
+
                     $http(req).then(onSuccess, onError);
 
                 }

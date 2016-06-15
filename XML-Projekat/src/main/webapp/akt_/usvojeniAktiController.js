@@ -4,10 +4,11 @@
 
 (function(angular)
 {
-    angular.module("xmlApp").controller("usvojeniAktiController", ['$scope','$state','aktService',function($scope, $state,aktService){
+    angular.module("xmlApp").controller("usvojeniAktiController", ['$scope','$state','aktService','$stateParams','$location',function($scope, $state,aktService,$stateParams,$location) {
 
 
-        $scope.akt = {};
+
+            $scope.akt = {};
 
         $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: false };
 
@@ -33,21 +34,52 @@
 
         };
 
+    /*
+        if($stateParams.filter === "filter")
+        {
+            console.log($scope.filterText);
+            console.log($stateParams.filter);
+            var object = {
+                "criteria":$scope.filterText,
+                "idSearch": 2
+            };
 
+            aktService.filterUsvojen(object,
+                function(res){
+                    $scope.gridOptions.data = res.data;
+                    console.log(res.data);
+                }),
+                function(res){
 
-        aktService.getUsvojeni(function(res){
+                }
+        }else
+        {
+            console.log("svi");
+            aktService.getUsvojeni(function(res){
 
-                $scope.gridOptions.data = res.data;
-                console.log(res.data);
-            },
-            function(res)
-            {
+                    $scope.gridOptions.data = res.data;
+                    console.log(res.data);
+                },
+                function(res)
+                {
 
-                alert("Greska!");
-            }
-        );
+                    alert("Greska!");
+                }
+            );
+        }
+        */
+        $scope.ucitajAkate = function() {
+            aktService.getUsvojeni(function (res) {
 
+                    $scope.gridOptions.data = res.data;
+                    console.log(res.data);
+                },
+                function (res) {
 
+                    alert("Greska!");
+                }
+            );
+        };
 
 
 
@@ -83,21 +115,39 @@
             }
         }
 
-        $scope.filtriraj = function(){
 
+        $scope.filtriraj = function(){
+            console.log("popara");
             var object = {
-                "criteria":$scope.filter,
+                "criteria":$scope.filterText,
                 "idSearch": 2
             };
-            console.log(object);
             aktService.filterUsvojen(object,
-            function(res){
-                $scope.gridOptions.data = res.data;
-                console.log(res.data);
-            }),
-            function(res){
+                function(res){
+                    $scope.gridOptions.data = res.data;
+                    $location.hash("search="+$scope.filterText);
 
-            };
+                }),
+                function(res){
+
+
+                };
+        }
+
+
+        if ($location.hash().indexOf("search") != -1){
+
+            $scope.filterText = $location.hash().split("=")[1];
+
+            console.log($scope.filterText);
+
+
+            $scope.filtriraj();
+
+        }else
+        {
+
+            $scope.ucitajAkate();
         }
 
         $scope.predlozi = function(){

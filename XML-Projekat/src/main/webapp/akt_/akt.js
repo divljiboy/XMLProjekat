@@ -97,24 +97,7 @@
                         }
                     }
             
-            }).state('filter',{
-                url: '/filter',
-                views: {
-                    'content': {
-                        templateUrl: 'akt_/filterForma.html',
-                        controller: 'usvojeniAktiController'
-                    },
-                    'navbar': {
-                        templateUrl: 'navbar/navbar.html',
-                        controller: "navbarController"
-                    },
-                    'sidebar': {
-                        templateUrl: 'sidebar/sidebar.html',
-                        controller: 'sidebarController'
-                    }
-                }
-
-            })
+            });
         }]);
 
 
