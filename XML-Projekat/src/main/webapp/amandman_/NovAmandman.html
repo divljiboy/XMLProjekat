@@ -2,7 +2,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Novi amandman na akt : {{akt.naziv}} </legend>
+<legend>Novi amandman na akt : </legend>
 
 <!-- Textarea -->
 <div class="form-group">
@@ -12,8 +12,8 @@
   </div>
   <label class="col-md-4 control-label" for="unesi"></label>
   <div style="margin:20px;">
-    <button id="unesi" name="unesi" class="btn btn-success">Unesi</button>
-    <button id="otkazi" name="otkazi" class="btn btn-danger">Otkazi</button>
+    <button ng-click = "predlogAmandmanaPotvrda()" id="unesi" name="unesi" class="btn btn-success">Unesi</button>
+    <button ng-click = "odustani()" id="otkazi" name="otkazi" class="btn btn-danger">Otkazi</button>
   </div>
 </div>
 </fieldset>

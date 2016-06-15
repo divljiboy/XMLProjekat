@@ -5,14 +5,14 @@
         angular.module("xmlApp").controller("noviAmandmanController",['$scope','$state','$stateParams', 'amandmanService',function($scope,$state,$stateParams, amandmanService)
                                                                      {
 
-                                                                         $scope.akt = $stateParams.akt;
+
                                                                          
 
 
 
                                                                          $scope.predlogAmandmanaPotvrda = function(){
-
-                                                                             amandmanService.create($scope.id, $scope.amandman,
+                                                                             console.log($stateParams.id);
+                                                                             amandmanService.create($stateParams.id, $scope.amandman,
                                                                                                    function(res){
                                                                                                             alert("AMANDMAN PREDLOZEN");
                                                                              },
@@ -20,6 +20,10 @@
                                                                                                             alert("AMANDMAN PROPO");
                                                                              });
 
+                                                                         }
+
+                                                                         $scope.odustani = function(){
+                                                                             $state.go('home');
                                                                          }
 
                                                                      }]);

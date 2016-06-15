@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="proba.xsl"?>
-<Pravni_akt xmlns="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi file:/C:\Users\Home\Desktop\XMLProjekat\XML-Projekat\src/main/schema/akt.xsd" Id="2"
+<Pravni_akt xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi file:/C:\Users\Home\Desktop\XMLProjekat\XML-Projekat\src/main/schema/akt.xsd" Id="2"
     >
     <Stanje>False</Stanje>
     <Preambula>
-        На основу <Reference ref_clan="12">члана 12.</Reference> Одлуке о обезбеђивању средстава
+        На основу <Reference ref_clan="12" >члана 12.</Reference> Одлуке о обезбеђивању средстава
         за програме спортских удружења на територији Града Новог
         Сада („Службени лист Града Новог Сада“, број 33/15), Град-
         ско веће Града Новог Сада на 271. седници одржаној 31.
         децембра 2015. године, доноси
     </Preambula>
-    <Naziv>
+    <Naziv >
         ПРАВИЛНИК О НАЧИНУ И ПОСТУПКУ ДОДЕЛЕ
         СРЕДСТАВА ИЗ БУЏЕТА ГРАДА НОВОГ
         САДА ЗА ПРОГРАМЕ СПОРТСКИХ
@@ -121,6 +121,8 @@
                         по ангажованом спортском стручњаку, осим за спорт-
                         ска удружења која су у систему такмичења по прави-
                         лима спортске гране,</Alineja>
+                    <Tacka>asdasdadsda</Tacka>
+                    <Tacka>asdasdasdasdasdasdasdasda</Tacka>
                     <Alineja>- да је за реализацију програма ангажован спортски
                         стручњак са високом стручном спремом или
                         оспособљено лице односно да је ангажован довољан

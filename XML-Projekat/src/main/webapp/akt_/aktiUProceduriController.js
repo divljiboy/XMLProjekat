@@ -4,9 +4,9 @@
 
 (function(angular)
 {
-    angular.module("xmlApp").controller("aktiUProceduriController", ['$scope','$state','aktService',function($scope, $state,aktService){
+    angular.module("xmlApp").controller("aktiUProceduriController", ['$uibModal','$scope','$state','aktService',function($uibModal, $scope, $state,aktService){
         $scope.message = "Akt welcome!"
-
+        $scope.entity = {};
         $scope.akt = {};
 
         $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: false };
@@ -92,20 +92,28 @@
             }
         }
 
-        $scope.povuciAkt = function () {
-            if($scope.gridApi.selection.getSelectedRows().length > 0){
-                console.log($scope.akt);
-                aktService.delete($scope.akt.id,function(res){
-                    console.log('Obrisan akt sa id - em'+$scope.akt.id);
-                },function(res)
-                {
+        $scope.povuci = function () {
 
-                });
-            }
-            else
-            {
-                alert("Niste selektovali akt ! ");
-            }
+
+
+                if ($scope.gridApi.selection.getSelectedRows().length > 0) {
+                    $scope.entity = "akt";
+                    $scope.animationsEnabled = true;
+                    var modalInstance = $uibModal.open({
+                        backdrop: false,
+                        templateUrl: 'brisanje_/brisanje.html',
+                        controller: 'brisanjeController',
+                        scope : $scope
+                    });
+                }
+                else
+                {
+                    alert("Niste selektovali drzavu !");
+                }
+
+
+
+
         }
     }]);
 })(angular);

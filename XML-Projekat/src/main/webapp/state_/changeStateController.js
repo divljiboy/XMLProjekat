@@ -17,9 +17,14 @@
 
         $scope.potvrdiPromenuStanja = function(){
             console.log("promena stanja");
+            console.log($scope.state.state);
             stateService.setState($scope.state, function(res){
-
-                $state.go('glasanje');
+                if($scope.state.state === "Glasanje") {
+                    $state.go('glasanje');
+                }
+                else {
+                    $state.go('home');
+                }
             }, function(res){
                 alert("Stanje nije promenjeno");
             });

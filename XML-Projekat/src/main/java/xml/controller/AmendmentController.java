@@ -55,6 +55,7 @@ public class AmendmentController{
                     amendment.setId(maxAmendment.getId() + 1);
                 }
                 amendment.setStanje(Constants.ProposedState);
+
                 amendmentDao.create(amendment, Constants.Amendment + amendment.getId().toString(), Constants.ProposedAmendmentCollection);
                 return new ResponseEntity(HttpStatus.OK);
             } catch (Exception e) {
@@ -102,7 +103,7 @@ public class AmendmentController{
     }
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
-    @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/amandman/brisi/{id}", method = RequestMethod.DELETE,produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable("id")Long id, HttpServletRequest request){
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
             String token = request.getHeader("x-auth-token");

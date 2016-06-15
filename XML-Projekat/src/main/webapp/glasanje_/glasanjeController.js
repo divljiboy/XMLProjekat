@@ -4,7 +4,7 @@
 
 (function(angular){
 
-    angular.module("xmlApp").controller("glasanjeController",['$q','$scope','$state','amandmanService','aktService',function($q, $scope, $state,amandmanService, aktService){
+    angular.module("xmlApp").controller("glasanjeController",['$q','$scope','$state','amandmanService','aktService','glasanjeService',function($q, $scope, $state,amandmanService, aktService,glasanjeService){
 
 
         $scope.akatiIStanja = {};
@@ -66,10 +66,10 @@
 
             angular.forEach($scope.akatiIStanja, function(akt){
                 if(akt.flag == true){
-                    akati.push(akt.akt);
+                    akati.push(akt.akt.id);
                     angular.forEach(akt.amandmani,function(amandman){
                         if(amandman.flag == true){
-                            amandmani.push(amandman.amandman);
+                            amandmani.push(amandman.amandman.id);
                         }
                     });
 
@@ -77,10 +77,22 @@
                 }
             });
 
-            console.log(akati);
-            console.log(amandmani);
 
 
+
+            var glasanjeDto = {
+                'actsIds' : akati,
+                'amendmentsIds': amandmani
+            }
+
+            console.log(glasanjeDto);
+
+            glasanjeService.glasaj(glasanjeDto,function(res){
+                alert("mandzukic");
+            },
+            function(res){
+                alert("propo");
+            })
         }
 
  }]);
