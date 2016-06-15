@@ -2,7 +2,7 @@
 .classpath
 .project
 .settings/
-.class
+*.class
 
 # Intellij
 .idea/
