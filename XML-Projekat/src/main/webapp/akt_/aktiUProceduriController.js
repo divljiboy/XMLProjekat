@@ -4,7 +4,7 @@
 
 (function(angular)
 {
-    angular.module("xmlApp").controller("aktiUProceduriController", ['$uibModal','$scope','$state','aktService',function($uibModal, $scope, $state,aktService){
+    angular.module("xmlApp").controller("aktiUProceduriController", ['$location','$uibModal','$scope','$state','aktService',function($location,$uibModal, $scope, $state,aktService){
         $scope.message = "Akt welcome!"
         $scope.entity = {};
         $scope.akt = {};
@@ -35,18 +35,18 @@
 
 
 
-        aktService.getUProceduri(function(res){
+        $scope.ucitajAkate = function() {
+            aktService.getUProceduri(function (res) {
 
-                $scope.gridOptions.data = res.data;
-                console.log(res.data);
-            },
-            function(res)
-            {
+                    $scope.gridOptions.data = res.data;
+                    console.log(res.data);
+                },
+                function (res) {
 
-                alert("Greska!");
-            }
-        );
-
+                    alert("Greska!");
+                }
+            );
+        }
 
 
 
@@ -114,6 +114,40 @@
 
 
 
+        }
+
+
+        $scope.filtriraj = function(){
+            console.log("popara");
+            var object = {
+                "criteria":$scope.filterText,
+                "idSearch": 1
+            };
+            aktService.filterUsvojen(object,
+                function(res){
+                    $scope.gridOptions.data = res.data;
+                    $location.hash("search="+$scope.filterText);
+
+                }),
+                function(res){
+
+
+                };
+        }
+
+        if ($location.hash().indexOf("search") != -1){
+
+            $scope.filterText = $location.hash().split("=")[1];
+
+            console.log($scope.filterText);
+
+
+            $scope.filtriraj();
+
+        }else
+        {
+
+            $scope.ucitajAkate();
         }
     }]);
 })(angular);
