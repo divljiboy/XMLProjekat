@@ -18,6 +18,7 @@
                         localStorage.setItem('user',JSON.stringify(data));
                         //console.log(headers('X-AUTH-TOKEN'));
                         localStorage.setItem("token", headers('X-AUTH-TOKEN'));
+
                         $state.go('home');
                     }
                     if(status == 204){
