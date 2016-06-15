@@ -3,7 +3,8 @@
     xmlns:am="amandmani"
     xmlns:akt="aktovi"
     version="1.0">
-    
+    <xsl:variable name="PravniAktId" select="am:Amandman/am:Kontekst/@actId" />
+
     <xsl:template match="/am:Amandman">
         <html>
             <head>
@@ -34,123 +35,162 @@
         </p>
     </xsl:template>
     <xsl:template match="akt:Reference">
-        
-        
-        <a href="asda"> <xsl:value-of select="text()"/></a>
-        
+
+        <xsl:choose>
+            <!--ako referencira drugi akt-->
+            <xsl:when test="@ref_akt">
+                <xsl:choose>
+                    <!-- po hijerarhiji -->
+                    <xsl:when test="@ref_tacka">
+                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                    <xsl:when test="@ref_stav">
+                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                    <xsl:when test="@ref_clan">
+                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- po hijerarhiji -->
+                <xsl:choose>
+                    <xsl:when test="@ref_tacka">
+                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                    <xsl:when test="@ref_stav">
+                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                    <xsl:when test="@ref_clan">
+                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+
+
+        <!--<xsl:if test="@ref_akt">-->
+            <!--<a href="http://localhost:8080/#/aktDetails/{@ref_akt}"> <xsl:value-of select="text()"/></a>-->
+        <!--</xsl:if>-->
+        <!--<xsl:if test="@ref_stav">-->
+            <!--<a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>-->
+        <!--</xsl:if>-->
+        <!--<xsl:if test="@ref_clan">-->
+            <!--<a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>-->
+        <!--</xsl:if>-->
+        <!--<xsl:if test="@ref_tacka">-->
+            <!--<a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>-->
+        <!--</xsl:if>-->
+
     </xsl:template>
-    
-    
+
+
     <xsl:template match="akt:Podtacka">
         <div align="center">
             <h4>(
                 <xsl:value-of select="@broj"/>
                 ) </h4>
-            
+
             <p>
                 <xsl:apply-templates select="akt:Alineja|text()"/>
             </p>
-            
-            
+
+
         </div>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="akt:Tacka">
-        <div align="center">
+        <div align="center" id="Clan{@broj}">
             <h3>
                 Tacka
                 <xsl:value-of select="@broj"/>)
             </h3>
-            
             <p>
                 <xsl:apply-templates select="akt:Podtacka|akt:Alineja|text()"/>
             </p>
-            
-            
         </div>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="akt:Stav">
-        <div align="center">
-            
-            
+        <div align="center" id="Stav{@Id}">
+
             <p>
                 <xsl:apply-templates select="akt:Alineja | akt:Tacka |akt:Reference| text()"/>
-            </p>   
-            
+            </p>
+
         </div>
     </xsl:template>
     <xsl:template match="akt:Clan">
-        
-        <div align="center">
+
+        <div align="center" id="Clan{@Broj_clana}">
             <h3>
                 Clan <xsl:value-of select="@Broj_clana"/>.
                 <xsl:value-of select="@Naziv"/>
             </h3>
-            
-            <xsl:apply-templates select="akt:Stav|text()"/>
-            
+            <p>
+                <xsl:apply-templates select="akt:Stav|text()"/>
+            </p>
         </div>
     </xsl:template>
-    
-    
-    
+
+
+
     <xsl:template match="akt:Odeljak">
         <div align="center">
             <h3>
                 <xsl:value-of select="@Id"/>.
-                
+
                 <xsl:value-of select="@Naziv"/>
             </h3>
             <p>
                 <xsl:apply-templates select="akt:Clan|akt:Odeljak|text()"/>
             </p>
-            
+
         </div>
     </xsl:template>
-    
+
     <xsl:template match="akt:Glava">
         <div align="center">
             <h2>
-                
-                
+
+
                 <xsl:value-of select="@Naziv"/>
             </h2>
-            
+
             <p>
                 <xsl:apply-templates select="akt:Odeljak|akt:Clan|text()"/>
             </p>
-            
+
         </div>
     </xsl:template>
-    
+
     <xsl:template match="akt:Deo">
         <div align="center">
             <h2>
-                Deo 
+                Deo
                 <xsl:value-of select="@Redni_broj"/>
-                
+
                 <xsl:value-of select="@Naziv"/>
                 <xsl:value-of select="@Id"/>
             </h2>
-            
+
             <p>
                 <xsl:apply-templates select="akt:Odeljak|akt:Clan|akt:Glava|text()"/>
             </p>
-            
-            
+
+
         </div>
     </xsl:template>
     <xsl:template match="akt:Glavni_deo">
         <div align="center">
-            
-            
+
+
             <p>
                 <xsl:apply-templates select="akt:Deo|akt:Glava|akt:Odeljak|akt:Clan|text()"/>
             </p>
-            
+
         </div>
     </xsl:template>
     
