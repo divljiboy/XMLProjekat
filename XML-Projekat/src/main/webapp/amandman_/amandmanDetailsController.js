@@ -4,7 +4,7 @@
         {
 
             (function(){
-                amandmanService.get($stateParams.amandman.id,
+                amandmanService.get($stateParams.id,
                     function(res){
                         $scope.prikazAmandman = $sce.trustAsHtml(res.data);
                         console.log(res);
