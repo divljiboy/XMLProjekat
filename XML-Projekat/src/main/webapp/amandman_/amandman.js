@@ -6,7 +6,7 @@
             $stateProvider
             .state('sviAmandmani',
                 {	
-                    url: '/sviamandmani',
+                    url: '/amandmani/aktId={id}',
                     views: {
                         'content': {
                             templateUrl: 'amandman_/sviAmandmani.html',
@@ -20,17 +20,11 @@
                             templateUrl: 'sidebar/sidebar.html',
                             controller: 'sidebarController'
                         }
-                    },
-                    params:
-                    {
-                        aktId : null
                     }
                 }).state('noviAmandman',
             {
-                url: '/noviamandman',
-                params:{
-                    akt : null
-                },
+                url: '/noviamandman/aktId={id}',
+
                 views: {
                     'content': {
                         templateUrl: 'amandman_/NovAmandman.html',
@@ -50,7 +44,7 @@
             }).state('amandmanDetails',
                 {
 
-                    url: '/amandmanDetails',
+                    url: '/amandmanDetails/{id}',
                     views: {
                         'content': {
                             templateUrl: 'amandman_/amandmanDetails.html',
@@ -64,9 +58,6 @@
                             templateUrl: 'sidebar/sidebar.html',
                             controller: 'sidebarController'
                         }
-                    },
-                    params: {
-                        amandman: null
                     }
             });
         }]);

@@ -81,7 +81,7 @@
                 }).state('aktDetails',
                         {
                 
-                            url: '/aktDetails',                                                                                                                   
+                            url: '/aktDetails/{id}',
                     views: {
                         'content': {
                             templateUrl: 'akt_/aktDetails.html',
@@ -95,10 +95,7 @@
                             templateUrl: 'sidebar/sidebar.html',
                             controller: 'sidebarController'
                         }
-                    },
-                            params:{
-                                akt : null
-                            }
+                    }
             
             });
         }]);

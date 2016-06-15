@@ -54,7 +54,7 @@
         $scope.otvoriAmandmaneUProceduri = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("sviAmandmani", {"aktId" : $scope.akt.id});
+                $state.go("sviAmandmani", {id : $scope.akt.id});
             }
             else
             {
@@ -73,7 +73,7 @@
         $scope.predloziAmandman = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("noviAmandman",{"akt":$scope.akt});
+                $state.go("noviAmandman",{id:$scope.akt.id});
             }
             else
             {
@@ -84,7 +84,7 @@
         $scope.pogledajDetalje = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("aktDetails",{"akt":$scope.akt});
+                $state.go("aktDetails",{id:$scope.akt.id});
             }
             else
             {
