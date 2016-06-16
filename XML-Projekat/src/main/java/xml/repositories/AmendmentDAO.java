@@ -59,9 +59,11 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 .append("collection(\"")
                 .append(Constants.ProposedAmendmentCollection)
                 .append("\")/")
-                .append("ns:Amandman/ns:Kontekst[@actId = \"")
+                .append("ns:Amandman[@IdAct = \"")
                 .append(actId.toString())
-                .append("\"]/parent::ns:Amandman");
+                .append("\"]");
+
+        System.out.println(query.toString());
 
         ArrayList<Amandman> amendments = getByQuery(query.toString());
 
