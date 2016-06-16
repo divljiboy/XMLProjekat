@@ -114,18 +114,16 @@
                 alert("Niste selektovali akt za pdf ! ");
             }
         }
-
-        $scope.pogledajPDF = function(){
+        $scope.pogledajDetalje = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("aktpdf",{id:$scope.akt.id});
+                $state.go("aktDetails",{id:$scope.akt.id, nazivStanja:"usvojeni"});
             }
             else
             {
-                alert("Niste selektovali akt za pdf ! ");
+                alert("Niste selektovali akt ! ");
             }
         }
-
         $scope.filtriraj = function(){
             console.log("popara");
             var object = {
