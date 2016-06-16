@@ -1,0 +1,18 @@
+<md-list ng-repeat = "ais in akatiIStanja">
+
+    <md-subheader class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
+        <md-checkbox  class="md-secondary" ng-model = "ais.flag"></md-checkbox>
+     </md-subheader>
+    <div ng-show = ais.flag>
+    <md-list-item ng-repeat="amandman in ais.amandmani" class = "listItem">
+        <p>Amandman postavio : {{amandman.amandman.koDodaje}}  </p>
+        <md-checkbox  class="md-secondary" ng-model="amandman.flag"  ></md-checkbox>
+    </md-list-item>
+    </div>
+    <md-divider></md-divider>
+
+</md-list>
+
+<md-button  ng-click = "rezultatGlasanja()" aria-label="Potvrda" class = "potvrdaDugme">
+    Potvrda
+</md-button>

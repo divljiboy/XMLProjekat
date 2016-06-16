@@ -2,23 +2,35 @@
     <div class="md-toolbar-tools">
         
         <span flex=""></span>
+
+        <!-- za gradjanina -->
+        <md-button  ng-click = "pogledajDetalje()" class="md-raised" aria-label="Next">
+            <md-icon md-font-set="material-icons">details</md-icon>
+        </md-button>
         <div>
-            <md-button  class="md-raised" aria-label="Dodaj">
-                <md-icon md-font-set="material-icons">done</md-icon>
+            <md-button  ng-click = "predlozi()" class="md-raised" aria-label="Dodaj">
+                <md-icon md-font-set="material-icons">search</md-icon>
             </md-button>
         </div>
-        <md-button  ng-click = "predlozi()"  class="md-raised" aria-label="Dodaj">
-            <md-icon md-font-set="material-icons">add</md-icon>
-        </md-button>
-        <md-button  class="md-raised" aria-label="Izmeni">
-            <md-icon md-font-set="material-icons">edit</md-icon>
-        </md-button>
-        <md-button  class="md-raised" aria-label="Izbrisi">
-            <md-icon md-font-set="material-icons">delete</md-icon>
-        </md-button>
-        <md-button  ng-click = "predloziAmandman()" class="md-raised" aria-label="Next">
-            <md-icon md-font-set="material-icons">forward</md-icon>
-        </md-button>
+        <div>
+            <md-button  ng-click = "otvoriAmandmaneUProceduri()" class="md-raised" aria-label="Dodaj">
+                <md-icon md-font-set="material-icons">settings</md-icon>
+            </md-button>
+        </div>
+
+        <!-- za ulogovane -->
+        <div ng-if="authenticated">
+            <md-button  ng-click = "predlozi()"  class="md-raised" aria-label="Dodaj">
+                <md-icon md-font-set="material-icons">add</md-icon>
+            </md-button>
+            <md-button  ng-click = "predloziAmandman()" class="md-raised" aria-label="Next">
+                <md-icon md-font-set="material-icons">forward</md-icon>
+            </md-button>
+            <md-button  ng-click = "povuci()" class="md-raised" aria-label="Next">
+                <md-icon md-font-set="material-icons">delete</md-icon>
+            </md-button>
+        </div>
+
         
     </div>
     </md-toolbar>

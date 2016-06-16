@@ -9,9 +9,9 @@ public class StateManager {
 
     private static final String FILE_PATH = "./src/main/resources/state.bin";
 
-    private static final String PREDLAGANJE_AKATA = "Predlaganje akata";
-    private static final String PREDLAGANJE_AMANDMANA = "Predlaganje amandmana";
-    private static final String GLASANJE = "Glasanje";
+    public static final String PREDLAGANJE_AKATA = "Predlaganje akata";
+    public static final String PREDLAGANJE_AMANDMANA = "Predlaganje amandmana";
+    public static final String GLASANJE = "Glasanje";
 
 
     public static State getState(){

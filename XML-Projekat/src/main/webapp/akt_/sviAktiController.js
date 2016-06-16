@@ -8,8 +8,8 @@
          $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: false };
 
             $scope.gridOptions.columnDefs = [
-             
-              { name: 'naziv' }
+                {name: 'id', visible : false },
+                { name: 'naziv' }
 
             ];
 
@@ -20,6 +20,7 @@
                 gridApi.selection.on.rowSelectionChanged($scope, function (row) {
                             
                          $scope.akt.naziv = row.entity.naziv;
+                         $scope.akt.id = row.entity.id;
                          
                     
 
@@ -33,7 +34,7 @@
             aktService.getAll(function(res){
                                 
                                 $scope.gridOptions.data = res.data;
-                
+                                console.log(res.data);
             },
                               function(res)
                               {
@@ -50,9 +51,7 @@
         
         
         $scope.predlozi = function(){
-            
 			     $state.go("noviAkt");
-            
 		}
         
         $scope.predloziAmandman = function(){
@@ -65,5 +64,18 @@
                 alert("Niste selektovali akt ! ");
             }
 		}
+
+        $scope.pogledajDetalje = function(){
+            if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log($scope.akt);
+                $state.go("aktDetails",{"akt":$scope.akt});
+            }
+            else
+            {
+                alert("Niste selektovali akt ! ");
+            }
+        }
+
+
 	}]);
 })(angular);

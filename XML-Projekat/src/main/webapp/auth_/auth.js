@@ -13,16 +13,8 @@
                 url: '/signin',
                 views: {
                     "content":{
-                        templateUrl:'auth_/signin_/signIn.html'
-
-                    }
-                }
-            })
-            .state('signOut', {
-                url: '/signout',
-                views: {
-                    "content":{
-                        templateUrl:'signout_/signOut.html'
+                        templateUrl:'auth_/signin_/signIn.html',
+                        controller: 'signInController'
                     }
                 }
             })

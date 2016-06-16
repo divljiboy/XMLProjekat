@@ -131,6 +131,7 @@ html, body {
     height: 40px;
     text-decoration: none;
 }
+
 .sidebar ul :hover{
     background-color: white;
     text-decoration: none;
@@ -195,4 +196,29 @@ html, body {
 
 .md-raised{
     background-color:deepskyblue !important;
+}
+
+.md-no-sticky{
+    border: 3px solid navajowhite;
+    border-radius: 4px;
+    background-color:deepskyblue !important;
+    height: 50px;
+}
+
+.listItem{
+    border: 3px solid deepskyblue;
+    border-radius: 4px;
+
+    background-color: navajowhite !important;
+}
+.potvrdaDugme{
+    width: 160px;
+    height: 70px;
+    border: 3px solid navajowhite;
+    border-radius: 3px;
+
+    background-color: deepskyblue !important;
+}
+.potvrdaDugme:hover{
+    background-color: navajowhite !important;
 }

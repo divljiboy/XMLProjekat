@@ -1,21 +1,9 @@
 <div class="table-responsive">
-    
+
+
     <div ng-include src="'toolbar/toolbar.html'"></div>
+    <div>Pretrazi akate : <input ng-model="filterText" type="text"><input type="submit" value = "Filtriraj" ng-click="filtriraj()"> </div>
     <br/>
-    {{message}}
-    <!--
-    <button ui-sref="drzavaDodavanje">Dodaj novu drzavu</button>
-    <br />
-    <button ng-click="predjiNaFormu()">izmeni drzavu</button>
-    <br />
-    <button ng-click="obrisiDrzavu()">Obrisi drzavu</button>
-    <br />
-        
-    <br />
-
-
-    -->
-    
     <div>
         <div class="divForGrid">
             <div ui-grid="gridOptions" ui-grid-selection class="grid"></div>

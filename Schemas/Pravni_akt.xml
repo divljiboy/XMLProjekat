@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Pravni_akt xmlns="aktovi"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd"
-    Id="2"
-    Usvojen="false"
-    >
+<?xml-stylesheet type="text/xsl" href="proba.xsl"?>
+<Pravni_akt xmlns="aktovi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="aktovi file:/C:/Users/Home/Desktop/XMLProjekat/Schemas/akt.xsd" Id="2"
+    Usvojen="false">
     
     <Preambula>
         На основу <Reference ref_clan="12">члана 12.</Reference> Одлуке о обезбеђивању средстава
@@ -13,8 +10,8 @@
         ско веће Града Новог Сада на 271. седници одржаној 31.
         децембра 2015. године, доноси
     </Preambula>
-    <Naziv>ПРАВИЛНИК
-        О НАЧИНУ И ПОСТУПКУ ДОДЕЛЕ
+    <Naziv>
+        ПРАВИЛНИК О НАЧИНУ И ПОСТУПКУ ДОДЕЛЕ
         СРЕДСТАВА ИЗ БУЏЕТА ГРАДА НОВОГ
         САДА ЗА ПРОГРАМЕ СПОРТСКИХ
         УДРУЖЕЊА НА ТЕРИТОРИЈИ ГРАДА
