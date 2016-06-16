@@ -1,7 +1,5 @@
 package xml.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.sun.tools.jxc.ap.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +15,6 @@ import xml.stateStuff.StateManager;
 
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,7 +64,7 @@ public class ActController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(@RequestBody PravniAkt object,HttpServletRequest request) {
+    public ResponseEntity post(@RequestBody PravniAkt object, HttpServletRequest request) {
 
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AKATA)) {
             String token = request.getHeader("x-auth-token");

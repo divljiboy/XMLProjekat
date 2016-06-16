@@ -126,7 +126,9 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
 
         try {
             Amandman amendment = get(id);
-            applyOnAct(amendment.getKontekst().getActId(),amendment.getId(), amendment.getSadrzaj(), amendment.getOperacija().toString());
+            for(Podamandman amendmentPart : amendment.getPodamandman()){
+                applyOnAct(amendment.getIdAct(),amendment.getId(),amendmentPart.getId(),amendmentPart.getSadrzaj(),amendmentPart.getOperacija().toString());
+            }
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -146,7 +148,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * @throws JAXBException
      * @throws IOException
      */
-    protected void applyOnAct(Long actId,Long amemndmentId, Amandman.Sadrzaj content, String operation) throws JAXBException, IOException {
+    protected void applyOnAct(Long actId, Long amemndmentId,Long amendmentPartId, Podamandman.Sadrzaj content, String operation) throws JAXBException, IOException {
 
         StringBuilder xQuery = new StringBuilder();
 
@@ -159,6 +161,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                     .append(actId.toString())
                     .append("]/")
                     .append("ns:Glavni_deo/");
+
 
             if(content.getRDeo() != null){
                 xQuery
@@ -186,10 +189,41 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 xQuery
                         .append("ns:Clan[@Broj_clana=")
                         .append(content.getRClan())
-                        .append("],\n");
+                        .append("]\n");
             }
 
-            xQuery.append(getAmendmentContent(amemndmentId));
+            if(content.getRStav() != null){
+                xQuery
+                        .append("/ns:Stav[@Id=")
+                        .append(content.getRStav())
+                        .append("]\n");
+            }
+
+            if(content.getRTacka() != null){
+                xQuery
+                        .append("/ns:Tacka[@broj=")
+                        .append(content.getRTacka())
+                        .append("]\n");
+                if(content.getRPodtacka() != null){
+                    xQuery
+                            .append("/ns:Podtacka[@broj=")
+                            .append(content.getRTacka())
+                            .append("]\n");
+                }
+            }
+
+            if(content.getRAlineja() != null){
+                xQuery
+                        .append("ns:Alineja[@Id=")
+                        .append(content.getRAlineja())
+                        .append("]\n");
+            }
+            xQuery.append(",");
+            if(content.getGlavniDeo() != null)
+                xQuery.append(getAmendmentContent(amemndmentId,amendmentPartId,true));
+            else
+                xQuery.append(getAmendmentContent(amemndmentId,amendmentPartId,false));
+
             xQuery.append(");");
 
             System.out.print(xQuery.toString());
@@ -232,10 +266,43 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 xQuery
                         .append("ns:Clan[@Broj_clana=")
                         .append(content.getRClan())
-                        .append("],\n");
+                        .append("]\n");
             }
 
-            xQuery.append(getAmendmentContent(amemndmentId));
+            if(content.getRStav() != null){
+                xQuery
+                        .append("/ns:Stav[@Id=")
+                        .append(content.getRStav())
+                        .append("]\n");
+            }
+
+            if(content.getRTacka() != null){
+                xQuery
+                        .append("/ns:Tacka[@broj=")
+                        .append(content.getRTacka())
+                        .append("]\n");
+                if(content.getRPodtacka() != null){
+                    xQuery
+                            .append("/ns:Podtacka[@broj=")
+                            .append(content.getRTacka())
+                            .append("]\n");
+                }
+            }
+
+            if(content.getRAlineja() != null){
+                xQuery
+                        .append("/ns:Alineja[@Id=")
+                        .append(content.getRAlineja())
+                        .append("]\n");
+            }
+
+            xQuery.append(",");
+
+            if(content.getGlavniDeo() != null)
+                xQuery.append(getAmendmentContent(amemndmentId,amendmentPartId,true));
+            else
+                xQuery.append(getAmendmentContent(amemndmentId,amendmentPartId,false));
+
             xQuery.append(");");
 
             System.out.print(xQuery.toString());
@@ -280,6 +347,34 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                         .append("]");
             }
 
+
+            if(content.getRStav() != null){
+                xQuery
+                        .append("/ns:Stav[@Id=")
+                        .append(content.getRStav())
+                        .append("]\n");
+            }
+
+            if(content.getRTacka() != null){
+                xQuery
+                        .append("/ns:Tacka[@broj=")
+                        .append(content.getRTacka())
+                        .append("]\n");
+                if(content.getRPodtacka() != null){
+                    xQuery
+                            .append("/ns:Podtacka[@broj=")
+                            .append(content.getRTacka())
+                            .append("]\n");
+                }
+            }
+
+            if(content.getRAlineja() != null){
+                xQuery
+                        .append("/ns:Alineja[@Id=")
+                        .append(content.getRAlineja())
+                        .append("]\n");
+            }
+
             xQuery.append(")");
 
             System.out.print(xQuery.toString());
@@ -294,7 +389,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * @param id Id amandmana
      * @return String XML sadrzaj amandmana
      */
-    protected String getAmendmentContent(Long id) {
+    protected String getAmendmentContent(Long id,Long amendmentPartId,boolean isGlavniDeo) {
         StringBuilder query = new StringBuilder();
         query
                 .append("declare namespace ns = \"")
@@ -308,10 +403,18 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 .append("\")\n")
                 .append("return $x/ns:")
                 .append("Amandman")
-                .append("[@Id = ")
-                .append(id.toString()+"]/ns:Sadrzaj/ns1:Glavni_deo/node()");
-        String content = getStringByQuery(query.toString()).get(1);
-        return content;
+                .append("[@Id = ");
+
+        //String contetn = null;
+        if(isGlavniDeo) {
+            query.append(id.toString() + "]/ns:Podamandman[@Id = " + amendmentPartId + "]/ns:Sadrzaj/ns1:Glavni_deo/node()");
+            //contetn = getStringByQuery(query.toString()).get(1);
+        }else {
+            query.append(id.toString() + "]/ns:Podamandman[@Id = " + amendmentPartId + "]/ns:Sadrzaj/node()");
+            //contetn = getStringByQuery(query.toString()).get(0);
+        }
+
+        return getStringByQuery(query.toString());
     }
 
     /**

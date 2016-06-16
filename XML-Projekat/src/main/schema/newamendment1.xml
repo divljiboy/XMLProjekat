@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amandman xmlns:akt="aktovi"
+ xmlns:am="amandmani"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="amandmani file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/amandman.xsd"
+    IdAct="1"
+    Ko_dodaje="kerkezcar"
+    >
+    <am:Stanje>Stanje0</am:Stanje>
+    <am:Kontekst>Naziv 1</am:Kontekst>
+    <am:Podamandman>
+        <am:Operacija>dodavanje</am:Operacija>
+        <am:Sadrzaj r_deo="2" r_glava="2" r_odeljak="2" r_clan="9">
+            <akt:Glavni_deo>
+                <akt:Clan Broj_clana="10">
+                    <akt:Stav>
+                        Dodavanje iz amandmana 1 u akt 1.
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Glavni_deo>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    <am:Podamandman>
+        <am:Operacija>izmena</am:Operacija>
+        <am:Sadrzaj r_deo="1" r_odeljak="1" r_clan="2" r_stav="2" r_tacka="3">
+            <akt:Tacka broj="3">Izmena tacke 3</akt:Tacka>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    
+    <am:Podamandman>
+        <am:Operacija>brisanje</am:Operacija>
+        <am:Sadrzaj r_deo="1" r_odeljak="1" r_clan="2" r_stav="2" r_tacka="4">
+            <akt:Tacka broj="3">Izmena tacke 3</akt:Tacka>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    
+    <am:Obrazlozenje>Obrazlozenje0</am:Obrazlozenje>
+    <am:Ovlasceno_lice>
+        <akt:Titula>Titula0</akt:Titula>
+        <akt:Ime>Ime0</akt:Ime>
+        <akt:Prezime>Prezime0</akt:Prezime>
+    </am:Ovlasceno_lice>
+</am:Amandman>

@@ -48,6 +48,7 @@ public class AmendmentController{
 
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
             try {
+
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
                     amendment.setId((long) 1);
@@ -55,7 +56,9 @@ public class AmendmentController{
                     amendment.setId(maxAmendment.getId() + 1);
                 }
                 amendment.setStanje(Constants.ProposedState);
-
+                for(int i = 0; i < amendment.getPodamandman().size(); i++){
+                    amendment.getPodamandman().get(i).setId((long) (i+1));
+                }
                 amendmentDao.create(amendment, Constants.Amendment + amendment.getId().toString(), Constants.ProposedAmendmentCollection);
                 return new ResponseEntity(HttpStatus.OK);
             } catch (Exception e) {
