@@ -71,8 +71,8 @@ public class Tacka {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
      * {@link Podtacka }
+     * {@link String }
      * {@link Alineja }
      * 
      * 

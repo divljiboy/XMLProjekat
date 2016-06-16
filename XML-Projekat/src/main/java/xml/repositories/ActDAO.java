@@ -2,20 +2,28 @@ package xml.repositories;
 
 import com.marklogic.client.io.SearchHandle;
 import com.marklogic.client.query.*;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.DatabaseManager;
 import database.XMLConverter;
+import org.apache.fop.apps.FOUserAgent;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Repository;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 
 /**
@@ -186,9 +194,13 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
 
     @Override
-    public String getXsltDocument(Long id) throws IOException {
+    public String getXsltDocument(Long id,Integer colId) throws IOException {
         try {
-            PravniAkt akt = this.get(id);
+            PravniAkt akt = null;
+            if(colId == 1)
+                akt = this.get(id,Constants.ActCollection);
+            else
+                akt = this.get(id,Constants.ProposedActCollection);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
@@ -212,6 +224,49 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, Integer metadataType, String criteria) {
+
+
+        switch (metadataType) {
+            case 1: //taksonomija
+
+                break;
+            case 2: //Predlagac
+                break;
+            case 3: //Datum objave
+                break;
+            case 4: //Ko je usvojio
+                break;
+            case 5: //Za
+                break;
+            case 6: //Protiv
+                break;
+            case 7: //Suzdrzano
+                break;
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public ByteArrayOutputStream getPdf(Long id, String colName) throws JAXBException, IOException, TransformerException, SAXException {
+        FopFactory fopFactory = FopFactory.newInstance();
+        //fopFactory.setUserConfig(Constants.FOP_CONF);
+        TransformerFactory transformerFactory = new TransformerFactoryImpl();
+        StreamSource transformSource = new StreamSource(new File("./src/main/schema/akt-fo.xsl"));
+        StreamSource xmlSource = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(this.get(id,colName)).getBytes(XMLConverter.UTF_8)));
+        FOUserAgent userAgent = fopFactory.newFOUserAgent();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
+        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
+        Result res = new SAXResult(fop.getDefaultHandler());
+        xslFoTransformer.transform(xmlSource, res);
+
+        return outStream;
     }
 
 }

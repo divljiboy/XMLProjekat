@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;choice maxOccurs="unbounded" minOccurs="0">
  *         &lt;element ref="{aktovi}Tacka" maxOccurs="unbounded" minOccurs="2"/>
  *         &lt;element ref="{aktovi}Alineja" maxOccurs="unbounded" minOccurs="2"/>
- *         &lt;element ref="{aktovi}Reference" maxOccurs="unbounded"/>
+ *         &lt;element ref="{aktovi}Referenca" maxOccurs="unbounded"/>
  *       &lt;/choice>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Stav {
 
     @XmlElementRefs({
+        @XmlElementRef(name = "Referenca", namespace = "aktovi", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false),
-        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Alineja", namespace = "aktovi", type = Alineja.class, required = false)
     })
     @XmlMixed
@@ -71,9 +71,9 @@ public class Stav {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
      * {@link String }
      * {@link Tacka }
-     * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
      * {@link Alineja }
      * 
      * 

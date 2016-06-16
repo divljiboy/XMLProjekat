@@ -32,7 +32,10 @@
                 $scope.akatiIStanja[$scope.akati[i].id] = {
                     "akt" : $scope.akati[i],
                     "amandmani" : $scope.amandmaniIStanja,
-                    "flag":false
+                    "flag":false,
+                    "za": '',
+                    "protiv":'',
+                    "uzdrzan":''
 
                 }
 
@@ -93,6 +96,19 @@
             function(res){
                 alert("propo");
             })
+        }
+
+        $scope.aktoviGlasanje = function()
+        {
+            for(var i = 0 ; i < $scope.akatiIStanja.length; i++){
+                if( $scope.akatiIStanja[i].za > ($scope.akatiIStanja[i].protiv + $scope.akatiIStanja[i].uzdrzan))
+                {
+                    $scope.akatiIStanja[i].flag = true;
+                }
+                else{
+                    $scope.akatiIStanja[i].flag = false;
+                }
+            }
         }
 
  }]);

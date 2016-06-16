@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="aktovi" xmlns:akt="aktovi">
+    targetNamespace="aktovi" xmlns:akt="aktovi" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#">
     <xs:import schemaLocation="korisnici.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="signature.xsd"/>
     <xs:element name="Pravni_akt">
         <xs:complexType>
             <xs:sequence>
@@ -9,7 +10,7 @@
                 <xs:element minOccurs="0" name="Preambula">
                     <xs:complexType mixed="true">
                         <xs:sequence maxOccurs="unbounded" minOccurs="0">
-                            <xs:element ref="akt:Reference"/>
+                            <xs:element ref="akt:Referenca"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -23,8 +24,11 @@
                 <xs:element name="Datum_donosenja_propisa" type="xs:string"/>
                 <xs:element name="Mesto_donosenja_propisa" type="xs:string"/>
                 <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
+                <xs:element name="Timestamp" type="xs:dateTime"/>
+                <xs:element ref="ns1:Signature" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="Id" type="xs:long"/>
+            <xs:attributeGroup ref="akt:AMetadata"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Deo">
@@ -77,7 +81,7 @@
             <xs:choice maxOccurs="unbounded" minOccurs="0">
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Tacka"/>
                 <xs:element maxOccurs="unbounded" minOccurs="2" ref="akt:Alineja"/>
-                <xs:element maxOccurs="unbounded" minOccurs="1" ref="akt:Reference"/>
+                <xs:element maxOccurs="unbounded" minOccurs="1" ref="akt:Referenca"/>
             </xs:choice>
             <xs:attribute name="Id" type="xs:long"/>
         </xs:complexType>
@@ -141,5 +145,14 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:element name="Reference" type="akt:TReferenca"/>
+    <xs:element name="Referenca" type="akt:TReferenca"/>
+    <xs:attributeGroup name="AMetadata">
+        <xs:attribute name="Taksonomija" type="xs:string"/>
+        <xs:attribute name="Predlagac" type="xs:string"/>
+        <xs:attribute name="Datum_objave" type="xs:string"/>
+        <xs:attribute name="Ko_je_usvojio" type="xs:string"/>
+        <xs:attribute name="Za" type="xs:integer"/>
+        <xs:attribute name="Protiv" type="xs:integer"/>
+        <xs:attribute name="Suzdrzano" type="xs:integer"/>
+    </xs:attributeGroup>
 </xs:schema>

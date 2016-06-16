@@ -10,8 +10,10 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
+import xml.Constants;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +87,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     }
 
     @Override
-    public T get(Long id) throws JAXBException, IOException {
+    public T get(Long id,String colId) throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
         /*
@@ -101,8 +103,12 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
                 .append("declare namespace ns = \"")
                 .append(namespace)
                 .append("\";\n")
-                .append("for $x in collection(\"")
-                .append(collection)
+                .append("for $x in collection(\"");
+        if(colId != null)
+            query.append(colId);
+        else
+            query.append(collection);
+        query
                 .append("\")\n")
                 .append("return $x/ns:")
                 .append(entityName)
@@ -118,6 +124,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         return entities.get(0);
     }
+
 
     @Override
     public T getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException {
@@ -138,6 +145,8 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
                 .append("\")/ns:")
                 .append(entity)
                 .append("[@Id = $id]");
+
+
 
         EvalResultIterator iterator = null;
 

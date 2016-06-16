@@ -2,6 +2,7 @@
 package xml.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
@@ -12,7 +13,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -31,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *                   &lt;element ref="{aktovi}Reference"/>
+ *                   &lt;element ref="{aktovi}Referenca"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -47,7 +50,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Datum_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Mesto_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
+ *         &lt;element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element ref="{http://www.w3.org/2000/09/xmldsig#}Signature" minOccurs="0"/>
  *       &lt;/sequence>
+ *       &lt;attGroup ref="{aktovi}AMetadata"/>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -69,7 +75,9 @@ import javax.xml.bind.annotation.XmlType;
     "brojPopisaKodOrgana",
     "datumDonosenjaPropisa",
     "mestoDonosenjaPropisa",
-    "ovlascenoLice"
+    "ovlascenoLice",
+    "timestamp",
+    "signature"
 })
 @XmlRootElement(name = "Pravni_akt", namespace = "aktovi")
 public class PravniAkt {
@@ -98,8 +106,27 @@ public class PravniAkt {
     protected String mestoDonosenjaPropisa;
     @XmlElement(name = "Ovlasceno_lice", namespace = "aktovi", required = true)
     protected TOvlascenoLice ovlascenoLice;
+    @XmlElement(name = "Timestamp", namespace = "aktovi", required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar timestamp;
+    @XmlElement(name = "Signature", namespace = "http://www.w3.org/2000/09/xmldsig#")
+    protected SignatureType signature;
     @XmlAttribute(name = "Id")
     protected Long id;
+    @XmlAttribute(name = "Taksonomija")
+    protected String taksonomija;
+    @XmlAttribute(name = "Predlagac")
+    protected String predlagac;
+    @XmlAttribute(name = "Datum_objave")
+    protected String datumObjave;
+    @XmlAttribute(name = "Ko_je_usvojio")
+    protected String koJeUsvojio;
+    @XmlAttribute(name = "Za")
+    protected BigInteger za;
+    @XmlAttribute(name = "Protiv")
+    protected BigInteger protiv;
+    @XmlAttribute(name = "Suzdrzano")
+    protected BigInteger suzdrzano;
 
     /**
      * Gets the value of the stanje property.
@@ -390,6 +417,54 @@ public class PravniAkt {
     }
 
     /**
+     * Gets the value of the timestamp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Sets the value of the timestamp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setTimestamp(XMLGregorianCalendar value) {
+        this.timestamp = value;
+    }
+
+    /**
+     * Gets the value of the signature property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SignatureType }
+     *     
+     */
+    public SignatureType getSignature() {
+        return signature;
+    }
+
+    /**
+     * Sets the value of the signature property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SignatureType }
+     *     
+     */
+    public void setSignature(SignatureType value) {
+        this.signature = value;
+    }
+
+    /**
      * Gets the value of the id property.
      * 
      * @return
@@ -413,6 +488,174 @@ public class PravniAkt {
         this.id = value;
     }
 
+    /**
+     * Gets the value of the taksonomija property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTaksonomija() {
+        return taksonomija;
+    }
+
+    /**
+     * Sets the value of the taksonomija property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTaksonomija(String value) {
+        this.taksonomija = value;
+    }
+
+    /**
+     * Gets the value of the predlagac property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPredlagac() {
+        return predlagac;
+    }
+
+    /**
+     * Sets the value of the predlagac property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPredlagac(String value) {
+        this.predlagac = value;
+    }
+
+    /**
+     * Gets the value of the datumObjave property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDatumObjave() {
+        return datumObjave;
+    }
+
+    /**
+     * Sets the value of the datumObjave property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDatumObjave(String value) {
+        this.datumObjave = value;
+    }
+
+    /**
+     * Gets the value of the koJeUsvojio property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKoJeUsvojio() {
+        return koJeUsvojio;
+    }
+
+    /**
+     * Sets the value of the koJeUsvojio property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKoJeUsvojio(String value) {
+        this.koJeUsvojio = value;
+    }
+
+    /**
+     * Gets the value of the za property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getZa() {
+        return za;
+    }
+
+    /**
+     * Sets the value of the za property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setZa(BigInteger value) {
+        this.za = value;
+    }
+
+    /**
+     * Gets the value of the protiv property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getProtiv() {
+        return protiv;
+    }
+
+    /**
+     * Sets the value of the protiv property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setProtiv(BigInteger value) {
+        this.protiv = value;
+    }
+
+    /**
+     * Gets the value of the suzdrzano property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getSuzdrzano() {
+        return suzdrzano;
+    }
+
+    /**
+     * Sets the value of the suzdrzano property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setSuzdrzano(BigInteger value) {
+        this.suzdrzano = value;
+    }
+
 
     /**
      * <p>Java class for anonymous complex type.
@@ -424,7 +667,7 @@ public class PravniAkt {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
-     *         &lt;element ref="{aktovi}Reference"/>
+     *         &lt;element ref="{aktovi}Referenca"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -439,7 +682,7 @@ public class PravniAkt {
     })
     public static class Preambula {
 
-        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Referenca", namespace = "aktovi", type = JAXBElement.class, required = false)
         @XmlMixed
         protected List<Serializable> content;
 
@@ -461,8 +704,8 @@ public class PravniAkt {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link String }
          * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
+         * {@link String }
          * 
          * 
          */

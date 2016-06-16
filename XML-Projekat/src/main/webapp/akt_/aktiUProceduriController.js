@@ -84,14 +84,23 @@
         $scope.pogledajDetalje = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("aktDetails",{id:$scope.akt.id});
+                $state.go("aktDetails",{id:$scope.akt.id, "nazivStanja":"predlozeni"});
             }
             else
             {
                 alert("Niste selektovali akt ! ");
             }
         }
-
+        $scope.skiniPDF = function(){
+           if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log("pdf: "+$scope.akt);
+               aktService.getPDF($scope.akt.id,"predlozeni");
+            }
+            else
+            {
+                alert("Niste selektovali akt za pdf ! ");
+            }
+        }
         $scope.povuci = function () {
 
 

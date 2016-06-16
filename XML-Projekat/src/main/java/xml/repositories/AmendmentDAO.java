@@ -1,19 +1,26 @@
 package xml.repositories;
 
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.XMLConverter;
+import org.apache.fop.apps.FOUserAgent;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.model.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,9 +66,11 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 .append("collection(\"")
                 .append(Constants.ProposedAmendmentCollection)
                 .append("\")/")
-                .append("ns:Amandman/ns:Kontekst[@actId = \"")
+                .append("ns:Amandman[@IdAct = \"")
                 .append(actId.toString())
-                .append("\"]/parent::ns:Amandman");
+                .append("\"]");
+
+        System.out.println(query.toString());
 
         ArrayList<Amandman> amendments = getByQuery(query.toString());
 
@@ -71,7 +80,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     @Override
     public String getXsltDocument(Long id) throws IOException {
         try {
-            Amandman amandman = this.get(id);
+            Amandman amandman = this.get(id,null);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
@@ -106,8 +115,9 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         for(Long id : actsIds){
             try {
 
-                PravniAkt act = actDAO.get(id);
+                PravniAkt act = actDAO.get(id,Constants.ProposedActCollection);
                 act.setStanje(Constants.AdoptedState);
+
                 actDAO.updateActState(id,Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);
             } catch (JAXBException e) {
@@ -125,7 +135,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     protected void applyAmendment(Long id) {
 
         try {
-            Amandman amendment = get(id);
+            Amandman amendment = get(id,null);
             for(Podamandman amendmentPart : amendment.getPodamandman()){
                 applyOnAct(amendment.getIdAct(),amendment.getId(),amendmentPart.getId(),amendmentPart.getSadrzaj(),amendmentPart.getOperacija().toString());
             }
@@ -428,7 +438,23 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         for(PravniAkt act : acts){
             actDAO.updateActState(act.getId(),Constants.NotAdoptedState);
         }
+    }
 
+    @Override
+    public ByteArrayOutputStream getPdf(Long id) throws JAXBException, IOException, TransformerException, SAXException {
+        FopFactory fopFactory = FopFactory.newInstance();
+        fopFactory.setUserConfig(Constants.FOP_CONF);
+        TransformerFactory transformerFactory = new TransformerFactoryImpl();
+        StreamSource transformSource = new StreamSource(new File("./src/main/schema/amandman-fo.xsl"));
+        StreamSource xmlSource = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(this.get(id,null)).getBytes(XMLConverter.UTF_8)));
+        FOUserAgent userAgent = fopFactory.newFOUserAgent();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
+        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
+        Result res = new SAXResult(fop.getDefaultHandler());
+        xslFoTransformer.transform(xmlSource, res);
+
+        return outStream;
     }
 
 }

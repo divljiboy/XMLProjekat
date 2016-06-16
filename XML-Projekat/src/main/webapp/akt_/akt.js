@@ -81,7 +81,7 @@
                 }).state('aktDetails',
                         {
                 
-                            url: '/aktDetails/{id}',
+                            url: '/aktDetails/{nazivStanja}/{id}',
                     views: {
                         'content': {
                             templateUrl: 'akt_/aktDetails.html',

@@ -104,18 +104,26 @@
         }
 
 
+        $scope.skiniPDF = function(){
+            if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log("pdf: "+$scope.akt);
+                aktService.getPDF($scope.akt.id,"usvojeni");
+            }
+            else
+            {
+                alert("Niste selektovali akt za pdf ! ");
+            }
+        }
         $scope.pogledajDetalje = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log($scope.akt);
-                $state.go("aktDetails",{"id":$scope.akt.id});
+                $state.go("aktDetails",{id:$scope.akt.id, nazivStanja:"usvojeni"});
             }
             else
             {
                 alert("Niste selektovali akt ! ");
             }
         }
-
-
         $scope.filtriraj = function(){
             console.log("popara");
             var object = {
@@ -127,11 +135,11 @@
                     $scope.gridOptions.data = res.data;
                     $location.hash("search="+$scope.filterText);
 
-                }),
+                },
                 function(res){
 
 
-                };
+                });
         }
 
 

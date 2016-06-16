@@ -4,7 +4,7 @@
         {
 
             (function(){
-                aktService.get($stateParams.id,
+                aktService.get($stateParams.id,$stateParams.nazivStanja,
                     function(res){
                         $scope.prikazAkt = $sce.trustAsHtml(res.data);
                         $timeout(function() {

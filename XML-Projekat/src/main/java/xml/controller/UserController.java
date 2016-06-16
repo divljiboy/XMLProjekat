@@ -20,6 +20,7 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,22 +34,22 @@ public class UserController {
     @Autowired
     private IUserDAO userDao;
 
-    @RequestMapping(value = "/svi" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/svi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Korisnik>> getAll() {
-        try{
+        try {
             List<Korisnik> korisnici = userDao.getAll();
-            if(korisnici == null)
+            if (korisnici == null)
                 return new ResponseEntity<List<Korisnik>>(HttpStatus.NO_CONTENT);
 
-            return  new ResponseEntity<List<Korisnik>>(korisnici,HttpStatus.OK);
+            return new ResponseEntity<List<Korisnik>>(korisnici, HttpStatus.OK);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<List<Korisnik>>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @RequestMapping(value = "/dodaj",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestBody Korisnik korisnik){
+    @RequestMapping(value = "/dodaj", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity post(@RequestBody Korisnik korisnik) {
         //prvo bez validacije
 
         byte[] salt = new byte[0];
@@ -76,17 +77,14 @@ public class UserController {
         korisnik.setPassword(PasswordStorage.base64Encode(hashedPassword));
 
 
-
-
-
         try {
-            Korisnik maxUser = userDao.getEntityWithMaxId(Constants.UsersCollection,Constants.UserNamespace,Constants.User);
-            if(maxUser == null){
+           /* Korisnik maxUser = userDao.getEntityWithMaxId(Constants.UsersCollection, Constants.UserNamespace, Constants.User);
+            if (maxUser == null) {
                 korisnik.setId((long) 1);
-            }else{
+            } else {
                 korisnik.setId(maxUser.getId() + 1);
-            }
-            userDao.create(korisnik, Constants.User + korisnik.getId().toString(),Constants.UsersCollection);
+            }*/
+            userDao.create(korisnik, Constants.User + korisnik.getId().toString(), Constants.UsersCollection);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -98,31 +96,50 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,
             consumes = MediaType.APPLICATION_XML_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Korisnik> getById(@PathVariable("id")Long id){
+    public ResponseEntity<Korisnik> getById(@PathVariable("id") Long id) {
 
         try {
             Korisnik user = null;
             try {
-                user = userDao.get(id);
+                user = userDao.get(id, null);
             } catch (JAXBException e) {
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }
-            if(user == null){
+            if (user == null) {
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
-            }else{
-                return new ResponseEntity<Korisnik>(user,HttpStatus.OK);
+            } else {
+                return new ResponseEntity<Korisnik>(user, HttpStatus.OK);
             }
         } catch (IOException e) {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik,HttpServletResponse response){
-        if(korisnik == null)
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik, HttpServletResponse response) {
+        if (korisnik == null)
             return new ResponseEntity<Korisnik>(HttpStatus.OK);
         try {
-            Korisnik user = userDao.getByLogin(korisnik.getUsername(),korisnik.getPassword());
+
+            ArrayList<Korisnik> users = (ArrayList<Korisnik>) userDao.getAll();
+          //  Korisnik user = userDao.getByLogin(korisnik.getUsername(), korisnik.getPassword());
+
+            for (Korisnik k : users) {
+                if (k.getUsername().equals(korisnik.getUsername())) {
+                    if (PasswordStorage.authenticate(korisnik.getPassword(), PasswordStorage.base64Decode(k.getPassword()), PasswordStorage.base64Decode(k.getSalt()))) {
+                        TokenHandler handler = new TokenHandler();
+                        k.setPassword("");
+                        response.setHeader("x-auth-token", handler.createTokenForUser(k));
+                        return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
+                    }else
+                    {
+                        return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+                    }
+
+
+                }
+            }
+            /*
             if(user == null){
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }else{
@@ -131,22 +148,30 @@ public class UserController {
                 response.setHeader("x-auth-token",handler.createTokenForUser(user));
                 return new ResponseEntity<Korisnik>(user,HttpStatus.OK);
             }
+            */
         } catch (IOException e) {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         } catch (JAXBException e) {
             return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
+        } catch (NoSuchAlgorithmException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+        } catch (InvalidKeySpecException e) {
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
     }
 
+
+
     //for presidend
-    @RolesAllowed(value = Constants.Predsednik)
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/state",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getState(){
+    public ResponseEntity<State> getState(){
         State state = StateManager.getState();
         if(state == null)
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
 
-        return new ResponseEntity(state,HttpStatus.OK);
+        return new ResponseEntity<State>(state,HttpStatus.OK);
     }
 
     @RolesAllowed(value = Constants.Predsednik)
