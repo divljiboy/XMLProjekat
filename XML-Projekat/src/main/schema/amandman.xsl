@@ -16,8 +16,12 @@
                 </div>
                 
                <p align="center"> <xsl:value-of select="am:Kontekst"/></p>
-            <p align="center"><xsl:value-of select="am:Operacija"/></p>
-                <xsl:apply-templates select="am:Sadrzaj/akt:Glavni_deo"></xsl:apply-templates>
+               <xsl:apply-templates select="am:Podamandman"></xsl:apply-templates>
+                <p align="center"> <xsl:value-of select="am:Obrazlozenje"/></p>
+                <p align="center"> <xsl:value-of select="am:Ovlasceno_lice"/></p>
+                
+                
+                
             </body>
         </html>
         
@@ -42,13 +46,13 @@
                 <xsl:choose>
                     <!-- po hijerarhiji -->
                     <xsl:when test="@ref_tacka">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_stav">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_clan">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                 </xsl:choose>
             </xsl:when>
@@ -56,13 +60,13 @@
                 <!-- po hijerarhiji -->
                 <xsl:choose>
                     <xsl:when test="@ref_tacka">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_stav">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_clan">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                 </xsl:choose>
             </xsl:otherwise>
@@ -193,6 +197,27 @@
 
         </div>
     </xsl:template>
+    <xsl:template match="am:Sadrzaj">
+        <div align="center">
+            
+            
+            <p>
+                <xsl:apply-templates select="akt:Glavni_deo|akt:Stav|akt:Tacka|akt:Podtacka|akt:Alineja|text()"/>
+            </p>
+            
+        </div>
+    </xsl:template>
+    <xsl:template match="am:Podamandman">
+        <div align="center">
+            
+            
+            <p>
+                <xsl:apply-templates select="am:Operacija|am:Sadrzaj|text()"/>
+            </p>
+            
+        </div>
+    </xsl:template>
+    
     
     
     

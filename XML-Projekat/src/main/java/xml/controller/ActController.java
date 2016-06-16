@@ -1,10 +1,13 @@
 package xml.controller;
 
+import org.apache.fop.apps.FOPException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.controller.dto.SearchCriteriaDTO;
 import xml.controller.dto.SearchMetadataDTO;
@@ -16,7 +19,11 @@ import xml.stateStuff.StateManager;
 
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Path;
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -202,10 +209,60 @@ public class ActController{
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+
     @RequestMapping(value = "akt/search/metadata", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ArrayList<PravniAkt>> searchByMetadata(@RequestBody SearchMetadataDTO searchMetadataDTO){
-        aktDao.searchByMetadata(searchMetadataDTO.getCollectionName(),searchMetadataDTO.getMetadataType(),searchMetadataDTO.getCriteria());
+    public ResponseEntity<ArrayList<PravniAkt>> searchByMetadata(@RequestBody SearchMetadataDTO searchMetadataDTO) {
+        aktDao.searchByMetadata(searchMetadataDTO.getCollectionName(), searchMetadataDTO.getMetadataType(), searchMetadataDTO.getCriteria());
         return null;
+    }
+
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
+    @RequestMapping(value = "/akt/pdf/{colName}/{id}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> getPdf(@PathVariable("colName") String colName , @PathVariable("id") Long id){
+        ByteArrayOutputStream pdf = null;
+        String collection = null;
+        switch (colName){
+            case "usvojeni":
+                collection = Constants.ActCollection;
+                break;
+            case "predlozeni":
+                collection = Constants.ProposedActCollection;
+                break;
+            default:
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        try {
+            pdf = aktDao.getPdf(id,collection);
+
+
+            //returning shit
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("application/pdf"));
+            String filename = "Act"+id+".pdf";
+            headers.setContentDispositionFormData(filename, filename);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            ResponseEntity<byte[]> response = new ResponseEntity(pdf.toByteArray(), headers, HttpStatus.OK);
+            return response;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (FOPException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (SAXException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

@@ -107,7 +107,7 @@
         $scope.skiniPDF = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
                 console.log("pdf: "+$scope.akt);
-
+                aktService.getPDF($scope.akt.id,"usvojeni");
             }
             else
             {
@@ -135,11 +135,11 @@
                     $scope.gridOptions.data = res.data;
                     $location.hash("search="+$scope.filterText);
 
-                }),
+                },
                 function(res){
 
 
-                };
+                });
         }
 
 

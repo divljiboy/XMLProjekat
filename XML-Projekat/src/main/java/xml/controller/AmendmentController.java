@@ -1,10 +1,13 @@
 package xml.controller;
 
+import org.apache.fop.apps.FOPException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.controller.dto.ActsAndAmendemntsIdsDTO;
 import xml.interceptors.TokenHandler;
@@ -16,6 +19,9 @@ import xml.stateStuff.StateManager;
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -127,6 +133,42 @@ public class AmendmentController{
             }
         }else{
             System.out.print("State is not Predlaganje amandmana");
+        }
+    }
+
+    @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
+    @RequestMapping(value = "/amandman/pdf/{id}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> getPdf(@PathVariable("id") Long id){
+        try{
+            ByteArrayOutputStream pdf = amendmentDao.getPdf(id);
+
+            //returning shit
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("application/pdf"));
+            String filename = "Amendment"+id+".pdf";
+            headers.setContentDispositionFormData(filename, filename);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            ResponseEntity<byte[]> response = new ResponseEntity(pdf.toByteArray(), headers, HttpStatus.OK);
+            return response;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (FOPException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (SAXException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -31,4 +31,7 @@ public class Constants {
     public static final String Predsednik = "Predsednik";
     public static final String Odbornik = "Odbornik";
 
+
+    //files
+    public static final String FOP_CONF = "./src/main/resources/fop.xconf";
 }
