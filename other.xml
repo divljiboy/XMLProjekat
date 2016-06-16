@@ -74,4 +74,8 @@
   <component name="RefactoringSettings">
     <option name="MOVE_PREVIEW_USAGES" value="false" />
   </component>
+  <component name="WebServicesPluginSettings">
+    <StubPackage>model</StubPackage>
+    <JAXBUrl>file:/D:/IV godina/XML/XMLProjekat/XML-Projekat/src/main/schema/amandman.xsd</JAXBUrl>
+  </component>
 </application>
