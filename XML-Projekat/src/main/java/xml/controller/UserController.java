@@ -103,7 +103,7 @@ public class UserController {
         try {
             Korisnik user = null;
             try {
-                user = userDao.get(id);
+                user = userDao.get(id,null);
             } catch (JAXBException e) {
                 return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
             }

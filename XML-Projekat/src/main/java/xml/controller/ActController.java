@@ -45,18 +45,17 @@ public class ActController{
     }
 
     @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
-    @RequestMapping(value = "/akt/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getById(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/akt/{id}/{colId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getById(@PathVariable("id") Long id,@PathVariable("colId") Integer colId) {
         try{
-            String html = aktDao.getXsltDocument(id);
+            String html = aktDao.getXsltDocument(id,colId);
             //PravniAkt akt = aktDao.get(id);
             //if(akt == null)
                 //return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
+
             if(html == null)
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             return new ResponseEntity(html,HttpStatus.OK);
-
-           // return new ResponseEntity(akt,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
@@ -110,7 +109,7 @@ public class ActController{
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
             try {
-                PravniAkt act = aktDao.get(id);
+                PravniAkt act = aktDao.get(id,null);
                 if (act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())) {
                     aktDao.delete(id, Constants.Act);
                     return new ResponseEntity(HttpStatus.OK);

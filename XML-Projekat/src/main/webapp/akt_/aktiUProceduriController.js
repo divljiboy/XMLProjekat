@@ -91,7 +91,15 @@
                 alert("Niste selektovali akt ! ");
             }
         }
-
+        $scope.skiniPDF = function(){
+           if($scope.gridApi.selection.getSelectedRows().length > 0){
+                console.log("pdf: "+$scope.akt);
+            }
+            else
+            {
+                alert("Niste selektovali akt za pdf ! ");
+            }
+        }
         $scope.povuci = function () {
 
 

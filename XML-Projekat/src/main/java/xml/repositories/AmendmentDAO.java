@@ -59,9 +59,11 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
                 .append("collection(\"")
                 .append(Constants.ProposedAmendmentCollection)
                 .append("\")/")
-                .append("ns:Amandman/ns:Kontekst[@actId = \"")
+                .append("ns:Amandman[@IdAct = \"")
                 .append(actId.toString())
-                .append("\"]/parent::ns:Amandman");
+                .append("\"]");
+
+        System.out.println(query.toString());
 
         ArrayList<Amandman> amendments = getByQuery(query.toString());
 
@@ -71,7 +73,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     @Override
     public String getXsltDocument(Long id) throws IOException {
         try {
-            Amandman amandman = this.get(id);
+            Amandman amandman = this.get(id,null);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
@@ -106,7 +108,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         for(Long id : actsIds){
             try {
 
-                PravniAkt act = actDAO.get(id);
+                PravniAkt act = actDAO.get(id,Constants.ProposedActCollection);
                 act.setStanje(Constants.AdoptedState);
                 actDAO.updateActState(id,Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);
@@ -125,7 +127,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
     protected void applyAmendment(Long id) {
 
         try {
-            Amandman amendment = get(id);
+            Amandman amendment = get(id,null);
             for(Podamandman amendmentPart : amendment.getPodamandman()){
                 applyOnAct(amendment.getIdAct(),amendment.getId(),amendmentPart.getId(),amendmentPart.getSadrzaj(),amendmentPart.getOperacija().toString());
             }
