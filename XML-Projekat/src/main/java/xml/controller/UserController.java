@@ -139,14 +139,14 @@ public class UserController {
     }
 
     //for presidend
-    @RolesAllowed(value = Constants.Predsednik)
+    @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/state",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getState(){
+    public ResponseEntity<State> getState(){
         State state = StateManager.getState();
         if(state == null)
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
 
-        return new ResponseEntity(state,HttpStatus.OK);
+        return new ResponseEntity<State>(state,HttpStatus.OK);
     }
 
     @RolesAllowed(value = Constants.Predsednik)

@@ -17,6 +17,10 @@
                 <td>Uloga</td>
                 <td>{{ulogovanKorisnik.uloga}}</td>
             </tr>
+            <tr>
+                <td>Stanje</td>
+                <td>{{stateName}}</td>
+            </tr>
             <tr ng-if="ulogovanKorisnik.uloga === 'Predsednik'">
                 <td>Stanje</td>
                 <td><button class="btn btn-sm btn-success" ng-click = "promenaStanja()">Promeni</button></td>

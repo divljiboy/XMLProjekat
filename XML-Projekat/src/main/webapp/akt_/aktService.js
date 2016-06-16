@@ -39,10 +39,10 @@
                 },
 
                 //byId
-                get: function(id,onSuccess,onError){
+                get: function(id,nazivStanja,onSuccess,onError){
                     var req = {
                         method: 'GET',
-                        url: 'akt/'+id,
+                        url: 'akt/'+nazivStanja+'/'+id,
                         headers: {
                             'Content-Type': 'text/html'
                         },

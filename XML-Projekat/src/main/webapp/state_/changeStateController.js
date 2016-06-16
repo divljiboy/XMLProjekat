@@ -23,7 +23,9 @@
                     $state.go('glasanje');
                 }
                 else {
-                    $state.go('home');
+                    console.log("menjanje stanja");
+                    $uibModalInstance.dismiss('cancel');
+                    $state.go('home',{},{ reload:true, notify: true});
                 }
             }, function(res){
                 alert("Stanje nije promenjeno");
