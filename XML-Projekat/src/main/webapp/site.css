@@ -202,7 +202,7 @@ html, body {
     border: 3px solid navajowhite;
     border-radius: 4px;
     background-color:deepskyblue !important;
-    height: 50px;
+
 }
 
 .listItem{
@@ -221,4 +221,8 @@ html, body {
 }
 .potvrdaDugme:hover{
     background-color: navajowhite !important;
+}
+
+.textGlas{
+    width: 60px;
 }

@@ -1,6 +1,8 @@
 <md-list ng-repeat = "ais in akatiIStanja">
 
     <md-subheader class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
+        <br/>
+        Za: <input class = "textGlas" type = "text"/>Protiv:<input class = "textGlas" type = "text"/>Uzdrzan:<input class = "textGlas" type = "text"/>
         <md-checkbox  class="md-secondary" ng-model = "ais.flag"></md-checkbox>
      </md-subheader>
     <div ng-show = ais.flag>
@@ -14,5 +16,8 @@
 </md-list>
 
 <md-button  ng-click = "rezultatGlasanja()" aria-label="Potvrda" class = "potvrdaDugme">
+    Potvrda
+</md-button>
+<md-button  ng-click = "aktoviGlasanje()" aria-label="Provera" class = "potvrdaDugme">
     Potvrda
 </md-button>
