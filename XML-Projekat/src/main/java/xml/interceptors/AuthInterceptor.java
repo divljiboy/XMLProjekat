@@ -1,7 +1,5 @@
 package xml.interceptors;
 
-import org.apache.el.parser.Token;
-import org.springframework.context.annotation.Role;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,8 +10,6 @@ import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Daniel on 6/11/2016.

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akt:Pravni_akt xmlns:akt="aktovi"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd">
+    <akt:Stanje>Stanje0</akt:Stanje>
+    <akt:Naziv>Zakon 1</akt:Naziv>
+    <akt:Glavni_deo>
+        <akt:Deo Id="1" Naziv="Deo prvi" Redni_broj="1">
+            <akt:Odeljak Id="1" Naziv="Odeljak prvi">
+                <akt:Clan Broj_clana="1">
+                    <akt:Stav Id="1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut maximus sapien. Donec vel felis id quam consectetur euismod. Cras vel nibh gravida, laoreet ligula eget, posuere quam. Donec eleifend nunc ante, et molestie dui facilisis ut. Nam et nisi tempor, rutrum orci eget, aliquam ex. Fusce eget velit rhoncus, vestibulum massa sed, imperdiet est. Phasellus ac orci semper, scelerisque dolor non, posuere nulla. Vivamus dignissim vestibulum libero, in volutpat eros condimentum non. Sed mattis metus a neque facilisis, ut elementum enim maximus. In quis lorem imperdiet, aliquam turpis vitae, egestas lectus. Nam a placerat nibh.
+                    </akt:Stav>
+                    <akt:Stav Id="2">
+                        Aenean sed dignissim est, et volutpat nisi. In ut nunc quis felis elementum efficitur. Etiam condimentum lectus in <akt:Reference ref_akt="2">pravni akt 2</akt:Reference>aliquet luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non tellus non elit pulvinar facilisis ut a diam. Mauris dictum euismod urna, sit amet bibendum augue vestibulum vitae. Phasellus eget rutrum justo. Etiam dignissim mattis dui ut ultrices. Maecenas et eleifend ligula. Cras iaculis, dolor et interdum euismod, ante eros tristique est, eu condimentum augue sapien id sem. Vestibulum ultrices nibh aliquet enim lobortis accumsan. Vestibulum tortor metus, vulputate eu egestas eget, gravida a sapien. Nunc vel nisi a turpis congue pharetra sed nec odio. Duis tortor ex, sollicitudin sed eros eu, ultricies mollis enim. Proin quis dictum enim, at condimentum dolor.
+                    </akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="2">
+                    <akt:Stav Id="1">
+                        Praesent eget diam est. Sed pellentesque mattis orci, vel posuere purus lacinia nec. Nunc fermentum vel mi aliquet scelerisque. Quisque sapien orci, finibus non sapien in, luctus suscipit ante. Donec accumsan ipsum non lectus facilisis, sed tincidunt leo viverra. Donec nec massa tellus. Pellentesque odio sapien, tempor ac lacinia sed, malesuada sed libero. Integer mollis eget arcu a ornare. Maecenas suscipit luctus arcu, a finibus dolor dignissim in. Donec vestibulum dui dictum, aliquet eros tristique, molestie metus. Maecenas mi nunc, convallis sit amet imperdiet vitae, lacinia non risus. Vestibulum feugiat condimentum enim venenatis consequat. Nam ultricies in mi at posuere. Nulla luctus justo vitae ex semper tincidunt.
+                    </akt:Stav>
+                    <akt:Stav Id="2">
+                        Nam mattis suscipit leo, efficitur porttitor arcu. Aliquam erat volutpat.
+                        <akt:Tacka broj="1">Sed malesuada dolor eget enim ornare lacinia. Maecenas congue risus.</akt:Tacka>
+                        <akt:Tacka broj="2">Ut tempor arcu non ipsum finibus lacinia. Aliquam nec luctus.</akt:Tacka>
+                        <akt:Tacka broj="3">Quisque a varius nunc, non posuere neque. Morbi interdum enim.</akt:Tacka>
+                        <akt:Tacka broj="4">Quisque felis neque, ultrices non gravida id, luctus id sem.</akt:Tacka>
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+            <akt:Odeljak Naziv="Odeljak drugi" Id="2">
+                <akt:Clan Broj_clana="3">
+                    <akt:Stav Id="1">Aenean nec ante nec lectus dictum interdum. Aliquam hendrerit vestibulum mauris, tincidunt ultrices turpis vestibulum sed. In bibendum ipsum sed orci placerat feugiat. Fusce ut commodo nulla <akt:Reference ref_clan="1">clan 1</akt:Reference>. Proin pretium ullamcorper mauris, vitae maximus metus pharetra id. Donec et mauris dui. Nullam dolor lacus, venenatis sit amet metus et, ultrices tincidunt enim.</akt:Stav>
+                    <akt:Stav Id="2">
+                        
+                        <akt:Alineja Id="1">Morbi dignissim, diam vitae fermentum egestas, augue tellus efficitur lectus.</akt:Alineja>
+                        <akt:Alineja Id="2">Donec non eros sodales, ultricies purus auctor, ullamcorper odio. Phasellus.</akt:Alineja>
+                        <akt:Alineja Id="3">Integer pharetra enim quis lorem ultrices, vel rutrum nisl tincidunt.</akt:Alineja>
+                        
+                    </akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="4">
+                    <akt:Stav Id="1">
+                        
+                        <akt:Tacka broj="1">Sed malesuada dolor eget enim ornare lacinia. Maecenas congue risus.</akt:Tacka>
+                        <akt:Tacka broj="2">
+                            Ut tempor arcu non ipsum finibus lacinia. Aliquam nec luctus.
+                            <akt:Podtacka broj="1"></akt:Podtacka>
+                            <akt:Podtacka broj="2"></akt:Podtacka>
+                            <akt:Podtacka broj="3"></akt:Podtacka>
+                            <akt:Podtacka broj="4"></akt:Podtacka>
+                        </akt:Tacka>
+                        <akt:Tacka broj="3">Quisque a varius nunc, non posuere neque. Morbi interdum enim.</akt:Tacka>
+                        <akt:Tacka broj="4">Quisque felis neque, ultrices non gravida id, luctus id sem.</akt:Tacka>
+                    </akt:Stav>
+                    <akt:Stav Id="2">Nullam elementum<akt:Reference ref_clan="3" ref_stav="2" ref_alineja="2">alineja 2 iz stava 2 clana 3</akt:Reference> accumsan ex quis gravida. Proin eu volutpat felis.</akt:Stav>
+                </akt:Clan>
+            </akt:Odeljak>
+        </akt:Deo>
+        <akt:Deo Naziv="Deo drugi" Redni_broj="2" Id="2">
+            <akt:Glava Id="1" Naziv="Glava prva">
+                <akt:Clan Broj_clana="5">
+                    <akt:Stav Id="1">Fusce justo est, ultricies id ipsum eget, maximus venenatis nisi. Maecenas turpis arcu, fermentum id lacus sed, fringilla condimentum purus. Curabitur non est viverra, fringilla nunc nec, egestas diam. Vivamus eget bibendum neque. In ut ante velit. Cras a augue enim. Sed massa libero, mattis quis enim eget, cursus volutpat erat. Donec purus erat, sollicitudin non scelerisque vitae, euismod a est. Vestibulum ornare placerat auctor.</akt:Stav>
+                </akt:Clan>
+                <akt:Clan Broj_clana="6">
+                    <akt:Stav Id="1">
+                        Quisque sed libero risus. Curabitur cursus congue mi. In quam metus, ultrices vitae luctus vel, sodales eget enim. Fusce quis ex ac velit mollis egestas. Cras sapien justo, placerat vel tortor et, aliquam cursus tellus. Phasellus ut turpis eget augue tincidunt aliquet. Cras felis magna, scelerisque nec malesuada eget, ullamcorper in purus. Nulla facilisi. In et mauris malesuada felis feugiat pulvinar ac non mauris. Duis nec tortor ullamcorper, tincidunt lorem sit amet, ultricies nunc.
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Glava>
+            <akt:Glava Naziv="Glava druga" Id="2">
+                <akt:Odeljak Id="1" Naziv="Odeljak prvi u glavi">
+                    <akt:Clan Broj_clana="7">
+                        <akt:Stav Id="1">Morbi in lobortis odio. Etiam eros quam, eleifend fermentum convallis eu, viverra vel est. Ut convallis, tortor sed vulputate aliquet, mauris neque ullamcorper enim, vitae tempor libero elit ut turpis. Nam feugiat est ut urna dictum luctus. In venenatis nec turpis in sodales. Fusce hendrerit vitae ante et luctus. Ut rhoncus dui ex. Sed auctor arcu hendrerit felis interdum auctor. Donec cursus at nisl eget consequat. Sed congue, orci non elementum euismod, eros est dictum nunc, at porta magna diam et turpis. Quisque ac augue et sem semper gravida.</akt:Stav>
+                    </akt:Clan>
+                </akt:Odeljak>
+                <akt:Odeljak Naziv="Odeljak drugi u glavi" Id="2">
+                    <akt:Clan Broj_clana="8">
+                        <akt:Stav Id="1">Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque justo nisi, lacinia vitae commodo a, suscipit sed lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pulvinar pulvinar sem convallis cursus. Integer nec felis molestie nisi rutrum finibus eget sit amet massa. Ut laoreet ornare rhoncus. In id ultricies dolor, sit amet tempus ante. Donec pharetra dui facilisis diam lacinia, non mollis enim pretium. Cras at efficitur massa. Suspendisse a justo eu elit blandit dignissim eu quis elit. Mauris dapibus elit sed tellus viverra suscipit. Vestibulum purus elit, auctor eget tortor at, facilisis sollicitudin ligula. Fusce eu eros magna.</akt:Stav>
+                    </akt:Clan>
+                    <akt:Clan Broj_clana="9">
+                        <akt:Stav Id="1">Quisque lacinia congue magna, eget egestas lorem egestas id. Pellentesque congue rutrum accumsan. Maecenas venenatis sem pellentesque, feugiat lectus ac, scelerisque nunc. Ut porttitor arcu elit, non commodo diam consequat ut. Donec ut felis id neque pharetra fermentum at ac ante. Nulla sapien justo, gravida gravida elementum quis, tincidunt a tortor. Nullam at interdum lacus. Mauris sed eros feugiat, maximus sapien sit amet, dapibus neque. Integer pretium fermentum porta. Duis aliquet ut neque ut fermentum. Sed et vehicula justo, ac euismod ipsum. Sed auctor est quis vulputate congue. Aenean luctus nunc sit amet velit semper, ut ornare metus rutrum. Phasellus aliquet convallis dignissim. Maecenas nec ex at ex efficitur accumsan sit amet ac urna.</akt:Stav>
+                    </akt:Clan>
+                </akt:Odeljak>
+            </akt:Glava>
+        </akt:Deo>
+    </akt:Glavni_deo>
+    <akt:Drzava>Republika Srbija</akt:Drzava>
+    <akt:Pokrajina>Autonomna pokrajina Vojvodina</akt:Pokrajina>
+    <akt:Grad>Grad Novi Sad</akt:Grad>
+    <akt:Skupstina>Gradska Skuptina Grada Novog Sada</akt:Skupstina>
+    <akt:Broj_popisa_kod_organa>81649527663</akt:Broj_popisa_kod_organa>
+    <akt:Datum_donosenja_propisa>21. Jul 2016.</akt:Datum_donosenja_propisa>
+    <akt:Mesto_donosenja_propisa>Novi Sad</akt:Mesto_donosenja_propisa>
+    <akt:Ovlasceno_lice>
+        <akt:Titula>Predsednik</akt:Titula>
+        <akt:Ime>Rasa</akt:Ime>
+        <akt:Prezime>Marinkovic</akt:Prezime>
+    </akt:Ovlasceno_lice>
+</akt:Pravni_akt>

@@ -461,8 +461,8 @@ public class PravniAkt {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
          * {@link String }
+         * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
          * 
          * 
          */
