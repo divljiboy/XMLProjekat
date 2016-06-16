@@ -64,10 +64,9 @@
                 alert("Niste selektovali akt ! ");
             }
 		}
-        $scope.pogledajPDF = function(){
+        $scope.skiniPDF = function(){
             if($scope.gridApi.selection.getSelectedRows().length > 0){
-                console.log($scope.akt);
-                $state.go("aktPDF",{id:$scope.akt.id});
+                console.log("pdf: "+$scope.akt);
             }
             else
             {
