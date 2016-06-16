@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akt:Pravni_akt xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+ xmlns:akt="aktovi"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/temp/akt.xsd">
+    <akt:Stanje>Stanje0</akt:Stanje>
+    <akt:Naziv>Naziv0</akt:Naziv>
+    <akt:Glavni_deo>
+        <akt:Deo>
+            <akt:Odeljak>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+            </akt:Odeljak>
+            <akt:Odeljak>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+            </akt:Odeljak>
+        </akt:Deo>
+        <akt:Deo>
+            <akt:Odeljak>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+            </akt:Odeljak>
+            <akt:Odeljak>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+                <akt:Clan Broj_clana="50">
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                    <akt:Stav/>
+                </akt:Clan>
+            </akt:Odeljak>
+        </akt:Deo>
+    </akt:Glavni_deo>
+    <akt:Drzava>Drzava0</akt:Drzava>
+    <akt:Pokrajina>Pokrajina0</akt:Pokrajina>
+    <akt:Grad>Grad0</akt:Grad>
+    <akt:Skupstina>Skupstina0</akt:Skupstina>
+    <akt:Broj_popisa_kod_organa>Broj_popisa_kod_organa0</akt:Broj_popisa_kod_organa>
+    <akt:Datum_donosenja_propisa>Datum_donosenja_propisa0</akt:Datum_donosenja_propisa>
+    <akt:Mesto_donosenja_propisa>Mesto_donosenja_propisa0</akt:Mesto_donosenja_propisa>
+    <akt:Ovlasceno_lice>
+        <akt:Titula>Titula0</akt:Titula>
+        <akt:Ime>Ime0</akt:Ime>
+        <akt:Prezime>Prezime0</akt:Prezime>
+    </akt:Ovlasceno_lice>
+    <akt:Timestamp>2006-05-04T18:13:51.0</akt:Timestamp>
+</akt:Pravni_akt>

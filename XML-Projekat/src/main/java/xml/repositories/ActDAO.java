@@ -5,7 +5,10 @@ import com.marklogic.client.query.*;
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.DatabaseManager;
 import database.XMLConverter;
-import org.apache.fop.apps.*;
+import org.apache.fop.apps.FOUserAgent;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
 import xml.Constants;
@@ -20,10 +23,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import java.util.ArrayList;
 

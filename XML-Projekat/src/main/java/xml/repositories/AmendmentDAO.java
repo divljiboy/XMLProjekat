@@ -2,7 +2,10 @@ package xml.repositories;
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.XMLConverter;
-import org.apache.fop.apps.*;
+import org.apache.fop.apps.FOUserAgent;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
@@ -114,6 +117,7 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
 
                 PravniAkt act = actDAO.get(id,Constants.ProposedActCollection);
                 act.setStanje(Constants.AdoptedState);
+
                 actDAO.updateActState(id,Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);
             } catch (JAXBException e) {

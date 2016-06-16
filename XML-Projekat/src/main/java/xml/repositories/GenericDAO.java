@@ -9,7 +9,6 @@ import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
-import org.apache.fop.apps.FopFactory;
 import org.springframework.stereotype.Repository;
 import xml.Constants;
 
@@ -146,6 +145,8 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
                 .append("\")/ns:")
                 .append(entity)
                 .append("[@Id = $id]");
+
+
 
         EvalResultIterator iterator = null;
 
