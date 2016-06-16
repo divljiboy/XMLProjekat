@@ -145,8 +145,15 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
             try {
                 PravniAkt act = getByQuery(query.toString()).get(0);
-                if(act.getStanje().equals("Usvojen"))
-                    searchedActs.add(act);
+                if(collection.equals(Constants.ActCollection)){
+                    if(act.getStanje().equals("Usvojen"))
+                        searchedActs.add(act);
+                }else if(collection.equals(Constants.ProposedActCollection)){
+                    if(act.getStanje().equals("Predlozen"))
+                        searchedActs.add(act);
+                }
+
+
             } catch (JAXBException e) {
                 e.printStackTrace();
             }
