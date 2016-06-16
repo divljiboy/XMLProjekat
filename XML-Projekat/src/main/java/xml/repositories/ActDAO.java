@@ -15,7 +15,6 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
@@ -220,6 +219,27 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
     @Override
     public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, Integer metadataType, String criteria) {
+
+
+
+        switch (metadataType){
+            case 1: //taksonomija
+
+                break;
+            case 2: //Predlagac
+                break;
+            case 3: //Datum objave
+                break;
+            case 4: //Ko je usvojio
+                break;
+            case 5: //Za
+                break;
+            case 6: //Protiv
+                break;
+            case 7: //Suzdrzano
+                break;
+
+        }
 
         return null;
     }

@@ -45,8 +45,8 @@ public class Stav {
 
     @XmlElementRefs({
         @XmlElementRef(name = "Tacka", namespace = "aktovi", type = Tacka.class, required = false),
-        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = Alineja.class, required = false)
+        @XmlElementRef(name = "Alineja", namespace = "aktovi", type = Alineja.class, required = false),
+        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false)
     })
     @XmlMixed
     protected List<Object> content;
@@ -72,8 +72,8 @@ public class Stav {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * {@link Tacka }
      * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
+     * {@link Tacka }
      * {@link Alineja }
      * 
      * 

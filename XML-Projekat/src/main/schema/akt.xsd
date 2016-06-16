@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="aktovi" xmlns:akt="aktovi">
+    targetNamespace="aktovi" xmlns:akt="aktovi" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#">
     <xs:import schemaLocation="korisnici.xsd"/>
     <xs:element name="Pravni_akt">
         <xs:complexType>
@@ -25,6 +25,7 @@
                 <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
             </xs:sequence>
             <xs:attribute name="Id" type="xs:long"/>
+            <xs:attributeGroup ref="akt:AMetadata"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Deo">

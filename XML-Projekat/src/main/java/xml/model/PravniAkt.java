@@ -2,6 +2,7 @@
 package xml.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
@@ -48,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Mesto_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
  *       &lt;/sequence>
+ *       &lt;attGroup ref="{aktovi}AMetadata"/>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -100,6 +102,20 @@ public class PravniAkt {
     protected TOvlascenoLice ovlascenoLice;
     @XmlAttribute(name = "Id")
     protected Long id;
+    @XmlAttribute(name = "Taksonomija")
+    protected String taksonomija;
+    @XmlAttribute(name = "Predlagac")
+    protected String predlagac;
+    @XmlAttribute(name = "Datum_objave")
+    protected String datumObjave;
+    @XmlAttribute(name = "Ko_je_usvojio")
+    protected String koJeUsvojio;
+    @XmlAttribute(name = "Za")
+    protected BigInteger za;
+    @XmlAttribute(name = "Protiv")
+    protected BigInteger protiv;
+    @XmlAttribute(name = "Suzdrzano")
+    protected BigInteger suzdrzano;
 
     /**
      * Gets the value of the stanje property.
@@ -411,6 +427,174 @@ public class PravniAkt {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the taksonomija property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTaksonomija() {
+        return taksonomija;
+    }
+
+    /**
+     * Sets the value of the taksonomija property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTaksonomija(String value) {
+        this.taksonomija = value;
+    }
+
+    /**
+     * Gets the value of the predlagac property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPredlagac() {
+        return predlagac;
+    }
+
+    /**
+     * Sets the value of the predlagac property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPredlagac(String value) {
+        this.predlagac = value;
+    }
+
+    /**
+     * Gets the value of the datumObjave property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDatumObjave() {
+        return datumObjave;
+    }
+
+    /**
+     * Sets the value of the datumObjave property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDatumObjave(String value) {
+        this.datumObjave = value;
+    }
+
+    /**
+     * Gets the value of the koJeUsvojio property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKoJeUsvojio() {
+        return koJeUsvojio;
+    }
+
+    /**
+     * Sets the value of the koJeUsvojio property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKoJeUsvojio(String value) {
+        this.koJeUsvojio = value;
+    }
+
+    /**
+     * Gets the value of the za property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getZa() {
+        return za;
+    }
+
+    /**
+     * Sets the value of the za property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setZa(BigInteger value) {
+        this.za = value;
+    }
+
+    /**
+     * Gets the value of the protiv property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getProtiv() {
+        return protiv;
+    }
+
+    /**
+     * Sets the value of the protiv property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setProtiv(BigInteger value) {
+        this.protiv = value;
+    }
+
+    /**
+     * Gets the value of the suzdrzano property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getSuzdrzano() {
+        return suzdrzano;
+    }
+
+    /**
+     * Sets the value of the suzdrzano property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setSuzdrzano(BigInteger value) {
+        this.suzdrzano = value;
     }
 
 
