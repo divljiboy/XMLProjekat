@@ -4,6 +4,7 @@
     xmlns:ns1="http://www.w3.org/2000/09/xmldsig#">
 
     <xs:import namespace="aktovi" schemaLocation="akt.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="signature.xsd"/>
     <xs:element name="Amandman">
         <xs:complexType>
             <xs:sequence>
@@ -12,6 +13,8 @@
                 <xs:element maxOccurs="unbounded" ref="am:Podamandman"/>
                 <xs:element name="Obrazlozenje" type="xs:string"/>
                 <xs:element name="Ovlasceno_lice" type="akt:TOvlasceno_lice"/>
+                <xs:element name="Timestamp" type="xs:dateTime"/>
+                <xs:element ref="ns1:Signature" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="Id" type="xs:long"/>
             <xs:attribute name="IdAct" type="xs:long"/>

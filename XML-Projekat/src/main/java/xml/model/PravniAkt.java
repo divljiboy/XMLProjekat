@@ -13,7 +13,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -32,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *                   &lt;element ref="{aktovi}Reference"/>
+ *                   &lt;element ref="{aktovi}Referenca"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -48,6 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Datum_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Mesto_donosenja_propisa" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
+ *         &lt;element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element ref="{http://www.w3.org/2000/09/xmldsig#}Signature" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{aktovi}AMetadata"/>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
@@ -71,7 +75,9 @@ import javax.xml.bind.annotation.XmlType;
     "brojPopisaKodOrgana",
     "datumDonosenjaPropisa",
     "mestoDonosenjaPropisa",
-    "ovlascenoLice"
+    "ovlascenoLice",
+    "timestamp",
+    "signature"
 })
 @XmlRootElement(name = "Pravni_akt", namespace = "aktovi")
 public class PravniAkt {
@@ -100,6 +106,11 @@ public class PravniAkt {
     protected String mestoDonosenjaPropisa;
     @XmlElement(name = "Ovlasceno_lice", namespace = "aktovi", required = true)
     protected TOvlascenoLice ovlascenoLice;
+    @XmlElement(name = "Timestamp", namespace = "aktovi", required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar timestamp;
+    @XmlElement(name = "Signature", namespace = "http://www.w3.org/2000/09/xmldsig#")
+    protected SignatureType signature;
     @XmlAttribute(name = "Id")
     protected Long id;
     @XmlAttribute(name = "Taksonomija")
@@ -406,6 +417,54 @@ public class PravniAkt {
     }
 
     /**
+     * Gets the value of the timestamp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Sets the value of the timestamp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setTimestamp(XMLGregorianCalendar value) {
+        this.timestamp = value;
+    }
+
+    /**
+     * Gets the value of the signature property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SignatureType }
+     *     
+     */
+    public SignatureType getSignature() {
+        return signature;
+    }
+
+    /**
+     * Sets the value of the signature property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SignatureType }
+     *     
+     */
+    public void setSignature(SignatureType value) {
+        this.signature = value;
+    }
+
+    /**
      * Gets the value of the id property.
      * 
      * @return
@@ -608,7 +667,7 @@ public class PravniAkt {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
-     *         &lt;element ref="{aktovi}Reference"/>
+     *         &lt;element ref="{aktovi}Referenca"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -623,7 +682,7 @@ public class PravniAkt {
     })
     public static class Preambula {
 
-        @XmlElementRef(name = "Reference", namespace = "aktovi", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Referenca", namespace = "aktovi", type = JAXBElement.class, required = false)
         @XmlMixed
         protected List<Serializable> content;
 
@@ -645,8 +704,8 @@ public class PravniAkt {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link String }
          * {@link JAXBElement }{@code <}{@link TReferenca }{@code >}
+         * {@link String }
          * 
          * 
          */

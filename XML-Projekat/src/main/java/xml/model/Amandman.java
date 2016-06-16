@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -26,6 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{amandmani}Podamandman" maxOccurs="unbounded"/>
  *         &lt;element name="Obrazlozenje" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Ovlasceno_lice" type="{aktovi}TOvlasceno_lice"/>
+ *         &lt;element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element ref="{http://www.w3.org/2000/09/xmldsig#}Signature" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *       &lt;attribute name="IdAct" type="{http://www.w3.org/2001/XMLSchema}long" />
@@ -43,7 +47,9 @@ import javax.xml.bind.annotation.XmlType;
     "kontekst",
     "podamandman",
     "obrazlozenje",
-    "ovlascenoLice"
+    "ovlascenoLice",
+    "timestamp",
+    "signature"
 })
 @XmlRootElement(name = "Amandman", namespace = "amandmani")
 public class Amandman {
@@ -58,6 +64,11 @@ public class Amandman {
     protected String obrazlozenje;
     @XmlElement(name = "Ovlasceno_lice", namespace = "amandmani", required = true)
     protected TOvlascenoLice ovlascenoLice;
+    @XmlElement(name = "Timestamp", namespace = "amandmani", required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar timestamp;
+    @XmlElement(name = "Signature", namespace = "http://www.w3.org/2000/09/xmldsig#")
+    protected SignatureType signature;
     @XmlAttribute(name = "Id")
     protected Long id;
     @XmlAttribute(name = "IdAct")
@@ -188,6 +199,54 @@ public class Amandman {
      */
     public void setOvlascenoLice(TOvlascenoLice value) {
         this.ovlascenoLice = value;
+    }
+
+    /**
+     * Gets the value of the timestamp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Sets the value of the timestamp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setTimestamp(XMLGregorianCalendar value) {
+        this.timestamp = value;
+    }
+
+    /**
+     * Gets the value of the signature property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SignatureType }
+     *     
+     */
+    public SignatureType getSignature() {
+        return signature;
+    }
+
+    /**
+     * Sets the value of the signature property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SignatureType }
+     *     
+     */
+    public void setSignature(SignatureType value) {
+        this.signature = value;
     }
 
     /**

@@ -1,11 +1,9 @@
 package xml.repositories;
 
-import org.apache.fop.apps.FOPException;
 import org.xml.sax.SAXException;
 import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

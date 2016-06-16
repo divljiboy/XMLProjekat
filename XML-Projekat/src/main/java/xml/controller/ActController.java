@@ -1,5 +1,6 @@
 package xml.controller;
 
+
 import org.apache.fop.apps.FOPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -19,7 +20,6 @@ import xml.stateStuff.StateManager;
 
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Path;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -97,6 +97,7 @@ public class ActController{
                 }
                 object.setStanje(Constants.ProposedState);
                 object.getOvlascenoLice().setKoDodaje(user.getEmail());
+                object.setPredlagac(user.getEmail());
                 aktDao.create(object, Constants.Act + object.getId().toString(), Constants.ProposedActCollection);
                 return new ResponseEntity(HttpStatus.OK);
             } catch (Exception e) {
