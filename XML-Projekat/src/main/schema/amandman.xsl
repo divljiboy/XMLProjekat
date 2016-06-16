@@ -3,7 +3,7 @@
     xmlns:am="amandmani"
     xmlns:akt="aktovi"
     version="1.0">
-    <xsl:variable name="PravniAktId" select="am:Amandman/am:Kontekst/@actId" />
+    <xsl:variable name="PravniAktId" select="am:Amandman/@IdAct" />
 
     <xsl:template match="/am:Amandman">
         <html>
@@ -19,9 +19,9 @@
                <xsl:apply-templates select="am:Podamandman"></xsl:apply-templates>
                 <p align="center"> <xsl:value-of select="am:Obrazlozenje"/></p>
                 <p align="center"> <xsl:value-of select="am:Ovlasceno_lice"/></p>
-                
-                
-                
+
+
+
             </body>
         </html>
         
