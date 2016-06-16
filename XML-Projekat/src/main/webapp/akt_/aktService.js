@@ -1,7 +1,7 @@
 (function(angular){
 
     angular.module("xmlApp")
-        .service('aktService', ['$http', function($http){
+        .service('aktService', ['$http','$window',function($http,$window){
             return {
 
                 //all
@@ -51,6 +51,33 @@
                         }]
                     };
                     $http(req).then(onSuccess, onError);
+                },
+                //pdf
+                getPDF: function(id,nazivStanja){
+                    $window.open('localhost:8080/akt/pdf/'+nazivStanja+'/'+id);
+                    //var req = {
+                    //    method: 'GET',
+                    //    url: 'akt/pdf/'+nazivStanja+'/'+id,
+                    //    headers: {
+                    //        'Content-Type': 'application/pdf'
+                    //    }
+                    //};
+                    //$http(req).then(function(res){
+                    //        //var file = new Blob([res], {
+                    //        //    type : 'application/pdf'
+                    //        //});
+                    //        ////trick to download store a file having its URL
+                    //        //var fileURL = URL.createObjectURL(file);
+                    //        //var a         = document.createElement('a');
+                    //        //a.href        = ;
+                    //        //a.target      = '_blank';
+                    //        //a.download    = 'yourfilename.pdf';
+                    //        //document.body.appendChild(a);
+                    //        //a.click();
+                    //    }
+                    //    ,function(res){
+                    //
+                    //    });
                 },
 
                 create: function(entity,onSuccess,onError){

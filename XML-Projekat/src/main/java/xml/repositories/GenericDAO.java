@@ -9,9 +9,12 @@ import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
+import org.apache.fop.apps.FopFactory;
 import org.springframework.stereotype.Repository;
+import xml.Constants;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,6 +125,7 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
         return entities.get(0);
     }
+
 
     @Override
     public T getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException {

@@ -2,20 +2,28 @@ package xml.repositories;
 
 import com.marklogic.client.io.SearchHandle;
 import com.marklogic.client.query.*;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.DatabaseManager;
 import database.XMLConverter;
+import org.apache.fop.apps.*;
 import org.springframework.stereotype.Repository;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -216,6 +224,24 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    @Override
+    public ByteArrayOutputStream getPdf(Long id, String colName) throws JAXBException, IOException, TransformerException, SAXException {
+        FopFactory fopFactory = FopFactory.newInstance();
+        //fopFactory.setUserConfig(Constants.FOP_CONF);
+        TransformerFactory transformerFactory = new TransformerFactoryImpl();
+        StreamSource transformSource = new StreamSource(new File("./src/main/schema/akt-fo.xsl"));
+        StreamSource xmlSource = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(this.get(id,colName)).getBytes(XMLConverter.UTF_8)));
+        FOUserAgent userAgent = fopFactory.newFOUserAgent();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
+        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
+        Result res = new SAXResult(fop.getDefaultHandler());
+        xslFoTransformer.transform(xmlSource, res);
+
+        return outStream;
     }
 
 }

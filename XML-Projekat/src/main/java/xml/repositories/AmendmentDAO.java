@@ -1,19 +1,23 @@
 package xml.repositories;
 
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import database.XMLConverter;
+import org.apache.fop.apps.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.xml.sax.SAXException;
 import xml.Constants;
 import xml.model.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.*;
+import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -430,7 +434,23 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
         for(PravniAkt act : acts){
             actDAO.updateActState(act.getId(),Constants.NotAdoptedState);
         }
+    }
 
+    @Override
+    public ByteArrayOutputStream getPdf(Long id) throws JAXBException, IOException, TransformerException, SAXException {
+        FopFactory fopFactory = FopFactory.newInstance();
+        fopFactory.setUserConfig(Constants.FOP_CONF);
+        TransformerFactory transformerFactory = new TransformerFactoryImpl();
+        StreamSource transformSource = new StreamSource(new File("./src/main/schema/amandman-fo.xsl"));
+        StreamSource xmlSource = new StreamSource(new ByteArrayInputStream(xmlConverter.toXML(this.get(id,null)).getBytes(XMLConverter.UTF_8)));
+        FOUserAgent userAgent = fopFactory.newFOUserAgent();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
+        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
+        Result res = new SAXResult(fop.getDefaultHandler());
+        xslFoTransformer.transform(xmlSource, res);
+
+        return outStream;
     }
 
 }
