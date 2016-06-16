@@ -41,24 +41,6 @@
                         }
                     }
                 })
-            .state('aktpdf',
-                {	
-                    url: '/aktPDF',                                                                                                                   
-                    views: {
-                        'content': {
-                            templateUrl: 'akt_/aktPDF.html',
-                            controller: 'aktPDFController'
-                        },
-                        'navbar': {
-                            templateUrl: 'navbar/navbar.html',
-                            controller: "navbarController"
-                        },
-                        'sidebar': {
-                            templateUrl: 'sidebar/sidebar.html',
-                            controller: 'sidebarController'
-                        }
-                    }
-                })
                 .state('usvojeniAkti',
                 {
                     url: '/usvojeniAkti',

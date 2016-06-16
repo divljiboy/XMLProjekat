@@ -52,11 +52,10 @@ public class ActController{
             //PravniAkt akt = aktDao.get(id);
             //if(akt == null)
                 //return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
+
             if(html == null)
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             return new ResponseEntity(html,HttpStatus.OK);
-
-           // return new ResponseEntity(akt,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
