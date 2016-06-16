@@ -13,6 +13,6 @@ public interface IGenericDAO<E,K extends Serializable> {
     void update(E entity,Long id) throws JAXBException, IOException;
     void delete(Long id, String constant) throws JAXBException, IOException;
     List<E> getAll() throws JAXBException, IOException;
-    E get(Long id) throws JAXBException, IOException;
+    E get(Long id,String collection) throws JAXBException, IOException;
     E getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException;
 }

@@ -186,9 +186,13 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
 
     @Override
-    public String getXsltDocument(Long id) throws IOException {
+    public String getXsltDocument(Long id,Integer colId) throws IOException {
         try {
-            PravniAkt akt = this.get(id);
+            PravniAkt akt = null;
+            if(colId == 1)
+                akt = this.get(id,Constants.ActCollection);
+            else
+                akt = this.get(id,Constants.ProposedActCollection);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
