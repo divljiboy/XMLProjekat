@@ -56,13 +56,13 @@
                 <xsl:choose>
                     <!-- po hijerarhiji -->
                     <xsl:when test="@ref_tacka">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_stav">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_clan">
-                        <a href="http://localhost:8080/#/aktDetails/{@ref_akt}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                 </xsl:choose>
             </xsl:when>
@@ -70,13 +70,13 @@
                 <!-- po hijerarhiji -->
                 <xsl:choose>
                     <xsl:when test="@ref_tacka">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_stav">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_clan">
-                        <a href="http://localhost:8080/#/aktDetails/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                 </xsl:choose>
             </xsl:otherwise>

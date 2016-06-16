@@ -21,10 +21,21 @@
             if(ulogovanKorisnik){
                 $rootScope.ulogovanKorisnik = ulogovanKorisnik;
                 $rootScope.authenticated = true;
+                stateService.getState(function(res){
+                    $scope.stateName = res.data.state;
+
+                }, function(res){
+                    alert("propo");
+                });
             }else{
                 $rootScope.ulogovanKorisnik = {};
                 $rootScope.authenticated = false;
             }
+
+
+
+
+
         })();
 
     }]);

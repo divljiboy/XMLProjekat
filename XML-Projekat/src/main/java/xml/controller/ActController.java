@@ -46,10 +46,21 @@ public class ActController{
     }
 
     @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})
-    @RequestMapping(value = "/akt/{id}/{colId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getById(@PathVariable("id") Long id,@PathVariable("colId") Integer colId) {
+    @RequestMapping(value = "/akt/{colName}/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getById(@PathVariable("colName") String colName,@PathVariable("id") Long id) {
         try{
-            String html = aktDao.getXsltDocument(id,colId);
+            int type = 0;
+            switch (colName){
+                case "usvojeni":
+                    type = 1;
+                    break;
+                case "predlozeni":
+                    type = 2;
+                    break;
+                default:
+                    return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
+            String html = aktDao.getXsltDocument(id,type);
             //PravniAkt akt = aktDao.get(id);
             //if(akt == null)
                 //return new ResponseEntity<List<PravniAkt>>(HttpStatus.NO_CONTENT);
