@@ -238,6 +238,7 @@ public class ActController{
             //returning shit
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.parseMediaType("application/pdf"));
+            headers.add("Content-Disposition", "attachment");
             String filename = "Act"+id+".pdf";
             headers.setContentDispositionFormData(filename, filename);
             headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
