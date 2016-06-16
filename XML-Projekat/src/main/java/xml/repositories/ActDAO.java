@@ -218,4 +218,10 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
         }
     }
 
+    @Override
+    public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, Integer metadataType, String criteria) {
+
+        return null;
+    }
+
 }

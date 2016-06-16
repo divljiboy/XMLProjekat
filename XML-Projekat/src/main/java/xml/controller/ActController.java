@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.Constants;
 import xml.controller.dto.SearchCriteriaDTO;
+import xml.controller.dto.SearchMetadataDTO;
 import xml.interceptors.TokenHandler;
 import xml.model.Korisnik;
 import xml.model.PravniAkt;
@@ -158,7 +159,7 @@ public class ActController{
     }
 
     @RequestMapping(value = "/akt/usvojeni/pretraga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ArrayList<PravniAkt>> searchAdoptedActByText(@RequestBody SearchCriteriaDTO searchCriteriaDTO) {
+    public ResponseEntity<ArrayList<PravniAkt>> searchByText(@RequestBody SearchCriteriaDTO searchCriteriaDTO) {
 
         ArrayList<PravniAkt> acts;
 
@@ -188,6 +189,12 @@ public class ActController{
         }
 
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "akt/search/metadata", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<PravniAkt>> searchByMetadata(@RequestBody SearchMetadataDTO searchMetadataDTO){
+        aktDao.searchByMetadata(searchMetadataDTO.getCollectionName(),searchMetadataDTO.getMetadataType(),searchMetadataDTO.getCriteria());
+        return null;
     }
 
 }

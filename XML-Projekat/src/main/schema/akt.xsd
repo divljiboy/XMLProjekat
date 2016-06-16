@@ -142,4 +142,13 @@
         </xs:simpleContent>
     </xs:complexType>
     <xs:element name="Reference" type="akt:TReferenca"/>
+    <xs:attributeGroup name="AMetadata">
+        <xs:attribute name="Taksonomija" type="xs:string"/>
+        <xs:attribute name="Predlagac" type="xs:string"/>
+        <xs:attribute name="Datum_objave" type="xs:string"/>
+        <xs:attribute name="Ko_je_usvojio" type="xs:string"/>
+        <xs:attribute name="Za" type="xs:integer"/>
+        <xs:attribute name="Protiv" type="xs:integer"/>
+        <xs:attribute name="Suzdrzano" type="xs:integer"/>
+    </xs:attributeGroup>
 </xs:schema>

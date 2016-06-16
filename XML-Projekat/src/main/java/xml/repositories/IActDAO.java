@@ -19,4 +19,5 @@ public interface IActDAO extends IGenericDAO<PravniAkt,Long>{
 
     String getXsltDocument(Long id,Integer colId) throws IOException;
 
+    public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, Integer metadataType, String criteria);
 }
