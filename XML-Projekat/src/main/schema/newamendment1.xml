@@ -3,49 +3,41 @@
  xmlns:am="amandmani"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="amandmani file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/amandman.xsd"
-    IdAct="3"
+    IdAct="1"
     Ko_dodaje="kerkezcar"
     >
     <am:Stanje>Stanje0</am:Stanje>
-    <am:Kontekst>З А К О Н
-        О потраживањy извршних поверилаца</am:Kontekst>
-    <am:Podamandman>
-        <am:Operacija>izmena</am:Operacija>
-        <am:Sadrzaj r_deo="1" r_clan="2" r_tacka="7" r_stav="1">
-            <akt:Tacka broj="7">Idemo neka izmena za ROsa!!!</akt:Tacka>
-        </am:Sadrzaj>
-    </am:Podamandman>
-    <am:Podamandman>
-        <am:Operacija>izmena</am:Operacija>
-        <am:Sadrzaj r_deo="2" r_clan="7" r_tacka="4" r_stav="1" r_glava="1" r_odeljak="2">
-            <akt:Tacka broj="4">Jos neka izmena bratee!</akt:Tacka>
-        </am:Sadrzaj>
-    </am:Podamandman>
-    
-    <am:Podamandman>
-        <am:Operacija>brisanje</am:Operacija>
-        <am:Sadrzaj r_deo="2" r_clan="7" r_tacka="5" r_stav="1" r_glava="1" r_odeljak="2">
-            <akt:Tacka broj="3">Izmena tacke 3</akt:Tacka>
-        </am:Sadrzaj>
-    </am:Podamandman>
-    
+    <am:Kontekst>Naziv 1</am:Kontekst>
     <am:Podamandman>
         <am:Operacija>dodavanje</am:Operacija>
-        <am:Sadrzaj r_clan="12" r_glava="2" r_deo="2">
+        <am:Sadrzaj r_deo="2" r_glava="2" r_odeljak="2" r_clan="9">
             <akt:Glavni_deo>
-                <akt:Clan Broj_clana="13">
-                    <akt:Stav Id="1">
-                        Stav koji se dodaje iz amandmana <akt:Reference ref_akt="1" ref_clan="2">akt 1 clan 2</akt:Reference>
+                <akt:Clan Broj_clana="10">
+                    <akt:Stav>
+                        Dodavanje iz amandmana 1 u akt 1.
                     </akt:Stav>
                 </akt:Clan>
             </akt:Glavni_deo>
         </am:Sadrzaj>
     </am:Podamandman>
+    <am:Podamandman>
+        <am:Operacija>izmena</am:Operacija>
+        <am:Sadrzaj r_deo="1" r_odeljak="1" r_clan="2" r_stav="2" r_tacka="3">
+            <akt:Tacka broj="3">Izmena tacke 3</akt:Tacka>
+        </am:Sadrzaj>
+    </am:Podamandman>
     
-    <am:Obrazlozenje>Testing</am:Obrazlozenje>
+    <am:Podamandman>
+        <am:Operacija>brisanje</am:Operacija>
+        <am:Sadrzaj r_deo="1" r_odeljak="1" r_clan="2" r_stav="2" r_tacka="4">
+            <akt:Tacka broj="3">Izmena tacke 3</akt:Tacka>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    
+    <am:Obrazlozenje>Obrazlozenje0</am:Obrazlozenje>
     <am:Ovlasceno_lice>
-        <akt:Titula>Predsednik</akt:Titula>
-        <akt:Ime>Djoka</akt:Ime>
-        <akt:Prezime>Djokic</akt:Prezime>
+        <akt:Titula>Titula0</akt:Titula>
+        <akt:Ime>Ime0</akt:Ime>
+        <akt:Prezime>Prezime0</akt:Prezime>
     </am:Ovlasceno_lice>
 </am:Amandman>

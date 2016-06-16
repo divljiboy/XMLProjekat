@@ -16,8 +16,12 @@
                 </div>
                 
                <p align="center"> <xsl:value-of select="am:Kontekst"/></p>
-            <p align="center"><xsl:value-of select="am:Operacija"/></p>
-                <xsl:apply-templates select="am:Sadrzaj/akt:Glavni_deo"></xsl:apply-templates>
+               <xsl:apply-templates select="am:Podamandman"></xsl:apply-templates>
+                <p align="center"> <xsl:value-of select="am:Obrazlozenje"/></p>
+                <p align="center"> <xsl:value-of select="am:Ovlasceno_lice"/></p>
+                
+                
+                
             </body>
         </html>
         
@@ -193,6 +197,27 @@
 
         </div>
     </xsl:template>
+    <xsl:template match="am:Sadrzaj">
+        <div align="center">
+            
+            
+            <p>
+                <xsl:apply-templates select="akt:Glavni_deo|akt:Stav|akt:Tacka|akt:Podtacka|akt:Alineja|text()"/>
+            </p>
+            
+        </div>
+    </xsl:template>
+    <xsl:template match="am:Podamandman">
+        <div align="center">
+            
+            
+            <p>
+                <xsl:apply-templates select="am:Operacija|am:Sadrzaj|text()"/>
+            </p>
+            
+        </div>
+    </xsl:template>
+    
     
     
     
