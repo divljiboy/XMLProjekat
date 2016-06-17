@@ -34,9 +34,9 @@
                     "akt" : $scope.akati[i],
                     "amandmani" : $scope.amandmaniIStanja,
                     "flag":false,
-                    "za": '',
-                    "protiv":'',
-                    "uzdrzan":''
+                    "za": 0,
+                    "protiv":0,
+                    "uzdrzan": 0
 
                 }
 
@@ -67,10 +67,16 @@
             console.log("------->");
             var amandmani = [];
             var akati = [];
+            var za = [];
+            var protiv = [];
+            var suzdrzano = [];
 
             angular.forEach($scope.akatiIStanja, function(akt){
                 if(akt.flag == true){
                     akati.push(akt.akt.id);
+                    za.push(akt.za);
+                    protiv.push(akt.protiv);
+                    suzdrzano.push(akt.suzdrzano);
                     angular.forEach(akt.amandmani,function(amandman){
                         if(amandman.flag == true){
                             amandmani.push(amandman.amandman.id);
@@ -81,10 +87,24 @@
                 }
             });
 
+            /*
+             public Long idAct;
+             public Integer za;
+             public Integer protiv;
+             public Integer suzdrzano;
 
 
 
-            var glasanjeDto = {
+
+             */
+            var aktDTO = {
+                "idAct": akati,
+                "za":za,
+                "protiv":protiv,
+                "suzdrzano": suzdrzano
+            }
+
+            var objectDto = {
                 'actsIds' : akati,
                 'amendmentsIds': amandmani
             }
@@ -96,7 +116,7 @@
             },
             function(res){
                 alert("propo");
-            })
+            });
         }
 
         $scope.aktoviGlasanje = function()
@@ -107,19 +127,27 @@
                 console.log(akt.flag);
                 console.log( akt.za);
                 console.log( akt.protiv);
-                $scope.disabled = true;
-                if( akt.za > akt.protiv)
-                {
-                    akt.flag = true;
 
-                }
-                else if(akt.za == akt.protiv){
-                    console.log("jednaki su");
+                if(akt.za > -1 && akt.protiv > -1 && akt.uzdrzan > -1){
+                        $scope.disabled = true;
+                        if( akt.za > akt.protiv)
+                        {
+                            akt.flag = true;
+
+                        }
+                        else if(akt.za == akt.protiv){
+                            console.log("jednaki su");
+                        }
+                        else{
+                            akt.flag = false;
+                        }
                 }
                 else{
-                    akt.flag = false;
-                }
+                    //ovo treba srediti
+                    alert("Moraju se uneti svi pozitivni brojevi za akt sa nazivom");
+                    return;
 
+                }
 
             });
             /*
