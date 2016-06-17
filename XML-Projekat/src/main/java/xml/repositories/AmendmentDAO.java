@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
 import xml.Constants;
+import xml.controller.dto.ActWrapperDTO;
 import xml.interceptors.TokenHandler;
 import xml.model.*;
 
@@ -19,10 +20,12 @@ import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,7 +49,9 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * @param amendmentsIds Id-jevi amandmana koji su izglasani za usvajanje
      */
     @Override
-    public void voting(ArrayList<Long> actsIds,ArrayList<Long> amendmentsIds,Korisnik user) throws JAXBException, IOException {
+    public void voting(ArrayList<ActWrapperDTO> actsIds, ArrayList<Long> amendmentsIds, Korisnik user) throws JAXBException, IOException {
+
+
 
         copyActToAdopted(actsIds,user);
         changeStateToNotAdopted();
@@ -112,18 +117,21 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * from collection(/predlozeniAkati) to collection(/usvojeniAkati)
      * @param actsIds Id-jevi akata koji su izglasani za usvajanje
      */
-    protected void copyActToAdopted(ArrayList<Long> actsIds,Korisnik user){
+    protected void copyActToAdopted(ArrayList<ActWrapperDTO> actsIds,Korisnik user){
 
-        for(Long id : actsIds){
+        for(ActWrapperDTO id : actsIds){
             try {
 
-                PravniAkt act = actDAO.get(id,Constants.ProposedActCollection);
+                PravniAkt act = actDAO.get(id.getIdAct(),Constants.ProposedActCollection);
+
                 act.setStanje(Constants.AdoptedState);
                 act.setKoJeUsvojio(user.getIme() + user.getPrezime());
+                act.setZa(BigInteger.valueOf(id.getZa()));
+                act.setProtiv(BigInteger.valueOf(id.getProtiv()));
+                act.setSuzdrzano(BigInteger.valueOf(id.getSuzdrzano()));
+                act.setDatumObjave((new Date()).toString());
 
-                //tu treba jos postaviti glasove za,protiv,suzdrzano
-
-                actDAO.updateActState(id,Constants.AdoptedState);
+                actDAO.updateActState(id.getIdAct(),Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);
             } catch (JAXBException e) {
                 e.printStackTrace();

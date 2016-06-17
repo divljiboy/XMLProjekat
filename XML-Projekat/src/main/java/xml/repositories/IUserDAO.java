@@ -11,4 +11,7 @@ import java.io.IOException;
 public interface IUserDAO extends IGenericDAO<Korisnik,Long> {
 
     public Korisnik getByLogin(String username, String password) throws IOException, JAXBException;
+
+
+    Korisnik getEntityWithMaxIdUser() throws JAXBException, IOException;
 }

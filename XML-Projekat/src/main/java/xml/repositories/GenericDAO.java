@@ -11,6 +11,7 @@ import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
 import xml.Constants;
+import xml.model.Korisnik;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamSource;
@@ -130,21 +131,21 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     public T getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
-        query
-                .append("declare namespace ns = \"")
-                .append(ns)
-                .append("\";\n")
-                .append("let $id := ")
-                .append("max(collection(\"")
-                .append(colId)
-                .append("\")/ns:")
-                .append(entity)
-                .append("/@Id)\n")
-                .append("return collection(\"")
-                .append(colId)
-                .append("\")/ns:")
-                .append(entity)
-                .append("[@Id = $id]");
+            query
+                    .append("declare namespace ns = \"")
+                    .append(ns)
+                    .append("\";\n")
+                    .append("let $id := ")
+                    .append("max(collection(\"")
+                    .append(colId)
+                    .append("\")/ns:")
+                    .append(entity)
+                    .append("/@Id)\n")
+                    .append("return collection(\"")
+                    .append(colId)
+                    .append("\")/ns:")
+                    .append(entity)
+                    .append("[@Id = $id]");
 
 
 

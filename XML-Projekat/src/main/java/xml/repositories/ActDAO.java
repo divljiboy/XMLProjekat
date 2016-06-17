@@ -256,19 +256,13 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
             query.append(Constants.ProposedActCollection);
         query
                 .append("\")/ns:Pravni_akt[");
-        boolean isCommaPredlagac;
-        boolean isCommaDatumObjave;
-        boolean isCommaKoJeUsvojio;
-        boolean isCommaZa;
-        boolean isCommaProtiv;
+        boolean isCommaPredlagac = false;
+        boolean isCommaDatumObjave = false;
+        boolean isCommaKoJeUsvojio = false;
+        boolean isCommaZa = false;
+        boolean isCommaProtiv = false;
 
         for(SearchMetadataDTO search : metadataTypes){
-
-            isCommaPredlagac = false;
-            isCommaDatumObjave = false;
-            isCommaKoJeUsvojio = false;
-            isCommaZa = false;
-            isCommaProtiv = false;
 
             switch (search.getMetadataType()){
                 case 1:
