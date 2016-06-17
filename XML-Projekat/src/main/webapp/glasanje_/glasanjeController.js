@@ -36,7 +36,8 @@
                         "flag":false,
                         "za": 0,
                         "protiv":0,
-                        "uzdrzan": 0
+                        "uzdrzan": 0,
+                        "color": "deepskyblue"
 
                     }
 
@@ -136,6 +137,7 @@
                     if( akt.za > akt.protiv)
                     {
                         akt.flag = true;
+                        akt.color = "green";
 
                     }
                     else if(akt.za == akt.protiv){
@@ -143,6 +145,7 @@
                     }
                     else{
                         akt.flag = false;
+                        akt.color = "red";
                     }
                 }
                 else{

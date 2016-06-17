@@ -1,6 +1,6 @@
 <md-list  ng-repeat = "ais in akatiIStanja">
 
-    <md-subheader style="background-color: red" class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
+    <md-subheader style="background-color: {{ais.color}}" class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
         <br/>
         Za: <input ng-model = "ais.za" class = "textGlas" type = "text"  ng-disabled="disabled" />
         Protiv:<input ng-model = "ais.protiv" class = "textGlas" type = "text" ng-disabled="disabled" />
