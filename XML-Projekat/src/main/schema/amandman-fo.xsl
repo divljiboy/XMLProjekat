@@ -18,12 +18,16 @@
 							<xsl:value-of select="am:Amandman/am:Kontekst" />
 						</fo:block>
 
-						<fo:block>
-							<xsl:value-of select="am:Amandman/am:Operacija" />
-						</fo:block>
+					
 
 						<fo:block>
-							<xsl:apply-templates select="akt:Pravni_akt/akt:Glavni_deo"></xsl:apply-templates>
+							<xsl:apply-templates select="am:Amandman/am:Podamandman"></xsl:apply-templates>
+						</fo:block>
+						<fo:block>
+						<xsl:value-of select="am:Amandman/am:Obrazlozenje"></xsl:value-of>
+						</fo:block>
+						<fo:block>
+						<xsl:value-of select="am:Amandman/am:Ovlasceno_lice"></xsl:value-of>
 						</fo:block>
 					</fo:block>
 
@@ -41,8 +45,7 @@
 
 	<xsl:template match="akt:Alineja">
 
-		<fo:block>
-			-
+		<fo:block text-align="center" font-size="8pt">
 			<xsl:value-of select="text()" />
 		</fo:block>
 
@@ -56,14 +59,14 @@
 
 
 	<xsl:template match="akt:Podtacka">
-		<fo:block>
+		<fo:block text-align="center">
 			<fo:block font-size="14pt">
 				(
 				<xsl:value-of select="@broj" />
 				)
 			</fo:block>
 
-			<fo:block>
+			<fo:block font-size="12pt">
 				<xsl:apply-templates select="akt:Alineja|text()" />
 			</fo:block>
 
@@ -73,16 +76,15 @@
 
 
 	<xsl:template match="akt:Tacka">
-		<fo:block>
-			<fo:block font-size="14pt">
-				Tacka
-				<xsl:value-of select="@broj" />
-				)
-			</fo:block>
-			<fo:block>
-				<xsl:apply-templates select="akt:Podtacka|akt:Alineja|text()" />
-			</fo:block>
-		</fo:block>
+		
+			<fo:block font-size="12pt" text-align="left" margin-left="50px" margin-right="50px">Tacka <xsl:value-of select="@broj" />)
+			
+			<xsl:apply-templates select="akt:Podtacka|akt:Alineja|text()" />
+			
+			</fo:block >
+			
+				
+		
 	</xsl:template>
 
 
@@ -163,8 +165,26 @@
 
 		</fo:block>
 	</xsl:template>
+	<xsl:template match="am:Podamandman">
+		<fo:block>
 
 
+
+			<xsl:apply-templates select="am:TOperacija|am:Sadrzaj|text()" />
+
+
+		</fo:block>
+	</xsl:template>
+	<xsl:template match="am:Sadrzaj">
+		<fo:block>
+
+
+
+			<xsl:apply-templates select="akt:Glavni_deo|akt:Stav|akt:Tacka|akt:Podtacka|akt:Alineja|text()" />
+
+
+		</fo:block>
+	</xsl:template>
 </xsl:stylesheet>
 
 
