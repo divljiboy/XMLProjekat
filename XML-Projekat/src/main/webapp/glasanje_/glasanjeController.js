@@ -76,7 +76,7 @@
                     akati.push(akt.akt.id);
                     za.push(akt.za);
                     protiv.push(akt.protiv);
-                    suzdrzano.push(akt.suzdrzano);
+                    suzdrzano.push(akt.uzdrzan);
                     angular.forEach(akt.amandmani,function(amandman){
                         if(amandman.flag == true){
                             amandmani.push(amandman.amandman.id);
@@ -105,18 +105,19 @@
             }
 
             var objectDto = {
-                'actsIds' : akati,
+                'actsIds' : aktDTO,
                 'amendmentsIds': amandmani
             }
 
-            console.log(glasanjeDto);
-
+            console.log(objectDto);
+            /*
             glasanjeService.glasaj(glasanjeDto,function(res){
                 alert("mandzukic");
             },
             function(res){
                 alert("propo");
             });
+            */
         }
 
         $scope.aktoviGlasanje = function()
