@@ -117,8 +117,9 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik, HttpServletResponse response) {
-        if (korisnik == null)
-            return new ResponseEntity<Korisnik>(HttpStatus.OK);
+        if (korisnik == null || korisnik.getUsername() == null
+                || korisnik.getUsername().equals("") || korisnik.getPassword()==null || korisnik.getPassword().equals(""))
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         try {
 
             ArrayList<Korisnik> users = (ArrayList<Korisnik>) userDao.getAll();

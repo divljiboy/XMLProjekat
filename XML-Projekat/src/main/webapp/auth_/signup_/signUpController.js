@@ -11,6 +11,29 @@
 
 
                     $scope.signUp = function () {
+
+                        if(!$scope.korisnik.ime){
+                            $scope.alertMessage = "Ime mora biti uneto";
+                        }else if(!$scope.korisnik.prezime){
+                            $scope.alertMessage = "Prezime mora biti uneto";
+                        }else if(!$scope.korisnik.username){
+                            $scope.alertMessage = "Username polje mora biti uneto";
+                        }else if(!$scope.korisnik.email){
+                            $scope.alertMessage = "Email polje mora biti uneto";
+                        }else if(!$scope.korisnik.password){
+                            $scope.alertMessage = "Sifra mora biti uneto";
+                        }else if(!$scope.repeatPassword){
+                            $scope.alertMessage = "Ponovi sifru mora biti uneto";
+                        }else if($scope.korisnik.password != $scope.repeatPassword)
+                        {
+                            $scope.alertMessage = "Sifre se ne poklapaju!!";
+                        }
+                        else{
+                            $scope.alertMessage = null;
+                        }
+                        if($scope.alertMessage){
+                            return;
+                        }
                         if($scope.ulogaKorisnika == true )
                         {
                             $scope.korisnik.uloga = "Predsednik";

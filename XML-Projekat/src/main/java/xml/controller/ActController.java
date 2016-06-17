@@ -1,6 +1,7 @@
 package xml.controller;
 
 
+import database.XMLConverter;
 import org.apache.fop.apps.FOPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +37,7 @@ import java.util.List;
 @RestController
 public class ActController{
 
+    XMLConverter<PravniAkt> converter = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
     @Autowired
     private IActDAO aktDao;
 
@@ -84,8 +86,12 @@ public class ActController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(@RequestBody PravniAkt object, HttpServletRequest request) {
+    public ResponseEntity post(@RequestBody PravniAkt object, HttpServletRequest request) throws JAXBException, IOException {
 
+        /*
+        String xml = converter.toXML(object);
+        System.out.print(xml);
+        */
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AKATA)) {
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();

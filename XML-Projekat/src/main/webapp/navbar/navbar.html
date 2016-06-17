@@ -5,8 +5,9 @@
             <li><span class="naslov">Narodna skupstina</span></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="signUp">SIGN UP</a></li>
-            <li><a ui-sref="signIn">SIGN IN</a></li>
+
+            <li ng-hide="authenticated"><a ui-sref="signUp">SIGN UP</a></li>
+            <li ng-hide="authenticated"><a ui-sref="signIn">SIGN IN</a></li>
             <li><a ng-click="signOut()" style="cursor: pointer;">SIGN OUT</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->

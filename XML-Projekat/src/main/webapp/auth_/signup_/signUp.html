@@ -1,8 +1,11 @@
 <form class="form-horizontal">
+
+    <h3><!-- Form Name -->
+        <legend>Sign Up</legend> </h3>
+    <uib-alert type="danger" ng-if="alertMessage">{{ alertMessage }}</uib-alert>
     <fieldset>
 
-        <!-- Form Name -->
-        <legend>Sign Up</legend>
+
 
         <!-- Text input-->
         <div class="form-group">
@@ -72,7 +75,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="passwordinput">Sifra ( potvrda )</label>
             <div class="col-md-4">
-                <input id="passwordinput1" name="passwordinput" placeholder="Ponovite unos sifre" class="form-control input-md" type="password">
+                <input ng-model ="repeatPassword" id="passwordinput1" name="passwordinput" placeholder="Ponovite unos sifre" class="form-control input-md" type="password">
 
             </div>
         </div>
