@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.*;
-import java.security.cert.CertificateException;
+import java.security.Certificate;
+import java.security.cert.*;
 
 /**
  * Created by David on 6/17/2016.
@@ -75,7 +76,17 @@ public class SecurityManager {
         return null;
     }
 
+    public java.security.cert.Certificate readCertificate(KeyStore ks, String alias, char[] password){
+        java.security.cert.Certificate cert=null;
+        try {
+            if(ks.isKeyEntry(alias)) {
+                cert = ks.getCertificate(alias);
+            }
+        } catch (KeyStoreException e) {
 
+        }
+        return cert;
+    }
 
 
 
