@@ -97,6 +97,41 @@
                         }
                     }
             
+            }).state("pretraga",
+                {
+                    url:"/pretragapometapodacima",
+                    views: {
+                        'content': {
+                            templateUrl: 'akt_/formaPretraga.html',
+                            controller: "pretragaMPController"
+                        },
+                        'navbar': {
+                            templateUrl: 'navbar/navbar.html',
+                            controller: "navbarController"
+                        },
+                        'sidebar': {
+                            templateUrl: 'sidebar/sidebar.html',
+                            controller: 'sidebarController'
+                        }
+                    }
+                }).state("prikazifiltrirane",{
+                url:"/pretragapometapodacima{url}",
+                views: {
+                    'content': {
+                        templateUrl: 'akt_/sviAkti.html',
+                        controller: "usvojeniAktiController"
+                    },
+                    'navbar': {
+                        templateUrl: 'navbar/navbar.html',
+                        controller: "navbarController"
+                    },
+                    'sidebar': {
+                        templateUrl: 'sidebar/sidebar.html',
+                        controller: 'sidebarController'
+                    }
+                }
+
+
             });
         }]);
 

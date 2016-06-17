@@ -57,7 +57,6 @@ public class AmendmentController{
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
             try {
-
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
                     amendment.setId((long) 1);

@@ -118,7 +118,7 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik, HttpServletResponse response) {
-        CertificateRevocationList crt = new CertificateRevocationList();
+     //   CertificateRevocationList crt = new CertificateRevocationList();
         if (korisnik == null || korisnik.getUsername() == null
                 || korisnik.getUsername().equals("") || korisnik.getPassword()==null || korisnik.getPassword().equals(""))
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);

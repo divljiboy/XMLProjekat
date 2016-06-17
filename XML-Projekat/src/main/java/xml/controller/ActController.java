@@ -37,7 +37,7 @@ import java.util.List;
 @RestController
 public class ActController{
 
-    XMLConverter<PravniAkt> converter = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
+
     @Autowired
     private IActDAO aktDao;
 
