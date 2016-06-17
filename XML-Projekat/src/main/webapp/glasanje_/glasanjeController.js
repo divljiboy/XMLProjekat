@@ -110,14 +110,14 @@
             }
 
             console.log(objectDto);
-            /*
-            glasanjeService.glasaj(glasanjeDto,function(res){
+
+            glasanjeService.glasaj(objectDto,function(res){
                 alert("mandzukic");
             },
             function(res){
                 alert("propo");
             });
-            */
+
         }
 
         $scope.aktoviGlasanje = function()
