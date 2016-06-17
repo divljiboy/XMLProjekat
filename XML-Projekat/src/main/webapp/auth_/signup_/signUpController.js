@@ -8,6 +8,7 @@
         {
                     $scope.korisnik = {};
 
+                    $scope.ulogaKorisnika_ = "predsednik";
 
 
                     $scope.signUp = function () {
@@ -34,14 +35,18 @@
                         if($scope.alertMessage){
                             return;
                         }
-                        if($scope.ulogaKorisnika == true )
+
+                        console.log($scope.ulogaKorisnika_);
+                        if($scope.ulogaKorisnika_ == "predsednik" )
                         {
                             $scope.korisnik.uloga = "Predsednik";
                         }else
                         {
                             $scope.korisnik.uloga = "Odbornik";
                         }
+
                         console.log($scope.korisnik);
+
                         authService.post($scope.korisnik,
                             function (resp) {
                                 $state.go('signIn');
