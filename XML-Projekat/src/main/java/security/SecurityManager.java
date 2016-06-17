@@ -27,7 +27,7 @@ public class SecurityManager {
         boolean ret = false;
         try
         {
-            File file = new File("data/glupost2.xml");
+            File file = new File(filePath);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             if (!file.exists()) {
                 file.createNewFile();
@@ -99,19 +99,17 @@ public class SecurityManager {
         boolean ret = false;
 
         try{
-            SecurityManager sm = new SecurityManager();
+
             SignEnveloped signEnveloped = new SignEnveloped();
             Document document;
-            if (filePath == null) {
-                document  = signEnveloped.loadDocument("data/glupost2.xml");
-            }  else {
-                document = signEnveloped.loadDocument(filePath);
-            }
-            KeyStore ks = sm.loadKeyStore("data/proba.jks","proba");
-            PrivateKey pk = sm.getPK(ks,user.getUsername(),user.getPassword().toCharArray());
-            java.security.cert.Certificate cert = sm.readCertificate(ks,user.getUsername(),user.getPassword().toCharArray());
+
+            document = signEnveloped.loadDocument(filePath);
+
+            KeyStore ks = this.loadKeyStore("data/sgns.jks","sgns");
+            PrivateKey pk = this.getPK(ks,user.getUsername(),user.getPassword().toCharArray());
+            java.security.cert.Certificate cert = this.readCertificate(ks,user.getUsername(),user.getPassword().toCharArray());
             document = signEnveloped.signDocument(document,pk,cert);
-            signEnveloped.saveDocument(document,"data/glupost1.xml");
+            signEnveloped.saveDocument(document,filePath);
             ret = true;
 
         } catch (Exception e){
@@ -121,34 +119,7 @@ public class SecurityManager {
         }
     }
 
-    /*
-    XMLConverter<PravniAkt> converter = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
-    String xml = converter.toXML((PravniAkt) entity);
 
-    File file = new File("data/glupost.xml");
-
-
-    try (FileOutputStream fop = new FileOutputStream(file)) {
-
-        // if file doesn't exists, then create it
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-
-        // get the content in bytes
-        byte[] contentInBytes = xml.getBytes();
-
-        fop.write(contentInBytes);
-        fop.flush();
-        fop.close();
-
-        System.out.println("Done");
-
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    boolean da = singXml(null,user);*/
 
 
 

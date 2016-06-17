@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.xml.sax.SAXException;
+import security.CertificateRevocationList;
 import security.SecurityManager;
 import xml.Constants;
 import xml.controller.dto.SearchCriteriaDTO;
@@ -28,6 +29,7 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -102,9 +104,12 @@ public class ActController{
             XMLConverter<PravniAkt> conv = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
             String xml = conv.toXML(object);
             SecurityManager sm = new SecurityManager();
+            CertificateRevocationList clr = new CertificateRevocationList();
+            sad bi trebalo ovde proveriti da li je povucen sert od usera
+            if(clr.isRevoked(sm.getPK()))
             if(sm.writeStringToFile(xml,user.getUsername()))
             {
-                sm.singXml(null,user);
+                sm.singXml("data/akt.xml,user);
             }
             */
             try {

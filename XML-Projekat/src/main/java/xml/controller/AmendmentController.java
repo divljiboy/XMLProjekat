@@ -56,6 +56,21 @@ public class AmendmentController{
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
+
+            //NE RADI POTPIS
+            /*
+            XMLConverter<PravniAkt> conv = new XMLConverter<PravniAkt>(""./src/main/schema/amandman.xsd"");
+              String xml = conv.toXML(object);
+            SecurityManager sm = new SecurityManager();
+            CertificateRevocationList clr = new CertificateRevocationList();
+            sad bi trebalo ovde proveriti da li je povucen sert od usera
+            if(clr.isRevoked(sm.getPK()))
+            if(sm.writeStringToFile(xml,user.getUsername()))
+            {
+                sm.singXml("data/akt.xml,user);
+            }
+            */
+
             try {
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
