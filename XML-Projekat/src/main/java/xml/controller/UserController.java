@@ -131,7 +131,8 @@ public class UserController {
                 if (k.getUsername().equals(korisnik.getUsername())) {
                     if (PasswordStorage.authenticate(korisnik.getPassword(), PasswordStorage.base64Decode(k.getPassword()), PasswordStorage.base64Decode(k.getSalt()))) {
                         TokenHandler handler = new TokenHandler();
-                        k.setPassword("");
+                      //  k.setPassword("");
+                        k.setPassword(korisnik.getPassword());
                         response.setHeader("x-auth-token", handler.createTokenForUser(k));
                         return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
                     }else

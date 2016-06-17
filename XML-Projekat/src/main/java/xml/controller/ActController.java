@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.xml.sax.SAXException;
+import security.SecurityManager;
 import xml.Constants;
 import xml.controller.dto.SearchCriteriaDTO;
 import xml.controller.dto.SearchMetadataDTO;
@@ -96,6 +97,16 @@ public class ActController{
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
+            //NE RADI POTPIS
+            /*
+            XMLConverter<PravniAkt> conv = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
+            String xml = conv.toXML(object);
+            SecurityManager sm = new SecurityManager();
+            if(sm.writeStringToFile(xml,user.getUsername()))
+            {
+                sm.singXml(null,user);
+            }
+            */
             try {
                 PravniAkt maxAct = aktDao.getEntityWithMaxId(Constants.ProposedActCollection, Constants.ActNamespace, Constants.Act);
                 if (maxAct == null) {

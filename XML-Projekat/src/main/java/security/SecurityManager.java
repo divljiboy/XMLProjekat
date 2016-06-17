@@ -3,13 +3,11 @@ package security;
 import org.w3c.dom.Document;
 import xml.model.Korisnik;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.security.*;
 import java.security.Certificate;
 import java.security.cert.*;
+import java.time.Clock;
 
 /**
  * Created by David on 6/17/2016.
@@ -29,7 +27,11 @@ public class SecurityManager {
         boolean ret = false;
         try
         {
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath + ".xml");
+            File file = new File("data/glupost2.xml");
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             fileOutputStream.write(fileContent.getBytes());
             fileOutputStream.close();
             ret = true;
@@ -66,7 +68,7 @@ public class SecurityManager {
     }
 
     public PrivateKey getPK(KeyStore keyStore, String alias, char[] pass){
-
+        System.out.println(pass);
         try {
             return (PrivateKey)keyStore.getKey(alias, pass);
         } catch (KeyStoreException e) {
@@ -101,15 +103,15 @@ public class SecurityManager {
             SignEnveloped signEnveloped = new SignEnveloped();
             Document document;
             if (filePath == null) {
-                document  = signEnveloped.loadDocument("data/glupost.xml");
+                document  = signEnveloped.loadDocument("data/glupost2.xml");
             }  else {
                 document = signEnveloped.loadDocument(filePath);
             }
-            KeyStore ks = sm.loadKeyStore("data/sgns.jks","sgns");
+            KeyStore ks = sm.loadKeyStore("data/proba.jks","proba");
             PrivateKey pk = sm.getPK(ks,user.getUsername(),user.getPassword().toCharArray());
             java.security.cert.Certificate cert = sm.readCertificate(ks,user.getUsername(),user.getPassword().toCharArray());
             document = signEnveloped.signDocument(document,pk,cert);
-            signEnveloped.saveDocument(document,"data/glupost2.xml");
+            signEnveloped.saveDocument(document,"data/glupost1.xml");
             ret = true;
 
         } catch (Exception e){
