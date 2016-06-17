@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
 import xml.Constants;
+import xml.interceptors.TokenHandler;
 import xml.model.*;
 
 import javax.xml.bind.JAXBException;
@@ -45,9 +46,9 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * @param amendmentsIds Id-jevi amandmana koji su izglasani za usvajanje
      */
     @Override
-    public void voting(ArrayList<Long> actsIds,ArrayList<Long> amendmentsIds) throws JAXBException, IOException {
+    public void voting(ArrayList<Long> actsIds,ArrayList<Long> amendmentsIds,Korisnik user) throws JAXBException, IOException {
 
-        copyActToAdopted(actsIds);
+        copyActToAdopted(actsIds,user);
         changeStateToNotAdopted();
 
         for(Long id : amendmentsIds){
@@ -111,12 +112,16 @@ public class AmendmentDAO extends GenericDAO<Amandman,Long> implements IAmendmen
      * from collection(/predlozeniAkati) to collection(/usvojeniAkati)
      * @param actsIds Id-jevi akata koji su izglasani za usvajanje
      */
-    protected void copyActToAdopted(ArrayList<Long> actsIds){
+    protected void copyActToAdopted(ArrayList<Long> actsIds,Korisnik user){
+
         for(Long id : actsIds){
             try {
 
                 PravniAkt act = actDAO.get(id,Constants.ProposedActCollection);
                 act.setStanje(Constants.AdoptedState);
+                act.setKoJeUsvojio(user.getIme() + user.getPrezime());
+
+                //tu treba jos postaviti glasove za,protiv,suzdrzano
 
                 actDAO.updateActState(id,Constants.AdoptedState);
                 actDAO.create(act,Constants.AdoptedAct+act.getId().toString(),Constants.ActCollection);

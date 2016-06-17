@@ -7,19 +7,19 @@ import java.util.ArrayList;
  */
 public class ActsAndAmendemntsIdsDTO {
 
-    private ArrayList<Long> actsIds;
+    private ArrayList<ActWrapperDTO> actsIds;
     private ArrayList<Long> amendmentsIds;
 
     public ActsAndAmendemntsIdsDTO() {
-        actsIds = new ArrayList<Long>();
+        actsIds = new ArrayList<ActWrapperDTO>();
         amendmentsIds = new ArrayList<Long>();
     }
 
-    public ArrayList<Long> getActsIds() {
+    public ArrayList<ActWrapperDTO> getActsIds() {
         return actsIds;
     }
 
-    public void setActsIds(ArrayList<Long> actsIds) {
+    public void setActsIds(ArrayList<ActWrapperDTO> actsIds) {
         this.actsIds = actsIds;
     }
 
