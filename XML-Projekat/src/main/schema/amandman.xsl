@@ -30,7 +30,7 @@
     </xsl:template>
     <xsl:template match="akt:Preambula">
         <p align="center">
-            <xsl:apply-templates select="akt:Reference|text()"></xsl:apply-templates>
+            <xsl:apply-templates select="akt:Referenca|text()"></xsl:apply-templates>
         </p>
     </xsl:template>
     <xsl:template match="akt:Alineja">
@@ -38,7 +38,7 @@
             -<xsl:value-of select="text()"/>
         </p>
     </xsl:template>
-    <xsl:template match="akt:Reference">
+    <xsl:template match="akt:Referenca">
 
         <xsl:choose>
             <!--ako referencira drugi akt-->
@@ -121,7 +121,7 @@
         <div align="center" id="Stav{@Id}">
 
             <p>
-                <xsl:apply-templates select="akt:Alineja | akt:Tacka |akt:Reference| text()"/>
+                <xsl:apply-templates select="akt:Alineja | akt:Tacka |akt:Referenca| text()"/>
             </p>
 
         </div>
