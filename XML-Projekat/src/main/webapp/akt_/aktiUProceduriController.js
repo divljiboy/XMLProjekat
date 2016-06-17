@@ -9,6 +9,8 @@
         $scope.entity = {};
         $scope.akt = {};
 
+        $scope.toolbar = 0;
+
         $scope.gridOptions = { enableRowSelection: true, enableRowHeaderSelection: false };
 
         $scope.gridOptions.columnDefs = [

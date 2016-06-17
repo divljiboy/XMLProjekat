@@ -142,7 +142,7 @@ public class ActController{
             Korisnik user = handler.parseUserFromToken(token);
             try {
                 PravniAkt act = aktDao.get(id,null);
-                if (act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())) {
+                if (act.getOvlascenoLice().getKoDodaje().equals(user.getUsername())) {
                     aktDao.delete(id, Constants.Act);
                     return new ResponseEntity(HttpStatus.OK);
                 } else {

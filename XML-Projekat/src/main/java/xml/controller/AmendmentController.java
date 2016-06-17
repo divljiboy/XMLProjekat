@@ -130,7 +130,7 @@ public class AmendmentController{
             Korisnik user = handler.parseUserFromToken(token);
             try {
                 Amandman amandman = amendmentDao.get(id,null);
-                if (amandman.getKoDodaje().equals(user.getEmail())) {
+                if (amandman.getKoDodaje().equals(user.getUsername())) {
                     amendmentDao.delete(id, Constants.Amendment);
                     System.out.print("Successfully deleted from db");
                 } else {

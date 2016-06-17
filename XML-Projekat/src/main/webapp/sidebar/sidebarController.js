@@ -2,7 +2,7 @@
     
     angular.module("xmlApp").controller("sidebarController",['$uibModal','$state','$scope','stateService','$rootScope',
                                                         function($uibModal, $state,$scope,stateService,$rootScope){
-        
+
         $scope.promenaStanja = function(){
 
             $scope.animationsEnabled = true;
@@ -32,9 +32,8 @@
                 $rootScope.authenticated = false;
             }
 
-
-
-
+            var stanje = localStorage.getItem("stanje");
+            $rootScope.stanje = stanje;
 
         })();
 
