@@ -52,27 +52,33 @@ namespace IstorijskaArhivaNSa.Controllers
         [Route("save")]
         public HttpResponseMessage Save()
         {
-            var file = HttpContext.Current.Request.Files.Count > 0 ?
-                HttpContext.Current.Request.Files[0] : null;
-
-            var path = HttpContext.Current.Server.MapPath("~/Pdfs");
-
-            byte[] fileData = null;
-            using (var binaryReader = new BinaryReader(file.InputStream))
+            try
             {
-                fileData = binaryReader.ReadBytes(file.ContentLength);
+                var file = HttpContext.Current.Request.Files.Count > 0 ?
+                    HttpContext.Current.Request.Files[0] : null;
+
+                var path = HttpContext.Current.Server.MapPath("~/Zip");
+
+                byte[] fileData = null;
+                using (var binaryReader = new BinaryReader(file.InputStream))
+                {
+                    fileData = binaryReader.ReadBytes(file.ContentLength);
+                }
+
+                File.WriteAllBytes($"{path}\\{file.FileName}", fileData);
+
+                return new HttpResponseMessage(HttpStatusCode.OK);
             }
-
-            File.WriteAllBytes($"{path}\\{file.FileName}", fileData);
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            catch{
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
 
 
         [Route("get")]
-        public String GetArchive()
+        public HttpResponseMessage GetArchive()
         {
-            return "blablabla";
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
 
