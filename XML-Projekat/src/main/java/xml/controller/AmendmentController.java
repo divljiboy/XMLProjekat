@@ -50,11 +50,13 @@ public class AmendmentController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
+    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment, HttpServletRequest request) {
 
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
             try {
-
+                String token = request.getHeader("x-auth-token");
+                TokenHandler handler = new TokenHandler();
+                Korisnik user = handler.parseUserFromToken(token);
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
                     amendment.setId((long) 1);

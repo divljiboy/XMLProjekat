@@ -10,12 +10,19 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
+import org.w3c.dom.Document;
+import security.SecurityManager;
+import security.SignEnveloped;
 import xml.Constants;
 import xml.model.Korisnik;
+import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +52,35 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
     @Override
     public void create(T entity, String docId, String colId) throws JAXBException, IOException {
+       /*
+        SignEnveloped se = new SignEnveloped();
+        XMLConverter<PravniAkt> converter = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
+        String xml = converter.toXML((PravniAkt) entity);
+
+        File file = new File("data/glupost.xml");
+
+
+        try (FileOutputStream fop = new FileOutputStream(file)) {
+
+            // if file doesn't exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            // get the content in bytes
+            byte[] contentInBytes = xml.getBytes();
+
+            fop.write(contentInBytes);
+            fop.flush();
+            fop.close();
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean da = singXml(null,user);*/
         add(entity,docId,colId);
     }
 
@@ -219,12 +255,43 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     }
 
     protected  void add(T obj,String docId,String colId) throws IOException, JAXBException {
+
+
+
         XMLDocumentManager xmlManager = client.newXMLDocumentManager();
         DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
         metadataHandle.getCollections().add(colId);
 
         InputStreamHandle handle = new InputStreamHandle(new ByteArrayInputStream(xmlConverter.toXML(obj).getBytes(XMLConverter.UTF_8.name())));
         xmlManager.write(docId,metadataHandle,handle);
+    }
+
+
+    public boolean singXml(String filePath, Korisnik user){
+
+        boolean ret = false;
+
+        try{
+            SecurityManager sm = new SecurityManager();
+            SignEnveloped signEnveloped = new SignEnveloped();
+            Document document;
+            if (filePath == null) {
+                document  = signEnveloped.loadDocument("data/glupost.xml");
+            }  else {
+                document = signEnveloped.loadDocument(filePath);
+            }
+            KeyStore ks = sm.loadKeyStore("data/sgns.jks","sgns");
+            PrivateKey pk = sm.getPK(ks,user.getUsername(),user.getPassword().toCharArray());
+            Certificate cert = sm.readCertificate(ks,user.getUsername(),user.getPassword().toCharArray());
+            document = signEnveloped.signDocument(document,pk,cert);
+            signEnveloped.saveDocument(document,"data/glupost2.xml");
+            ret = true;
+
+        } catch (Exception e){
+
+        } finally {
+            return  ret;
+        }
     }
 
 
