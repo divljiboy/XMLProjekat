@@ -70,13 +70,23 @@
             var za = [];
             var protiv = [];
             var suzdrzano = [];
+            var akatiDTO = [];
 
             angular.forEach($scope.akatiIStanja, function(akt){
                 if(akt.flag == true){
-                    akati.push(akt.akt.id);
+                //    akati.push(akt.akt.id);
+                   /*
                     za.push(akt.za);
                     protiv.push(akt.protiv);
                     suzdrzano.push(akt.uzdrzan);
+                    */
+                    var aktDTO = {
+                        "idAct": akt.akt.id,
+                        "za":akt.za,
+                        "protiv":akt.protiv,
+                        "suzdrzano": akt.uzdrzan
+                    }
+                    akatiDTO.push(aktDTO);
                     angular.forEach(akt.amandmani,function(amandman){
                         if(amandman.flag == true){
                             amandmani.push(amandman.amandman.id);
@@ -97,20 +107,16 @@
 
 
              */
-            var aktDTO = {
-                "idAct": akati,
-                "za":za,
-                "protiv":protiv,
-                "suzdrzano": suzdrzano
-            }
+
+
 
             var objectDto = {
-                'actsIds' : aktDTO,
+                'actsIds' : akatiDTO,
                 'amendmentsIds': amandmani
             }
 
             console.log(objectDto);
-
+            //to je to valjda
             glasanjeService.glasaj(objectDto,function(res){
                 alert("mandzukic");
             },

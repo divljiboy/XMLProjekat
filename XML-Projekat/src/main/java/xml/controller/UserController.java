@@ -78,12 +78,12 @@ public class UserController {
 
 
         try {
-           /* Korisnik maxUser = userDao.getEntityWithMaxId(Constants.UsersCollection, Constants.UserNamespace, Constants.User);
+            Korisnik maxUser = userDao.getEntityWithMaxIdUser();
             if (maxUser == null) {
                 korisnik.setId((long) 1);
             } else {
                 korisnik.setId(maxUser.getId() + 1);
-            }*/
+            }
             userDao.create(korisnik, Constants.User + korisnik.getId().toString(), Constants.UsersCollection);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
