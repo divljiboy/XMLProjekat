@@ -6,7 +6,8 @@
 
     angular.module("xmlApp").controller("glasanjeController",['$q','$scope','$state','amandmanService','aktService','glasanjeService',function($q, $scope, $state,amandmanService, aktService,glasanjeService){
 
-
+        //nisu  disejblovana text polja
+        $scope.disabled = false;
         $scope.akatiIStanja = {};
 
 
@@ -100,8 +101,33 @@
 
         $scope.aktoviGlasanje = function()
         {
+            console.log("nikola");
+
+            angular.forEach($scope.akatiIStanja, function(akt){
+                console.log(akt.flag);
+                console.log( akt.za);
+                console.log( akt.protiv);
+                $scope.disabled = true;
+                if( akt.za > akt.protiv)
+                {
+                    akt.flag = true;
+
+                }
+                else if(akt.za == akt.protiv){
+                    console.log("jednaki su");
+                }
+                else{
+                    akt.flag = false;
+                }
+
+
+            });
+            /*
+            console.log( $scope.akatiIStanja.length);
             for(var i = 0 ; i < $scope.akatiIStanja.length; i++){
-                if( $scope.akatiIStanja[i].za > ($scope.akatiIStanja[i].protiv + $scope.akatiIStanja[i].uzdrzan))
+                console.log($scope.akatiIStanja[i].za);
+                console.log($scope.akatiIStanja[i].protiv);
+                if( $scope.akatiIStanja[i].za > ($scope.akatiIStanja[i].protiv))
                 {
                     $scope.akatiIStanja[i].flag = true;
                 }
@@ -109,6 +135,7 @@
                     $scope.akatiIStanja[i].flag = false;
                 }
             }
+            */
         }
 
  }]);

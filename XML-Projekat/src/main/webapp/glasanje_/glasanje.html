@@ -2,7 +2,9 @@
 
     <md-subheader class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
         <br/>
-        Za: <input class = "textGlas" type = "text"/>Protiv:<input class = "textGlas" type = "text"/>Uzdrzan:<input class = "textGlas" type = "text"/>
+        Za: <input ng-model = "ais.za" class = "textGlas" type = "text"  ng-disabled="disabled" />
+        Protiv:<input ng-model = "ais.protiv" class = "textGlas" type = "text" ng-disabled="disabled" />
+        Uzdrzan:<input ng-model = "ais.uzdrzan" class = "textGlas" type = "text" ng-disabled="disabled" />
         <md-checkbox  class="md-secondary" ng-model = "ais.flag"></md-checkbox>
      </md-subheader>
     <div ng-show = ais.flag>
@@ -19,5 +21,5 @@
     Potvrda
 </md-button>
 <md-button  ng-click = "aktoviGlasanje()" aria-label="Provera" class = "potvrdaDugme">
-    Potvrda
+    Provera
 </md-button>
