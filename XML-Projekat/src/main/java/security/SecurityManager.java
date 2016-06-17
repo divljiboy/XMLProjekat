@@ -1,5 +1,8 @@
 package security;
 
+import org.w3c.dom.Document;
+import xml.model.Korisnik;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -88,6 +91,62 @@ public class SecurityManager {
         return cert;
     }
 
+
+    public boolean singXml(String filePath, Korisnik user){
+
+        boolean ret = false;
+
+        try{
+            SecurityManager sm = new SecurityManager();
+            SignEnveloped signEnveloped = new SignEnveloped();
+            Document document;
+            if (filePath == null) {
+                document  = signEnveloped.loadDocument("data/glupost.xml");
+            }  else {
+                document = signEnveloped.loadDocument(filePath);
+            }
+            KeyStore ks = sm.loadKeyStore("data/sgns.jks","sgns");
+            PrivateKey pk = sm.getPK(ks,user.getUsername(),user.getPassword().toCharArray());
+            java.security.cert.Certificate cert = sm.readCertificate(ks,user.getUsername(),user.getPassword().toCharArray());
+            document = signEnveloped.signDocument(document,pk,cert);
+            signEnveloped.saveDocument(document,"data/glupost2.xml");
+            ret = true;
+
+        } catch (Exception e){
+
+        } finally {
+            return  ret;
+        }
+    }
+
+    /*
+    XMLConverter<PravniAkt> converter = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
+    String xml = converter.toXML((PravniAkt) entity);
+
+    File file = new File("data/glupost.xml");
+
+
+    try (FileOutputStream fop = new FileOutputStream(file)) {
+
+        // if file doesn't exists, then create it
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        // get the content in bytes
+        byte[] contentInBytes = xml.getBytes();
+
+        fop.write(contentInBytes);
+        fop.flush();
+        fop.close();
+
+        System.out.println("Done");
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    boolean da = singXml(null,user);*/
 
 
 

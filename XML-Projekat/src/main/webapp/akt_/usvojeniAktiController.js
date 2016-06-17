@@ -145,6 +145,7 @@
         $scope.pretraziMP = function(obj){
 
             aktService.searchByMetadata(obj,function(res){
+                    console.log("prolazi");
                     $scope.gridOptions.data = res.data;
             },
             function(res){
@@ -169,6 +170,7 @@
                   }
                   dtoObj.push(obj);
               }
+            $scope.pretraziMP(dtoObj);
             console.log(dtoObj);
 
         }else if ($location.hash().indexOf("search") != -1){
