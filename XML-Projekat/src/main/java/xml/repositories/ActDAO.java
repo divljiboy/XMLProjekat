@@ -248,8 +248,8 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
         query
                 .append("declare namespace ns = \"")
                 .append(Constants.ActNamespace)
-                .append("\");\n")
-                .append("return collection(\"");
+                .append("\";\n")
+                .append("collection(\"");
         if (collectionName == 1)
             query.append(Constants.ActCollection);
         else
@@ -266,64 +266,76 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
 
             switch (search.getMetadataType()){
                 case 1:
-                    query
-                            .append("@Predlagac ='")
-                            .append(search.getCriteria()+"'");
-                    isCommaPredlagac = true;
+                    if(!search.getCriteria().equals("undefined")) {
+                        query
+                                .append("@Predlagac ='")
+                                .append(search.getCriteria() + "'");
+                        isCommaPredlagac = true;
+                    }
                     break;
                 case 2:
-                    if(isCommaPredlagac)
-                        query
-                                .append(",@Datum_objave ='")
-                                .append(search.getCriteria()+"'");
-                    else
-                        query
-                                .append("@Datum_objave ='")
-                                .append(search.getCriteria()+"'");
-                    isCommaDatumObjave = true;
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac)
+                            query
+                                    .append(",@Datum_objave ='")
+                                    .append(search.getCriteria() + "'");
+                        else
+                            query
+                                    .append("@Datum_objave ='")
+                                    .append(search.getCriteria() + "'");
+                        isCommaDatumObjave = true;
+                    }
                     break;
                 case 3:
-                    if(isCommaPredlagac || isCommaDatumObjave)
-                        query
-                                .append(",@Ko_je_usvojio ='")
-                                .append(search.getCriteria()+"'");
-                    else
-                        query
-                                .append("@Ko_je_usvojio ='")
-                                .append(search.getCriteria()+"'");
-                    isCommaKoJeUsvojio = true;
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave)
+                            query
+                                    .append(",@Ko_je_usvojio ='")
+                                    .append(search.getCriteria() + "'");
+                        else
+                            query
+                                    .append("@Ko_je_usvojio ='")
+                                    .append(search.getCriteria() + "'");
+                        isCommaKoJeUsvojio = true;
+                    }
                     break;
                 case 4:
-                    if(isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio)
-                        query
-                                .append(",@Za > ")
-                                .append(search.getCriteria());
-                    else
-                        query
-                                .append("@Za > ")
-                                .append(search.getCriteria());
-                    isCommaZa = true;
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio)
+                            query
+                                    .append(",@Za > ")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Za > ")
+                                    .append(search.getCriteria());
+                        isCommaZa = true;
+                    }
                     break;
                 case 5:
-                    if(isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa)
-                        query
-                                .append(",@Protiv > ")
-                                .append(search.getCriteria());
-                    else
-                        query
-                                .append("@Protiv > ")
-                                .append(search.getCriteria());
-                    isCommaProtiv = true;
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa)
+                            query
+                                    .append(",@Protiv > ")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Protiv > ")
+                                    .append(search.getCriteria());
+                        isCommaProtiv = true;
+                    }
                     break;
                 case 6:
-                    if(isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa || isCommaProtiv)
-                        query
-                                .append(",@Suzdrzano >")
-                                .append(search.getCriteria());
-                    else
-                        query
-                                .append("@Suzdrzano >")
-                                .append(search.getCriteria());
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa || isCommaProtiv)
+                            query
+                                    .append(",@Suzdrzano >")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Suzdrzano >")
+                                    .append(search.getCriteria());
+                    }
                     break;
             }
         }

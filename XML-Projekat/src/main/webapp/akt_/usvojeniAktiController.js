@@ -6,7 +6,7 @@
 {
     angular.module("xmlApp").controller("usvojeniAktiController", ['$scope','$state','aktService','$stateParams','$location',function($scope, $state,aktService,$stateParams,$location) {
 
-
+        $scope.toolbar = 1;
 
             $scope.akt = {};
 

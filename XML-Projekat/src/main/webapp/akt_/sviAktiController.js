@@ -42,14 +42,14 @@
                                     alert("Greska!");
             }
                 );
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
         $scope.predlozi = function(){
 			     $state.go("noviAkt");
 		}

@@ -63,10 +63,10 @@
     
     
     <xsl:template match="akt:Podtacka">
-        <fo:block>
+        <fo:block >
             <fo:block font-size="14pt">(<xsl:value-of select="@broj"/>)</fo:block>
             
-             <fo:block>
+             <fo:block >
               <xsl:apply-templates select="akt:Alineja|text()"/>
              </fo:block>
               
@@ -77,7 +77,7 @@
     
     <xsl:template match="akt:Tacka">
         <fo:block>
-           <fo:block font-size="14pt">Tacka<xsl:value-of select="@broj"/>)</fo:block>
+           <fo:block font-size="14pt" text-align="left">Tacka <xsl:value-of select="@broj"/>)</fo:block>
                     <fo:block>
                         <xsl:apply-templates select="akt:Podtacka|akt:Alineja|text()"/>
                     </fo:block>

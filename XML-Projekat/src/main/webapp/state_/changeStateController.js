@@ -18,6 +18,7 @@
         $scope.potvrdiPromenuStanja = function(){
             console.log("promena stanja");
             console.log($scope.state.state);
+            localStorage.setItem("stanje",$scope.state.state);
             stateService.setState($scope.state, function(res){
                 if($scope.state.state === "Glasanje") {
                     $state.go('glasanje');
