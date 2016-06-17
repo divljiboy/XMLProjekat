@@ -103,9 +103,12 @@ public class ActController{
                 } else {
                     object.setId(maxAct.getId() + 1);
                 }
+                object.getOvlascenoLice().setIme(user.getIme());
+                object.getOvlascenoLice().setPrezime(user.getPrezime());
+                object.getOvlascenoLice().setTitula(user.getUloga());
                 object.setStanje(Constants.ProposedState);
-                object.getOvlascenoLice().setKoDodaje(user.getEmail());
-                object.setPredlagac(user.getIme() + user.getPrezime());
+                object.getOvlascenoLice().setKoDodaje(user.getUsername());
+                object.setPredlagac(user.getIme() + " " + user.getPrezime());
                 object.setDatumDonosenjaPropisa((new Date()).toString());
                 aktDao.create(object, Constants.Act + object.getId().toString(), Constants.ProposedActCollection);
                 return new ResponseEntity(HttpStatus.OK);

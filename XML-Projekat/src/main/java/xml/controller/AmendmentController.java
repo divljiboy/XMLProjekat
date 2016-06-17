@@ -50,9 +50,12 @@ public class AmendmentController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
+    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment,@PathVariable("aktId") Long actId, HttpServletRequest request) {
 
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
+            String token = request.getHeader("x-auth-token");
+            TokenHandler handler = new TokenHandler();
+            Korisnik user = handler.parseUserFromToken(token);
             try {
 
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
@@ -62,6 +65,12 @@ public class AmendmentController{
                     amendment.setId(maxAmendment.getId() + 1);
                 }
                 amendment.setStanje(Constants.ProposedState);
+                amendment.setKoDodaje(user.getUsername());
+                amendment.getOvlascenoLice().setIme(user.getIme());
+                amendment.getOvlascenoLice().setPrezime(user.getPrezime());
+                amendment.getOvlascenoLice().setTitula(user.getUloga());
+                amendment.getOvlascenoLice().setKoDodaje(user.getUsername());
+                amendment.setIdAct(actId);
                 for(int i = 0; i < amendment.getPodamandman().size(); i++){
                     amendment.getPodamandman().get(i).setId((long) (i+1));
                 }
