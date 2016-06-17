@@ -77,11 +77,13 @@ public class AmendmentController{
 
     @RolesAllowed( value = {Constants.Predsednik})
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
-
+    public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO, HttpServletRequest request){
+        String token = request.getHeader("x-auth-token");
+        TokenHandler handler = new TokenHandler();
+        Korisnik user = handler.parseUserFromToken(token);
         if(StateManager.getState().getState().equals(StateManager.GLASANJE)) {
             try {
-                amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds());
+                amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds(),user);
             } catch (JAXBException e) {
                 e.printStackTrace();
             } catch (IOException e) {
