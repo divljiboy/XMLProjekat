@@ -5,7 +5,22 @@
 (function(angular) {
     angular.module("xmlApp").controller("signInController",['$scope','$state','$rootScope', 'authService',function($scope, $state,$rootScope, authService) {
 
-        $scope.signIn = function () {
+        $scope.signIn = function ()
+        {
+            if(!$scope.username){
+                $scope.alertMessage = "Korisnicko ime mora biti uneto !";
+            }
+            else if(!$scope.password){
+                $scope.alertMessage = "Sifra mora biti uneta!";
+            }
+            else{
+                $scope.alertMessage = null;
+
+            }
+            if($scope.alertMessage)
+            {
+                return;
+            }
             var credentials = {
                 'username' : $scope.username,
                 'password' : $scope.password

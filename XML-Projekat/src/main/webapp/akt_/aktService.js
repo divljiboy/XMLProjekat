@@ -126,7 +126,21 @@
 
                     $http(req).then(onSuccess, onError);
 
+                },
+                searchByMetadata: function(dtoObject, onSuccess, onError){
+                    var req = {
+                            method : 'POST',
+                            url: "akt/search/metadata/1",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            data: dtoObject
+                        };
+                    $http(req).then(onSuccess, onError);
+
                 }
+
+
 
             }
         }]);

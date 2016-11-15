@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import security.CertificateRevocationList;
 import security.PasswordStorage;
 import xml.Constants;
 import xml.interceptors.TokenHandler;
@@ -78,12 +79,12 @@ public class UserController {
 
 
         try {
-           /* Korisnik maxUser = userDao.getEntityWithMaxId(Constants.UsersCollection, Constants.UserNamespace, Constants.User);
+            Korisnik maxUser = userDao.getEntityWithMaxIdUser();
             if (maxUser == null) {
                 korisnik.setId((long) 1);
             } else {
                 korisnik.setId(maxUser.getId() + 1);
-            }*/
+            }
             userDao.create(korisnik, Constants.User + korisnik.getId().toString(), Constants.UsersCollection);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
@@ -117,8 +118,10 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Korisnik> getByLogin(@RequestBody Korisnik korisnik, HttpServletResponse response) {
-        if (korisnik == null)
-            return new ResponseEntity<Korisnik>(HttpStatus.OK);
+     //   CertificateRevocationList crt = new CertificateRevocationList();
+        if (korisnik == null || korisnik.getUsername() == null
+                || korisnik.getUsername().equals("") || korisnik.getPassword()==null || korisnik.getPassword().equals(""))
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         try {
 
             ArrayList<Korisnik> users = (ArrayList<Korisnik>) userDao.getAll();
@@ -128,7 +131,8 @@ public class UserController {
                 if (k.getUsername().equals(korisnik.getUsername())) {
                     if (PasswordStorage.authenticate(korisnik.getPassword(), PasswordStorage.base64Decode(k.getPassword()), PasswordStorage.base64Decode(k.getSalt()))) {
                         TokenHandler handler = new TokenHandler();
-                        k.setPassword("");
+                      //  k.setPassword("");
+                        k.setPassword(korisnik.getPassword());
                         response.setHeader("x-auth-token", handler.createTokenForUser(k));
                         return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
                     }else

@@ -12,6 +12,7 @@ import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
 import xml.Constants;
+import xml.controller.dto.SearchMetadataDTO;
 import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
@@ -25,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Dorian on 8.6.2016.
@@ -226,30 +228,122 @@ public class ActDAO extends GenericDAO<PravniAkt,Long> implements IActDAO {
         }
     }
 
+    /**
+     * 1 - Predlagac
+     * 2 - Datum objaven
+     * 3 - Ko je usvojio
+     * 4 - Za
+     * 5 - Protiv
+     * 6 - Suzdrzano
+     * @param collectionName
+     * @param metadataTypes
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     */
     @Override
-    public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, Integer metadataType, String criteria) {
+    public ArrayList<PravniAkt> searchByMetadata(Integer collectionName, ArrayList<SearchMetadataDTO> metadataTypes) throws JAXBException, IOException {
 
+        StringBuilder query = new StringBuilder();
+        query
+                .append("declare namespace ns = \"")
+                .append(Constants.ActNamespace)
+                .append("\";\n")
+                .append("collection(\"");
+        if (collectionName == 1)
+            query.append(Constants.ActCollection);
+        else
+            query.append(Constants.ProposedActCollection);
+        query
+                .append("\")/ns:Pravni_akt[");
+        boolean isCommaPredlagac = false;
+        boolean isCommaDatumObjave = false;
+        boolean isCommaKoJeUsvojio = false;
+        boolean isCommaZa = false;
+        boolean isCommaProtiv = false;
 
-        switch (metadataType) {
-            case 1: //taksonomija
+        for(SearchMetadataDTO search : metadataTypes){
 
-                break;
-            case 2: //Predlagac
-                break;
-            case 3: //Datum objave
-                break;
-            case 4: //Ko je usvojio
-                break;
-            case 5: //Za
-                break;
-            case 6: //Protiv
-                break;
-            case 7: //Suzdrzano
-                break;
-
+            switch (search.getMetadataType()){
+                case 1:
+                    if(!search.getCriteria().equals("undefined")) {
+                        query
+                                .append("@Predlagac ='")
+                                .append(search.getCriteria() + "'");
+                        isCommaPredlagac = true;
+                    }
+                    break;
+                case 2:
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac)
+                            query
+                                    .append(",@Datum_objave ='")
+                                    .append(search.getCriteria() + "'");
+                        else
+                            query
+                                    .append("@Datum_objave ='")
+                                    .append(search.getCriteria() + "'");
+                        isCommaDatumObjave = true;
+                    }
+                    break;
+                case 3:
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave)
+                            query
+                                    .append(",@Ko_je_usvojio ='")
+                                    .append(search.getCriteria() + "'");
+                        else
+                            query
+                                    .append("@Ko_je_usvojio ='")
+                                    .append(search.getCriteria() + "'");
+                        isCommaKoJeUsvojio = true;
+                    }
+                    break;
+                case 4:
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio)
+                            query
+                                    .append(",@Za > ")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Za > ")
+                                    .append(search.getCriteria());
+                        isCommaZa = true;
+                    }
+                    break;
+                case 5:
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa)
+                            query
+                                    .append(",@Protiv > ")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Protiv > ")
+                                    .append(search.getCriteria());
+                        isCommaProtiv = true;
+                    }
+                    break;
+                case 6:
+                    if(!search.getCriteria().equals("undefined")) {
+                        if (isCommaPredlagac || isCommaDatumObjave || isCommaKoJeUsvojio || isCommaZa || isCommaProtiv)
+                            query
+                                    .append(",@Suzdrzano >")
+                                    .append(search.getCriteria());
+                        else
+                            query
+                                    .append("@Suzdrzano >")
+                                    .append(search.getCriteria());
+                    }
+                    break;
+            }
         }
 
-        return null;
+        query.append("]");
+        ArrayList<PravniAkt> res = getByQuery(query.toString());
+
+        return res;
     }
 
     @Override

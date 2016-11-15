@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pravni_akt xmlns="aktovi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="aktovi file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/akt.xsd">
+    <Stanje></Stanje>
+    <Naziv>Z A K O N
+        O ZAŠTITI ZEMLjIŠTA</Naziv>
+    <Glavni_deo>
+        
+        <Glava Id="1" Naziv="OSNOVNE ODREDBE">
+            
+            <Clan Broj_clana="1">
+                <Stav Id="1">
+                    Ovim zakonom uređuje se zaštita zemljišta, sistematsko praćenje
+                    stanja i kvaliteta zemljišta, mere sanacije, remedijacije, rekultivacije,
+                    inspekcijski nadzor i druga pitanja od značaja za zaštitu i očuvanje
+                    zemljišta kao prirodnog resursa od nacionalnog interesa.
+                </Stav>
+            </Clan>
+            
+            <Clan Broj_clana="2">
+                <Stav Id="1">
+                    Odredbe ovog zakona primenjuju se na sve tipove zemljišta Republike
+                    Srbije kao prirodni resurs, bez obzira na oblik svojine, njegovu namenu i
+                    korišćenje.
+                </Stav>
+            </Clan>
+            
+            <Clan Broj_clana="3">
+                <Stav Id="1">
+                    Cilj ovog zakona je da se očuvaju površine i funkcije zemljišta kao
+                    prirodnog resursa i da se spreče ili otklone štetne promene u zemljištu
+                    koje mogu da nastanu kao posledica:
+                    <Tacka broj="1">erozionih procesa;</Tacka>
+                    <Tacka broj="2">smanjenja sadržaja organske materije u zemljištu;</Tacka>
+                    <Tacka broj="3">neprimerene poljoprivredne i šumske proizvodnje (neadekvatne i
+                        nekontrolisane agrotehničke i meliorativne mere, krčenje šuma i dr);</Tacka>
+                    <Tacka broj="4">nekontrolisane promene namene, upravljanja i korišćenja
+                        zemljišta;</Tacka>
+                    <Tacka broj="5">neplanske urbanizacije, odnosno izgradnje i razvoja
+                        infrastrukture;</Tacka>
+                    <Tacka broj="6">zakiseljavanja (acidifikacija), zaslanjivanja (salinizacija) i
+                        alkalizacije zemljišta;</Tacka>
+                </Stav>
+            </Clan>
+            
+            <Clan Broj_clana="4" Naziv="Značenje izraza">
+                <Stav Id="1">
+                    Izrazi upotrebljeni u ovom zakonu imaju sledeće značenje:
+                    <Tacka broj="1">aktivnost koja utiče na zemljište jeste svaki privremeni,
+                        povremeni ili stalni zahvat kojim se menja ili se može promeniti stanje i
+                        uslovi na nekoj lokaciji;</Tacka>
+                    <Tacka broj="2">
+                        granične vrednosti jesu vrednosti zagađujućih, štetnih i opasnih
+                        materija u zemljištu koje mogu biti:
+                        <Podtacka broj="1">granična minimalna vrednost jeste vrednost zagađujućih,
+                            štetnih i opasnih materija u zemljištu koja se bazira na njihovom prirodnom
+                            sadržaju i predstavlja vrednost za nezagađeno zemljište, pri čemu nije ili je
+                            minimalno narušena ekološka ravnoteža;</Podtacka>
+                        <Podtacka broj="2">granična maksimalna vrednost jeste vrednost zagađujućih,
+                            štetnih i opasnih materija u zemljištu čije prekoračenje ukazuje na nivo
+                            kontaminacije koji narušava ekološku ravnotežu, nameće dodatna ispitivanja
+                            tog zemljišta kao i ograničenja u načinu upravljanja;</Podtacka>
+                    </Tacka>
+                    <Tacka broj="3">degradacija zemljišta jeste proces narušavanja kvaliteta i
+                        funkcija zemljišta koji nastaje prirodnim putem ili ljudskom aktivnošću
+                        ili je posledica nepreduzimanja mera za sprečavanje štetnih posledica;</Tacka>
+                    <Tacka broj="4">dobra stručna praksa predstavlja primenu naučnih, tehničkih i
+                        biotehničkih mera i/ili mera upravljanja i korišćenja zemljišta u cilju
+                        očuvanja i unapređivanja kvaliteta zemljišta;</Tacka>
+                    <Tacka broj="5">državna mreža predstavlja prostorno pozicionirana merna mesta
+                        uzorkovanja zemljišta za potrebe državnog monitoringa;</Tacka>
+                </Stav>
+            </Clan>
+            
+        </Glava>
+        <Glava Id="2" Naziv="PROGRAM SISTEMATSKOG PRAĆENjA STANjA I
+            KVALITETA ZEMLjIŠTA">
+            
+            <Clan Broj_clana="5">
+                <Stav Id="1">
+                    Republika, autonomna pokrajina i jedinice lokalne samouprave, u
+                    okviru svojih nadležnosti utvrđenih zakonom, obezbeđuju sistematsko
+                    praćenje stanja i kvaliteta zemljišta (u daljem tekstu: monitoring
+                    zemljišta) i održavanje baze podataka o stanju i kvalitetu zemljišta, u
+                    skladu sa Programom monitoringa zemljišta.
+                </Stav>
+                <Stav Id="2">Vlada utvrđuje sadržinu Programa monitoringa zemljišta,
+                    metodologiju za sistematsko praćenje kvaliteta i stanja zemljišta,
+                    kriterijume za određivanje broja i rasporeda mernih mesta, listu parametara
+                    za određeni tip zemljišta, listu metoda i standarda koji se koriste za
+                    uzorkovanje zemljišta, analizu uzoraka i obradu podataka, obim i učestalost
+                    merenja, indikatore za ocenu rizika od degradacije zemljišta, rokove i način
+                    dostavljanja podataka.</Stav>
+            </Clan>
+            <Clan Broj_clana="6">
+                <Stav Id="1">
+                    Po zakonu <Referenca ref_akt="1">akta 1.</Referenca> vlasnik zemljišta, zakupac ili korisnik zemljišta, dužan je da
+                    omogući ovlašćenom pravnom licu uzimanje uzoraka za potrebe obavljanja
+                    monitoringa zemljišta.
+                </Stav>
+            </Clan>
+            
+        </Glava>
+        
+    </Glavni_deo>
+    <Drzava>Republika Srbija</Drzava>
+    <Pokrajina>Autonomna pokrajina Vojvodina</Pokrajina>
+    <Grad>Grad Novi Sad</Grad>
+    <Skupstina>Skupstina grada Novog Sada</Skupstina>
+    <Broj_popisa_kod_organa>34643412465677</Broj_popisa_kod_organa>
+    <Datum_donosenja_propisa>17.06.2016</Datum_donosenja_propisa>
+    <Mesto_donosenja_propisa>Novi Sad</Mesto_donosenja_propisa>
+    <Ovlasceno_lice>
+        <Titula>Odbornik</Titula>
+        <Ime>Goran</Ime>
+        <Prezime>Cogic</Prezime>
+    </Ovlasceno_lice>
+    <Timestamp>2002-05-30T09:00:00</Timestamp>
+</Pravni_akt>

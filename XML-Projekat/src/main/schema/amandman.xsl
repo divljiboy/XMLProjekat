@@ -30,7 +30,7 @@
     </xsl:template>
     <xsl:template match="akt:Preambula">
         <p align="center">
-            <xsl:apply-templates select="akt:Reference|text()"></xsl:apply-templates>
+            <xsl:apply-templates select="akt:Referenca|text()"></xsl:apply-templates>
         </p>
     </xsl:template>
     <xsl:template match="akt:Alineja">
@@ -38,12 +38,13 @@
             -<xsl:value-of select="text()"/>
         </p>
     </xsl:template>
-    <xsl:template match="akt:Reference">
+    <xsl:template match="akt:Referenca">
 
         <xsl:choose>
             <!--ako referencira drugi akt-->
             <xsl:when test="@ref_akt">
                 <xsl:choose>
+                    <!-- ako referencira akt unutar taga,moze samo referencirati usvojen -->
                     <!-- po hijerarhiji -->
                     <xsl:when test="@ref_tacka">
                         <a href="http://localhost:8080/#/aktDetails/usvojeni/{@ref_akt}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
@@ -58,15 +59,16 @@
             </xsl:when>
             <xsl:otherwise>
                 <!-- po hijerarhiji -->
+                <!-- ako nema reference u tagu,onda referencira predlozen -->
                 <xsl:choose>
                     <xsl:when test="@ref_tacka">
-                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/predlozeni/{$PravniAktId}#Tacka{@ref_tacka}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_stav">
-                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/predlozeni/{$PravniAktId}#Stav{@ref_stav}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                     <xsl:when test="@ref_clan">
-                        <a href="http://localhost:8080/#/aktDetails/usvojeni/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
+                        <a href="http://localhost:8080/#/aktDetails/predlozeni/{$PravniAktId}#Clan{@ref_clan}"> <xsl:value-of select="text()"/></a>
                     </xsl:when>
                 </xsl:choose>
             </xsl:otherwise>
@@ -121,7 +123,7 @@
         <div align="center" id="Stav{@Id}">
 
             <p>
-                <xsl:apply-templates select="akt:Alineja | akt:Tacka |akt:Reference| text()"/>
+                <xsl:apply-templates select="akt:Alineja | akt:Tacka |akt:Referenca| text()"/>
             </p>
 
         </div>

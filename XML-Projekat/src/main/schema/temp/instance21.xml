@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amandman xmlns:akt="aktovi"
+ xmlns:am="amandmani"
+ xmlns:ns1="http://www.w3.org/2000/09/xmldsig#"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="amandmani file:/C:/Users/Dorian/Desktop/Faks/Cetvrta_godina/XML%20i%20Web%20servisi/git_proj/XMLProjekat/XML-Projekat/src/main/schema/temp/amandman.xsd"
+    IdAct="3"
+    Ko_dodaje="zoro"
+    >
+    <am:Stanje>Stanje0</am:Stanje>
+    <am:Kontekst>Zakon o obrazovanju</am:Kontekst>
+    <am:Podamandman>
+        <am:Operacija>dodavanje</am:Operacija>
+        <am:Sadrzaj r_clan="6" r_odeljak="2" r_deo="2">
+            <akt:Glavni_deo>
+                <akt:Clan Broj_clana="7">
+                    <akt:Stav Id="1">
+                        Neki tekst iz amandmana 
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Glavni_deo>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    <am:Podamandman>
+        <am:Operacija>dodavanje</am:Operacija>
+        <am:Sadrzaj r_clan="7" r_odeljak="2" r_deo="2">
+            <akt:Glavni_deo>
+                <akt:Clan Broj_clana="8">
+                    <akt:Stav Id="1">
+                        Neki opet neki tekst  iz amsnsadsaom
+                    </akt:Stav>
+                </akt:Clan>
+            </akt:Glavni_deo>
+        </am:Sadrzaj>
+    </am:Podamandman>
+    <am:Obrazlozenje>Obrazlozenje0</am:Obrazlozenje>
+    <am:Ovlasceno_lice Ko_dodaje="zoro">
+        <akt:Titula>Titula0</akt:Titula>
+        <akt:Ime>Ime0</akt:Ime>
+        <akt:Prezime>Prezime0</akt:Prezime>
+    </am:Ovlasceno_lice>
+    <am:Timestamp>2006-05-04T18:13:51.0</am:Timestamp>
+</am:Amandman>

@@ -1,9 +1,11 @@
-<md-list ng-repeat = "ais in akatiIStanja">
+<md-list  ng-repeat = "ais in akatiIStanja">
 
-    <md-subheader class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
+    <md-subheader style="background-color: {{ais.color}}" class="md-no-sticky"><b>Naziv akta : {{ais.akt.naziv}}</b>
         <br/>
-        Za: <input class = "textGlas" type = "text"/>Protiv:<input class = "textGlas" type = "text"/>Uzdrzan:<input class = "textGlas" type = "text"/>
-        <md-checkbox  class="md-secondary" ng-model = "ais.flag"></md-checkbox>
+        Za: <input ng-model = "ais.za" class = "textGlas" type = "text"  ng-disabled="disabled" />
+        Protiv:<input ng-model = "ais.protiv" class = "textGlas" type = "text" ng-disabled="disabled" />
+        Uzdrzan:<input ng-model = "ais.uzdrzan" class = "textGlas" type = "text" ng-disabled="disabled" />
+    <!--    <md-checkbox  class="md-secondary" ng-model = "ais.flag"></md-checkbox> -->
      </md-subheader>
     <div ng-show = ais.flag>
     <md-list-item ng-repeat="amandman in ais.amandmani" class = "listItem">
@@ -15,9 +17,9 @@
 
 </md-list>
 
-<md-button  ng-click = "rezultatGlasanja()" aria-label="Potvrda" class = "potvrdaDugme">
-    Potvrda
+<md-button  ng-click = "rezultatGlasanja()" aria-label="Potvrda" class = "potvrdaDugme" ng-show = "disabled">
+    Izglasaj amandmane
 </md-button>
-<md-button  ng-click = "aktoviGlasanje()" aria-label="Provera" class = "potvrdaDugme">
-    Potvrda
+<md-button  ng-click = "aktoviGlasanje()" aria-label="Provera" class = "potvrdaDugme" ng-hide = "disabled">
+    Izglasaj akate
 </md-button>

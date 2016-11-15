@@ -50,11 +50,28 @@ public class AmendmentController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/amandman/{aktId}" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment) {
+    public ResponseEntity<Amandman> post(@RequestBody Amandman amendment,@PathVariable("aktId") Long actId, HttpServletRequest request) {
 
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AMANDMANA)) {
-            try {
+            String token = request.getHeader("x-auth-token");
+            TokenHandler handler = new TokenHandler();
+            Korisnik user = handler.parseUserFromToken(token);
 
+            //NE RADI POTPIS
+            /*
+            XMLConverter<PravniAkt> conv = new XMLConverter<PravniAkt>(""./src/main/schema/amandman.xsd"");
+              String xml = conv.toXML(object);
+            SecurityManager sm = new SecurityManager();
+            CertificateRevocationList clr = new CertificateRevocationList();
+            sad bi trebalo ovde proveriti da li je povucen sert od usera
+            if(clr.isRevoked(sm.getPK()))
+            if(sm.writeStringToFile(xml,user.getUsername()))
+            {
+                sm.singXml("data/akt.xml,user);
+            }
+            */
+
+            try {
                 Amandman maxAmendment = amendmentDao.getEntityWithMaxId(Constants.ProposedAmendmentCollection, Constants.AmendmentNamespace, Constants.Amendment);
                 if (maxAmendment == null) {
                     amendment.setId((long) 1);
@@ -62,6 +79,12 @@ public class AmendmentController{
                     amendment.setId(maxAmendment.getId() + 1);
                 }
                 amendment.setStanje(Constants.ProposedState);
+                amendment.setKoDodaje(user.getUsername());
+                amendment.getOvlascenoLice().setIme(user.getIme());
+                amendment.getOvlascenoLice().setPrezime(user.getPrezime());
+                amendment.getOvlascenoLice().setTitula(user.getUloga());
+                amendment.getOvlascenoLice().setKoDodaje(user.getUsername());
+                amendment.setIdAct(actId);
                 for(int i = 0; i < amendment.getPodamandman().size(); i++){
                     amendment.getPodamandman().get(i).setId((long) (i+1));
                 }
@@ -77,11 +100,13 @@ public class AmendmentController{
 
     @RolesAllowed( value = {Constants.Predsednik})
     @RequestMapping(value = "/amandman/glasaj", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO){
-
+    public void voting(@RequestBody ActsAndAmendemntsIdsDTO idsDTO, HttpServletRequest request){
+        String token = request.getHeader("x-auth-token");
+        TokenHandler handler = new TokenHandler();
+        Korisnik user = handler.parseUserFromToken(token);
         if(StateManager.getState().getState().equals(StateManager.GLASANJE)) {
             try {
-                amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds());
+                amendmentDao.voting(idsDTO.getActsIds(), idsDTO.getAmendmentsIds(),user);
             } catch (JAXBException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -120,7 +145,7 @@ public class AmendmentController{
             Korisnik user = handler.parseUserFromToken(token);
             try {
                 Amandman amandman = amendmentDao.get(id,null);
-                if (amandman.getKoDodaje().equals(user.getEmail())) {
+                if (amandman.getKoDodaje().equals(user.getUsername())) {
                     amendmentDao.delete(id, Constants.Amendment);
                     System.out.print("Successfully deleted from db");
                 } else {

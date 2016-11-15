@@ -6,7 +6,7 @@
 {
     angular.module("xmlApp").controller("usvojeniAktiController", ['$scope','$state','aktService','$stateParams','$location',function($scope, $state,aktService,$stateParams,$location) {
 
-
+        $scope.toolbar = 1;
 
             $scope.akt = {};
 
@@ -142,8 +142,38 @@
                 });
         }
 
+        $scope.pretraziMP = function(obj){
 
-        if ($location.hash().indexOf("search") != -1){
+            aktService.searchByMetadata(obj,function(res){
+                    console.log("prolazi");
+                    $scope.gridOptions.data = res.data;
+            },
+            function(res){
+                $state.go("home");
+            })
+        }
+
+        if($stateParams.url != null){
+            $scope.pretragaText = $stateParams.url.split("&");
+            console.log($scope.pretragaText.length);
+            var dtoObj = [];
+              for( var i = 0; i < $scope.pretragaText.length ; i++)
+              {
+                  var temp = $scope.pretragaText[i].split("=");
+                  if(temp[1]==null){
+                      temp[1] = "";
+                  }
+                  obj = {
+                        "criteria" : temp[1],
+                        "metadataType": temp[0]
+
+                  }
+                  dtoObj.push(obj);
+              }
+            $scope.pretraziMP(dtoObj);
+            console.log(dtoObj);
+
+        }else if ($location.hash().indexOf("search") != -1){
 
             $scope.filterText = $location.hash().split("=")[1];
 
@@ -161,6 +191,10 @@
         $scope.predlozi = function(){
 
             $state.go("filter");
+        }
+
+        $scope.pretragaMP = function(){
+            $state.go("pretraga");
         }
     }]);
 })(angular);

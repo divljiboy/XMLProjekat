@@ -1,5 +1,8 @@
 package xml.repositories;
 
+import com.marklogic.client.eval.EvalResult;
+import com.marklogic.client.eval.EvalResultIterator;
+import com.marklogic.client.eval.ServerEvaluationCall;
 import org.springframework.stereotype.Repository;
 import xml.Constants;
 import xml.model.Korisnik;
@@ -41,5 +44,41 @@ public class UserDAO extends GenericDAO<Korisnik,Long> implements IUserDAO {
         return null;
     }
 
+    @Override
+    public Korisnik getEntityWithMaxIdUser() throws JAXBException, IOException {
+        StringBuilder query = new StringBuilder();
 
+        query
+                .append("let $id := ")
+                .append("max(collection(\"")
+                .append("/korisnici")
+                .append("\")/")
+                .append("Korisnik")
+                .append("/@Id)\n")
+                .append("return collection(\"")
+                .append("/korisnici")
+                .append("\")/")
+                .append("Korisnik")
+                .append("[@Id = $id]");
+
+
+
+        EvalResultIterator iterator = null;
+
+        ServerEvaluationCall invoker = client.newServerEval();
+        invoker.xquery(query.toString());
+
+        iterator = invoker.eval();
+
+        ArrayList<Korisnik> list = new ArrayList<>();
+
+        if(iterator.hasNext()){
+            for(EvalResult res : iterator){
+                list.add((Korisnik) xmlConverter.toObject(res.getString()));
+            }
+        }else
+            return null;
+
+        return list.get(0);
+    }
 }

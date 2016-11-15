@@ -1,0 +1,71 @@
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Pretraga ( metapodaci )</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Predlagac">Predlagac</label>
+            <div class="col-md-4">
+                <input id="Predlagac" ng-model = "predlagac" name="Predlagac" type="text" placeholder="Predlagac" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Datum objave">Datum objave</label>
+            <div class="col-md-4">
+                <input id="Datum objave" ng-model = "datum" name="Datum objave" type="text" placeholder="Datum objave" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Ko je usvojio">Ko je usvojio</label>
+            <div class="col-md-4">
+                <input ng-model = "usvojio" id="Ko je usvojio" name="Ko je usvojio" type="text" placeholder="Ko je usvojio" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Za">Za</label>
+            <div class="col-md-4">
+                <input ng-model = "za" id="Za" name="Za" type="text" placeholder="Za" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Protiv">Protiv</label>
+            <div class="col-md-4">
+                <input ng-model = "protiv" id="Protiv" name="Protiv" type="text" placeholder="Protiv" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Suzdrzano">Suzdrzano</label>
+            <div class="col-md-4">
+                <input ng-model = "suzdrzano" id="Suzdrzano" name="Suzdrzano" type="text" placeholder="Suzdrzano" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Potvrdi">Potvrdi</label>
+            <div class="col-md-8">
+                <button ng-click = "potvrdi()" id="Potvrdi" name="Potvrdi" class="btn btn-success">Potvrdi</button>
+                <button ng-click = "odustani()" id="button2id" name="button2id" class="btn btn-danger">Odustani</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

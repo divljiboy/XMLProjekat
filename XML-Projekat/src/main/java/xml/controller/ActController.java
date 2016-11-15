@@ -1,6 +1,7 @@
 package xml.controller;
 
 
+import database.XMLConverter;
 import org.apache.fop.apps.FOPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -8,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.xml.sax.SAXException;
+import security.CertificateRevocationList;
+import security.SecurityManager;
 import xml.Constants;
 import xml.controller.dto.SearchCriteriaDTO;
 import xml.controller.dto.SearchMetadataDTO;
@@ -25,7 +29,9 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +39,7 @@ import java.util.List;
  */
 @RestController
 public class ActController{
+
 
     @Autowired
     private IActDAO aktDao;
@@ -82,12 +89,29 @@ public class ActController{
 
     @RolesAllowed( value = {Constants.Predsednik,Constants.Odbornik})
     @RequestMapping(value = "/akt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity post(@RequestBody PravniAkt object, HttpServletRequest request) {
+    public ResponseEntity post(@RequestBody PravniAkt object, HttpServletRequest request) throws JAXBException, IOException {
 
+        /*
+        String xml = converter.toXML(object);
+        System.out.print(xml);
+        */
         if(StateManager.getState().getState().equals(StateManager.PREDLAGANJE_AKATA)) {
             String token = request.getHeader("x-auth-token");
             TokenHandler handler = new TokenHandler();
             Korisnik user = handler.parseUserFromToken(token);
+            //NE RADI POTPIS
+            /*
+            XMLConverter<PravniAkt> conv = new XMLConverter<PravniAkt>("./src/main/schema/akt.xsd");
+            String xml = conv.toXML(object);
+            SecurityManager sm = new SecurityManager();
+            CertificateRevocationList clr = new CertificateRevocationList();
+            sad bi trebalo ovde proveriti da li je povucen sert od usera
+            if(clr.isRevoked(sm.getPK()))
+            if(sm.writeStringToFile(xml,user.getUsername()))
+            {
+                sm.singXml("data/akt.xml,user);
+            }
+            */
             try {
                 PravniAkt maxAct = aktDao.getEntityWithMaxId(Constants.ProposedActCollection, Constants.ActNamespace, Constants.Act);
                 if (maxAct == null) {
@@ -95,9 +119,13 @@ public class ActController{
                 } else {
                     object.setId(maxAct.getId() + 1);
                 }
+                object.getOvlascenoLice().setIme(user.getIme());
+                object.getOvlascenoLice().setPrezime(user.getPrezime());
+                object.getOvlascenoLice().setTitula(user.getUloga());
                 object.setStanje(Constants.ProposedState);
-                object.getOvlascenoLice().setKoDodaje(user.getEmail());
-                object.setPredlagac(user.getEmail());
+                object.getOvlascenoLice().setKoDodaje(user.getUsername());
+                object.setPredlagac(user.getIme() + " " + user.getPrezime());
+                object.setDatumDonosenjaPropisa((new Date()).toString());
                 aktDao.create(object, Constants.Act + object.getId().toString(), Constants.ProposedActCollection);
                 return new ResponseEntity(HttpStatus.OK);
             } catch (Exception e) {
@@ -130,7 +158,7 @@ public class ActController{
             Korisnik user = handler.parseUserFromToken(token);
             try {
                 PravniAkt act = aktDao.get(id,null);
-                if (act.getOvlascenoLice().getKoDodaje().equals(user.getEmail())) {
+                if (act.getOvlascenoLice().getKoDodaje().equals(user.getUsername())) {
                     aktDao.delete(id, Constants.Act);
                     return new ResponseEntity(HttpStatus.OK);
                 } else {
@@ -211,10 +239,18 @@ public class ActController{
     }
 
 
-    @RequestMapping(value = "akt/search/metadata", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ArrayList<PravniAkt>> searchByMetadata(@RequestBody SearchMetadataDTO searchMetadataDTO) {
-        aktDao.searchByMetadata(searchMetadataDTO.getCollectionName(), searchMetadataDTO.getMetadataType(), searchMetadataDTO.getCriteria());
-        return null;
+    @RequestMapping(value = "akt/search/metadata/{idCol}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<PravniAkt>> searchByMetadata(@RequestBody ArrayList<SearchMetadataDTO> searchMetadataDTO,@PathVariable("idCol")Integer idCol) {
+        try {
+            ArrayList<PravniAkt> acts = aktDao.searchByMetadata(idCol,searchMetadataDTO);
+            if(acts == null)
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(acts,HttpStatus.OK);
+        } catch (JAXBException e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } catch (IOException e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RolesAllowed( value = {Constants.Gradjanin,Constants.Predsednik,Constants.Odbornik})

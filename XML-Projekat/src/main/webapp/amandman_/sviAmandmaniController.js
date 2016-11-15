@@ -3,7 +3,7 @@
 	angular.module("xmlApp").controller("sviAmandmaniController", ['$scope','$state','$stateParams','$uibModal','amandmanService',function($scope,$state,$stateParams,$uibModal,amandmanService)
 	{
 
-
+		$scope.toolbar = 0;
 
 		$scope.amandman = {};
 

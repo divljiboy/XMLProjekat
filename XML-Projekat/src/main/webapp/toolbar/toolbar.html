@@ -4,32 +4,37 @@
         <span flex=""></span>
 
         <!-- za gradjanina -->
+        <md-button  ng-click="pretragaMP()" class="md-raised" aria-label="Next">
+            <md-icon md-font-set="material-icons">visibility</md-icon>
+        </md-button>
         <md-button  ng-click = "pogledajDetalje()" class="md-raised" aria-label="Next">
             <md-icon md-font-set="material-icons">details</md-icon>
         </md-button>
-        <div>
-            <md-button  ng-click = "predlozi()" class="md-raised" aria-label="Dodaj">
-                <md-icon md-font-set="material-icons">search</md-icon>
-            </md-button>
-        </div>
-        <div>
+        <md-button  ng-click = "skiniPDF()" class="md-raised" aria-label="PDF">
+            <md-icon md-font-set="material-icons">PDF</md-icon>
+        </md-button>
+        <!--<div>-->
+            <!--<md-button  ng-click = "predlozi()" class="md-raised" aria-label="Dodaj">-->
+                <!--<md-icon md-font-set="material-icons">search</md-icon>-->
+            <!--</md-button>-->
+        <!--</div>-->
+
+        <!-- ovo se vidi samo u predlaganju -->
+        <div ng-if="stanje.indexOf('amandmana')>0 && toolbar === 0">
             <md-button  ng-click = "otvoriAmandmaneUProceduri()" class="md-raised" aria-label="Dodaj">
                 <md-icon md-font-set="material-icons">settings</md-icon>
             </md-button>
         </div>
-        <md-button  ng-click = "skiniPDF()" class="md-raised" aria-label="PDF">
-            <md-icon md-font-set="material-icons">PDF</md-icon>
-        </md-button>
 
         <!-- za ulogovane -->
-        <div ng-if="authenticated">
-            <md-button  ng-click = "predlozi()"  class="md-raised" aria-label="Dodaj">
+        <div ng-if="authenticated && toolbar === 0">
+            <md-button ng-if="stanje.indexOf('akata')>0"  ng-click = "predlozi()"  class="md-raised" aria-label="Dodaj">
                 <md-icon md-font-set="material-icons">add</md-icon>
             </md-button>
-            <md-button  ng-click = "predloziAmandman()" class="md-raised" aria-label="Next">
+            <md-button ng-if="stanje.indexOf('amandmana')>0"  ng-click = "predloziAmandman()" class="md-raised" aria-label="Next">
                 <md-icon md-font-set="material-icons">forward</md-icon>
             </md-button>
-            <md-button  ng-click = "povuci()" class="md-raised" aria-label="Next">
+            <md-button ng-click = "povuci()" class="md-raised" aria-label="Next">
                 <md-icon md-font-set="material-icons">delete</md-icon>
             </md-button>
         </div>

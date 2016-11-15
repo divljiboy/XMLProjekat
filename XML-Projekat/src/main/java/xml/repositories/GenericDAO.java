@@ -10,11 +10,19 @@ import com.marklogic.client.io.InputStreamHandle;
 import database.DatabaseManager;
 import database.XMLConverter;
 import org.springframework.stereotype.Repository;
+import org.w3c.dom.Document;
+import security.SecurityManager;
+import security.SignEnveloped;
 import xml.Constants;
+import xml.model.Korisnik;
+import xml.model.PravniAkt;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +52,9 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
 
     @Override
     public void create(T entity, String docId, String colId) throws JAXBException, IOException {
+       /*
+        SignEnveloped se = new SignEnveloped();
+        */
         add(entity,docId,colId);
     }
 
@@ -130,21 +141,21 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     public T getEntityWithMaxId(String colId, String ns, String entity) throws JAXBException, IOException {
         StringBuilder query = new StringBuilder();
 
-        query
-                .append("declare namespace ns = \"")
-                .append(ns)
-                .append("\";\n")
-                .append("let $id := ")
-                .append("max(collection(\"")
-                .append(colId)
-                .append("\")/ns:")
-                .append(entity)
-                .append("/@Id)\n")
-                .append("return collection(\"")
-                .append(colId)
-                .append("\")/ns:")
-                .append(entity)
-                .append("[@Id = $id]");
+            query
+                    .append("declare namespace ns = \"")
+                    .append(ns)
+                    .append("\";\n")
+                    .append("let $id := ")
+                    .append("max(collection(\"")
+                    .append(colId)
+                    .append("\")/ns:")
+                    .append(entity)
+                    .append("/@Id)\n")
+                    .append("return collection(\"")
+                    .append(colId)
+                    .append("\")/ns:")
+                    .append(entity)
+                    .append("[@Id = $id]");
 
 
 
@@ -218,6 +229,9 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
     }
 
     protected  void add(T obj,String docId,String colId) throws IOException, JAXBException {
+
+
+
         XMLDocumentManager xmlManager = client.newXMLDocumentManager();
         DocumentMetadataHandle metadataHandle = new DocumentMetadataHandle();
         metadataHandle.getCollections().add(colId);
@@ -225,6 +239,9 @@ public abstract class GenericDAO<T,K extends Serializable> implements IGenericDA
         InputStreamHandle handle = new InputStreamHandle(new ByteArrayInputStream(xmlConverter.toXML(obj).getBytes(XMLConverter.UTF_8.name())));
         xmlManager.write(docId,metadataHandle,handle);
     }
+
+
+
 
 
 

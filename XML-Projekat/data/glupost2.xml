@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Pravni_akt xmlns:ns2="aktovi" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#" xmlns:ns4="amandmani">
+    <ns2:Stanje>Stanje0</ns2:Stanje>
+    <ns2:Naziv>Zakon 1</ns2:Naziv>
+    <ns2:Glavni_deo>
+        <ns2:Deo Redni_broj="1" Naziv="Deo prvi" Id="1">
+            <ns2:Odeljak Naziv="Odeljak prvi" Id="1">
+                <ns2:Clan Broj_clana="1">
+                    <ns2:Stav Id="1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut maximus sapien. Donec vel felis id quam consectetur euismod. Cras vel nibh gravida, laoreet ligula eget, posuere quam. Donec eleifend nunc ante, et molestie dui facilisis ut. Nam et nisi tempor, rutrum orci eget, aliquam ex. Fusce eget velit rhoncus, vestibulum massa sed, imperdiet est. Phasellus ac orci semper, scelerisque dolor non, posuere nulla. Vivamus dignissim vestibulum libero, in volutpat eros condimentum non. Sed mattis metus a neque facilisis, ut elementum enim maximus. In quis lorem imperdiet, aliquam turpis vitae, egestas lectus. Nam a placerat nibh.
+                    </ns2:Stav>
+                    <ns2:Stav Id="2">
+                        Aenean sed dignissim est, et volutpat nisi. In ut nunc quis felis elementum efficitur. Etiam condimentum lectus in  aliquet luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non tellus non elit pulvinar facilisis ut a diam. Mauris dictum euismod urna, sit amet bibendum augue vestibulum vitae. Phasellus eget rutrum justo. Etiam dignissim mattis dui ut ultrices. Maecenas et eleifend ligula. Cras iaculis, dolor et interdum euismod, ante eros tristique est, eu condimentum augue sapien id sem. Vestibulum ultrices nibh aliquet enim lobortis accumsan. Vestibulum tortor metus, vulputate eu egestas eget, gravida a sapien. Nunc vel nisi a turpis congue pharetra sed nec odio. Duis tortor ex, sollicitudin sed eros eu, ultricies mollis enim. Proin quis dictum enim, at condimentum dolor.
+                    </ns2:Stav>
+                </ns2:Clan>
+                <ns2:Clan Broj_clana="2">
+                    <ns2:Stav Id="1">
+                        Praesent eget diam est. Sed pellentesque mattis orci, vel posuere purus lacinia nec. Nunc fermentum vel mi aliquet scelerisque. Quisque sapien orci, finibus non sapien in, luctus suscipit ante. Donec accumsan ipsum non lectus facilisis, sed tincidunt leo viverra. Donec nec massa tellus. Pellentesque odio sapien, tempor ac lacinia sed, malesuada sed libero. Integer mollis eget arcu a ornare. Maecenas suscipit luctus arcu, a finibus dolor dignissim in. Donec vestibulum dui dictum, aliquet eros tristique, molestie metus. Maecenas mi nunc, convallis sit amet imperdiet vitae, lacinia non risus. Vestibulum feugiat condimentum enim venenatis consequat. Nam ultricies in mi at posuere. Nulla luctus justo vitae ex semper tincidunt.
+                    </ns2:Stav>
+                    <ns2:Stav Id="2">
+                        Nam mattis suscipit leo, efficitur porttitor arcu. Aliquam erat volutpat.
+                        <ns2:Tacka broj="1">Sed malesuada dolor eget enim ornare lacinia. Maecenas congue risus.</ns2:Tacka>
+                        <ns2:Tacka broj="2">Ut tempor arcu non ipsum finibus lacinia. Aliquam nec luctus.</ns2:Tacka>
+                        <ns2:Tacka broj="3">Quisque a varius nunc, non posuere neque. Morbi interdum enim.</ns2:Tacka>
+                        <ns2:Tacka broj="4">Quisque felis neque, ultrices non gravida id, luctus id sem.</ns2:Tacka>
+                    </ns2:Stav>
+                </ns2:Clan>
+            </ns2:Odeljak>
+            <ns2:Odeljak Naziv="Odeljak drugi" Id="2">
+                <ns2:Clan Broj_clana="3">
+                    <ns2:Stav Id="1">Aenean nec ante nec lectus dictum interdum. Aliquam hendrerit vestibulum mauris, tincidunt ultrices turpis vestibulum sed. In bibendum ipsum sed orci placerat feugiat. Fusce ut commodo nulla  . Proin pretium ullamcorper mauris, vitae maximus metus pharetra id. Donec et mauris dui. Nullam dolor lacus, venenatis sit amet metus et, ultrices tincidunt enim.</ns2:Stav>
+                    <ns2:Stav Id="2">
+                        
+                        <ns2:Alineja Id="1">Morbi dignissim, diam vitae fermentum egestas, augue tellus efficitur lectus.</ns2:Alineja>
+                        <ns2:Alineja Id="2">Donec non eros sodales, ultricies purus auctor, ullamcorper odio. Phasellus.</ns2:Alineja>
+                        <ns2:Alineja Id="3">Integer pharetra enim quis lorem ultrices, vel rutrum nisl tincidunt.</ns2:Alineja>
+                        
+                    </ns2:Stav>
+                </ns2:Clan>
+                <ns2:Clan Broj_clana="4">
+                    <ns2:Stav Id="1">
+                        
+                        <ns2:Tacka broj="1">Sed malesuada dolor eget enim ornare lacinia. Maecenas congue risus.</ns2:Tacka>
+                        <ns2:Tacka broj="2">
+                            Ut tempor arcu non ipsum finibus lacinia. Aliquam nec luctus.
+                            <ns2:Podtacka broj="1"/>
+                            <ns2:Podtacka broj="2"/>
+                            <ns2:Podtacka broj="3"/>
+                            <ns2:Podtacka broj="4"/>
+                        </ns2:Tacka>
+                        <ns2:Tacka broj="3">Quisque a varius nunc, non posuere neque. Morbi interdum enim.</ns2:Tacka>
+                        <ns2:Tacka broj="4">Quisque felis neque, ultrices non gravida id, luctus id sem.</ns2:Tacka>
+                    </ns2:Stav>
+                    <ns2:Stav Id="2">Nullam elementum  accumsan ex quis gravida. Proin eu volutpat felis.</ns2:Stav>
+                </ns2:Clan>
+            </ns2:Odeljak>
+        </ns2:Deo>
+        <ns2:Deo Redni_broj="2" Naziv="Deo drugi" Id="2">
+            <ns2:Glava Naziv="Glava prva" Id="1">
+                <ns2:Clan Broj_clana="5">
+                    <ns2:Stav Id="1">Fusce justo est, ultricies id ipsum eget, maximus venenatis nisi. Maecenas turpis arcu, fermentum id lacus sed, fringilla condimentum purus. Curabitur non est viverra, fringilla nunc nec, egestas diam. Vivamus eget bibendum neque. In ut ante velit. Cras a augue enim. Sed massa libero, mattis quis enim eget, cursus volutpat erat. Donec purus erat, sollicitudin non scelerisque vitae, euismod a est. Vestibulum ornare placerat auctor.</ns2:Stav>
+                </ns2:Clan>
+                <ns2:Clan Broj_clana="6">
+                    <ns2:Stav Id="1">
+                        Quisque sed libero risus. Curabitur cursus congue mi. In quam metus, ultrices vitae luctus vel, sodales eget enim. Fusce quis ex ac velit mollis egestas. Cras sapien justo, placerat vel tortor et, aliquam cursus tellus. Phasellus ut turpis eget augue tincidunt aliquet. Cras felis magna, scelerisque nec malesuada eget, ullamcorper in purus. Nulla facilisi. In et mauris malesuada felis feugiat pulvinar ac non mauris. Duis nec tortor ullamcorper, tincidunt lorem sit amet, ultricies nunc.
+                    </ns2:Stav>
+                </ns2:Clan>
+            </ns2:Glava>
+            <ns2:Glava Naziv="Glava druga" Id="2">
+                <ns2:Odeljak Naziv="Odeljak prvi u glavi" Id="1">
+                    <ns2:Clan Broj_clana="7">
+                        <ns2:Stav Id="1">Morbi in lobortis odio. Etiam eros quam, eleifend fermentum convallis eu, viverra vel est. Ut convallis, tortor sed vulputate aliquet, mauris neque ullamcorper enim, vitae tempor libero elit ut turpis. Nam feugiat est ut urna dictum luctus. In venenatis nec turpis in sodales. Fusce hendrerit vitae ante et luctus. Ut rhoncus dui ex. Sed auctor arcu hendrerit felis interdum auctor. Donec cursus at nisl eget consequat. Sed congue, orci non elementum euismod, eros est dictum nunc, at porta magna diam et turpis. Quisque ac augue et sem semper gravida.</ns2:Stav>
+                    </ns2:Clan>
+                </ns2:Odeljak>
+                <ns2:Odeljak Naziv="Odeljak drugi u glavi" Id="2">
+                    <ns2:Clan Broj_clana="8">
+                        <ns2:Stav Id="1">Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque justo nisi, lacinia vitae commodo a, suscipit sed lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec pulvinar pulvinar sem convallis cursus. Integer nec felis molestie nisi rutrum finibus eget sit amet massa. Ut laoreet ornare rhoncus. In id ultricies dolor, sit amet tempus ante. Donec pharetra dui facilisis diam lacinia, non mollis enim pretium. Cras at efficitur massa. Suspendisse a justo eu elit blandit dignissim eu quis elit. Mauris dapibus elit sed tellus viverra suscipit. Vestibulum purus elit, auctor eget tortor at, facilisis sollicitudin ligula. Fusce eu eros magna.</ns2:Stav>
+                    </ns2:Clan>
+                    <ns2:Clan Broj_clana="9">
+                        <ns2:Stav Id="1">Quisque lacinia congue magna, eget egestas lorem egestas id. Pellentesque congue rutrum accumsan. Maecenas venenatis sem pellentesque, feugiat lectus ac, scelerisque nunc. Ut porttitor arcu elit, non commodo diam consequat ut. Donec ut felis id neque pharetra fermentum at ac ante. Nulla sapien justo, gravida gravida elementum quis, tincidunt a tortor. Nullam at interdum lacus. Mauris sed eros feugiat, maximus sapien sit amet, dapibus neque. Integer pretium fermentum porta. Duis aliquet ut neque ut fermentum. Sed et vehicula justo, ac euismod ipsum. Sed auctor est quis vulputate congue. Aenean luctus nunc sit amet velit semper, ut ornare metus rutrum. Phasellus aliquet convallis dignissim. Maecenas nec ex at ex efficitur accumsan sit amet ac urna.</ns2:Stav>
+                    </ns2:Clan>
+                </ns2:Odeljak>
+            </ns2:Glava>
+        </ns2:Deo>
+    </ns2:Glavni_deo>
+    <ns2:Drzava>Republika Srbija</ns2:Drzava>
+    <ns2:Pokrajina>Autonomna pokrajina Vojvodina</ns2:Pokrajina>
+    <ns2:Grad>Grad Novi Sad</ns2:Grad>
+    <ns2:Skupstina>Gradska Skuptina Grada Novog Sada</ns2:Skupstina>
+    <ns2:Broj_popisa_kod_organa>81649527663</ns2:Broj_popisa_kod_organa>
+    <ns2:Datum_donosenja_propisa>21. Jul 2016.</ns2:Datum_donosenja_propisa>
+    <ns2:Mesto_donosenja_propisa>Novi Sad</ns2:Mesto_donosenja_propisa>
+    <ns2:Ovlasceno_lice>
+        <ns2:Titula>Predsednik</ns2:Titula>
+        <ns2:Ime>Rasa</ns2:Ime>
+        <ns2:Prezime>Marinkovic</ns2:Prezime>
+    </ns2:Ovlasceno_lice>
+    <ns2:Timestamp>2002-05-30T09:00:00</ns2:Timestamp>
+</ns2:Pravni_akt>
